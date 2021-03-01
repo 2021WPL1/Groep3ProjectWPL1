@@ -1,0 +1,5 @@
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.csprojAssemblyReference.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner_MarkupCompile.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner_MarkupCompile.lref
