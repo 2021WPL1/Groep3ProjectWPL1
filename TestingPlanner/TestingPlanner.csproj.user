@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="OverviewRequests.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RequestForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RequestResources.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="OverviewRequests.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RequestForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RequestResources.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

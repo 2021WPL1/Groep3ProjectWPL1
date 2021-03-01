@@ -1,0 +1,71 @@
+﻿<Window x:Class="TestingPlanner.RequestForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestingPlanner"
+        mc:Ignorable="d"
+        Title="RequestForm" Height="450" Width="800">
+    <Grid Margin="0,-2,-0.2,2.4">
+
+        <Label Content="Requester initials:" HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Division:" HorizontalAlignment="Left" Margin="30,70,0,0" VerticalAlignment="Top" Height="25" Width="52"/>
+        <Label Content="Job nature:" HorizontalAlignment="Left" Margin="30,95,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Project number (SAP/=hydra):" HorizontalAlignment="Left" Margin="28,120,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Eut projectname (nickname):" HorizontalAlignment="Left" Margin="30,145,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Partnumber:" HorizontalAlignment="Left" Margin="91,248,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="net weight (kg):" HorizontalAlignment="Left" Margin="487,248,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Gross weight (kg):" HorizontalAlignment="Left" Margin="650,249,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Batteries inside:" HorizontalAlignment="Left" Margin="32,171,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Expected end date:" HorizontalAlignment="Left" Margin="600,120,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Link to testplan (optional):" HorizontalAlignment="Left" Margin="28,482,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Parts and tests" HorizontalAlignment="Left" Margin="30,213,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
+        <Label Content="EUT1:" HorizontalAlignment="Left" Margin="30,248,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="EUT for seen avaiblity date:" HorizontalAlignment="Left" Margin="28,431,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Special remarks (optional):" HorizontalAlignment="Left" Margin="28,507,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <TextBox Name="cmbxDivision" HorizontalAlignment="Left" Margin="220,70,0,0" VerticalAlignment="Top" Width="120" Height="25" Background="Orange"/>
+        <ComboBox Name="cmbxJobnature" HorizontalAlignment="Left" Margin="220,95,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="181,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="585,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="761,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
+        <ComboBox Name="cmbxBatteriesinside" HorizontalAlignment="Left" Margin="220,170,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="747,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="220,481,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,431,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Background="Orange"/>
+        <CheckBox Content="EMC" HorizontalAlignment="Left" Margin="95,290,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="ENVIRONMENTAL" HorizontalAlignment="Left" Margin="180,290,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="RELIABILITY" HorizontalAlignment="Left" Margin="330,290,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="PRODUCT SAFETY" HorizontalAlignment="Left" Margin="440,290,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="PACKAGING" HorizontalAlignment="Left" Margin="585,290,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="GREEN COMPLIANCE" HorizontalAlignment="Left" Margin="690,290,0,0" VerticalAlignment="Top"/>
+        <Button Content="Confirm" HorizontalAlignment="Left" Margin="32,544,0,0" VerticalAlignment="Top" Width="98" Height="40"/>
+        <Label Content="PVG Responsibility:" HorizontalAlignment="Left" Margin="30,456,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,456,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Background="Orange"/>
+        <ComboBox HorizontalAlignment="Left" Margin="859,247,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
+        <Label Content="Request date:" HorizontalAlignment="Left" Margin="600,44,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="747,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <Label Content="JR Number:" HorizontalAlignment="Left" Margin="600,70,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="747,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <Button Content="Add part" HorizontalAlignment="Left" Margin="220,219,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Project details" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
+        <Label Content="Partnumber:" HorizontalAlignment="Left" Margin="91,322,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="net weight (kg):" HorizontalAlignment="Left" Margin="487,322,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Gross weight (kg):" HorizontalAlignment="Left" Margin="650,323,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="EUT2:" HorizontalAlignment="Left" Margin="30,322,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="181,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="585,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="761,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
+        <CheckBox Content="EMC" HorizontalAlignment="Left" Margin="95,364,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="ENVIRONMENTAL" HorizontalAlignment="Left" Margin="180,364,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="RELIABILITY" HorizontalAlignment="Left" Margin="330,364,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="PRODUCT SAFETY" HorizontalAlignment="Left" Margin="440,364,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="PACKAGING" HorizontalAlignment="Left" Margin="585,364,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="GREEN COMPLIANCE" HorizontalAlignment="Left" Margin="690,364,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="859,321,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="220,504,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Background="Orange"/>
+        <Label Content="Planning details:" HorizontalAlignment="Left" Margin="28,396,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
+    </Grid>
+</Window>
