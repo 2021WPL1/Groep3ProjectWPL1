@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="OverviewRequests" Height="450" Width="800">
+        Title="OverviewRequests" Height="600" Width="800">
     <StackPanel Margin="10">
         <GroupBox Header="Requests to plan">
             <ListBox Height="150">
