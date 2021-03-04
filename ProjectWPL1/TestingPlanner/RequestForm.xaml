@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="600" Width="800">
+        Title="RequestForm" Height="600" Width="850">
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <Grid>
@@ -57,7 +57,7 @@
                 <ListBox Height="150">
                     <!--This item will become the template for this listbox-->
                     <ListBoxItem BorderBrush="Gray">
-                        <Grid Width="750">
+                        <Grid Width="800">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition/>
@@ -67,6 +67,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
+                                <ColumnDefinition Width="50"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -74,14 +75,14 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Label Content="EUT 1"/>
-                            <Label Grid.Column="1" Content="Partnumber"/>
-                            <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                            <Label Grid.Column="3" Content="net weight (kg)"/>
-                            <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
-                            <Label Grid.Column="5" Content="gross weight (kg)"/>
-                            <TextBox Grid.Column="6" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
-                            <Label Grid.Column="7" Content="Availability:"/>
-                            <TextBox Grid.Column="7" Grid.Row="1" Text="dd/mm/yy" ToolTip="Foreseen availability date" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                            <Label Grid.Column="1" Content="Partnumber:" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="2" Height="25" TextWrapping="Wrap" Background="Orange" Grid.ColumnSpan="2" />
+                            <Label Grid.Column="4" Content="Foreseen availability date:" Grid.ColumnSpan="2" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="6" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                            <Label Grid.Column="7" Content="Net Weight (kg):" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
+                            <Label Grid.Column="7" Grid.Row="1" Content="Gross Weight (kg)" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="8" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
                             <CheckBox Grid.Column="1" Grid.Row="1" Content="EMC" FontSize="9" VerticalContentAlignment="Center"/>
                             <CheckBox Grid.Column="2" Grid.Row="1" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center"/>
                             <CheckBox Grid.Column="3" Grid.Row="1" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center"/>
