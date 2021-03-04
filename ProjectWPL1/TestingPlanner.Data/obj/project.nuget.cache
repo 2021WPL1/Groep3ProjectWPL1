@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6yifYNGQXwkzll0hrEbxvdPU5/AjQ8dsTRWIBzhItL0tyfI0Y/r+kA6iVYQR/nVweDlCghlvTfKwl6EVKV8jfA==",
+  "dgSpecHash": "LbKb6CA9AhJkf1dCLmlXPGcvaf7VbWwAAHjYMdYFq6VPqypIJxwJOW7jpiVuix0P08re2V7S2H9tF9+GSitEuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matti\\Source\\Repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
+  "projectFilePath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matti\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\matti\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
