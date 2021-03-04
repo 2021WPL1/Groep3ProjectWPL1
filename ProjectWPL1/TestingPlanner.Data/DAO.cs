@@ -13,6 +13,7 @@ namespace TestingPlanner.Data
         // We only want one instance of this class through the whole project.
         //
         private static readonly DAO instance = new DAO();
+        Datepicker datePicker = new Datepicker();
 
         public static DAO Instance()
         {
@@ -29,27 +30,40 @@ namespace TestingPlanner.Data
         private Barco2021Context context;
 
     
-        public RqRequest addJobRequest(string requester,string eutProjectName, string eutPartNr
+        public RqRequest addJobRequest(string requester,string division,string jobNature, DateTime expectedEndDate,
+                                        string hydraProjectNr, string eutProjectName, bool battery,string eutPartNr,
+                                            bool internRequest, string specialRemarks,short netWeight,short grossWeight
                                         
-                                       /*string jobNature,string hydraProjectNr,
-                                       DateTime expectedEndDate,bool internRequest, short grossWeight,
-                                       short netWeight,bool battery,*/  )
+      
+                                            )
         {
             RqRequest rqrequest = new RqRequest()
             {
-                Requester=requester,
-                JrNumber = "20",
-                EutProjectname = eutProjectName,
-                EutPartnumbers = eutPartNr,
-                BarcoDivision = "test"
-               /* JobNature = jobNature,
-                JrStatus ="Pending",
+                Requester = requester,
+                BarcoDivision = division,
+                JobNature = jobNature,
+                ExpectedEnddate = expectedEndDate, //DATEPICKER
+                //RqOptionel rqOptional = new RqOptionel();   LINK TO TESTPLAN
                 HydraProjectNr = hydraProjectNr,
-                ExpectedEnddate = expectedEndDate,
+                EutProjectname = eutProjectName,
+                Battery = battery,
+                RequestDate = DateTime.Now.Date,  
+                //JrNumber (autmatisch)  
                 InternRequest = internRequest,
-                GrossWeight = grossWeight,
+                //special remarks RqOptional
+                EutPartnumbers = eutPartNr,
+                //forseen availiability date
                 NetWeight = netWeight,
-                Battery=battery*/
+                GrossWeight = grossWeight,
+                //team (emc, reliability, ...)           
+                
+                
+                JrStatus ="Pending",
+                
+               
+                
+                
+    
             };
 
             context.RqRequest.Add(rqrequest);

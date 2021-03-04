@@ -29,15 +29,10 @@ namespace TestingPlanner
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            dao.addJobRequest(txtRequester.Text, txtProjectName.Text, txtPartNumbers.Text);
-            txtResult.Text = dao.GetJobRequest().Requester;
-
-        
+            dao.addJobRequest(txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text);
+            txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
         }
 
-
-
-
+      
     }
 }

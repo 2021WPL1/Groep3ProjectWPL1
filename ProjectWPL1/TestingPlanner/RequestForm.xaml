@@ -27,12 +27,13 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
-                <TextBox x:Name="txtRequestInit" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <TextBox x:Name="txtRequesterInit" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <TextBox x:Name="txtDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <Label Grid.Row="3" Content="Expected end date:" Height="25"/>
-                <TextBox x:Name="txtEndDate" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <DatePicker x:Name="dpEndDate" Grid.Column="1" Grid.Row="3" IsTodayHighlighted="True" />
+
                 <Label Grid.Row="5" Content="Link to testplan (optional):" Height="25"/>
                 <TextBox x:Name="txtLinkTestPlan" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <ComboBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
@@ -104,6 +105,6 @@
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <Button Content="Confirm" Width="100" Height="40"/>
+        <Button Content="Confirm" Width="100" Height="40" Click="Button_Click"/>
     </StackPanel>
 </Window>
