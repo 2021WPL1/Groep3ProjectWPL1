@@ -36,9 +36,9 @@
                 <Label Grid.Row="5" Content="Link to testplan (optional):" Height="25"/>
                 <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <ComboBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
-                <Label Grid.Column="3" Content="Eut projectname (nickname):" Height="25" />
+                <Label Grid.Column="3" Content="Projectnr. (SAP/Hydra):" Height="25" />
                 <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                <Label Grid.Column="3" Grid.Row="1" Content="Projectnr. (SAP/Hydra):" Height="25"/>
+                <Label Grid.Column="3" Grid.Row="1" Content="Eut projectname (nickname):" Height="25" VerticalAlignment="Top"/>
                 <TextBox Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <CheckBox Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
                 <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
