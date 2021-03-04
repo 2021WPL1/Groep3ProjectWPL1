@@ -5,79 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="600" Width="828">
+        Title="RequestForm" Height="600" Width="800">
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel>
-                    <Label Content="Requester initials:" Height="25"/>
-                    <Label Content="Division:" Height="25"/>
-                    <Label Content="Job nature:" Height="25"/>
-                    <Label Content="Project number (SAP/=hydra):" Height="25"/>
-                    <Label Content="Eut projectname (nickname):" Height="25"/>
-                    <Label Content="Partnumber:" Height="26"/>
-                </StackPanel>
-                <StackPanel Margin="10, 0">
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Height="25" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                </StackPanel>
-                <StackPanel>
-                    <Label Content="net weight (kg):" Height="26"/>
-                    <Label Content="Gross weight (kg):" Height="26"/>
-                    <Label Content="Batteries inside:" Height="25"/>
-                    <Label Content="Expected end date:" Height="25"/>
-                    <Label Content="Link to testplan (optional):" Height="25"/>
-                    <Label Content="JR Number:"/>
-                </StackPanel>
-                <StackPanel Margin="10, 0">
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Height="25" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                </StackPanel>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
+                <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
+                <Label Grid.Row="3" Content="Expected end date:" Height="25"/>
+                <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <Label Grid.Row="5" Content="Link to testplan (optional):" Height="25"/>
+                <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
+                <Label Grid.Column="3" Content="Eut projectname (nickname):" Height="25" />
+                <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <Label Grid.Column="3" Grid.Row="1" Content="Projectnr. (SAP/Hydra):" Height="25"/>
+                <TextBox Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <CheckBox Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
+                <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
+                <TextBox Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
+                <Label Grid.Column="3" Grid.Row="5" Content="JR Number:"/>
+                <TextBox Grid.Column="4" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
+                <CheckBox Grid.Column="4" Grid.Row="6" Content="Internal" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+                <Label Grid.Row="7" Content="Special remarks (optional):"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Height="50" HorizontalAlignment="Stretch" Background="Orange" Margin="0, 10"/>
+            </Grid>
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <Button Content="Add Part" Margin="10"/>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="EUT 1"/>
-                    <Label Content="Partnumber"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                    <Label Content="net weight (kg)"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
-                    <Label Content="gross  weight (kg)"/>
-                    <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
-                    <ComboBox Width="120" Margin="100, 0, 0, 0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Content="EMC"/>
-                    <CheckBox Content="ENVIRONMENTAL"/>
-                    <CheckBox Content="RELIABILITY"/>
-                    <CheckBox Content="PRODUCT SAFETY"/>
-                    <CheckBox Content="PACKAGING"/>
-                    <CheckBox Content="GREEN COMPLIANCE"/>
+                <ListBox Height="150">
+                    <ListBoxItem BorderBrush="Gray">
+                        <Grid Width="750">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="EUT 1"/>
+                            <Label Grid.Column="1" Content="Partnumber"/>
+                            <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                            <Label Grid.Column="3" Content="net weight (kg)"/>
+                            <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
+                            <Label Grid.Column="5" Content="gross weight (kg)"/>
+                            <TextBox Grid.Column="6" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
+                            <ComboBox Grid.Column="7"/>
+                            <CheckBox Grid.Column="1" Grid.Row="1" Content="EMC" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox Grid.Column="2" Grid.Row="1" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox Grid.Column="3" Grid.Row="1" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox Grid.Column="4" Grid.Row="1" Content="PRODUCT &#x0a;SAFETY" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox Grid.Column="5" Grid.Row="1" Content="PACKAGING" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox Grid.Column="6" Grid.Row="1" Content="GREEN &#x0a;COMPLIANCE" FontSize="9" VerticalContentAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="2" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="3" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="4" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="5" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="6" Grid.Row="3" Visibility="Collapsed"/>
+                        </Grid>
+                    </ListBoxItem>
+                </ListBox>
+                <StackPanel Orientation="Horizontal" >
+                    <Button Content="Add Part" Margin="10"/>
+                    <Button Content="Remove Part" Margin="10"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Planning details">
-            <StackPanel>
-                <Label Content="EUT for seen avaiblity date:" Height="25"/>
-                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                <Label Content="Special remarks (optional):" Height="25"/>
-                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                <Label Content="PVG Responsibility:"/>
-                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                <Label Content="Request date:"/>
-                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-            </StackPanel>
-        </GroupBox>
-        <Button Content="Confirm" Width="98" Height="40"/>
+        <Button Content="Confirm" Width="100" Height="40"/>
     </StackPanel>
 </Window>
