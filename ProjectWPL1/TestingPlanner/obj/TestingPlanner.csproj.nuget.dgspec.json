@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj": {}
+    "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
+    "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
         "projectName": "TestingPlanner.Data",
-        "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
+        "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
         "packagesPath": "C:\\Users\\Mel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\obj\\",
+        "outputPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
-                "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
+              "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
+                "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
+    "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
         "projectName": "TestingPlanner.Domain",
-        "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
+        "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
         "packagesPath": "C:\\Users\\Mel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -154,14 +154,14 @@
         }
       }
     },
-    "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj": {
+    "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+        "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
         "projectName": "TestingPlanner",
-        "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+        "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
         "packagesPath": "C:\\Users\\Mel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
+        "outputPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -181,11 +181,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
-                "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
+              "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
+                "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
               },
-              "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
-                "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\GitHub\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
+              "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
+                "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
               }
             }
           }
