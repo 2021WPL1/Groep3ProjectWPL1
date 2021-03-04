@@ -7,8 +7,8 @@ namespace TestingPlanner.Models
     {
         public RqRequest()
         {
-            RqOptionel = new HashSet<RqOptionel>();
-            RqRequestDetail = new HashSet<RqRequestDetail>();
+            RqOptionels = new List<RqOptionel>();
+            RqRequestDetails = new List<RqRequestDetail>();
         }
 
         public int IdRequest { get; set; }
@@ -27,7 +27,9 @@ namespace TestingPlanner.Models
         public short? NetWeight { get; set; }
         public bool? Battery { get; set; }
 
-        public virtual ICollection<RqOptionel> RqOptionel { get; set; }
-        public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
+      
+        public virtual List<RqOptionel> RqOptionels { get; set; }
+        public virtual List<RqRequestDetail> RqRequestDetails { get; set; }
+        
     }
 }

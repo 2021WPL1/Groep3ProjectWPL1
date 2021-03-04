@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlanner.Data;
 
+
+
 namespace TestingPlanner
 {
     /// <summary>
@@ -23,16 +25,32 @@ namespace TestingPlanner
         {
             InitializeComponent();
             dao = DAO.Instance();
+            List<string> cmb = new List<string>() { "Test1", "Test2" };
+            foreach (string item in cmb)
+            {
+                cmbJobNature.Items.Add(item);
+            }
 
-           
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dao.addJobRequest(txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text);
-            txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
+            addRequest();
+           
         }
+        private void addRequest()
+        {
+          
+            dao.addJobRequest(txtRequesterInit.Text,txtDivision.Text,cmbJobNature.SelectedValue.ToString(),
+                              dpEndDate.SelectedDate.Value.Date.ToShortDateString(),txtProjectNr.Text,
+                              txtProjectName.Text, cbBatteries.IsEnabled,txtPartNr.Text,cbInternal.IsEnabled,
+                              Convert.ToInt16(txtNetWeight.Text),Convert.ToInt16(txtGrossWeight.Text));
 
-      
+            txtSpecialRemarks.Text = dpEndDate.SelectedDate.Value.Date.ToShortDateString();
+        }
+        //  txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
+
+
     }
 }

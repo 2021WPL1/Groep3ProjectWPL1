@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using TestingPlanner.Models;
 
 namespace TestingPlanner.Data
@@ -13,8 +11,8 @@ namespace TestingPlanner.Data
         // We only want one instance of this class through the whole project.
         //
         private static readonly DAO instance = new DAO();
-        Datepicker datePicker = new Datepicker();
-
+     
+       
         public static DAO Instance()
         {
             return instance;
@@ -24,31 +22,30 @@ namespace TestingPlanner.Data
         private DAO()
         {
             this.context = new Barco2021Context();
+          
         }
 
         // DBContext
         private Barco2021Context context;
 
     
-        public RqRequest addJobRequest(string requester,string division,string jobNature, DateTime expectedEndDate,
-                                        string hydraProjectNr, string eutProjectName, bool battery,string eutPartNr,
-                                            bool internRequest, string specialRemarks,short netWeight,short grossWeight
-                                        
-      
-                                            )
+        public RqRequest addJobRequest(string requester,string division, string jobNature, string expectedEndDate,
+                                       string hydraProjectNr, string eutProjectName, bool battery,string eutPartNr,
+                                       bool internRequest,short netWeight,short grossWeight)
         {
+          
+
             RqRequest rqrequest = new RqRequest()
             {
                 Requester = requester,
                 BarcoDivision = division,
                 JobNature = jobNature,
-                ExpectedEnddate = expectedEndDate, //DATEPICKER
-                //RqOptionel rqOptional = new RqOptionel();   LINK TO TESTPLAN
+                ExpectedEnddate = Convert.ToDateTime(expectedEndDate),
                 HydraProjectNr = hydraProjectNr,
                 EutProjectname = eutProjectName,
                 Battery = battery,
-                RequestDate = DateTime.Now.Date,  
-                //JrNumber (autmatisch)  
+                RequestDate = DateTime.Now.Date,
+                JrNumber = "20",  // automatisch
                 InternRequest = internRequest,
                 //special remarks RqOptional
                 EutPartnumbers = eutPartNr,
@@ -56,14 +53,8 @@ namespace TestingPlanner.Data
                 NetWeight = netWeight,
                 GrossWeight = grossWeight,
                 //team (emc, reliability, ...)           
-                
-                
                 JrStatus ="Pending",
-                
                
-                
-                
-    
             };
 
             context.RqRequest.Add(rqrequest);
@@ -71,9 +62,22 @@ namespace TestingPlanner.Data
             return rqrequest;
         }
 
-        public RqRequest GetJobRequest()
+        public RqOptionel rqOptionels()
         {
-            return context.RqRequest.FirstOrDefault(r => r.IdRequest == 3);
+            RqOptionel rq = new RqOptionel
+            {
+                Link = "test",
+                Remarks = "test"
+                
+
+            };
+            context.RqOptionel.Add(rq);
+            saveChanges();
+            return rq;
+        }
+    public RqRequest GetJobRequest()
+        {
+            return context.RqRequest.FirstOrDefault(r => r.IdRequest == 3 );
         }
      
         public void saveChanges()
