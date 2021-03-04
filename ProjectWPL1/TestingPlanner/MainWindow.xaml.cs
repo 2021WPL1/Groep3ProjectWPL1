@@ -23,6 +23,7 @@ namespace TestingPlanner
         public MainWindow()
         {
             InitializeComponent();
-        }
+     
+        }     
     }
 }

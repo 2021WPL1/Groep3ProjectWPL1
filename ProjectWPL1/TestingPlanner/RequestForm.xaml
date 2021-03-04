@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="600" Width="800">
+        Title="RequestForm" Height="690" Width="883">
     <Grid Margin="0,-2,-0.2,2.4">
 
         <Label Content="Requester initials:" HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Height="25"/>
@@ -23,12 +23,12 @@
         <Label Content="EUT1:" HorizontalAlignment="Left" Margin="30,248,0,0" VerticalAlignment="Top" Height="25"/>
         <Label Content="EUT for seen avaiblity date:" HorizontalAlignment="Left" Margin="28,431,0,0" VerticalAlignment="Top" Height="25"/>
         <Label Content="Special remarks (optional):" HorizontalAlignment="Left" Margin="28,507,0,0" VerticalAlignment="Top" Height="30"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <TextBox x:Name="txtRequester" HorizontalAlignment="Left" Height="25" Margin="220,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
         <TextBox Name="cmbxDivision" HorizontalAlignment="Left" Margin="220,70,0,0" VerticalAlignment="Top" Width="120" Height="25" Background="Orange"/>
         <ComboBox Name="cmbxJobnature" HorizontalAlignment="Left" Margin="220,95,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="220,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="181,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Background="Orange"/>
+        <TextBox x:Name="txtProjectName" HorizontalAlignment="Left" Height="25" Margin="220,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
+        <TextBox x:Name="txtPartNumbers" HorizontalAlignment="Left" Height="25" Margin="181,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Background="Orange"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="585,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
         <TextBox HorizontalAlignment="Left" Height="26" Margin="761,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
         <ComboBox Name="cmbxBatteriesinside" HorizontalAlignment="Left" Margin="220,170,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
@@ -41,7 +41,7 @@
         <CheckBox Content="PRODUCT SAFETY" HorizontalAlignment="Left" Margin="440,290,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="PACKAGING" HorizontalAlignment="Left" Margin="585,290,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="GREEN COMPLIANCE" HorizontalAlignment="Left" Margin="690,290,0,0" VerticalAlignment="Top"/>
-        <Button Content="Confirm" HorizontalAlignment="Left" Margin="32,544,0,0" VerticalAlignment="Top" Width="98" Height="40"/>
+        <Button Content="Confirm" HorizontalAlignment="Left" Margin="32,544,0,0" VerticalAlignment="Top" Width="98" Height="40" Click="Button_Click"/>
         <Label Content="PVG Responsibility:" HorizontalAlignment="Left" Margin="30,456,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="220,456,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Background="Orange"/>
         <ComboBox HorizontalAlignment="Left" Margin="859,247,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
@@ -67,5 +67,6 @@
         <ComboBox HorizontalAlignment="Left" Margin="859,321,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="220,504,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Background="Orange"/>
         <Label Content="Planning details:" HorizontalAlignment="Left" Margin="28,396,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Margin="498,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="174"/>
     </Grid>
 </Window>
