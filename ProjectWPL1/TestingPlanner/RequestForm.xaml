@@ -41,8 +41,10 @@
                 <Label Grid.Column="3" Grid.Row="1" Content="Eut projectname (nickname):" Height="25" VerticalAlignment="Top"/>
                 <TextBox Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <CheckBox Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
+                <!--This item will be filled in automatically-->
                 <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
                 <TextBox Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
+                <!--This item will be filled in automatically-->
                 <Label Grid.Column="3" Grid.Row="5" Content="JR Number:"/>
                 <TextBox Grid.Column="4" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
                 <CheckBox Grid.Column="4" Grid.Row="6" Content="Internal" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
@@ -53,6 +55,7 @@
         <GroupBox Header="Parts and tests">
             <StackPanel>
                 <ListBox Height="150">
+                    <!--This item will become the template for this listbox-->
                     <ListBoxItem BorderBrush="Gray">
                         <Grid Width="750">
                             <Grid.ColumnDefinitions>
