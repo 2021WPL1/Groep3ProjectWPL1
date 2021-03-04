@@ -11,7 +11,7 @@ Code en comments in engels.
 |Date|Tasks|
 |---|---|
 |Maandag 1 maart|Planning gemaakt|
-|Donderdag 3 maart|Schermen afwerken, databank koppelen|
+|Donderdag 4 maart|Schermen afwerken, databank koppelen|
 |Maandag 8 maart|Request doorsturen|
 |Donderdag 11 maart|Request inplannen|
 |Maandag 15 maart|personeelsbeheer|
