@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestingPlanner.Models
+namespace TestingPlanner.Domain.Models
 {
     public partial class RqRequest
     {
         public RqRequest()
         {
-            RqOptionel = new List<RqOptionel>();
-            RqRequestDetail = new List<RqRequestDetail>();
+            RqOptionel = new HashSet<RqOptionel>();
+            RqRequestDetail = new HashSet<RqRequestDetail>();
         }
 
         public int IdRequest { get; set; }
@@ -27,9 +27,7 @@ namespace TestingPlanner.Models
         public short? NetWeight { get; set; }
         public bool? Battery { get; set; }
 
-      
-        public virtual List<RqOptionel> RqOptionel { get; set; }
-        public virtual List<RqRequestDetail> RqRequestDetail { get; set; }
-        
+        public virtual ICollection<RqOptionel> RqOptionel { get; set; }
+        public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
     }
 }

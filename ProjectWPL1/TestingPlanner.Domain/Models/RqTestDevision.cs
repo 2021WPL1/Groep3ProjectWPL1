@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestingPlanner.Models
+namespace TestingPlanner.Domain.Models
 {
     public partial class RqTestDevision
     {
