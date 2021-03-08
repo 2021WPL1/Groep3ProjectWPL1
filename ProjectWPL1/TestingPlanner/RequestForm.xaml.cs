@@ -11,7 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlanner.Data;
+using TestingPlanner.Domain.Models;
 using TestingPlanner.Models;
+using Barco2021Context = TestingPlanner.Models.Barco2021Context;
 
 namespace TestingPlanner
 {

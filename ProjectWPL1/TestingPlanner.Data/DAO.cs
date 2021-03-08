@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using TestingPlanner.Domain.Models;
 using TestingPlanner.Models;
+using Barco2021Context = TestingPlanner.Models.Barco2021Context;
 
 namespace TestingPlanner.Data
 {

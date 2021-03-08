@@ -104,18 +104,6 @@ namespace TestingPlanner.Models
                     .IsRequired()
                     .HasColumnName("afkPerson")
                     .HasMaxLength(10);
-
-                entity.HasOne(d => d.AfkDevisionNavigation)
-                    .WithMany(p => p.RqBarcoDivisionPerson)
-                    .HasForeignKey(d => d.AfkDevision)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Rq_BarcoDivisionPerson_Rq_BarcoDivision_FK");
-
-                entity.HasOne(d => d.AfkPersonNavigation)
-                    .WithMany(p => p.RqBarcoDivisionPerson)
-                    .HasForeignKey(d => d.AfkPerson)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Rq_BarcoDivisionPerson_Person_FK");
             });
 
             modelBuilder.Entity<RqJobNature>(entity =>
