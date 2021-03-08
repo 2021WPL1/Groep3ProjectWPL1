@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="690" Width="883">
+        Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded">
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <Grid>
@@ -29,11 +29,10 @@
                 <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <TextBox x:Name="txtRequesterInit" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
-                <TextBox x:Name="txtDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <ComboBox x:Name="cmbDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" Width="120"/>
                 <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <Label Grid.Row="3" Content="Expected end date:" Height="25"/>
                 <DatePicker x:Name="dpEndDate" Grid.Column="1" Grid.Row="3" IsTodayHighlighted="True" />
-
                 <Label Grid.Row="5" Content="Link to testplan (optional):" Height="25"/>
                 <TextBox x:Name="txtLinkTestPlan" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <ComboBox x:Name="cmbJobNature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
@@ -78,8 +77,8 @@
                             <Label Content="EUT 1"/>
                             <Label Grid.Column="1" Content="Partnumber:" HorizontalAlignment="Right"/>
                             <TextBox x:Name="txtPartNr" Grid.Column="2" Height="25" TextWrapping="Wrap" Background="Orange" Grid.ColumnSpan="2" />
-                            <Label Grid.Column="4" Content="Foreseen availability date:" Grid.ColumnSpan="2" HorizontalAlignment="Right"/>
-                            <TextBox x:Name="txtAvailabilityDate" Grid.Column="6" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                            <Label Grid.Column="4" Content="Foreseen availability date:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                            <DatePicker x:Name="dpAvailabilityDate" Grid.Column="5" IsTodayHighlighted="True" Grid.ColumnSpan="2" Margin="51,0,0,26" Grid.RowSpan="2" />
                             <Label Grid.Column="7" Content="Net Weight (kg):" HorizontalAlignment="Right"/>
                             <TextBox x:Name="txtNetWeight" Grid.Column="8" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
                             <Label Grid.Column="7" Grid.Row="1" Content="Gross Weight (kg)" HorizontalAlignment="Right"/>

@@ -7,8 +7,8 @@ namespace TestingPlanner.Models
     {
         public RqRequest()
         {
-            RqOptionels = new List<RqOptionel>();
-            RqRequestDetails = new List<RqRequestDetail>();
+            RqOptionel = new List<RqOptionel>();
+            RqRequestDetail = new List<RqRequestDetail>();
         }
 
         public int IdRequest { get; set; }
@@ -28,8 +28,8 @@ namespace TestingPlanner.Models
         public bool? Battery { get; set; }
 
       
-        public virtual List<RqOptionel> RqOptionels { get; set; }
-        public virtual List<RqRequestDetail> RqRequestDetails { get; set; }
+        public virtual List<RqOptionel> RqOptionel { get; set; }
+        public virtual List<RqRequestDetail> RqRequestDetail { get; set; }
         
     }
 }
