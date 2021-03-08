@@ -104,6 +104,6 @@
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <Button Content="Confirm" Width="100" Height="40" Click="Button_Click"/>
+        <Button Content="Confirm" Width="100" Height="40" Click="btnAddJobRequest"/>
     </StackPanel>
 </Window>
