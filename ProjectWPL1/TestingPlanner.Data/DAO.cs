@@ -50,7 +50,7 @@ namespace TestingPlanner.Data
                 RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
                     {
                       Pvgresp="c",
-                      TestdivisieNavigation = new RqTestDevision{Afkorting="g"
+                      TestdivisieNavigation = new RqTestDevision{Afkorting="f"
                     }}}
             };
             context.RqRequest.Add(rqrequest);

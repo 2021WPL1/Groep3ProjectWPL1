@@ -35,10 +35,12 @@ namespace TestingPlanner
             addAllDivionsToCombobox();
             txtRequestDate.Text = DateTime.Now.Date.ToShortDateString();
         }
-        private void btnAddJobRequest_Click(object sender, RoutedEventArgs e)
+
+        private void addJobRequest_Click(object sender, RoutedEventArgs e)
         {
             addRequest();
         }
+
         private void addRequest()
         {
             dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
@@ -73,6 +75,8 @@ namespace TestingPlanner
             }
             return cbChecked;
         }
+
+     
         //  txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
 
     }
