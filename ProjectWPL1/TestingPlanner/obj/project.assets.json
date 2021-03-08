@@ -5443,19 +5443,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\matti\\.nuget\\packages\\": {}
+    "C:\\Users\\Mel\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
       "projectName": "TestingPlanner",
-      "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
-      "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
+      "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+      "packagesPath": "C:\\Users\\Mel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5469,11 +5476,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
-              "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
+            "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
             },
-            "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
-              "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
+            "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
             }
           }
         }
@@ -5521,7 +5528,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
