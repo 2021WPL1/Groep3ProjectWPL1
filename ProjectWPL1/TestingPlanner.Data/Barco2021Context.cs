@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using TestingPlanner.Domain.Models;
 
-namespace TestingPlanner.Models
+namespace TestingPlanner.Domain.Models
 {
     public partial class Barco2021Context : DbContext
     {
@@ -104,6 +103,11 @@ namespace TestingPlanner.Models
                     .IsRequired()
                     .HasColumnName("afkPerson")
                     .HasMaxLength(10);
+
+                entity.Property(e => e.Pvggroup)
+                    .IsRequired()
+                    .HasColumnName("PVGGroup")
+                    .HasMaxLength(10);
             });
 
             modelBuilder.Entity<RqJobNature>(entity =>
@@ -159,10 +163,12 @@ namespace TestingPlanner.Models
                 entity.Property(e => e.Battery).HasColumnName("battery");
 
                 entity.Property(e => e.EutPartnumbers)
+                    .IsRequired()
                     .HasColumnName("EUT_Partnumbers")
-                    .HasMaxLength(50);
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.EutProjectname)
+                    .IsRequired()
                     .HasColumnName("EUT_Projectname")
                     .HasMaxLength(100);
 
@@ -170,20 +176,22 @@ namespace TestingPlanner.Models
                     .HasColumnName("expectedEnddate")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.GrossWeight).HasColumnName("grossWeight");
+                entity.Property(e => e.GrossWeight)
+                    .IsRequired()
+                    .HasColumnName("grossWeight")
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.HydraProjectNr)
+                    .IsRequired()
                     .HasColumnName("hydraProjectNr")
                     .HasMaxLength(15);
 
-                entity.Property(e => e.InternRequest).HasColumnName("InternRequest????????");
-
                 entity.Property(e => e.JobNature)
+                    .IsRequired()
                     .HasColumnName("jobNature")
                     .HasMaxLength(30);
 
                 entity.Property(e => e.JrNumber)
-                    .IsRequired()
                     .HasColumnName("JR_Number")
                     .HasMaxLength(10);
 
@@ -191,13 +199,17 @@ namespace TestingPlanner.Models
                     .HasColumnName("JR_Status")
                     .HasMaxLength(30);
 
-                entity.Property(e => e.NetWeight).HasColumnName("netWeight");
+                entity.Property(e => e.NetWeight)
+                    .IsRequired()
+                    .HasColumnName("netWeight")
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.RequestDate)
                     .HasColumnName("request_date")
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.Requester)
+                    .IsRequired()
                     .HasColumnName("requester")
                     .HasMaxLength(10)
                     .HasComment("initialen");
@@ -215,9 +227,8 @@ namespace TestingPlanner.Models
                 entity.Property(e => e.IdRequest).HasColumnName("id_request");
 
                 entity.Property(e => e.Pvgresp)
-                    .IsRequired()
                     .HasColumnName("PVGresp")
-                    .HasMaxLength(1);
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Testdivisie)
                     .IsRequired()

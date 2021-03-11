@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using TestingPlanner.Domain.Models;
-using TestingPlanner.Models;
+
 
 
 namespace TestingPlanner.Data
@@ -24,8 +24,8 @@ namespace TestingPlanner.Data
         private Barco2021Context context;
 
         public RqRequest addJobRequest(string jrNumber, string jrStatus, string requester, string eutProjectName,
-                                        string eutPartNr, string hydraProjectNr, bool internRequest, short grossWeight,
-                                        short netWeight, bool battery, string link, string remarks, string barcoDivision,
+                                        string eutPartNr, string hydraProjectNr, bool internRequest, string grossWeight,
+                                        string netWeight, bool battery, string link, string remarks, string barcoDivision,
                                         string jobNature, DateTime ExpEndDate, string pvgResp, DateTime AvailabilityDate)
         {
             RqRequest rqrequest = new RqRequest()
