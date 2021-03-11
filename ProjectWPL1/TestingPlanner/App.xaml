@@ -10,28 +10,29 @@
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" MinWidth="80"/>
+                        <ColumnDefinition Width="2*" MinWidth="80"/>
+                        <ColumnDefinition Width="2*" MinWidth="80"/>
+                        <ColumnDefinition Width="1*" MinWidth="80"/>
+                        <ColumnDefinition Width="*" MinWidth="80"/>
+                        <ColumnDefinition Width="1*" MinWidth="80"/>
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.RowSpan="2" Text="EUT {Binding OrderNumber}" />
-                    <TextBlock Grid.Column="1" Text="Partnumber:"/>
-                    <TextBox Grid.Column="2" Text="{Binding PartNr}"/>
-                    <TextBlock Grid.Column="3" Text="Foreseen availability date:"/>
-                    <DatePicker Grid.Column="4" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True"/>
-                    <TextBlock Grid.Column="5" Text="Net Weight (kg):"/>
-                    <TextBox Grid.Column="6" Text="{Binding NetWeight}"/>
-                    <TextBlock Grid.Column="5" Grid.Row="1" Text="Gross Weight (kg)"/>
-                    <TextBox Grid.Column="6" Grid.Row="1" Text="{Binding GrossWeight}"/>
-                    <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <!-- Find a way to display the number of the EUT, or delete alltogether?-->
+                    <TextBlock Grid.RowSpan="2" Text="EUT" Margin="5"/> 
+                    <TextBlock Grid.Column="1" Text="Partnumber:" Margin="5"/>
+                    <TextBox Grid.Column="2" Text="{Binding PartNr}" Margin="5"/>
+                    <TextBlock Grid.Column="3" Text="Foreseen availability date:" Margin="5"/>
+                    <DatePicker Grid.Column="4" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>
+                    <TextBlock Grid.Column="5" Text="Net Weight (kg):" Margin="5"/>
+                    <TextBox Grid.Column="6" Text="{Binding NetWeight}" Margin="5"/>
+                    <TextBlock Grid.Column="5" Grid.Row="1" Text="Gross Weight (kg)" Margin="5"/>
+                    <TextBox Grid.Column="6" Grid.Row="1" Text="{Binding GrossWeight}" Margin="5"/>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="5">
                         <CheckBox IsChecked="{Binding EMC}" Content="EMC" FontSize="9" VerticalContentAlignment="Center"/>
                         <CheckBox IsChecked="{Binding ENV}" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center"/>
                         <CheckBox IsChecked="{Binding REL}" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center"/>

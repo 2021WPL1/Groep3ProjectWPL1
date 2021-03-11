@@ -29,7 +29,22 @@ namespace TestingPlanner
         {
             InitializeComponent();
             dao = DAO.Instance();
+
+            // Test for DataTemplate EUT's
+            // Binding OK
+            List<EUT> EUTs = new List<EUT>();
+            EUTs.Add(new EUT());
+            EUTs.Add(new EUT
+            {
+                GrossWeight = 1.5,
+                PartNr = "TEST"
+
+            });
+            ListEUT.ItemsSource = EUTs;
+
         }
+
+
 
         // The following functions are beign executed when the Request Form GUI is loaded
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -51,10 +66,10 @@ namespace TestingPlanner
         // the value of these parameters is provided by the user using the Request Form GUI
         private void addRequest()
         {
-            dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
-                              ifChecked(cbInternal), Convert.ToInt16(txtGrossWeight.Text), Convert.ToInt16(txtNetWeight.Text),
-                              ifChecked(cbBatteries), txtLinkTestPlan.Text, txtSpecialRemarks.Text, cmbDivision.Text, cmbJobNature.Text,
-                              dpEndDate.SelectedDate.Value.Date);
+            //dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
+            //                  ifChecked(cbInternal), Convert.ToInt16(txtGrossWeight.Text), Convert.ToInt16(txtNetWeight.Text),
+            //                  ifChecked(cbBatteries), txtLinkTestPlan.Text, txtSpecialRemarks.Text, cmbDivision.Text, cmbJobNature.Text,
+            //                  dpEndDate.SelectedDate.Value.Date);
         }
 
         // This function retrieves the information of the job natures from the Barco2021 database and returns these
