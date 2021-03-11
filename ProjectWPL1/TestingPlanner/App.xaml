@@ -4,6 +4,43 @@
              xmlns:local="clr-namespace:TestingPlanner"
              StartupUri="RequestForm.xaml">
     <Application.Resources>
-         
+        <DataTemplate x:Key="EUT">
+            <!--EUT's - Nog te koppelen aan RequestForm + Class aanmaken-->
+            <ListBoxItem BorderBrush="Gray" HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.RowSpan="2" Text="EUT {Binding OrderNumber}" />
+                    <TextBlock Grid.Column="1" Text="Partnumber:"/>
+                    <TextBox Grid.Column="2" Text="{Binding PartNr}"/>
+                    <TextBlock Grid.Column="3" Text="Foreseen availability date:"/>
+                    <DatePicker Grid.Column="4" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True"/>
+                    <TextBlock Grid.Column="5" Text="Net Weight (kg):"/>
+                    <TextBox Grid.Column="6" Text="{Binding NetWeight}"/>
+                    <TextBlock Grid.Column="5" Grid.Row="1" Text="Gross Weight (kg)"/>
+                    <TextBox Grid.Column="6" Grid.Row="1" Text="{Binding GrossWeight}"/>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <CheckBox IsChecked="{Binding EMC}" Content="EMC" FontSize="9" VerticalContentAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding ENV}" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding REL}" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding SAF}" Content="PRODUCT &#x0a;SAFETY" FontSize="9" VerticalContentAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding PCK}" Content="PACKAGING" FontSize="9" VerticalContentAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding CMP}" Content="GREEN &#x0a;COMPLIANCE" FontSize="9" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </ListBoxItem>
+        </DataTemplate>
     </Application.Resources>
 </Application>

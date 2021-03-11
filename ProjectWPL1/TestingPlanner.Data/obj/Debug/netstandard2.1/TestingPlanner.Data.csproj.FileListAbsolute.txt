@@ -46,3 +46,15 @@ C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CopyComplete
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.dll
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.deps.json
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.pdb
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.pdb
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csprojAssemblyReference.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfoInputs.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfo.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CoreCompileInputs.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CopyComplete
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb

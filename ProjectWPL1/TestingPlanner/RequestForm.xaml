@@ -54,7 +54,7 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <ListBox Height="150">
+                <ListBox Height="150" ItemTemplate="{DynamicResource EUT}">
                     <!--This item will become the template for this listbox-->
                     <ListBoxItem BorderBrush="Gray">
                         <Grid Width="800">
