@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
-using TestingPlanner.Models;
 
 
 namespace TestingPlanner
@@ -54,7 +53,7 @@ namespace TestingPlanner
         private void addRequest()
         {
             dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
-                              ifChecked(cbInternal), Convert.ToInt16(txtGrossWeight.Text), Convert.ToInt16(txtNetWeight.Text),
+                              ifChecked(cbInternal), txtGrossWeight.Text, txtNetWeight.Text,
                               ifChecked(cbBatteries), txtLinkTestPlan.Text, txtSpecialRemarks.Text, cmbDivision.Text, cmbJobNature.Text,
                               dpEndDate.SelectedDate.Value.Date, getPvgResp("EMC").ToString(), dpAvailabilityDate.SelectedDate.Value.Date);
         }
