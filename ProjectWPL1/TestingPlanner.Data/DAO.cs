@@ -26,8 +26,8 @@ namespace TestingPlanner.Data
         public RqRequest addJobRequest(string jrNumber, string jrStatus, string requester, string eutProjectName,
                                         string eutPartNr, string hydraProjectNr, bool internRequest, string grossWeight,
                                         string netWeight, bool battery, string link, string remarks, string barcoDivision,
-                                        string jobNature, DateTime ExpEndDate, string pvgResp, DateTime AvailabilityDate)
-        {
+                                      string jobNature, DateTime ExpEndDate, string pvgResp, DateTime AvailabilityDate)  
+        { 
             RqRequest rqrequest = new RqRequest()
             {
                 JrNumber = jrNumber,  //automatisch
@@ -75,5 +75,7 @@ namespace TestingPlanner.Data
         {
             context.SaveChanges();
         }
+
+
     }
 }
