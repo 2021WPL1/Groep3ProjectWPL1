@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using TestingPlanner.Domain.Models;
 using TestingPlanner.Models;
-using Barco2021Context = TestingPlanner.Models.Barco2021Context;
+
 
 namespace TestingPlanner.Data
 {
@@ -26,7 +26,7 @@ namespace TestingPlanner.Data
         public RqRequest addJobRequest(string jrNumber, string jrStatus, string requester, string eutProjectName,
                                         string eutPartNr, string hydraProjectNr, bool internRequest, short grossWeight,
                                         short netWeight, bool battery, string link, string remarks, string barcoDivision,
-                                        string jobNature, DateTime ExpEndDate)
+                                        string jobNature, DateTime ExpEndDate, string pvgResp, DateTime AvailabilityDate)
         {
             RqRequest rqrequest = new RqRequest()
             {
@@ -44,25 +44,32 @@ namespace TestingPlanner.Data
                 GrossWeight = grossWeight,
                 NetWeight = netWeight,
                 Battery = battery,
-                RqOptionel = new List<RqOptionel> {new RqOptionel
+                RqOptionel = new List<RqOptionel> { new RqOptionel
                 {
-                  Link = link,
-                  Remarks = remarks
-                }},
+                    Link = link,
+                    Remarks = remarks
+                } },
                 RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
-                    {
-                      Pvgresp="c",
-                      TestdivisieNavigation = new RqTestDevision{Afkorting="f"
-                    }}}
+                {
+                    Pvgresp = pvgResp,
+                   // Testdivisie = "EMC",
+                Eut = new List<Eut>{new Eut
+                {
+                    AvailableDate=AvailabilityDate
+                }},  TestdivisieNavigation  = new RqTestDevision { Afkorting ="EMC"}}
+                }
             };
-            context.RqRequest.Add(rqrequest);
+
+            context.RqRequests.Add(rqrequest);
             saveChanges();
             return rqrequest;
         }
+
+
         public List<RqRequest> GetJobRequest()
         {
             // return context.RqRequest.FirstOrDefault(r => r.IdRequest == 3 );
-            return context.RqRequest.Include(r => r.RqOptionel).ToList();
+            return context.RqRequests.Include(r => r.RqOptionel).ToList();
         }
         public void saveChanges()
         {

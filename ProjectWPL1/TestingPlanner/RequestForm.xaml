@@ -83,12 +83,12 @@
                             <TextBox x:Name="txtNetWeight" Grid.Column="8" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
                             <Label Grid.Column="7" Grid.Row="1" Content="Gross Weight (kg)" HorizontalAlignment="Right"/>
                             <TextBox x:Name="txtGrossWeight" Grid.Column="8" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
-                            <CheckBox x:Name="cbEmc" Grid.Column="1" Grid.Row="1" Content="EMC" FontSize="9" VerticalContentAlignment="Center"/>
-                            <CheckBox x:Name="cbEnvirenmental" Grid.Column="2" Grid.Row="1" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center"/>
-                            <CheckBox x:Name="cbReliability" Grid.Column="3" Grid.Row="1" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center"/>
-                            <CheckBox x:Name="cbProductSafe" Grid.Column="4" Grid.Row="1" Content="PRODUCT &#x0a;SAFETY" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="cbEmc" Grid.Column="1" Grid.Row="1" Content="EMC" FontSize="9" VerticalContentAlignment="Center" Checked="cbEmc_Checked"/>
+                            <CheckBox x:Name="cbEnvirenmental" Grid.Column="2" Grid.Row="1" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center" Checked="cbEnvirenmental_Checked"/>
+                            <CheckBox x:Name="cbReliability" Grid.Column="3" Grid.Row="1" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center" Checked="cbReliability_Checked"/>
+                            <CheckBox x:Name="cbProductSafe" Grid.Column="4" Grid.Row="1" Content="PRODUCT &#x0a;SAFETY" FontSize="9" VerticalContentAlignment="Center" Checked="cbProductSafe_Checked"/>
                             <CheckBox x:Name="cbPackaging" Grid.Column="5" Grid.Row="1" Content="PACKAGING" FontSize="9" VerticalContentAlignment="Center"/>
-                            <CheckBox Grid.Column="6" Grid.Row="1" Content="GREEN &#x0a;COMPLIANCE" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="cbGreenComp" Grid.Column="6" Grid.Row="1" Content="GREEN &#x0a;COMPLIANCE" FontSize="9" VerticalContentAlignment="Center"/>
                             <ComboBox Grid.Column="1" Grid.Row="3" Visibility="Collapsed"/>
                             <ComboBox Grid.Column="2" Grid.Row="3" Visibility="Collapsed"/>
                             <ComboBox Grid.Column="3" Grid.Row="3" Visibility="Collapsed"/>

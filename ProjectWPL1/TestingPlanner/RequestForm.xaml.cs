@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -13,7 +14,7 @@ using System.Windows.Shapes;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
 using TestingPlanner.Models;
-using Barco2021Context = TestingPlanner.Models.Barco2021Context;
+
 
 namespace TestingPlanner
 {
@@ -25,6 +26,7 @@ namespace TestingPlanner
         // variables
         private DAO dao;
         private static Barco2021Context context = new Barco2021Context();
+
 
         // Constructor
         public RequestForm()
@@ -39,10 +41,8 @@ namespace TestingPlanner
             addAllJobNaturesToCombobox();
             addAllDivionsToCombobox();
             fillInRequestDate();
-            
         }
 
-        
         // The following function is executed when the Confirm button is clicked on the GUI
         private void addJobRequest_Click(object sender, RoutedEventArgs e)
         {
@@ -56,29 +56,31 @@ namespace TestingPlanner
             dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
                               ifChecked(cbInternal), Convert.ToInt16(txtGrossWeight.Text), Convert.ToInt16(txtNetWeight.Text),
                               ifChecked(cbBatteries), txtLinkTestPlan.Text, txtSpecialRemarks.Text, cmbDivision.Text, cmbJobNature.Text,
-                              dpEndDate.SelectedDate.Value.Date);
+                              dpEndDate.SelectedDate.Value.Date, getPvgResp("EMC").ToString(), dpAvailabilityDate.SelectedDate.Value.Date);
         }
 
         // This function retrieves the information of the job natures from the Barco2021 database and returns these
         // values in the correct combobox in the Request Form GUI
         private void addAllJobNaturesToCombobox()
         {
-            var jobNatures = context.RqJobNature.ToList();
+            var jobNatures = context.RqJobNatures.ToList();
             foreach (RqJobNature jobNature in jobNatures)
             {
                 cmbJobNature.Items.Add(jobNature.Nature);
             }
         }
+
         // This function retrieves the information of the divisions from the Barco2021 database and returns these values 
         // into the correct combobox in the Request Form GUI
         private void addAllDivionsToCombobox()
         {
-            var divisions = context.RqBarcoDivision.ToList();
+            var divisions = context.RqBarcoDivisions.ToList();
             foreach (RqBarcoDivision division in divisions)
             {
                 cmbDivision.Items.Add(division.Afkorting);
             }
         }
+
         // This function automatically fills in the request date to the current day of the job request 
         private void fillInRequestDate()
         {
@@ -96,8 +98,32 @@ namespace TestingPlanner
             return cbChecked;
         }
 
-     
-        //  txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
+        private string getPvgResp(string PvgGroup)
+        {
+            var division = context.RqBarcoDivisionPersons
+                           .Include(d => d.AfkPerson).Where(d => d.Pvggroup == PvgGroup)
+                           .FirstOrDefault(d => d.AfkDevision == cmbDivision.Text);
+            return division.AfkPerson;
+        }
 
+        private void cbEmc_Checked(object sender, RoutedEventArgs e)
+        {
+            getPvgResp("Emc");
+        }
+
+        private void cbEnvirenmental_Checked(object sender, RoutedEventArgs e)
+        {
+            getPvgResp("ENV");
+        }
+
+        private void cbReliability_Checked(object sender, RoutedEventArgs e)
+        {
+            getPvgResp("REL");
+        }
+
+        private void cbProductSafe_Checked(object sender, RoutedEventArgs e)
+        {
+            getPvgResp("SAV");
+        }     //  txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
     }
 }

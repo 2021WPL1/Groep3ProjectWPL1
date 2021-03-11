@@ -16,15 +16,15 @@ namespace TestingPlanner.Models
         {
         }
 
-        public virtual DbSet<Eut> Eut { get; set; }
-        public virtual DbSet<Person> Person { get; set; }
-        public virtual DbSet<RqBarcoDivision> RqBarcoDivision { get; set; }
-        public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPerson { get; set; }
-        public virtual DbSet<RqJobNature> RqJobNature { get; set; }
-        public virtual DbSet<RqOptionel> RqOptionel { get; set; }
-        public virtual DbSet<RqRequest> RqRequest { get; set; }
-        public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
-        public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
+        public virtual DbSet<Eut> Euts { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<RqBarcoDivision> RqBarcoDivisions { get; set; }
+        public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPersons { get; set; }
+        public virtual DbSet<RqJobNature> RqJobNatures { get; set; }
+        public virtual DbSet<RqOptionel> RqOptionels { get; set; }
+        public virtual DbSet<RqRequest> RqRequests { get; set; }
+        public virtual DbSet<RqRequestDetail> RqRequestDetails { get; set; }
+        public virtual DbSet<RqTestDevision> RqTestDevisions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
