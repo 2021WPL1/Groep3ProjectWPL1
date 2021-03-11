@@ -53,7 +53,7 @@ namespace TestingPlanner {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TestingPlanner;component/requestresources.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TestingPlanner;V1.0.0.0;component/requestresources.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\RequestResources.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
