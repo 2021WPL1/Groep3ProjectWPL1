@@ -4,6 +4,7 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
 TestingPlanner
 none
@@ -14,6 +15,18 @@ C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\T
 
 8-1539463517
 215314786658
+=======
+C:\Users\matti\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
+TestingPlanner_5e0d0zb4_wpftmp
+none
+false
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+C:\Users\matti\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
+4-1389795794
+
+14-306989247
+215-1725836239
+>>>>>>> 2b1e26fb409c942ffbcfabcf65b1e47fcabca777
 MainWindow.xaml;OverviewRequests.xaml;RequestForm.xaml;RequestResources.xaml;
 
 True

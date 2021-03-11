@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
@@ -12,13 +14,17 @@ namespace TestingPlanner.Viewmodels
     {
         // Jobrequest data container
         private JR _jr;
-        
+
+        public ICommand addJobRequestCommand { get; set; }
+
         // Data connection
         private DAO _dao;
 
         public ViewmodelRequestform(DAO dao)
         {
             this._dao = dao;
+
+            addJobRequestCommand = new DelegateCommand(addJobRequest);
 
             // Testing
             // this._jr = new JR();
@@ -43,6 +49,11 @@ namespace TestingPlanner.Viewmodels
                 _jr = value;
                 OnpropertyChanged();
             }
+        }
+
+        public void addJobRequest()
+        {
+
         }
     }
 }

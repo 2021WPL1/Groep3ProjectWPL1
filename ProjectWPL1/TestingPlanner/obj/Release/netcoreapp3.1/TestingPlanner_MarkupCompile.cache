@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Release\netcoreapp3.1\
+=======
+C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Release\netcoreapp3.1\
+>>>>>>> 2b1e26fb409c942ffbcfabcf65b1e47fcabca777
 TestingPlanner
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
+<<<<<<< HEAD
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
 4-1389795794
 
 8-1539463517
 215-175581367
+=======
+C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
+4-1389795794
+
+9-1012092745
+215-1587245737
+>>>>>>> 2b1e26fb409c942ffbcfabcf65b1e47fcabca777
 MainWindow.xaml;OverviewRequests.xaml;RequestForm.xaml;RequestResources.xaml;
 
 True

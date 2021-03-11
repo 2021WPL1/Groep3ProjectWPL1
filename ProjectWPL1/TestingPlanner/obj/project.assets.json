@@ -379,6 +379,15 @@
           }
         }
       },
+      "Prism.Core/8.0.0.1909": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2089,6 +2098,28 @@
         "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Prism.Core/8.0.0.1909": {
+      "sha512": "Ri+iSFvJiSKYdui7qtxi3uH9NImSZ8Jl/nOosxScSJseFwAc8Lz63JLXoqSAQglcX13DzZcAMzpKNuA9rCFiJg==",
+      "type": "package",
+      "path": "prism.core/8.0.0.1909",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net45/Prism.dll",
+        "lib/net45/Prism.pdb",
+        "lib/net45/Prism.xml",
+        "lib/net47/Prism.dll",
+        "lib/net47/Prism.pdb",
+        "lib/net47/Prism.xml",
+        "lib/netstandard2.0/Prism.dll",
+        "lib/netstandard2.0/Prism.pdb",
+        "lib/netstandard2.0/Prism.xml",
+        "prism-logo.png",
+        "prism.core.8.0.0.1909.nupkg.sha512",
+        "prism.core.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -5454,6 +5485,7 @@
       "EntityFramework >= 6.4.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.10",
+      "Prism.Core >= 8.0.0.1909",
       "TestingPlanner.Classes >= 1.0.0",
       "TestingPlanner.Data >= 1.0.0",
       "TestingPlanner.Domain >= 1.0.0"
@@ -5521,6 +5553,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[3.1.10, )"
+          },
+          "Prism.Core": {
+            "target": "Package",
+            "version": "[8.0.0.1909, )"
           }
         },
         "imports": [
@@ -5554,5 +5590,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
