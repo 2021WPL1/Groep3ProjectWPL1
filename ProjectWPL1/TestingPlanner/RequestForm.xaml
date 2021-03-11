@@ -27,7 +27,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
-                <TextBox x:Name="txtRequesterInit" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <ComboBox x:Name="cmbDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" Width="120"/>
                 <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
@@ -37,9 +37,9 @@
                 <TextBox x:Name="txtLinkTestPlan" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightGray" Width="120"/>
                 <ComboBox x:Name="cmbJobNature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
                 <Label Grid.Column="3" Content="Projectnr. (SAP/Hydra):" Height="25" />
-                <TextBox x:Name="txtProjectNr" Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <TextBox Text="{Binding JR.HydraProjectnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Column="3" Grid.Row="1" Content="Eut projectname (nickname):" Height="25" VerticalAlignment="Top"/>
-                <TextBox x:Name="txtProjectName" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <TextBox Text="{Binding JR.EutProjectname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <CheckBox x:Name="cbBatteries" Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
                 <!--This item will be filled in automatically-->
                 <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
@@ -62,6 +62,6 @@
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="addJobRequest" Content="Confirm" Width="100" Height="40" Click="addJobRequest_Click"/>
+        <Button x:Name="addJobRequest" Content="Confirm" Command="{Binding Path=unselectFriendCommand}" Width="100" Height="40" Click="addJobRequest_Click"/>
     </StackPanel>
 </Window>

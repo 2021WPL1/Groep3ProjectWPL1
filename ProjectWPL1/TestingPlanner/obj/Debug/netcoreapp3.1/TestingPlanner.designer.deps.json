@@ -326,6 +326,14 @@
           }
         }
       },
+      "Prism.Core/8.0.0.1909": {
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {
+            "assemblyVersion": "8.0.0.1909",
+            "fileVersion": "8.0.0.1909"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1439,6 +1447,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "Prism.Core/8.0.0.1909": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ri+iSFvJiSKYdui7qtxi3uH9NImSZ8Jl/nOosxScSJseFwAc8Lz63JLXoqSAQglcX13DzZcAMzpKNuA9rCFiJg==",
+      "path": "prism.core/8.0.0.1909",
+      "hashPath": "prism.core.8.0.0.1909.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",

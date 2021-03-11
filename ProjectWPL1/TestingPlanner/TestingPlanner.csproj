@@ -13,9 +13,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TestingPlanner.Classes\TestingPlanner.Classes.csproj" />
     <ProjectReference Include="..\TestingPlanner.Data\TestingPlanner.Data.csproj" />
     <ProjectReference Include="..\TestingPlanner.Domain\TestingPlanner.Domain.csproj" />
   </ItemGroup>

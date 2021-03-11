@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using TestingPlanner.Domain.Models;
 
-namespace TestingPlanner.Models
+namespace TestingPlanner.Domain.Models
 {
     public partial class Barco2021Context : DbContext
     {
@@ -16,15 +15,15 @@ namespace TestingPlanner.Models
         {
         }
 
-        public virtual DbSet<Eut> Eut { get; set; }
-        public virtual DbSet<Person> Person { get; set; }
-        public virtual DbSet<RqBarcoDivision> RqBarcoDivision { get; set; }
-        public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPerson { get; set; }
-        public virtual DbSet<RqJobNature> RqJobNature { get; set; }
-        public virtual DbSet<RqOptionel> RqOptionel { get; set; }
-        public virtual DbSet<RqRequest> RqRequest { get; set; }
-        public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
-        public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
+        public virtual DbSet<Eut> Euts { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<RqBarcoDivision> RqBarcoDivisions { get; set; }
+        public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPersons { get; set; }
+        public virtual DbSet<RqJobNature> RqJobNatures { get; set; }
+        public virtual DbSet<RqOptionel> RqOptionels { get; set; }
+        public virtual DbSet<RqRequest> RqRequests { get; set; }
+        public virtual DbSet<RqRequestDetail> RqRequestDetails { get; set; }
+        public virtual DbSet<RqTestDevision> RqTestDevisions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -105,17 +104,10 @@ namespace TestingPlanner.Models
                     .HasColumnName("afkPerson")
                     .HasMaxLength(10);
 
-                entity.HasOne(d => d.AfkDevisionNavigation)
-                    .WithMany(p => p.RqBarcoDivisionPerson)
-                    .HasForeignKey(d => d.AfkDevision)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Rq_BarcoDivisionPerson_Rq_BarcoDivision_FK");
-
-                entity.HasOne(d => d.AfkPersonNavigation)
-                    .WithMany(p => p.RqBarcoDivisionPerson)
-                    .HasForeignKey(d => d.AfkPerson)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Rq_BarcoDivisionPerson_Person_FK");
+                entity.Property(e => e.Pvggroup)
+                    .IsRequired()
+                    .HasColumnName("PVGGroup")
+                    .HasMaxLength(10);
             });
 
             modelBuilder.Entity<RqJobNature>(entity =>
@@ -171,10 +163,12 @@ namespace TestingPlanner.Models
                 entity.Property(e => e.Battery).HasColumnName("battery");
 
                 entity.Property(e => e.EutPartnumbers)
+                    .IsRequired()
                     .HasColumnName("EUT_Partnumbers")
-                    .HasMaxLength(50);
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.EutProjectname)
+                    .IsRequired()
                     .HasColumnName("EUT_Projectname")
                     .HasMaxLength(100);
 
@@ -182,20 +176,22 @@ namespace TestingPlanner.Models
                     .HasColumnName("expectedEnddate")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.GrossWeight).HasColumnName("grossWeight");
+                entity.Property(e => e.GrossWeight)
+                    .IsRequired()
+                    .HasColumnName("grossWeight")
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.HydraProjectNr)
+                    .IsRequired()
                     .HasColumnName("hydraProjectNr")
                     .HasMaxLength(15);
 
-                entity.Property(e => e.InternRequest).HasColumnName("InternRequest????????");
-
                 entity.Property(e => e.JobNature)
+                    .IsRequired()
                     .HasColumnName("jobNature")
                     .HasMaxLength(30);
 
                 entity.Property(e => e.JrNumber)
-                    .IsRequired()
                     .HasColumnName("JR_Number")
                     .HasMaxLength(10);
 
@@ -203,13 +199,17 @@ namespace TestingPlanner.Models
                     .HasColumnName("JR_Status")
                     .HasMaxLength(30);
 
-                entity.Property(e => e.NetWeight).HasColumnName("netWeight");
+                entity.Property(e => e.NetWeight)
+                    .IsRequired()
+                    .HasColumnName("netWeight")
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.RequestDate)
                     .HasColumnName("request_date")
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.Requester)
+                    .IsRequired()
                     .HasColumnName("requester")
                     .HasMaxLength(10)
                     .HasComment("initialen");
@@ -227,9 +227,8 @@ namespace TestingPlanner.Models
                 entity.Property(e => e.IdRequest).HasColumnName("id_request");
 
                 entity.Property(e => e.Pvgresp)
-                    .IsRequired()
                     .HasColumnName("PVGresp")
-                    .HasMaxLength(1);
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Testdivisie)
                     .IsRequired()

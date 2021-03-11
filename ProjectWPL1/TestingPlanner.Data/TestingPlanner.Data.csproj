@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TestingPlanner.Classes\TestingPlanner.Classes.csproj" />
     <ProjectReference Include="..\TestingPlanner.Domain\TestingPlanner.Domain.csproj" />
   </ItemGroup>
 
