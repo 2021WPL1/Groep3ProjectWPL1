@@ -76,6 +76,11 @@ namespace TestingPlanner.Data
             context.SaveChanges();
         }
 
+        public JR addJR()
+        {
+
+        }
+
 
     }
 }
