@@ -25,7 +25,12 @@ namespace TestingPlanner.Viewmodels
             this._jr = new JR
             {
                 JrNumber = "TEST",
-                Requester = "MV"
+                Requester = "MV",
+                HydraProjectnumber = "1234",
+                EutProjectname = "SmortProject",
+                EutPartnr = "420",
+                NetWeight = "69kg",
+                GrossWeight = "420kg"
             };
 
         }
