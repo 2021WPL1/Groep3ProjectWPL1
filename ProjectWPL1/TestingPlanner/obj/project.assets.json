@@ -1393,12 +1393,23 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "TestingPlanner.Classes/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/TestingPlanner.Classes.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TestingPlanner.Classes.dll": {}
+        }
+      },
       "TestingPlanner.Data/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
+          "TestingPlanner.Classes": "1.0.0",
           "TestingPlanner.Domain": "1.0.0"
         },
         "compile": {
@@ -5422,6 +5433,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "TestingPlanner.Classes/1.0.0": {
+      "type": "project",
+      "path": "../../TestingPlanner.Classes/TestingPlanner.Classes.csproj",
+      "msbuildProject": "../../TestingPlanner.Classes/TestingPlanner.Classes.csproj"
+    },
     "TestingPlanner.Data/1.0.0": {
       "type": "project",
       "path": "../TestingPlanner.Data/TestingPlanner.Data.csproj",
@@ -5438,6 +5454,7 @@
       "EntityFramework >= 6.4.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.10",
+      "TestingPlanner.Classes >= 1.0.0",
       "TestingPlanner.Data >= 1.0.0",
       "TestingPlanner.Domain >= 1.0.0"
     ]
@@ -5474,6 +5491,9 @@
             },
             "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
               "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
+            },
+            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj": {
+              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj"
             }
           }
         }
