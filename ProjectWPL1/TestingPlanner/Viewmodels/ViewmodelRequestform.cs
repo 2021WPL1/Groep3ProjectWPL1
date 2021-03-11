@@ -15,15 +15,26 @@ namespace TestingPlanner.Viewmodels
         // Jobrequest data container
         private JR _jr;
 
+        // EUT list
+        // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
+        public ObservableCollection<EUT> EUTs { get; set; }
+
+
+        // ICommand declaration
         public ICommand addJobRequestCommand { get; set; }
 
         // Data connection
         private DAO _dao;
 
+        //Constructor
         public ViewmodelRequestform(DAO dao)
         {
             this._dao = dao;
 
+            // Collection initialization
+            EUTs = new ObservableCollection<EUT>();
+
+            // ICommand initialization
             addJobRequestCommand = new DelegateCommand(addJobRequest);
 
             // Testing
@@ -39,8 +50,19 @@ namespace TestingPlanner.Viewmodels
                 GrossWeight = "420kg"
             };
 
+            EUTs.Add(new EUT
+            {
+                PartNr = "TEST",
+                AvailabilityDate = new DateTime(2021, 03, 12),
+                NetWeight = 1.8,
+                GrossWeight = 2.3,
+                EMC = true,
+                REL = true
+            });
+
         }
 
+        // Getters/Setters
         public JR JR
         {
             get { return _jr;}
@@ -51,6 +73,7 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        // ICommand functions
         public void addJobRequest()
         {
 

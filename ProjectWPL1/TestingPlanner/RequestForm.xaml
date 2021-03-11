@@ -54,7 +54,7 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}">
+                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding Path=EUTs}">
                 </ListBox>
                 <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" Margin="10"/>

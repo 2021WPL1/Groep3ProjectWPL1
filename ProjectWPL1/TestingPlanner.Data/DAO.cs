@@ -78,7 +78,7 @@ namespace TestingPlanner.Data
 
         public JR addJR()
         {
-
+            return new JR();
         }
 
 

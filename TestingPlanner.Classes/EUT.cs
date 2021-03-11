@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestingPlanner
 {
-    class EUT
+    public class EUT
     {
         private string _partNr;
         private DateTime _availabilityDate;
