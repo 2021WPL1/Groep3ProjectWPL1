@@ -6,6 +6,7 @@ namespace TestingPlanner
 {
     public class JR
     {
+        private int idRequest;
         private string jrNumber;
         private string jrStatus;
         private string requester;
@@ -28,6 +29,7 @@ namespace TestingPlanner
         {
 
         }
+        public int IdRequest { get => idRequest; set => idRequest = value; }
         public string JrNumber { get => jrNumber; set => jrNumber = value; }
         public string JrStatus { get => jrStatus; set => jrStatus = value; }
         public string Requester { get => requester; set => requester = value; }

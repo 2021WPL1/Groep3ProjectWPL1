@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
-
+using TestingPlanner.Viewmodels;
 
 namespace TestingPlanner
 {
@@ -23,15 +23,17 @@ namespace TestingPlanner
     public partial class RequestForm : Window
     {
         // variables
+        private ViewmodelRequestform viewModel;
         private DAO dao;
         private static Barco2021Context context = new Barco2021Context();
-
 
         // Constructor
         public RequestForm()
         {
             InitializeComponent();
             dao = DAO.Instance();
+            viewModel = new ViewmodelRequestform(DAO.Instance());
+            DataContext = viewModel;
         }
 
         // The following functions are beign executed when the Request Form GUI is loaded
@@ -52,10 +54,10 @@ namespace TestingPlanner
         // the value of these parameters is provided by the user using the Request Form GUI
         private void addRequest()
         {
-            dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
+           /* dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
                               ifChecked(cbInternal), txtGrossWeight.Text, txtNetWeight.Text,
                               ifChecked(cbBatteries), txtLinkTestPlan.Text, txtSpecialRemarks.Text, cmbDivision.Text, cmbJobNature.Text,
-                              dpEndDate.SelectedDate.Value.Date, getPvgResp("EMC").ToString(), dpAvailabilityDate.SelectedDate.Value.Date);
+                              dpEndDate.SelectedDate.Value.Date, getPvgResp("EMC").ToString(), dpAvailabilityDate.SelectedDate.Value.Date);*/
         }
 
         // This function retrieves the information of the job natures from the Barco2021 database and returns these

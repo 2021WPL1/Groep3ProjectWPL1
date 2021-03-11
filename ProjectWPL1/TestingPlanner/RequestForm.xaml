@@ -27,7 +27,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
-                <TextBox x:Name="txtRequesterInit" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <ComboBox x:Name="cmbDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" Width="120"/>
                 <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
