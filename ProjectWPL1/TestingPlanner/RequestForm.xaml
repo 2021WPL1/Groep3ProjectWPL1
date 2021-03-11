@@ -104,6 +104,6 @@
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="addJobRequest" Content="Confirm" Width="100" Height="40" Click="addJobRequest_Click"/>
+        <Button x:Name="addJobRequest" Content="Confirm" Command="{Binding Path=unselectFriendCommand}" Width="100" Height="40" Click="addJobRequest_Click"/>
     </StackPanel>
 </Window>
