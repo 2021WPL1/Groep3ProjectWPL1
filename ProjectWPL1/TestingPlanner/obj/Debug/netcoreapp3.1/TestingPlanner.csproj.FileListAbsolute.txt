@@ -316,3 +316,6 @@ C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.csproj.CoreCompileInputs.cache
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.csproj.CopyComplete
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.genruntimeconfig.cache
+C:\Users\Mel\Desktop\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\Prism.dll
+C:\Users\Mel\Desktop\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\TestingPlanner.Classes.dll
+C:\Users\Mel\Desktop\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\TestingPlanner.Classes.pdb

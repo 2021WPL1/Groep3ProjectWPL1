@@ -27,7 +27,7 @@ namespace TestingPlanner
 
         public JR()
         {
-
+          
         }
         public int IdRequest { get => idRequest; set => idRequest = value; }
         public string JrNumber { get => jrNumber; set => jrNumber = value; }

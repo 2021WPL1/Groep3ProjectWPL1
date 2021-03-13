@@ -10,77 +10,65 @@ namespace TestingPlanner.Data
 {
     public class DAO
     {
+        private Barco2021Context context;
         private static readonly DAO instance = new DAO();
+
         public static DAO Instance()
         {
             return instance;
         }
-        // Private constructor!
+
         private DAO()
         {
             this.context = new Barco2021Context();
         }
-        // DBContext
-        private Barco2021Context context;
 
-        public RqRequest addJobRequest(string jrNumber, string jrStatus, string requester, string eutProjectName,
-                                        string eutPartNr, string hydraProjectNr, bool internRequest, string grossWeight,
-                                        string netWeight, bool battery, string link, string remarks, string barcoDivision,
-                                      string jobNature, DateTime ExpEndDate, string pvgResp, DateTime AvailabilityDate)  
-        { 
+        public RqRequest AddJobRequest(JR Jr)
+        {
             RqRequest rqrequest = new RqRequest()
             {
-                JrNumber = jrNumber,  //automatisch
-                JrStatus = jrStatus,
+                JrNumber = Jr.JrNumber,
+                JrStatus = Jr.JrStatus,
                 RequestDate = DateTime.Now.Date,
-                Requester = requester,
-                BarcoDivision = barcoDivision,
-                JobNature = jobNature,
-                EutProjectname = eutProjectName,
-                EutPartnumbers = eutPartNr,
-                HydraProjectNr = hydraProjectNr,
-                ExpectedEnddate = ExpEndDate,
-                InternRequest = internRequest,
-                GrossWeight = grossWeight,
-                NetWeight = netWeight,
-                Battery = battery,
+                Requester = Jr.Requester,
+                BarcoDivision = Jr.BarcoDivision,
+                JobNature = Jr.JobNature,
+                EutProjectname = Jr.EutProjectname,
+                EutPartnumbers = Jr.EutPartnr,
+                HydraProjectNr = Jr.HydraProjectnumber,
+                ExpectedEnddate = Jr.ExpEnddate,
+                InternRequest = Jr.InternRequest,
+                GrossWeight = Jr.GrossWeight,
+                NetWeight = Jr.NetWeight,
+                Battery = Jr.Battery,
                 RqOptionel = new List<RqOptionel> { new RqOptionel
                 {
-                    Link = link,
-                    Remarks = remarks
+                    Link = Jr.Link,
+                    Remarks = Jr.Remarks
                 } },
                 RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
                 {
-                    Pvgresp = pvgResp,
+                    Pvgresp = Jr.PvgResp,
                    // Testdivisie = "EMC",
                 Eut = new List<Eut>{new Eut
                 {
-                    AvailableDate=AvailabilityDate
-                }},  TestdivisieNavigation  = new RqTestDevision { Afkorting ="EMC"}}
+                    AvailableDate= DateTime.Now.Date
+                }},  TestdivisieNavigation  = new RqTestDevision { Afkorting = "E"}}
                 }
             };
-
             context.RqRequests.Add(rqrequest);
-            saveChanges();
+            SaveChanges();
             return rqrequest;
         }
 
-
-        public List<RqRequest> GetJobRequest()
+        public List<RqRequest> GetAllJobRequests()
         {
-            // return context.RqRequest.FirstOrDefault(r => r.IdRequest == 3 );
-            return context.RqRequests.Include(r => r.RqOptionel).ToList();
+            //return context.RqRequests.Include(r => r.IdRequest).ToList();
+            return context.RqRequests.ToList();
         }
-        public void saveChanges()
+        public void SaveChanges()
         {
             context.SaveChanges();
         }
-
-        public JR addJR()
-        {
-
-        }
-
-
     }
 }

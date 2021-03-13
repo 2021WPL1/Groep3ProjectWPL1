@@ -5,8 +5,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlanner.Data;
+using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
@@ -15,7 +17,9 @@ namespace TestingPlanner.Viewmodels
         // Jobrequest data container
         private JR _jr;
 
+
         public ICommand addJobRequestCommand { get; set; }
+        public ObservableCollection<RqRequest> jrs { get; set; }
 
         // Data connection
         private DAO _dao;
@@ -23,27 +27,14 @@ namespace TestingPlanner.Viewmodels
         public ViewmodelRequestform(DAO dao)
         {
             this._dao = dao;
-
-            addJobRequestCommand = new DelegateCommand(addJobRequest);
-
-            // Testing
-            // this._jr = new JR();
-            this._jr = new JR
-            {
-                JrNumber = "TEST",
-                Requester = "MV",
-                HydraProjectnumber = "1234",
-                EutProjectname = "SmortProject",
-                EutPartnr = "420",
-                NetWeight = "69kg",
-                GrossWeight = "420kg"
-            };
-
+            addJobRequestCommand = new DelegateCommand(InsertJr);
+            jrs = new ObservableCollection<RqRequest>();
+            this._jr = new JR();
         }
 
         public JR JR
         {
-            get { return _jr;}
+            get { return _jr; }
             set
             {
                 _jr = value;
@@ -51,9 +42,24 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
-        public void addJobRequest()
+        public void InsertJr()
+        {
+            _dao.AddJobRequest(JR);
+        }
+
+        public void ShowJr()
+        {
+            foreach (RqRequest jr in _dao.GetAllJobRequests())
+            {
+                //JR.EutPartnr= jr.EutProjectname.ToString();
+                //lst.Items.Add(jr.EutProjectname);
+            }
+        }
+
+        public void UpdateJr()
         {
 
+            _dao.SaveChanges();
         }
     }
 }

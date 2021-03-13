@@ -39,30 +39,14 @@ namespace TestingPlanner
         // The following functions are beign executed when the Request Form GUI is loaded
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            addAllJobNaturesToCombobox();
-            addAllDivionsToCombobox();
-            fillInRequestDate();
-        }
-
-        // The following function is executed when the Confirm button is clicked on the GUI
-        private void addJobRequest_Click(object sender, RoutedEventArgs e)
-        {
-            addRequest();
-        }
-
-        // We create an object from the DAO Class with the following parameters,
-        // the value of these parameters is provided by the user using the Request Form GUI
-        private void addRequest()
-        {
-           /* dao.addJobRequest("50", "pending", txtRequesterInit.Text, txtProjectName.Text, txtPartNr.Text, txtProjectNr.Text,
-                              ifChecked(cbInternal), txtGrossWeight.Text, txtNetWeight.Text,
-                              ifChecked(cbBatteries), txtLinkTestPlan.Text, txtSpecialRemarks.Text, cmbDivision.Text, cmbJobNature.Text,
-                              dpEndDate.SelectedDate.Value.Date, getPvgResp("EMC").ToString(), dpAvailabilityDate.SelectedDate.Value.Date);*/
+            AddAllJobNaturesToCombobox();
+            AddAllDivionsToCombobox();
+            FillInRequestDate();
         }
 
         // This function retrieves the information of the job natures from the Barco2021 database and returns these
         // values in the correct combobox in the Request Form GUI
-        private void addAllJobNaturesToCombobox()
+        private void AddAllJobNaturesToCombobox()
         {
             var jobNatures = context.RqJobNatures.ToList();
             foreach (RqJobNature jobNature in jobNatures)
@@ -73,7 +57,7 @@ namespace TestingPlanner
 
         // This function retrieves the information of the divisions from the Barco2021 database and returns these values 
         // into the correct combobox in the Request Form GUI
-        private void addAllDivionsToCombobox()
+        private void AddAllDivionsToCombobox()
         {
             var divisions = context.RqBarcoDivisions.ToList();
             foreach (RqBarcoDivision division in divisions)
@@ -83,12 +67,12 @@ namespace TestingPlanner
         }
 
         // This function automatically fills in the request date to the current day of the job request 
-        private void fillInRequestDate()
+        private void FillInRequestDate()
         {
             txtRequestDate.Text = DateTime.Now.Date.ToShortDateString();
         }
 
-        // If the Checkbox is checked we return the value : true and if the checkbox is not checked we return the value : false
+        //If the Checkbox is checked we return the value : true and if the checkbox is not checked we return the value : false
         private bool ifChecked(CheckBox cb)
         {
             bool cbChecked = false;
@@ -106,25 +90,5 @@ namespace TestingPlanner
                            .FirstOrDefault(d => d.AfkDevision == cmbDivision.Text);
             return division.AfkPerson;
         }
-
-        private void cbEmc_Checked(object sender, RoutedEventArgs e)
-        {
-            getPvgResp("Emc");
-        }
-
-        private void cbEnvirenmental_Checked(object sender, RoutedEventArgs e)
-        {
-            getPvgResp("ENV");
-        }
-
-        private void cbReliability_Checked(object sender, RoutedEventArgs e)
-        {
-            getPvgResp("REL");
-        }
-
-        private void cbProductSafe_Checked(object sender, RoutedEventArgs e)
-        {
-            getPvgResp("SAV");
-        }     //  txtSpecialRemarks.Text = dao.GetJobRequest().Requester;
     }
 }

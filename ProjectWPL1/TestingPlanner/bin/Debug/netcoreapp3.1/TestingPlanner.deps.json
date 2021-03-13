@@ -11,6 +11,8 @@
           "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.10",
+          "Prism.Core": "8.0.0.1909",
+          "TestingPlanner.Classes": "1.0.0",
           "TestingPlanner.Data": "1.0.0",
           "TestingPlanner.Domain": "1.0.0"
         },
@@ -302,6 +304,14 @@
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
+      "Prism.Core/8.0.0.1909": {
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {
+            "assemblyVersion": "8.0.0.1909",
+            "fileVersion": "8.0.0.1909"
+          }
         }
       },
       "runtime.native.System/4.3.0": {
@@ -902,10 +912,16 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "TestingPlanner.Classes/1.0.0": {
+        "runtime": {
+          "TestingPlanner.Classes.dll": {}
+        }
+      },
       "TestingPlanner.Data/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
+          "TestingPlanner.Classes": "1.0.0",
           "TestingPlanner.Domain": "1.0.0"
         },
         "runtime": {
@@ -1124,6 +1140,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "Prism.Core/8.0.0.1909": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ri+iSFvJiSKYdui7qtxi3uH9NImSZ8Jl/nOosxScSJseFwAc8Lz63JLXoqSAQglcX13DzZcAMzpKNuA9rCFiJg==",
+      "path": "prism.core/8.0.0.1909",
+      "hashPath": "prism.core.8.0.0.1909.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
@@ -1586,6 +1609,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "TestingPlanner.Classes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "TestingPlanner.Data/1.0.0": {
       "type": "project",
