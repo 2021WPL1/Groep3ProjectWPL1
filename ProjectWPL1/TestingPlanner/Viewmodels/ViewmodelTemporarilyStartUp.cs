@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.CommandWpf;
+using Newtonsoft.Json.Serialization;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -13,40 +14,47 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelTemporarilyStartUp : ViewModelBase
     {
+        Window tempWindow = new Window();
         public ICommand addNewRqCommand { get; set; }
         public ICommand showExistingRqCommand { get; set; }
         public ObservableCollection<int> idRequestsOnly { get; set; }
 
         private DAO _dao;
-        public RelayCommand<Window> CloseWindowCommand { get; set; }
+        
 
         public ViewmodelTemporarilyStartUp(DAO dao)
         {
             this._dao = dao;
-            //addNewRqCommand = new DelegateCommand(OpenEmtpyRq);
-           // showExistingRqCommand = new DelegateCommand(OpenExistingJr);
+            addNewRqCommand = new DelegateCommand(OpenEmptyRq);
+            showExistingRqCommand = new DelegateCommand(OpenExistingJr);
             idRequestsOnly = new ObservableCollection<int>();
-            this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
+           
         }
 
-        public void CloseWindow(Window window)
+        public void OpenEmptyRq()
         {
-            if(window != null)
-            {
-                window.Close();
-            }
+            OpenNewRq();
         }
 
-        /*public void OpenEmtpyRq(Window window)
+        public void OpenExistingJr()
         {
-            CloseWindow(window);
+            OpenSelectedJr();
         }
 
-        /*public void OpenExistingJr()
+        public void OpenNewRq()
         {
-            CloseWindow();
+            Temp temp = new Temp();
+            CloseWindow(temp);
+            OpenWindow();
+        }
+
+        public void OpenSelectedJr()
+        {
+            Temp temp = new Temp();
+            CloseWindow(temp);
+            OpenWindow();
             Load();
-        }*/
+        }
 
         public void Load()
         {
@@ -56,6 +64,16 @@ namespace TestingPlanner.Viewmodels
             {
                 idRequestsOnly.Add(requestId.IdRequest);
             }
+        }
+        public void OpenWindow()
+        {
+            RequestForm requestformWindow = new RequestForm();
+            requestformWindow.Show();
+        }
+
+        public void CloseWindow(Window window)
+        {
+            window.Close();
         }
     }
 }

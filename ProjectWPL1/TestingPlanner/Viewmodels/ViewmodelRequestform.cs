@@ -23,9 +23,6 @@ namespace TestingPlanner.Viewmodels
 
         // Data connection
         private DAO _dao;
-
-        Window temp;
-
         public ViewmodelRequestform(DAO dao)
         {
             this._dao = dao;

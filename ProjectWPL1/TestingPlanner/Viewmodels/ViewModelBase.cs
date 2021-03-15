@@ -16,21 +16,10 @@ namespace TestingPlanner.Viewmodels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
-        
-        /*public RelayCommand<Window> CloseWindowCommand { get; set; }
 
         public ViewModelBase()
         {
-            this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
+            
         }
-        
-        public void CloseWindow(Window window)
-        {
-            if (window!= null)
-            {
-                window.Close();
-            }
-        }
-        */
     }
 }
