@@ -27,7 +27,7 @@ namespace TestingPlanner.Data
         {
             RqRequest rqrequest = new RqRequest()
             {
-                JrNumber = "test",
+                JrNumber = "test", // temporary name (hardcoded)
                 JrStatus = Jr.JrStatus,
                 RequestDate = DateTime.Now.Date,
                 Requester = Jr.Requester,
