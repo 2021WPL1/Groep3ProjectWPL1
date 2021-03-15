@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
         Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- Selects LBItem when child of LB is selected, maybe move to app.xaml -->
+        <Style TargetType="ListBoxItem">
+            <Style.Triggers>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="IsSelected" Value="True"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <Grid>
@@ -54,8 +64,7 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding EUTs}" SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
-                </ListBox>
+                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding EUTs}" SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
                 <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" Command="{Binding Path=addEUTCommand}" Margin="10"/>
                     <Button Content="Remove Part" Command="{Binding Path=removeEUTCommand}" Margin="10"/>
