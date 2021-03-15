@@ -15,6 +15,7 @@ namespace TestingPlanner.Viewmodels
         // Jobrequest data container
         private JR _jr;
 
+        // Variable _selectedEUT to store the user selected EUT
         private EUT _selectedEUT;
 
         // EUT list
@@ -31,7 +32,7 @@ namespace TestingPlanner.Viewmodels
         // Data connection
         private DAO _dao;
 
-        //Constructor
+        // viewModelRequestForm Constructor
         public ViewmodelRequestform(DAO dao)
         {
             this._dao = dao;
@@ -80,11 +81,14 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        // This function adds an new EUT instance into the GUI RequestForm
         public void addEUT()
         {
             EUTs.Add(new EUT());
         }
-       
+
+        // This function is responsible to select the user selected eut in the GUI and stores this in the variable _selectedEUT
+        // We will need this variable in the removeSelectedEUT function 
         public EUT SelectedEUT
         {
             get { return _selectedEUT; }
@@ -95,16 +99,12 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        // This function will delete the user selected EUT using the _selectedEut variable 
+        // as stated in the previous function 
         public void removeSelectedEUT()
         {
             EUTs.Remove(_selectedEUT);
-            //this.EUTs.Remove(SelectedItem);
-
-            //EUTs.Remove(SelectedItem);
-            /*if (EUTs.Count > 0)
-            {
-                EUTs.RemoveAt(EUTs.Count - 1);
-            }*/
+            
         }
         // ICommand functions
         public void addJobRequest()

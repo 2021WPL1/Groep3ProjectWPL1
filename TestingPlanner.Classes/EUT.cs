@@ -6,12 +6,13 @@ namespace TestingPlanner
 {
     public class EUT
     {
+        // Variables
         private string _partNr;
         private DateTime _availabilityDate;
         private double _netWeight;
         private double _grossWeight;
 
-        // tests to execute
+        // Tests to execute
         private bool _emc;
         private bool _env;
         private bool _rel;
