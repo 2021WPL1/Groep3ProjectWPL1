@@ -220,6 +220,10 @@
               "target": "Package",
               "version": "[3.1.10, )"
             },
+            "MvvmLightLibs": {
+              "target": "Package",
+              "version": "[5.4.1.1, )"
+            },
             "Prism.Core": {
               "target": "Package",
               "version": "[8.0.0.1909, )"

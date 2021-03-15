@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestResources" Height="600" Width="800">
+        Title="RequestResources" Height="600" Width="800"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <StackPanel Orientation="Horizontal">

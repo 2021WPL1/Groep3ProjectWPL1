@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,36 +18,35 @@ namespace TestingPlanner.Viewmodels
         public ObservableCollection<int> idRequestsOnly { get; set; }
 
         private DAO _dao;
-        
+        public RelayCommand<Window> CloseWindowCommand { get; set; }
 
         public ViewmodelTemporarilyStartUp(DAO dao)
         {
             this._dao = dao;
-            addNewRqCommand = new DelegateCommand(OpenEmtpyRq);
-            showExistingRqCommand = new DelegateCommand(OpenExistingJr);
+            //addNewRqCommand = new DelegateCommand(OpenEmtpyRq);
+           // showExistingRqCommand = new DelegateCommand(OpenExistingJr);
             idRequestsOnly = new ObservableCollection<int>();
-
-
+            this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
         }
 
-        public void OpenEmtpyRq()
+        public void CloseWindow(Window window)
         {
-            ChangeWindow();
+            if(window != null)
+            {
+                window.Close();
+            }
         }
 
-        public void OpenExistingJr()
+        /*public void OpenEmtpyRq(Window window)
         {
-            ChangeWindow();
+            CloseWindow(window);
+        }
+
+        /*public void OpenExistingJr()
+        {
+            CloseWindow();
             Load();
-        }
-
-        public void ChangeWindow()
-        {
-            Temp tempView = new Temp();
-            RequestForm requestformView = new RequestForm();
-            requestformView.Show();
-            tempView.Close();
-        }
+        }*/
 
         public void Load()
         {

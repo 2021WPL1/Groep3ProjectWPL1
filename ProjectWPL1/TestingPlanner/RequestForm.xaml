@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
         Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
