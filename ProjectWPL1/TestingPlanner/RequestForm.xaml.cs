@@ -27,12 +27,21 @@ namespace TestingPlanner
         private DAO dao;
         private static Barco2021Context context = new Barco2021Context();
 
-        // Constructor
+        // Constructor empty
         public RequestForm()
         {
             InitializeComponent();
             dao = DAO.Instance();
             viewModel = new ViewmodelRequestform(DAO.Instance());
+            DataContext = viewModel;
+        }
+
+        // Constructor existing
+        public RequestForm(int idRequest)
+        {
+            InitializeComponent();
+            dao = DAO.Instance();
+            viewModel = new ViewmodelRequestform(DAO.Instance(), idRequest);
             DataContext = viewModel;
         }
 
