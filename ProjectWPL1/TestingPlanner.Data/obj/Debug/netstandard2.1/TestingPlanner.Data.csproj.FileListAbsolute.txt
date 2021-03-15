@@ -60,3 +60,5 @@ C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
 C:\Users\Mel\Desktop\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
 C:\Users\Mel\Desktop\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
+C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
+C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
