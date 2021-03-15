@@ -54,14 +54,14 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding Path=EUTs}">
+                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding EUTs}" SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
                 </ListBox>
                 <StackPanel Orientation="Horizontal" >
-                    <Button Content="Add Part" Margin="10"/>
-                    <Button Content="Remove Part" Margin="10"/>
+                    <Button Content="Add Part" Command="{Binding Path=addEUTCommand}" Margin="10"/>
+                    <Button Content="Remove Part" Command="{Binding Path=removeEUTCommand}" Margin="10"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="addJobRequest" Content="Confirm" Command="{Binding Path=unselectFriendCommand}" Width="100" Height="40" Click="addJobRequest_Click"/>
+        <Button x:Name="addJobRequest" Content="Confirm" Command="{Binding Path=addJobRequestCommand}" Width="100" Height="40" Click="addJobRequest_Click"/>
     </StackPanel>
 </Window>

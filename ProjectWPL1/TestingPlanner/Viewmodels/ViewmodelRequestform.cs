@@ -15,6 +15,8 @@ namespace TestingPlanner.Viewmodels
         // Jobrequest data container
         private JR _jr;
 
+        private EUT _selectedEUT;
+
         // EUT list
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
         public ObservableCollection<EUT> EUTs { get; set; }
@@ -22,6 +24,9 @@ namespace TestingPlanner.Viewmodels
 
         // ICommand declaration
         public ICommand addJobRequestCommand { get; set; }
+        public ICommand addEUTCommand { get; set; }
+        public ICommand removeEUTCommand { get; set; }
+        
 
         // Data connection
         private DAO _dao;
@@ -36,6 +41,8 @@ namespace TestingPlanner.Viewmodels
 
             // ICommand initialization
             addJobRequestCommand = new DelegateCommand(addJobRequest);
+            addEUTCommand = new DelegateCommand(addEUT);
+            removeEUTCommand = new DelegateCommand(removeSelectedEUT);
 
             // Testing
             // this._jr = new JR();
@@ -73,6 +80,32 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        public void addEUT()
+        {
+            EUTs.Add(new EUT());
+        }
+       
+        public EUT SelectedEUT
+        {
+            get { return _selectedEUT; }
+            set
+            {
+                _selectedEUT = value;
+                OnpropertyChanged();
+            }
+        }
+
+        public void removeSelectedEUT()
+        {
+            EUTs.Remove(_selectedEUT);
+            //this.EUTs.Remove(SelectedItem);
+
+            //EUTs.Remove(SelectedItem);
+            /*if (EUTs.Count > 0)
+            {
+                EUTs.RemoveAt(EUTs.Count - 1);
+            }*/
+        }
         // ICommand functions
         public void addJobRequest()
         {

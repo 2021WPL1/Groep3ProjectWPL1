@@ -60,3 +60,5 @@ C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\T
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
+C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
+C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb

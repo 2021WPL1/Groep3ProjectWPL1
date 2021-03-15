@@ -5,7 +5,7 @@
              StartupUri="RequestForm.xaml">
     <Application.Resources>
         <!-- DataTemplate to display EUT's in listboxes/listviews-->
-        <DataTemplate x:Key="EUT">
+        <DataTemplate x:Key="EUT" >
             <ListBoxItem BorderBrush="Gray" HorizontalContentAlignment="Stretch">
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
