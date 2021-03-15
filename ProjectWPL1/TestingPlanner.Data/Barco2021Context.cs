@@ -1,9 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TestingPlanner.Data;
 
 namespace TestingPlanner.Domain.Models
 {
+    // this class is automatically generated from scaffold dbcontext and uses the singelton pattern
+
     public partial class Barco2021Context : DbContext
     {
         public Barco2021Context()

@@ -6,6 +6,8 @@ namespace TestingPlanner
 {
     public class JR
     {
+
+        // Required variables for the job request
         private int idRequest;
         private string jrNumber;
         private string jrStatus;
@@ -25,10 +27,13 @@ namespace TestingPlanner
         private string pvgResp;
         private DateTime availabilityDate;
 
+        // JR Constructor
         public JR()
         {
           
         }
+
+        // Getters and setters for the variables
         public int IdRequest { get => idRequest; set => idRequest = value; }
         public string JrNumber { get => jrNumber; set => jrNumber = value; }
         public string JrStatus { get => jrStatus; set => jrStatus = value; }
