@@ -23,7 +23,7 @@ namespace TestingPlanner
     public partial class RequestForm : Window
     {
         // variables
-        private ViewmodelRequestform viewModel;
+        private ViewmodelRequestForm viewModel;
         private DAO dao;
         private static Barco2021Context context = new Barco2021Context();
 
@@ -32,7 +32,7 @@ namespace TestingPlanner
         {
             InitializeComponent();
             dao = DAO.Instance();
-            viewModel = new ViewmodelRequestform(DAO.Instance());
+            viewModel = new ViewmodelRequestForm(DAO.Instance());
             DataContext = viewModel;
         }
 
