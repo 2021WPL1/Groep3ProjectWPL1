@@ -1,14 +1,16 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TestingPlanner.Domain.Models;
 
-namespace TestingPlanner.Domain.Models
+namespace TestingPlanner.Data
 {
     public partial class Barco2021Context : DbContext
     {
         public Barco2021Context()
         {
         }
+
         public Barco2021Context(DbContextOptions<Barco2021Context> options)
             : base(options)
         {
@@ -23,7 +25,7 @@ namespace TestingPlanner.Domain.Models
         public virtual DbSet<RqRequest> RqRequests { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetails { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevisions { get; set; }
-       
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

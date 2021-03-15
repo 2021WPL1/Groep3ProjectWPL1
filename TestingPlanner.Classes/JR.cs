@@ -13,7 +13,7 @@ namespace TestingPlanner
         private string eutProjectname;
         private string eutPartnr;
         private string hydraProjectnumber;
-        private bool internRequest;
+        private bool? internRequest;
         private string grossWeight;
         private string netWeight;
         private bool battery;
@@ -23,7 +23,7 @@ namespace TestingPlanner
         private string jobNature;
         private DateTime expEnddate;
         private string pvgResp;
-        private DateTime availabilityDate;
+        private DateTime? requestDate;
 
         public JR()
         {
@@ -36,7 +36,7 @@ namespace TestingPlanner
         public string EutProjectname { get => eutProjectname; set => eutProjectname = value; }
         public string EutPartnr { get => eutPartnr; set => eutPartnr = value; }
         public string HydraProjectnumber { get => hydraProjectnumber; set => hydraProjectnumber = value; }
-        public bool InternRequest { get => internRequest; set => internRequest = value; }
+        public bool? InternRequest { get => internRequest; set => internRequest = value; }
         public string GrossWeight { get => grossWeight; set => grossWeight = value; }
         public string NetWeight { get => netWeight; set => netWeight = value; }
         public bool Battery { get => battery; set => battery = value; }
@@ -46,6 +46,6 @@ namespace TestingPlanner
         public string JobNature { get => jobNature; set => jobNature = value; }
         public DateTime ExpEnddate { get => expEnddate; set => expEnddate = value; }
         public string PvgResp { get => pvgResp; set => pvgResp = value; }
-        public DateTime AvaibilityDate { get => availabilityDate; set => availabilityDate = value; }
+        public DateTime? RequestDate { get => requestDate; set => requestDate = value; }
     }
 }

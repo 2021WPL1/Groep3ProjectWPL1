@@ -24,12 +24,12 @@ namespace TestingPlanner.Viewmodels
         // Data connection
         private DAO _dao;
 
-        public ViewmodelRequestform(DAO dao)
+        public ViewmodelRequestform(DAO dao, int idRequest)
         {
             this._dao = dao;
             addJobRequestCommand = new DelegateCommand(InsertJr);
             jrs = new ObservableCollection<RqRequest>();
-            this._jr = new JR();
+            this._jr = _dao.GetJRWithId(idRequest);
         }
 
         public JR JR

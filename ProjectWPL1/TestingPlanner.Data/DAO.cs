@@ -27,19 +27,19 @@ namespace TestingPlanner.Data
         {
             RqRequest rqrequest = new RqRequest()
             {
-                JrNumber = Jr.JrNumber,
+                JrNumber = "test",
                 JrStatus = Jr.JrStatus,
                 RequestDate = DateTime.Now.Date,
                 Requester = Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision,
-                JobNature = Jr.JobNature,
-                EutProjectname = Jr.EutProjectname,
-                EutPartnumbers = Jr.EutPartnr,
+                JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
+                EutProjectname = Jr.EutProjectname == null ? string.Empty: Jr.EutProjectname,
+                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber,
                 ExpectedEnddate = DateTime.Now.Date,
                 InternRequest = Jr.InternRequest,
-                GrossWeight = Jr.GrossWeight,
-                NetWeight = Jr.NetWeight,
+                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 Battery = Jr.Battery,
                 RqOptionel = new List<RqOptionel> { new RqOptionel
                 {
@@ -61,10 +61,43 @@ namespace TestingPlanner.Data
             return rqrequest;
         }
 
+        public JR GetJRWithId(object idRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<RqRequest> GetAllJobRequests()
         {
-            return context.RqRequests.Include(r => r.IdRequest).ToList();
-           // return context.RqRequests.ToList();
+            return context.RqRequests.ToList();
+        }
+
+        public JR GetJRWithId(int idrequest)
+        {
+            // ToDo: EUT's (via RqRequestDetail)
+            // ToDo: RqOptionel
+
+            // Find selected RqRequest
+            RqRequest selectedRQ = context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
+
+            // Create new JR with necessary data
+            JR selectedJR = new JR
+            {
+                JrNumber = selectedRQ.JrNumber,
+                JrStatus = selectedRQ.JrStatus,
+                RequestDate = selectedRQ.RequestDate,
+                Requester = selectedRQ.Requester,
+                BarcoDivision = selectedRQ.BarcoDivision,
+                JobNature = selectedRQ.JobNature,
+                EutProjectname = selectedRQ.EutProjectname,
+                HydraProjectnumber = selectedRQ.HydraProjectNr,
+                ExpEnddate = selectedRQ.ExpectedEnddate,
+                InternRequest = selectedRQ.InternRequest,
+                GrossWeight = selectedRQ.GrossWeight,
+                NetWeight = selectedRQ.NetWeight,
+                Battery = selectedRQ.Battery
+            };
+
+            return selectedJR;
         }
 
         //private string getPvgResp()

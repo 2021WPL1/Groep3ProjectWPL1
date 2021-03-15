@@ -32,7 +32,7 @@ namespace TestingPlanner
         {
             InitializeComponent();
             dao = DAO.Instance();
-            viewModel = new ViewmodelRequestform(DAO.Instance());
+            viewModel = new ViewmodelRequestform(DAO.Instance(), 6); // Temporarily hardcoded
             DataContext = viewModel;
         }
 
