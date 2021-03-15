@@ -83,12 +83,6 @@ namespace TestingPlanner
             return cbChecked;
         }
 
-        private string getPvgResp(string PvgGroup)
-        {
-            var division = context.RqBarcoDivisionPersons
-                           .Include(d => d.AfkPerson).Where(d => d.Pvggroup == PvgGroup)
-                           .FirstOrDefault(d => d.AfkDevision == cmbDivision.Text);
-            return division.AfkPerson;
-        }
+   
     }
 }

@@ -37,7 +37,7 @@ namespace TestingPlanner.Viewmodels
             get { return _jr; }
             set
             {
-                _jr = value;
+                    _jr = value;
                 OnpropertyChanged();
             }
         }
@@ -52,14 +52,15 @@ namespace TestingPlanner.Viewmodels
             foreach (RqRequest jr in _dao.GetAllJobRequests())
             {
                 //JR.EutPartnr= jr.EutProjectname.ToString();
-                //lst.Items.Add(jr.EutProjectname);
+               // lst.Items.Add(jr.EutProjectname);
             }
         }
-
+   
         public void UpdateJr()
         {
 
             _dao.SaveChanges();
         }
+  
     }
 }

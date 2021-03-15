@@ -36,7 +36,7 @@ namespace TestingPlanner.Data
                 EutProjectname = Jr.EutProjectname,
                 EutPartnumbers = Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber,
-                ExpectedEnddate = Jr.ExpEnddate,
+                ExpectedEnddate = DateTime.Now.Date,
                 InternRequest = Jr.InternRequest,
                 GrossWeight = Jr.GrossWeight,
                 NetWeight = Jr.NetWeight,
@@ -53,7 +53,7 @@ namespace TestingPlanner.Data
                 Eut = new List<Eut>{new Eut
                 {
                     AvailableDate= DateTime.Now.Date
-                }},  TestdivisieNavigation  = new RqTestDevision { Afkorting = "E"}}
+                }},  TestdivisieNavigation  = new RqTestDevision { Afkorting = "z"}}
                 }
             };
             context.RqRequests.Add(rqrequest);
@@ -63,9 +63,18 @@ namespace TestingPlanner.Data
 
         public List<RqRequest> GetAllJobRequests()
         {
-            //return context.RqRequests.Include(r => r.IdRequest).ToList();
-            return context.RqRequests.ToList();
+            return context.RqRequests.Include(r => r.IdRequest).ToList();
+           // return context.RqRequests.ToList();
         }
+
+        //private string getPvgResp()
+        //{
+        //    var division = context.RqBarcoDivisionPersons
+        //                   .Include(d => d.AfkPerson).Where(d => d.Pvggroup == PvgGroup)
+        //                   .FirstOrDefault(d => d.AfkDevision == );
+        //    return division.AfkPerson;
+        //}
+
         public void SaveChanges()
         {
             context.SaveChanges();
