@@ -14,7 +14,7 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelTemporarilyStartUp : ViewModelBase
     {
-        Window tempWindow = new Window();
+        Window tempWindow = new Window(); //needed or runtime error for some reason
         public ICommand addNewRqCommand { get; set; }
         public ICommand showExistingRqCommand { get; set; }
         public ObservableCollection<int> idRequestsOnly { get; set; }
@@ -73,7 +73,7 @@ namespace TestingPlanner.Viewmodels
 
         public void CloseWindow(Window window)
         {
-            window.Close();
+            window.Close(); //window.close doesnt work (only this.close seems to work)
         }
     }
 }

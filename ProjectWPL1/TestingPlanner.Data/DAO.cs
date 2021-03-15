@@ -10,19 +10,25 @@ namespace TestingPlanner.Data
 {
     public class DAO
     {
+        // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
 
+        // This functions calls an DAO instance
         public static DAO Instance()
         {
             return instance;
         }
 
+        // DAO Constructor 
+        // Calls an instance from the Barco2021Context and stores this context in the current context
         private DAO()
         {
             this.context = new Barco2021Context();
         }
 
+        // This function creates a Job Request with the following data,
+        // the data is beign retrieved from the requester using the GUI
         public RqRequest AddJobRequest(JR Jr)
         {
             RqRequest rqrequest = new RqRequest()
@@ -61,6 +67,7 @@ namespace TestingPlanner.Data
             return rqrequest;
         }
 
+        // This function returns all the job request and stores them in a list
         public List<RqRequest> GetAllJobRequests()
         {
             return context.RqRequests.Include(r => r.IdRequest).ToList();
@@ -75,6 +82,8 @@ namespace TestingPlanner.Data
         //    return division.AfkPerson;
         //}
 
+
+        // This function stores all the data from the GUI in the Barco2021 database
         public void SaveChanges()
         {
             context.SaveChanges();
