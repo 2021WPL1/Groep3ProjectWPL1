@@ -387,3 +387,12 @@ C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\T
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.csproj.CopyComplete
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.pdb
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.genruntimeconfig.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\RequestResources.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Temp.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\System.Windows.Interactivity.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\RequestResources.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Temp.baml

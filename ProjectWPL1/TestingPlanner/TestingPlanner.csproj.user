@@ -13,9 +13,6 @@
     <Compile Update="RequestForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="RequestResources.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Temp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

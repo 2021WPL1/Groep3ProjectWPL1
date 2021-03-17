@@ -6,7 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded">
+        Title="RequestForm" Height="690" Width="890" Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!-- Selects LBItem when child of LB is selected, maybe move to app.xaml -->
         <!-- In commentary to check bug 
@@ -18,9 +20,6 @@
             </Style.Triggers>
         </Style>-->
     </Window.Resources>
-        Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <Grid>

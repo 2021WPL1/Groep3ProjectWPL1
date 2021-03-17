@@ -27,11 +27,10 @@ namespace TestingPlanner.Viewmodels
 
 
         // ICommand declaration
-        public ICommand addJobRequestCommand { get; set; }
+        public RelayCommand<Window> addJobRequestCommand { get; set; }
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
         // We create an ICommand variable addJobRequestCommand
-        public RelayCommand<Window> addJobRequestCommand { get; set; }
 
         public ObservableCollection<RqRequest> jrs { get; set; }
 
@@ -47,7 +46,7 @@ namespace TestingPlanner.Viewmodels
             EUTs = new ObservableCollection<EUT>();
 
             // ICommand initialization
-            addJobRequestCommand = new DelegateCommand(InsertJr);
+            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
 
@@ -95,10 +94,15 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        // ICommand functions
         // This function adds a job request and stores this job request in the _dao instance
         public void InsertJr(Window window)
         {
             _dao.AddJobRequest(JR); // SaveChanges included in function
+            Temp overviewWindow = new Temp();
+            overviewWindow.Show();
+            window.Close();
+        }
 
         // This function adds an new EUT instance into the GUI RequestForm
         public void addEUT()
@@ -123,16 +127,6 @@ namespace TestingPlanner.Viewmodels
         public void removeSelectedEUT()
         {
             EUTs.Remove(SelectedEUT); 
-        }
-
-        // ICommand functions       
-        // This function calls the SaveChanges function in the DAO Class
-        public void UpdateJr()
-        {
-            _dao.SaveChanges();
-            Temp overviewWindow = new Temp();
-            overviewWindow.Show();
-            window.Close();
         }
     }
 }
