@@ -31,19 +31,6 @@ namespace TestingPlanner.Data
         // the data is beign retrieved from the requester using the GUI
         public void AddJobRequest(JR Jr)
         {
-            RqRequest rqrequest = createRqFromJR(Jr);
-            context.RqRequests.Add(rqrequest);
-            SaveChanges();
-        }
-
-        public void UpdateJobRequest(JR Jr)
-        {
-            RqRequest rqrequest = createRqFromJR(Jr);
-            context.RqRequests.Update(rqrequest);
-            SaveChanges();
-        }
-        public RqRequest createRqFromJR(JR Jr)
-        {
             RqRequest rqrequest = new RqRequest()
             {
                 JrNumber = "test", // temporary name (hardcoded)
@@ -79,7 +66,31 @@ namespace TestingPlanner.Data
                 }
             };
 
-            return rqrequest;
+            context.RqRequests.Add(rqrequest);
+            SaveChanges();
+        }
+
+        public void UpdateJobRequest(JR Jr) // INCOMPLETE
+        {
+            RqRequest rqrequest = context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+
+            rqrequest.JrNumber = Jr.JrNumber;
+            rqrequest.JrStatus = Jr.JrStatus;
+            rqrequest.RequestDate = Jr.RequestDate;
+            rqrequest.Requester = Jr.Requester;
+            rqrequest.BarcoDivision = Jr.BarcoDivision;
+            rqrequest.JobNature = Jr.JobNature;
+            rqrequest.EutProjectname = Jr.EutProjectname;
+            rqrequest.EutPartnumbers = Jr.EutPartnr;
+            rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
+            rqrequest.ExpectedEnddate = Jr.ExpEnddate;
+            rqrequest.InternRequest = Jr.InternRequest;
+            rqrequest.GrossWeight = Jr.GrossWeight;
+            rqrequest.NetWeight = Jr.NetWeight;
+            rqrequest.Battery = Jr.Battery;
+
+            context.RqRequests.Update(rqrequest);
+            SaveChanges();
         }
 
         // This function returns all the job request and stores them in a list
@@ -100,6 +111,7 @@ namespace TestingPlanner.Data
             // Create new JR with necessary data
             JR selectedJR = new JR
             {
+                IdRequest = selectedRQ.IdRequest,
                 JrNumber = selectedRQ.JrNumber,
                 JrStatus = selectedRQ.JrStatus,
                 RequestDate = selectedRQ.RequestDate,
