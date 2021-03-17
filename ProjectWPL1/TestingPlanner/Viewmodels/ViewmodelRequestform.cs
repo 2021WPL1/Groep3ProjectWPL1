@@ -34,7 +34,7 @@ namespace TestingPlanner.Viewmodels
         private DAO _dao;
 
         // Constructor for new JR
-        public ViewmodelRequestform(DAO dao)
+        public ViewmodelRequestForm(DAO dao)
         {
             this._dao = dao;
 
@@ -72,11 +72,10 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Constructor for existing JR
-        public ViewmodelRequestform(DAO dao, int idRequest)
+        public ViewmodelRequestForm(DAO dao, int idRequest)
         {
             this._dao = dao;
             addJobRequestCommand = new DelegateCommand(InsertJr);
-            jrs = new ObservableCollection<RqRequest>();
             this._jr = _dao.GetJRWithId(idRequest);
         }
 

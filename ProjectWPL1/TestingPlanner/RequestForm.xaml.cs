@@ -41,7 +41,7 @@ namespace TestingPlanner
         {
             InitializeComponent();
             dao = DAO.Instance();
-            viewModel = new ViewmodelRequestform(DAO.Instance(), idRequest);
+            viewModel = new ViewmodelRequestForm(DAO.Instance(), idRequest);
             DataContext = viewModel;
         }
 
@@ -80,18 +80,5 @@ namespace TestingPlanner
         {
             txtRequestDate.Text = DateTime.Now.Date.ToShortDateString();
         }
-
-        //If the Checkbox is checked we return the value : true and if the checkbox is not checked we return the value : false
-        private bool ifChecked(CheckBox cb)
-        {
-            bool cbChecked = false;
-            if (cb.IsChecked == true)
-            {
-                cbChecked = true;
-            }
-            return cbChecked;
-        }
-
-   
     }
 }
