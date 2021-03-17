@@ -40,29 +40,10 @@ namespace TestingPlanner.Viewmodels
         // Constructor for new JR
         public ViewmodelRequestForm(DAO dao)
         {
-            this._dao = dao;
-
-            // Collection initialization
-            EUTs = new ObservableCollection<EUT>();
-
-            // ICommand initialization
-            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
-            addEUTCommand = new DelegateCommand(addEUT);
-            removeEUTCommand = new DelegateCommand(removeSelectedEUT);
+            this._jr = new JR();
+            init(dao);
 
             // Testing
-            // this._jr = new JR();
-            this._jr = new JR
-            {
-                JrNumber = "TEST",
-                Requester = "MV",
-                HydraProjectnumber = "1234",
-                EutProjectname = "SmortProject",
-                EutPartnr = "420",
-                NetWeight = "69kg",
-                GrossWeight = "420kg"
-            };
-
             EUTs.Add(new EUT
             {
                 PartNr = "TEST",
@@ -78,9 +59,23 @@ namespace TestingPlanner.Viewmodels
         // Constructor for existing JR
         public ViewmodelRequestForm(DAO dao, int idRequest)
         {
-            this._dao = dao;
-            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
+            
             this._jr = _dao.GetJRWithId(idRequest);
+            init(dao);
+        }
+
+        // Code reused in both constructors
+        private void init(DAO dao)
+        {
+            this._dao = dao;
+
+            // Collection initialization
+            EUTs = new ObservableCollection<EUT>();
+
+            // ICommand initialization
+            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
+            addEUTCommand = new DelegateCommand(addEUT);
+            removeEUTCommand = new DelegateCommand(removeSelectedEUT);
         }
 
         // Getters/Setters

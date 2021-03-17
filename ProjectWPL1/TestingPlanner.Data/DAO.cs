@@ -39,7 +39,7 @@ namespace TestingPlanner.Data
                 Requester = Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
-                EutProjectname = Jr.EutProjectname == null ? string.Empty: Jr.EutProjectname,
+                EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber,
                 ExpectedEnddate = DateTime.Now.Date,
@@ -59,7 +59,10 @@ namespace TestingPlanner.Data
                 Eut = new List<Eut>{new Eut
                 {
                     AvailableDate= DateTime.Now.Date
-                }},  TestdivisieNavigation  = new RqTestDevision { Afkorting = "z"}}
+                }},
+                    TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "z")
+                    // TestdivisieNavigation = new RqTestDevision { Afkorting = "z"}} // Vervangen indien z nog niet bestaat
+                }
                 }
             };
             context.RqRequests.Add(rqrequest);
