@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using TestingPlanner.Data;
+using TestingPlanner.Domain.Models;
 
-namespace TestingPlanner.Domain.Models
+namespace TestingPlanner.Data
 {
     // this class is automatically generated from scaffold dbcontext and uses the singelton pattern
 
@@ -12,6 +12,7 @@ namespace TestingPlanner.Domain.Models
         public Barco2021Context()
         {
         }
+
         public Barco2021Context(DbContextOptions<Barco2021Context> options)
             : base(options)
         {
@@ -26,7 +27,7 @@ namespace TestingPlanner.Domain.Models
         public virtual DbSet<RqRequest> RqRequests { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetails { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevisions { get; set; }
-       
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
