@@ -29,14 +29,12 @@ namespace TestingPlanner.Viewmodels
         public ICommand addJobRequestCommand { get; set; }
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
-        
-        public ObservableCollection<RqRequest> jrs { get; set; }
 
         // Data connection
         private DAO _dao;
 
         // viewModelRequestForm Constructor
-        public ViewmodelRequestform(DAO dao)
+        public ViewmodelRequestForm(DAO dao)
         {
             this._dao = dao;
 
@@ -72,7 +70,6 @@ namespace TestingPlanner.Viewmodels
             });
 
             addJobRequestCommand = new DelegateCommand(InsertJr);
-            jrs = new ObservableCollection<RqRequest>();
             this._jr = new JR();
         }
 
@@ -82,7 +79,7 @@ namespace TestingPlanner.Viewmodels
             get { return _jr; }
             set
             {
-                    _jr = value;
+                _jr = value;
                 OnpropertyChanged();
             }
         }
@@ -120,12 +117,13 @@ namespace TestingPlanner.Viewmodels
         }
         // ICommand functions
         public void addJobRequest()
+        {
+            
+        }
        
         // This function calls the SaveChanges function in the DAO Class
         public void UpdateJr()
-
         {
-
             _dao.SaveChanges();
         }
   
