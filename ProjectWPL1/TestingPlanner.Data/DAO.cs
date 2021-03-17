@@ -29,7 +29,20 @@ namespace TestingPlanner.Data
 
         // This function creates a Job Request with the following data,
         // the data is beign retrieved from the requester using the GUI
-        public RqRequest AddJobRequest(JR Jr)
+        public void AddJobRequest(JR Jr)
+        {
+            RqRequest rqrequest = createRqFromJR(Jr);
+            context.RqRequests.Add(rqrequest);
+            SaveChanges();
+        }
+
+        public void UpdateJobRequest(JR Jr)
+        {
+            RqRequest rqrequest = createRqFromJR(Jr);
+            context.RqRequests.Update(rqrequest);
+            SaveChanges();
+        }
+        public RqRequest createRqFromJR(JR Jr)
         {
             RqRequest rqrequest = new RqRequest()
             {
@@ -65,8 +78,7 @@ namespace TestingPlanner.Data
                 }
                 }
             };
-            context.RqRequests.Add(rqrequest);
-            SaveChanges();
+
             return rqrequest;
         }
 

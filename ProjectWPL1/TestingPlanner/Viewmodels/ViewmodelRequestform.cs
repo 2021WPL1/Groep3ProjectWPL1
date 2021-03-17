@@ -43,6 +43,9 @@ namespace TestingPlanner.Viewmodels
             init(dao);
             this._jr = new JR();
 
+            // addJRCommand calls function to insert new JR
+            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
+
             // Testing
             EUTs.Add(new EUT
             {
@@ -61,6 +64,11 @@ namespace TestingPlanner.Viewmodels
         {
             init(dao);
             this._jr = _dao.GetJRWithId(idRequest);
+
+            // addJRCommand calls function to save existing JR
+            addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
+
+
         }
 
         // Code reused in both constructors
@@ -72,7 +80,6 @@ namespace TestingPlanner.Viewmodels
             EUTs = new ObservableCollection<EUT>();
 
             // ICommand initialization
-            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
         }
@@ -89,10 +96,23 @@ namespace TestingPlanner.Viewmodels
         }
 
         // ICommand functions
-        // This function adds a job request and stores this job request in the _dao instance
+        // This function adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
             _dao.AddJobRequest(JR); // SaveChanges included in function
+            ChangeWindows(window);
+        }
+
+        // This function updates an existing job request and switches windows
+        public void UpdateJr(Window window)
+        {
+            _dao.UpdateJobRequest(JR); // SaveChanges included in function
+            ChangeWindows(window);
+        }
+
+        // This function adds a job request and stores this job request in the _dao instance
+        private void ChangeWindows(Window window)
+        {
             Temp overviewWindow = new Temp();
             overviewWindow.Show();
             window.Close();
