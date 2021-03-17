@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using GalaSoft.MvvmLight.Command;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +19,7 @@ namespace TestingPlanner.Viewmodels
         private JR _jr;
 
         // We create an ICommand variable addJobRequestCommand
-        public ICommand addJobRequestCommand { get; set; }
+        public RelayCommand<Window> addJobRequestCommand { get; set; }
         public ObservableCollection<RqRequest> jrs { get; set; }
 
         // Data connection
@@ -28,7 +29,7 @@ namespace TestingPlanner.Viewmodels
         public ViewmodelRequestForm(DAO dao)
         {
             this._dao = dao;
-            addJobRequestCommand = new DelegateCommand(InsertJr);
+            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
             jrs = new ObservableCollection<RqRequest>();
             this._jr = new JR();
         }
@@ -39,25 +40,19 @@ namespace TestingPlanner.Viewmodels
             get { return _jr; }
             set
             {
-                    _jr = value;
+                _jr = value;
                 OnpropertyChanged();
             }
         }
 
         // This function adds a job request and stores this job request in the _dao instance
-        public void InsertJr()
+        public void InsertJr(Window window)
         {
-            _dao.AddJobRequest(JR);
+            _dao.AddJobRequest(JR); // SaveChanges included in function
+
+            Temp overviewWindow = new Temp();
+            overviewWindow.Show();
+            window.Close();
         }
-
-       
-        // This function calls the SaveChanges function in the DAO Class
-        public void UpdateJr()
-
-        {
-
-            _dao.SaveChanges();
-        }
-  
     }
 }
