@@ -57,7 +57,7 @@ namespace TestingPlanner.Viewmodels
 
         public void OpenExistingJr(Window window)
         {
-            RequestForm requestformWindow = new RequestForm();
+            RequestForm requestformWindow = new RequestForm(SelectedJR);
             requestformWindow.Show();
             window.Close();
         }

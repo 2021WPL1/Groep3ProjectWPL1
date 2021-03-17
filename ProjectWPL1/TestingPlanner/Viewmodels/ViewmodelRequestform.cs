@@ -40,8 +40,8 @@ namespace TestingPlanner.Viewmodels
         // Constructor for new JR
         public ViewmodelRequestForm(DAO dao)
         {
-            this._jr = new JR();
             init(dao);
+            this._jr = new JR();
 
             // Testing
             EUTs.Add(new EUT
@@ -59,9 +59,8 @@ namespace TestingPlanner.Viewmodels
         // Constructor for existing JR
         public ViewmodelRequestForm(DAO dao, int idRequest)
         {
-            
-            this._jr = _dao.GetJRWithId(idRequest);
             init(dao);
+            this._jr = _dao.GetJRWithId(idRequest);
         }
 
         // Code reused in both constructors
