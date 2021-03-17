@@ -5,67 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="600" Width="800">
-    <Grid Margin="0,-2,-0.2,2.4">
-
-        <Label Content="Requester initials:" HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Division:" HorizontalAlignment="Left" Margin="30,70,0,0" VerticalAlignment="Top" Height="25" Width="52"/>
-        <Label Content="Job nature:" HorizontalAlignment="Left" Margin="30,95,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Project number (SAP/=hydra):" HorizontalAlignment="Left" Margin="28,120,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Eut projectname (nickname):" HorizontalAlignment="Left" Margin="30,145,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Partnumber:" HorizontalAlignment="Left" Margin="91,248,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="net weight (kg):" HorizontalAlignment="Left" Margin="487,248,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Gross weight (kg):" HorizontalAlignment="Left" Margin="650,249,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Batteries inside:" HorizontalAlignment="Left" Margin="32,171,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Expected end date:" HorizontalAlignment="Left" Margin="600,120,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Link to testplan (optional):" HorizontalAlignment="Left" Margin="28,482,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Parts and tests" HorizontalAlignment="Left" Margin="30,213,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
-        <Label Content="EUT1:" HorizontalAlignment="Left" Margin="30,248,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="EUT for seen avaiblity date:" HorizontalAlignment="Left" Margin="28,431,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Special remarks (optional):" HorizontalAlignment="Left" Margin="28,507,0,0" VerticalAlignment="Top" Height="30"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <TextBox Name="cmbxDivision" HorizontalAlignment="Left" Margin="220,70,0,0" VerticalAlignment="Top" Width="120" Height="25" Background="Orange"/>
-        <ComboBox Name="cmbxJobnature" HorizontalAlignment="Left" Margin="220,95,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="181,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="585,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="761,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
-        <ComboBox Name="cmbxBatteriesinside" HorizontalAlignment="Left" Margin="220,170,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="747,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="220,481,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,431,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Background="Orange"/>
-        <CheckBox Content="EMC" HorizontalAlignment="Left" Margin="95,290,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="ENVIRONMENTAL" HorizontalAlignment="Left" Margin="180,290,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="RELIABILITY" HorizontalAlignment="Left" Margin="330,290,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="PRODUCT SAFETY" HorizontalAlignment="Left" Margin="440,290,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="PACKAGING" HorizontalAlignment="Left" Margin="585,290,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="GREEN COMPLIANCE" HorizontalAlignment="Left" Margin="690,290,0,0" VerticalAlignment="Top"/>
-        <Button Content="Confirm" HorizontalAlignment="Left" Margin="32,544,0,0" VerticalAlignment="Top" Width="98" Height="40"/>
-        <Label Content="PVG Responsibility:" HorizontalAlignment="Left" Margin="30,456,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="220,456,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Background="Orange"/>
-        <ComboBox HorizontalAlignment="Left" Margin="859,247,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
-        <Label Content="Request date:" HorizontalAlignment="Left" Margin="600,44,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="747,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <Label Content="JR Number:" HorizontalAlignment="Left" Margin="600,70,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="747,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="Orange"/>
-        <Button Content="Add part" HorizontalAlignment="Left" Margin="220,219,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Project details" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
-        <Label Content="Partnumber:" HorizontalAlignment="Left" Margin="91,322,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="net weight (kg):" HorizontalAlignment="Left" Margin="487,322,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Gross weight (kg):" HorizontalAlignment="Left" Margin="650,323,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="EUT2:" HorizontalAlignment="Left" Margin="30,322,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="181,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="585,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="761,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Background="Orange"/>
-        <CheckBox Content="EMC" HorizontalAlignment="Left" Margin="95,364,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="ENVIRONMENTAL" HorizontalAlignment="Left" Margin="180,364,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="RELIABILITY" HorizontalAlignment="Left" Margin="330,364,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="PRODUCT SAFETY" HorizontalAlignment="Left" Margin="440,364,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="PACKAGING" HorizontalAlignment="Left" Margin="585,364,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="GREEN COMPLIANCE" HorizontalAlignment="Left" Margin="690,364,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="859,321,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="220,504,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Background="Orange"/>
-        <Label Content="Planning details:" HorizontalAlignment="Left" Margin="28,396,0,0" VerticalAlignment="Top" Height="30" FontSize="15"/>
-    </Grid>
+        Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded">
+    <StackPanel Margin="10">
+        <GroupBox Header="Project Details">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
+                <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
+                <ComboBox Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="cmbDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="25" Width="120"/>
+                <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
+                <Label Grid.Row="3" Content="Expected end date:" Height="25"/>
+                <DatePicker Text="{Binding JR.ExpEnddate, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }" SelectedDate="08/10/2009" SelectedDateFormat="Long" x:Name="dpEndDate" Grid.Column="1" Grid.Row="3" IsTodayHighlighted="True" />
+                <Label Grid.Row="5" Content="Link to testplan (optional):" Height="25"/>
+                <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="txtLinkTestPlan" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightGray" Width="120"/>
+                <ComboBox Text="{Binding JR.JobNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="cmbJobNature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
+                <Label Grid.Column="3" Content="Projectnr. (SAP/Hydra):" Height="25" />
+                <TextBox Text="{Binding JR.HydraProjectnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <Label Grid.Column="3" Grid.Row="1" Content="Eut projectname (nickname):" Height="25" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding JR.EutProjectname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
+                <CheckBox x:Name="cbBatteries" Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
+                <!--This item will be filled in automatically-->
+                <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
+                <TextBox x:Name="txtRequestDate" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
+                <!--This item will be filled in automatically-->
+                <Label Grid.Column="3" Grid.Row="5" Content="JR Number:"/>
+                <TextBox x:Name="txtJrNr" Grid.Column="4" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
+                <CheckBox x:Name="cbInternal" Grid.Column="4" Grid.Row="6" Content="Internal" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+                <Label Grid.Row="7" Content="Special remarks (optional):"/>
+                <TextBox x:Name="txtSpecialRemarks" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Height="50" HorizontalAlignment="Stretch" Background="LightGray" Margin="0, 10"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Parts and tests">
+            <StackPanel>
+                <ListBox Height="150">
+                    <!--This item will become the template for this listbox-->
+                    <ListBoxItem BorderBrush="Gray">
+                        <Grid Width="800">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="EUT 1"/>
+                            <Label Grid.Column="1" Content="Partnumber:" HorizontalAlignment="Right"/>
+                            <TextBox Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Height="25" TextWrapping="Wrap" Background="Orange" Grid.ColumnSpan="2" />
+                            <Label Grid.Column="4" Content="Foreseen availability date:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,26" Grid.RowSpan="2"/>
+                            <DatePicker x:Name="dpAvailabilityDate" Grid.Column="5" IsTodayHighlighted="True" Grid.ColumnSpan="2" Margin="51,0,0,26" Grid.RowSpan="2" />
+                            <Label Grid.Column="7" Content="Net Weight (kg):" HorizontalAlignment="Right"/>
+                            <TextBox Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="8" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
+                            <Label Grid.Column="7" Grid.Row="1" Content="Gross Weight (kg)" HorizontalAlignment="Right"/>
+                            <TextBox Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="8" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="50"/>
+                            <CheckBox x:Name="cbEmc" Grid.Column="1" Grid.Row="1" Content="EMC" FontSize="9" VerticalContentAlignment="Center" />
+                            <CheckBox x:Name="cbEnvirenmental" Grid.Column="2" Grid.Row="1" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center" />
+                            <CheckBox x:Name="cbReliability" Grid.Column="3" Grid.Row="1" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center" />
+                            <CheckBox x:Name="cbProductSafe" Grid.Column="4" Grid.Row="1" Content="PRODUCT &#x0a;SAFETY" FontSize="9" VerticalContentAlignment="Center" />
+                            <CheckBox x:Name="cbPackaging" Grid.Column="5" Grid.Row="1" Content="PACKAGING" FontSize="9" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="cbGreenComp" Grid.Column="6" Grid.Row="1" Content="GREEN &#x0a;COMPLIANCE" FontSize="9" VerticalContentAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="2" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="3" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="4" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="5" Grid.Row="3" Visibility="Collapsed"/>
+                            <ComboBox Grid.Column="6" Grid.Row="3" Visibility="Collapsed"/>
+                        </Grid>
+                    </ListBoxItem>
+                </ListBox>
+                <StackPanel Orientation="Horizontal" >
+                    <Button Content="Add Part" Margin="10"/>
+                    <Button Content="Remove Part" Margin="10"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <Button  Content="Confirm" Command="{Binding Path=addJobRequestCommand}" Width="100" Height="40"/>
+    </StackPanel>
 </Window>
