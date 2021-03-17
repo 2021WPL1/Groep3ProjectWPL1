@@ -14,66 +14,63 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelTemporarilyStartUp : ViewModelBase
     {
-        Window tempWindow = new Window(); //needed or runtime error for some reason
-        public ICommand addNewRqCommand { get; set; }
-        public ICommand showExistingRqCommand { get; set; }
+        //public ICommand addNewRqCommand { get; set; }
+        //public ICommand showExistingRqCommand { get; set; }
+        public RelayCommand<Window> addNewRqCommand { get; set; }
+        public RelayCommand<Window> showExistingRqCommand { get; set; }
+
         public ObservableCollection<int> idRequestsOnly { get; set; }
 
         private DAO _dao;
+        private int _selectedJR;
         
 
         public ViewmodelTemporarilyStartUp(DAO dao)
         {
             this._dao = dao;
-            addNewRqCommand = new DelegateCommand(OpenEmptyRq);
-            showExistingRqCommand = new DelegateCommand(OpenExistingJr);
+
+            addNewRqCommand = new RelayCommand<Window>(OpenEmptyJR);
+            showExistingRqCommand = new RelayCommand<Window>(OpenExistingJr);
+
             idRequestsOnly = new ObservableCollection<int>();
            
         }
 
-        public void OpenEmptyRq()
+        // Getters/Setters
+        public int SelectedJR
         {
-            OpenNewRq();
+            get => _selectedJR;
+            set
+            {
+                _selectedJR = value;
+                OnpropertyChanged();
+            }
         }
 
-        public void OpenExistingJr()
+        // Functions
+        public void OpenEmptyJR(Window window)
         {
-            OpenSelectedJr();
+            RequestForm requestformWindow = new RequestForm();
+            requestformWindow.Show();
+            window.Close();
         }
 
-        public void OpenNewRq()
+        public void OpenExistingJr(Window window)
         {
-            Temp temp = new Temp();
-            CloseWindow(temp);
-            OpenWindow();
-        }
-
-        public void OpenSelectedJr()
-        {
-            Temp temp = new Temp();
-            CloseWindow(temp);
-            OpenWindow();
-            Load();
+            RequestForm requestformWindow = new RequestForm();
+            requestformWindow.Show();
+            window.Close();
         }
 
         public void Load()
         {
             var requestIds = _dao.GetAllJobRequests();
             idRequestsOnly.Clear();
+
             foreach (var requestId in requestIds)
             {
                 idRequestsOnly.Add(requestId.IdRequest);
             }
-        }
-        public void OpenWindow()
-        {
-            RequestForm requestformWindow = new RequestForm();
-            requestformWindow.Show();
-        }
-
-        public void CloseWindow(Window window)
-        {
-            window.Close(); //window.close doesnt work (only this.close seems to work)
         }
     }
 }
