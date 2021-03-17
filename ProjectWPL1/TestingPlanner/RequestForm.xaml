@@ -50,7 +50,7 @@
                 <TextBox Text="{Binding JR.HydraProjectnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Column="3" Grid.Row="1" Content="Eut projectname (nickname):" Height="25" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding JR.EutProjectname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
-                <CheckBox x:Name="cbBatteries" Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
+                <CheckBox IsChecked="{Binding JR.Battery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
                 <!--This item will be filled in automatically-->
                 <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
                 <TextBox x:Name="txtRequestDate" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>

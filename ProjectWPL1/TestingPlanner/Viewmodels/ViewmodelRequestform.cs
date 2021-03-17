@@ -42,7 +42,7 @@ namespace TestingPlanner.Viewmodels
             EUTs = new ObservableCollection<EUT>();
 
             // ICommand initialization
-            addJobRequestCommand = new DelegateCommand(addJobRequest);
+            addJobRequestCommand = new DelegateCommand(InsertJr);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
 
@@ -68,9 +68,7 @@ namespace TestingPlanner.Viewmodels
                 EMC = true,
                 REL = true
             });
-
-            addJobRequestCommand = new DelegateCommand(InsertJr);
-            this._jr = new JR();
+            // Testing
         }
 
         // Getters/Setters
@@ -115,17 +113,12 @@ namespace TestingPlanner.Viewmodels
             EUTs.Remove(_selectedEUT);
             
         }
-        // ICommand functions
-        public void addJobRequest()
-        {
-            
-        }
-       
+
+        // ICommand functions       
         // This function calls the SaveChanges function in the DAO Class
         public void UpdateJr()
         {
             _dao.SaveChanges();
         }
-  
     }
 }
