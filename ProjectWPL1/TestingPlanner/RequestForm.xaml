@@ -8,13 +8,14 @@
         Title="RequestForm" Height="690" Width="883" Loaded="Window_Loaded">
     <Window.Resources>
         <!-- Selects LBItem when child of LB is selected, maybe move to app.xaml -->
+        <!-- In commentary to check bug 
         <Style TargetType="ListBoxItem">
             <Style.Triggers>
                 <Trigger Property="IsKeyboardFocusWithin" Value="True">
                     <Setter Property="IsSelected" Value="True"/>
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
     </Window.Resources>
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">

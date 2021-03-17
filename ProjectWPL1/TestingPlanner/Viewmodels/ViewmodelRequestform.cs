@@ -118,8 +118,7 @@ namespace TestingPlanner.Viewmodels
         // as stated in the previous function 
         public void removeSelectedEUT()
         {
-            EUTs.Remove(_selectedEUT);
-            
+            EUTs.Remove(SelectedEUT); 
         }
 
         // ICommand functions       
