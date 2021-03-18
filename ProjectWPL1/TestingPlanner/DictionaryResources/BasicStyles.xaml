@@ -1,60 +1,27 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-
+    <!--WINDOW-->
     <Style TargetType="{x:Type Window}">
         <Setter Property="Background" Value="MediumBlue" />
         <Setter Property="Opacity" Value="50" />
-        
     </Style>
-
-    <!--<Style TargetType="{x:Type Grid}">
-        <Setter Property="Background" Value="Red" />
-        <Setter Property="Opacity" Value="50" />
-    </Style>-->
-
 
     <!--LISTBOX & LISTBOXITEMS-->
     <Style TargetType="ListBox">
         <Setter Property="Height" Value="150"/>
     </Style>
 
-    <!--Template voor de verschillende listboxitems
-    
-    <Style x:Key="RedListItem" TargetType="ListBoxItem">
-        <Setter Property="Background" Value="Red"/>
-    </Style>-->
-
     <!--CHANGE STYLES 2 WITH STATIC RESOURCE-->
     <Style x:Key="GrayListItem" TargetType="ListBoxItem" >
         <Setter Property="BorderBrush" Value="gray"/>
     </Style>
 
-
     <!--BUTTONS-->
-    <!--<Style TargetType="Button">
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="15"  BorderBrush="white" BorderThickness="1"  TextElement.Foreground="Black">
-                        
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-
-    <!--<Style TargetType="Button"   
-           BasedOn="{StaticResource {x:Type Button}}" x:Key="Button1">
-        <Setter Property="Padding" Value="10 0"/>
-    </Style>-->
-
     <Style x:Key="AddJRbtn" TargetType="Button">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="40"/>
     </Style>
-
 
     <!--LABELS-->
     <Style TargetType="Label">
@@ -136,7 +103,6 @@
     <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}"  x:Key="BottomCheckboxes">
         <Setter Property="FontSize" Value="9"/>
         <Setter Property="Foreground" Value="White"/>
-
     </Style>
 
 
@@ -144,7 +110,6 @@
     <Style TargetType="DatePicker">
         <Setter Property="IsTodayHighlighted" Value="True"/>
     </Style>
-
 
     <!--COMBOBOXES-->
     <Style TargetType="ComboBox">
@@ -158,23 +123,15 @@
         <Setter Property="Padding" Value="10 0"/>
     </Style>
 
-
     <!--STACKPANELS-->
     <Style x:Key="GoodStack" TargetType="StackPanel">
         <Setter Property="Width" Value="350"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
 
-
     <!--horizontal stackpanels-->
     <Style x:Key="HorStack" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
-    
-    <!--No idea why he doesnt recognise Orientation cuz he recognises it in the mainwindow-->
-    <!--<Style x:Key="HorStackpanel" BasedOn="{StaticResource {x:Type StackPanel}}">
-        <Setter Property="Orientation" Value="Horizontal"/>
-    </Style>-->
-
 
 </ResourceDictionary>

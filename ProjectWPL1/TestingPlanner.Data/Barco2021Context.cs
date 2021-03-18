@@ -32,6 +32,8 @@ namespace TestingPlanner.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
+                // If not present
+                // Create class constants with connection string
                 optionsBuilder.UseSqlServer(Constants.CONNECTION_STRING);
             }
         }
