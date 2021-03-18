@@ -118,8 +118,17 @@ namespace TestingPlanner.Viewmodels
         // This function updates an existing job request and switches windows
         public void UpdateJr(Window window)
         {
-            _dao.UpdateJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window);
+            string error = _dao.UpdateJobRequest(JR); // SaveChanges included in function
+
+            if (error == null)
+            {
+                ChangeWindows(window);
+            }
+            else
+            {
+                MessageBox.Show(error);
+            }
+            
         }
 
         // This function adds a job request and stores this job request in the _dao instance

@@ -76,26 +76,38 @@ namespace TestingPlanner.Data
             SaveChanges();
         }
 
-        public void UpdateJobRequest(JR Jr) // INCOMPLETE
+        public string UpdateJobRequest(JR Jr) // INCOMPLETE
         {
-            RqRequest rqrequest = context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+            string message = null;
 
-            rqrequest.JrNumber = Jr.JrNumber;
-            rqrequest.JrStatus = Jr.JrStatus;
-            rqrequest.RequestDate = Jr.RequestDate;
-            rqrequest.Requester = Jr.Requester;
-            rqrequest.BarcoDivision = Jr.BarcoDivision;
-            rqrequest.JobNature = Jr.JobNature;
-            rqrequest.EutProjectname = Jr.EutProjectname;
-            rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
-            rqrequest.ExpectedEnddate = Jr.ExpEnddate;
-            rqrequest.InternRequest = Jr.InternRequest;
-            rqrequest.GrossWeight = Jr.GrossWeight;
-            rqrequest.NetWeight = Jr.NetWeight;
-            rqrequest.Battery = Jr.Battery;
+            if (Jr.JrNumber != null)
+            {
+                RqRequest rqrequest = context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
 
-            context.RqRequests.Update(rqrequest);
-            SaveChanges();
+                rqrequest.JrNumber = Jr.JrNumber;
+                rqrequest.JrStatus = Jr.JrStatus;
+                rqrequest.RequestDate = Jr.RequestDate;
+                rqrequest.Requester = Jr.Requester;
+                rqrequest.BarcoDivision = Jr.BarcoDivision;
+                rqrequest.JobNature = Jr.JobNature;
+                rqrequest.EutProjectname = Jr.EutProjectname;
+                rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
+                rqrequest.ExpectedEnddate = Jr.ExpEnddate;
+                rqrequest.InternRequest = Jr.InternRequest;
+                rqrequest.GrossWeight = Jr.GrossWeight;
+                rqrequest.NetWeight = Jr.NetWeight;
+                rqrequest.Battery = Jr.Battery;
+
+                context.RqRequests.Update(rqrequest);
+                SaveChanges();
+            }
+            else
+            {
+                message = "Error - empty job request\n" +
+                    "Please fill in all necessary fields";
+            }
+
+            return message;
         }
 
         // This function returns all the job request and stores them in a list
