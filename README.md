@@ -35,9 +35,6 @@ The Head of Testing is responsible for merging *shadowTesting* --> *shadowMain* 
    * Creating and merging branches
    * Scaffolding an existing DB
 
-### Known issues
-// TODO
-
 ### Loading the project
 Create a public class Constants (not loaded due to gitignore)
 Add the following variable:
@@ -45,3 +42,11 @@ Add the following variable:
     public static string CONNECTION_STRING = "Server=XXXXXXXXXXXXXXXXXXX;Database=Barco2021;Trusted_Connection=True;";
     
 Replace the X's with the location of your database.
+
+#### TODO
+* Known issues
+    * Weird bug where you get error un saving an existing RQ unless you open DAO bezfore running (can this be reproduced?)
+* Add instructions for loading the project
+* Add TODO's for WPL1 part two
+        * Fix folder structure
+* ... 
