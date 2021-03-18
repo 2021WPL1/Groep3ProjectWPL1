@@ -4,10 +4,14 @@
              xmlns:local="clr-namespace:TestingPlanner"
              StartupUri="Temp.xaml">
     <Application.Resources>
-        <!-- DataTemplate to display EUT's in listboxes/listviews-->
-        <DataTemplate x:Key="EUT" >
-            <ListBoxItem BorderBrush="Gray" HorizontalContentAlignment="Stretch">
-                <Grid HorizontalAlignment="Stretch">
+
+        <ResourceDictionary>
+
+
+            <!-- DataTemplate to display EUT's in listboxes/listviews-->
+        <DataTemplate x:Key="EUT"  >
+                <ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch" Background="#df002d"  Foreground="White">
+                <Grid HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="1*" MinWidth="80"/>
@@ -23,7 +27,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <!-- Find a way to display the number of the EUT, or delete alltogether?-->
-                    <TextBlock Grid.RowSpan="2" Text="EUT" Margin="5"/> 
+                    <TextBlock Grid.RowSpan="2" Text="EUT" Margin="5"/>
                     <TextBlock Grid.Column="1" Text="Partnumber:" Margin="5"/>
                     <TextBox Grid.Column="2" Text="{Binding PartNr}" Margin="5"/>
                     <TextBlock Grid.Column="3" Text="Foreseen availability date:" Margin="5"/>
@@ -33,7 +37,7 @@
                     <TextBox Grid.Column="6" Text="{Binding NetWeight}" Margin="5"/>
                     <TextBlock Grid.Column="5" Grid.Row="1" Text="Gross Weight (kg)" Margin="5"/>
                     <TextBox Grid.Column="6" Grid.Row="1" Text="{Binding GrossWeight}" Margin="5"/>
-                    <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" TextElement.Foreground="White">
                         <CheckBox IsChecked="{Binding EMC}" Content="EMC" FontSize="9" VerticalContentAlignment="Center" Margin="5"/>
                         <CheckBox IsChecked="{Binding ENV}" Content="ENVIRONMENTAL" FontSize="9" VerticalContentAlignment="Center" Margin="5"/>
                         <CheckBox IsChecked="{Binding REL}" Content="RELIABILITY" FontSize="9" VerticalContentAlignment="Center"  Margin="5"/>
@@ -44,5 +48,17 @@
                 </Grid>
             </ListBoxItem>
         </DataTemplate>
+        
+        
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="DictionaryResources/BasicStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

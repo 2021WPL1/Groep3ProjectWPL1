@@ -78,3 +78,31 @@ C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\T
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.dll
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.pdb
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csprojAssemblyReference.cache
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfoInputs.cache
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfo.cs
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.dll
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.deps.json
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.dll
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.pdb
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CoreCompileInputs.cache
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CopyComplete
+C:\Users\Media Markt\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.deps.json
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.dll
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.pdb
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.dll
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.dll
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.pdb
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csprojAssemblyReference.cache
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfoInputs.cache
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfo.cs
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CoreCompileInputs.cache
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CopyComplete
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.dll
+C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb

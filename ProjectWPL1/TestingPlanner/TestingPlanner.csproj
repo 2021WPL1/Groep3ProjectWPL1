@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="barco-logo.jpg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>
@@ -22,6 +27,10 @@
     <ProjectReference Include="..\..\TestingPlanner.Classes\TestingPlanner.Classes.csproj" />
     <ProjectReference Include="..\TestingPlanner.Data\TestingPlanner.Data.csproj" />
     <ProjectReference Include="..\TestingPlanner.Domain\TestingPlanner.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="barco-logo.jpg.png" />
   </ItemGroup>
 
 </Project>

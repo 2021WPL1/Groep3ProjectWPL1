@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="Temp" Height="450" Width="600" Background="Gray" Foreground="White"
+        Title="Temp" Height="450" Width="600" Background="#363636" Foreground="White"
         ResizeMode="NoResize"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow"
@@ -14,7 +14,7 @@
     <Grid>
         <StackPanel Margin="10">
             <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
-                <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="DarkGray" Foreground="White" Margin="10"/>
+                <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="White" Foreground="Black" Margin="10"/>
             </GroupBox>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Button x:Name="newJr" Height="25" Width="100" Content="New JR" Command="{Binding Path=addNewRqCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=tempWindow}" Margin="10" HorizontalAlignment="Left"/>
