@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="Temp" Height="450" Width="600" Background="Gray" Foreground="White"
+        Title="Temp" Height="690" Width="890" Background="Gray" Foreground="White"
         ResizeMode="NoResize"
-        WindowState="Maximized"
-        WindowStyle="SingleBorderWindow"
+        WindowState="Normal"
+        WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Margin="10">

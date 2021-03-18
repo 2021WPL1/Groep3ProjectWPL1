@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="RequestForm" Height="690" Width="890" Loaded="Window_Loaded"
         ResizeMode="NoResize"
+        WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!-- Selects LBItem when child of LB is selected, maybe move to app.xaml -->
