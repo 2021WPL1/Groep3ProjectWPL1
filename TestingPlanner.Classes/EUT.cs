@@ -4,6 +4,8 @@ using System.Text;
 
 namespace TestingPlanner
 {
+    // Bridge between UI and Datamodels
+    // Use class so only one getter/setter/onPropertyChanged needs to be created
     public class EUT
     {
         // Variables
@@ -13,6 +15,7 @@ namespace TestingPlanner
         private double _grossWeight;
 
         // Tests to execute
+        // TODO: function to check if necessart RQDetail already exists
         private bool _emc;
         private bool _env;
         private bool _rel;
@@ -20,6 +23,7 @@ namespace TestingPlanner
         private bool _pck;
         private bool _cmp;
 
+        // Constructor
         public EUT()
         {
             _partNr = null;
@@ -41,6 +45,7 @@ namespace TestingPlanner
         public DateTime AvailabilityDate { get => _availabilityDate; set => _availabilityDate = value; }
         public double NetWeight { get => _netWeight; set => _netWeight = value; }
         public double GrossWeight { get => _grossWeight; set => _grossWeight = value; }
+
         public bool EMC { get => _emc; set => _emc = value; }
         public bool ENV { get => _env; set => _env = value; }
         public bool REL { get => _rel; set => _rel = value; }

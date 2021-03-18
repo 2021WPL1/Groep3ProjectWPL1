@@ -68,7 +68,7 @@
                     <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                              Grid.Column="1" Grid.Row="5" IsReadOnly="True"/>
                     <Label Content="Special remarks (optional):" Grid.Row="7"/>
-                    <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Height="50" HorizontalAlignment="Stretch" Width="Auto" IsReadOnly="True"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Height="50" Margin="10" HorizontalAlignment="Stretch" Width="Auto" IsReadOnly="True"/>
                 </Grid>
             </GroupBox>
             <GroupBox Header="Parts and tests">

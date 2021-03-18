@@ -4,10 +4,13 @@ using System.Text;
 
 namespace TestingPlanner
 {
+    // Bridge between UI and Datamodels
+    // Use class so only one getter/setter/onPropertyChanged needs to be created
     public class JR
     {
 
         // Required variables for the job request
+        // INCOMPLETE
         private int idRequest;
         private string jrNumber;
         private string jrStatus;
@@ -33,7 +36,7 @@ namespace TestingPlanner
             this.requestDate = DateTime.Now.Date;
         }
 
-        // Getters and setters for the variables
+        // Getters/setters
         public int IdRequest { get => idRequest; set => idRequest = value; }
         public string JrNumber { get => jrNumber; set => jrNumber = value; }
         public string JrStatus { get => jrStatus; set => jrStatus = value; }
@@ -50,21 +53,6 @@ namespace TestingPlanner
         public string BarcoDivision { get => barcoDivision; set => barcoDivision = value; }
         public string JobNature { get => jobNature; set => jobNature = value; }
         public DateTime? ExpEnddate { get => expEnddate; set => expEnddate = value; }
-      
-
-        //Catch DateTime exception (date older than today)
-        /*public DateTime? ExpEnddate
-        {
-            get { return expEnddate; }
-            set
-            {
-                expEnddate = value;
-                if(ExpEnddate < requestDate)
-                {
-                    Messagebox.Show("You are not allowed to select older day than today!");
-                }
-            }
-        }*/
         public string PvgResp { get => pvgResp; set => pvgResp = value; }
         public DateTime? RequestDate { get => requestDate; set => requestDate = value; }
     }
