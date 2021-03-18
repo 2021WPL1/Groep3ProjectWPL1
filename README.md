@@ -21,9 +21,11 @@ Merging your branch with *shadowTesting*:
     * YES: stash changes if necessary, then push
     * NO: fix it, go back to 1.
 
+The Head of Testing is responsible for merging *shadowTesting* --> *shadowMain* --> *Main*
+
 ### SCRUM action points
 1. Clean-up and merging during the final hour of the WPL-week
-2. Shift system for Back-end, front-end, testing and DB
+2. Shift system for back-end, front-end, testing and DB: responsibilities shift every week
 3. Topics to learn by next sprint:  
    * MVVM
    * DataTemplates
@@ -34,7 +36,7 @@ Merging your branch with *shadowTesting*:
    * Scaffolding an existing DB
 
 ### Known issues
-TODO
+// TODO
 
 ### Loading the project
 Create a public class Constants (not loaded due to gitignore)
