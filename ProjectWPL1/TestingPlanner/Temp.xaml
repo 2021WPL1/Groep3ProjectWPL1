@@ -11,7 +11,8 @@
         WindowState="Normal"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
-    <Grid>
+    <StackPanel>
+        <Image Width="218" Height="77" Margin="0 0 650 0" Source="/barco-logo.jpg.png" ></Image>
         <StackPanel Margin="10">
             <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
                 <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="White" Foreground="Black" Margin="10"/>
@@ -21,5 +22,5 @@
                 <Button x:Name="openJr" Height="25" Content="Open JR details" Command="{Binding Path=showExistingRqCommand}" Margin="10" CommandParameter="{Binding ElementName=tempWindow}" HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </Window>
