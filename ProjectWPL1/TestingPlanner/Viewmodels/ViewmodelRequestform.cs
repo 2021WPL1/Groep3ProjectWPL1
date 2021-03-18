@@ -103,10 +103,8 @@ namespace TestingPlanner.Viewmodels
             string message = "The required fields are empty, please fill in all required fields";
            try
            {
-
-           
-            _dao.AddJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window); 
+                _dao.AddJobRequest(JR); // SaveChanges included in function
+                ChangeWindows(window); 
             }
             catch (Exception ex)
             {

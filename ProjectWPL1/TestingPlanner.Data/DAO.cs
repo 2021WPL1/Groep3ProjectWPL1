@@ -30,50 +30,62 @@ namespace TestingPlanner.Data
 
         // This function creates a Job Request with the following data,
         // the data is beign retrieved from the requester using the GUI
-        public void AddJobRequest(JR Jr)
+        public string AddJobRequest(JR Jr)
         {
-            RqRequest rqrequest = new RqRequest()
+            string message = null;
+
+            if (Jr.JrNumber != null)
             {
-                JrNumber = "test", // temporary name (hardcoded)
-                JrStatus = Jr.JrStatus,
-                RequestDate = DateTime.Now.Date,
-                Requester = Jr.Requester,
-                BarcoDivision = Jr.BarcoDivision,
-                JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
-                EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
-                HydraProjectNr = Jr.HydraProjectnumber,
-                ExpectedEnddate = Jr.ExpEnddate,
-                InternRequest = Jr.InternRequest,
-                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
-                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
-                Battery = Jr.Battery,
+                RqRequest rqrequest = new RqRequest()
+                {
+                    JrNumber = "test", // temporary name (hardcoded)
+                    JrStatus = Jr.JrStatus,
+                    RequestDate = DateTime.Now.Date,
+                    Requester = Jr.Requester,
+                    BarcoDivision = Jr.BarcoDivision,
+                    JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
+                    EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
+                    EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
+                    HydraProjectNr = Jr.HydraProjectnumber,
+                    ExpectedEnddate = Jr.ExpEnddate,
+                    InternRequest = Jr.InternRequest,
+                    GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+                    NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
+                    Battery = Jr.Battery,
                
-                //Created but not yet loaded when JR gets returned
-                RqOptionel = new List<RqOptionel> { new RqOptionel
-                {
+                    //Created but not yet loaded when JR gets returned
+                    RqOptionel = new List<RqOptionel> { new RqOptionel
+                    {
                    
-                    Link = Jr.Link,
+                        Link = Jr.Link,
 
-                    // The value of Remarks does not get pushed to the Barco2021 Database
-                    Remarks = Jr.Remarks
-                } },
-                RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
-                {
-                    Pvgresp = Jr.PvgResp,
-                    Testdivisie = "EMC",
-                Eut = new List<Eut>{new Eut
-                {
-                    AvailableDate= Jr.ExpEnddate
-                }},
-                    TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "z")
-                    // TestdivisieNavigation = new RqTestDevision { Afkorting = "z"}} // Vervangen indien z nog niet bestaat
-                }
-                }
-            };
+                        // The value of Remarks does not get pushed to the Barco2021 Database
+                        Remarks = Jr.Remarks
+                    } },
+                    RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
+                    {
+                        Pvgresp = Jr.PvgResp,
+                        Testdivisie = "EMC",
+                    Eut = new List<Eut>{new Eut
+                    {
+                        AvailableDate= Jr.ExpEnddate
+                    }},
+                        TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "z")
+                        // TestdivisieNavigation = new RqTestDevision { Afkorting = "z"}} // Vervangen indien z nog niet bestaat
+                    }
+                    }
+                };
 
-            context.RqRequests.Add(rqrequest);
-            SaveChanges();
+                context.RqRequests.Add(rqrequest);
+                SaveChanges();
+            }
+            else
+            {
+                message = "Error - empty job request\n" +
+                    "Please fill in all necessary fields";
+            }
+
+            return message;
         }
 
         public string UpdateJobRequest(JR Jr) // INCOMPLETE
