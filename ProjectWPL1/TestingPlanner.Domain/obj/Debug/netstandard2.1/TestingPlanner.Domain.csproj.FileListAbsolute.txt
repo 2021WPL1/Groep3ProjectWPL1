@@ -37,7 +37,6 @@ C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\bin\Debug\netstandard2.1\TestingPlanner.Domain.deps.json
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\bin\Debug\netstandard2.1\TestingPlanner.Domain.dll
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\bin\Debug\netstandard2.1\TestingPlanner.Domain.pdb
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.csprojAssemblyReference.cache
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.AssemblyInfoInputs.cache
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.AssemblyInfo.cs
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.csproj.CoreCompileInputs.cache
@@ -61,3 +60,4 @@ C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\ob
 C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.dll
 C:\Users\Mel\Desktop\Guiproject\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.pdb
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.csprojAssemblyReference.cache
