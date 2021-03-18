@@ -6,20 +6,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="Barco Planning Tool" Height="720" Width="980" Background="#363636" Foreground="White"
+        Height="720" Width="980" Background="#363636" Foreground="White"
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
-        <Image Width="218" Height="77" Margin="0 0 650 0" Source="/barco-logo.jpg.png" ></Image>
+        <Image Style="{StaticResource BarcoLogo}"/>
         <StackPanel Margin="10">
             <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
                 <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="White" Foreground="Black" Margin="10"/>
             </GroupBox>
             <StackPanel Orientation="Horizontal" Margin="10">
-                <Button x:Name="newJr" Height="25" Content="New JR" Command="{Binding Path=addNewRqCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=tempWindow}" Margin="10" HorizontalAlignment="Left"/>
-                <Button x:Name="openJr" Height="25" Content="Open JR details" Command="{Binding Path=showExistingRqCommand}" Margin="10" CommandParameter="{Binding ElementName=tempWindow}" HorizontalAlignment="Left"/>
+                <Button Content="New JR" 
+                        Command="{Binding Path=addNewRqCommand, Mode=OneWay}" 
+                        CommandParameter="{Binding ElementName=tempWindow}" 
+                        Margin="10"/>
+                <Button Content="Open JR details" 
+                        Command="{Binding Path=showExistingRqCommand}" 
+                        CommandParameter="{Binding ElementName=tempWindow}" 
+                        Margin="10"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

@@ -23,10 +23,9 @@ namespace TestingPlanner
     /// </summary>
     public partial class RequestForm : Window
     {
-        // variables
+        // Global variables
         private ViewmodelRequestForm viewModel;
         private DAO dao;
-        private static Barco2021Context context = new Barco2021Context();
 
         // Constructor empty
         public RequestForm()
@@ -39,6 +38,7 @@ namespace TestingPlanner
         }
 
         // Constructor existing
+        // Takes JR ID as an argument
         public RequestForm(int idRequest)
         {
             InitializeComponent();
@@ -46,7 +46,6 @@ namespace TestingPlanner
             viewModel = new ViewmodelRequestForm(DAO.Instance(), idRequest);
             DataContext = viewModel;
             viewModel.Load();
-
         }
     }
 }

@@ -20,9 +20,11 @@ namespace TestingPlanner
     /// </summary>
     public partial class Temp : Window
     {
+        // Global variables
         private ViewmodelTemporarilyStartUp tempviewmodel;
         private DAO dao;
 
+        // Constructor
         public Temp()
         {
             InitializeComponent();
