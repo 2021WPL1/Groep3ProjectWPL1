@@ -17,6 +17,7 @@ namespace TestingPlanner.Viewmodels
     {
         // Jobrequest data container
         private JR _jr;
+        
 
         // Variable _selectedEUT to store the user selected EUT
         private EUT _selectedEUT;
@@ -91,6 +92,7 @@ namespace TestingPlanner.Viewmodels
             set
             {
                 _jr = value;
+                
                 OnpropertyChanged();
             }
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Windows;
 using TestingPlanner.Domain.Models;
 
 
@@ -108,7 +109,7 @@ namespace TestingPlanner.Data
         {
             // ToDo: EUT's (via RqRequestDetail)
             // ToDo: RqOptionel
-
+           
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
 
@@ -132,7 +133,8 @@ namespace TestingPlanner.Data
             };
            
             return selectedJR;
-            
+      
+
         }
 
         //private string getPvgResp()
