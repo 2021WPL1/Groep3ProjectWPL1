@@ -26,8 +26,9 @@ namespace TestingPlanner.Viewmodels
         public ObservableCollection<EUT> EUTs { get; set; }
 
 
-        // ICommand declaration
+        // Command declaration
         public RelayCommand<Window> addJobRequestCommand { get; set; }
+        public RelayCommand<Window> cancelCommand { get; set; }
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
         // We create an ICommand variable addJobRequestCommand
@@ -67,8 +68,6 @@ namespace TestingPlanner.Viewmodels
 
             // addJRCommand calls function to save existing JR
             addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
-
-
         }
 
         // Code reused in both constructors
@@ -80,6 +79,7 @@ namespace TestingPlanner.Viewmodels
             EUTs = new ObservableCollection<EUT>();
 
             // ICommand initialization
+            cancelCommand = new RelayCommand<Window>(ChangeWindows);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
         }
