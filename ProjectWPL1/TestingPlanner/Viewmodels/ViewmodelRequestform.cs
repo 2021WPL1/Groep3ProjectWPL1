@@ -122,6 +122,7 @@ namespace TestingPlanner.Viewmodels
         private void refreshJR()
         {
             this.JR = new JR();
+            EUTs.Clear();
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
