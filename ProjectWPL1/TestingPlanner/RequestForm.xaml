@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="RequestForm" Height="720" Width="980"  Loaded="Window_Loaded"
+        Title="RequestForm" Height="720" Width="980" 
         mc:Ignorable="d"
         WindowStyle="None" >
     <!--<Window.Resources>
@@ -18,8 +18,8 @@
                     <Setter Property="IsSelected" Value="True"/>
                 </Trigger>
             </Style.Triggers>
-        </Style>-->
-    </Window.Resources>
+        </Style>
+    </Window.Resources>-->
     <StackPanel Margin="10">
         <GroupBox Header="Project Details">
             <Grid>
