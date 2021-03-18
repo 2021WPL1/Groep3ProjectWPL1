@@ -15,37 +15,39 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelBase
     {
+        // Dataconnection
+        // Can be moved to parent class?
+        private DAO _dao;
+
         // Jobrequest data container
+        // Only one getter/setter needs to be made for all changes in GUI
         private JR _jr;
 
-        // Variable _selectedEUT to store the user selected EUT
-        private EUT _selectedEUT;
-
-        // EUT list
+        // EUT's
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
         public ObservableCollection<EUT> EUTs { get; set; }
+        private EUT _selectedEUT;
 
-        // Lists used in GUI
+        // Combobox contents
         public ObservableCollection<string> JobNatures { get; set; }
         public ObservableCollection<string> Divisions { get; set; }
 
         // Command declaration
+        // RelayCommand<Class> takes object of type class as input
         public RelayCommand<Window> addJobRequestCommand { get; set; }
         public RelayCommand<Window> cancelCommand { get; set; }
+        // ICommand does not take pinput
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
         public ICommand refreshJRCommand { get; set; }
         public ICommand addMockEUTCommand { get; set; }
 
-        public ObservableCollection<RqRequest> jrs { get; set; }
-
-        // Data connection
-        private DAO _dao;
-
         // Constructor for new JR
         public ViewmodelRequestForm(DAO dao)
         {
             init(dao);
+
+            // JR = new JR
             refreshJR();
 
             // addJRCommand calls function to insert new JR
@@ -56,6 +58,8 @@ namespace TestingPlanner.Viewmodels
         public ViewmodelRequestForm(DAO dao, int idRequest)
         {
             init(dao);
+
+            // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
 
             // addJRCommand calls function to save existing JR
@@ -72,7 +76,7 @@ namespace TestingPlanner.Viewmodels
             JobNatures = new ObservableCollection<string>();
             Divisions = new ObservableCollection<string>();
 
-            // ICommand initialization
+            // Command initialization
             cancelCommand = new RelayCommand<Window>(ChangeWindows);
             refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
@@ -101,6 +105,8 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        // Function used in code behind
+        // Loads jobNatures, divisions in cbb
         public void Load()
         {
             var jobNatures = _dao.GetAllJobNatures();
@@ -120,18 +126,14 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Command functions
-        // This function adds and stores a job request and switches windows
+        // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
-       //     string message = "The required fields are empty, please fill in all required fields";
-          
-                _dao.AddJobRequest(JR); // SaveChanges included in function
-                ChangeWindows(window); 
-            
-          
+            _dao.AddJobRequest(JR); // SaveChanges included in function
+            ChangeWindows(window);
         }
 
-        // This function updates an existing job request and switches windows
+        // Updates existing job request and switches windows
         public void UpdateJr(Window window)
         {
             string error = _dao.UpdateJobRequest(JR); // SaveChanges included in function
@@ -143,22 +145,15 @@ namespace TestingPlanner.Viewmodels
             else
             {
                 MessageBox.Show(error);
-            }
-            
+            }    
         }
 
-        // This function adds a job request and stores this job request in the _dao instance
+        // Adds and stores job request in DB via _dao instance
         private void ChangeWindows(Window window)
         {
             Temp overviewWindow = new Temp();
             overviewWindow.Show();
             window.Close();
-        }
-
-        private void refreshJR()
-        {
-            this.JR = new JR();
-            EUTs.Clear();
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
@@ -167,14 +162,20 @@ namespace TestingPlanner.Viewmodels
             EUTs.Add(new EUT());
         }
 
-        // This function will delete the user selected EUT using the _selectedEut variable 
-        // as stated in the previous function 
+        // Clear all data in JR
+        private void refreshJR()
+        {
+            this.JR = new JR();
+            EUTs.Clear();
+        }
+
+        // deletes selected EUT via _selectedEut variable
         public void removeSelectedEUT()
         {
             EUTs.Remove(SelectedEUT); 
         }
 
-        // Temporary function to demo datatemplate
+        // Temporary function to demo loading EUT datatemplate
         public void addMockEUT()
         {
             EUTs.Add(new EUT
@@ -186,7 +187,6 @@ namespace TestingPlanner.Viewmodels
                 EMC = true,
                 REL = true
             });
-
         }
     }
 }
