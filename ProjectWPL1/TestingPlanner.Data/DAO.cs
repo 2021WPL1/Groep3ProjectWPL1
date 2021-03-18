@@ -129,6 +129,17 @@ namespace TestingPlanner.Data
             // return context.RqRequests.ToList();
         }
 
+        public List<RqJobNature> GetAllJobNatures()
+        {
+            return context.RqJobNatures.ToList();
+        }
+
+        public List<RqBarcoDivision> GetAllDivisions()
+        {
+            return context.RqBarcoDivisions.ToList();
+        }
+
+
         public JR GetJRWithId(int idrequest)
         {
             // ToDo: EUT's (via RqRequestDetail)

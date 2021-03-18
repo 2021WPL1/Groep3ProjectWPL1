@@ -30,7 +30,7 @@ namespace TestingPlanner
         // JR Constructor
         public JR()
         {
-          
+            this.requestDate = DateTime.Now.Date;
         }
 
         // Getters and setters for the variables

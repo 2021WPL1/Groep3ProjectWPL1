@@ -25,6 +25,9 @@ namespace TestingPlanner.Viewmodels
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
         public ObservableCollection<EUT> EUTs { get; set; }
 
+        // Lists used in GUI
+        public ObservableCollection<string> JobNatures { get; set; }
+        public ObservableCollection<string> Divisions { get; set; }
 
         // Command declaration
         public RelayCommand<Window> addJobRequestCommand { get; set; }
@@ -66,6 +69,8 @@ namespace TestingPlanner.Viewmodels
 
             // Collection initialization
             EUTs = new ObservableCollection<EUT>();
+            JobNatures = new ObservableCollection<string>();
+            Divisions = new ObservableCollection<string>();
 
             // ICommand initialization
             cancelCommand = new RelayCommand<Window>(ChangeWindows);
@@ -93,6 +98,24 @@ namespace TestingPlanner.Viewmodels
             {
                 _selectedEUT = value;
                 OnpropertyChanged();
+            }
+        }
+
+        public void Load()
+        {
+            var jobNatures = _dao.GetAllJobNatures();
+            var divisions = _dao.GetAllDivisions();
+            JobNatures.Clear();
+            Divisions.Clear();
+
+            foreach (var jobNature in jobNatures)
+            {
+                JobNatures.Add(jobNature.Nature);
+            }
+
+            foreach (var division in divisions)
+            {
+                Divisions.Add(division.Afkorting);
             }
         }
 

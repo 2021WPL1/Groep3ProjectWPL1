@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         mc:Ignorable="d"
-        Title="RequestForm" Height="690" Width="890" Loaded="Window_Loaded"
+        Title="RequestForm" Height="690" Width="890"
         ResizeMode="NoResize"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
@@ -44,14 +44,14 @@
                 <Label Content="Requester initials:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Row="1" Content="Division:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
-                <ComboBox SelectedValue="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="cmbDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="120"/>
+                <ComboBox ItemsSource="{Binding Divisions}"  SelectedValue="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="cmbDivision" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="120"/>
                 <Label Grid.Row="2" Content="Job nature:" Height="25" Grid.ColumnSpan="2" Margin="0,0,153,0"/>
                 <Label Grid.Row="3" Content="Expected end date:" Height="25"/>
                 <DatePicker SelectedDate ="{Binding JR.ExpEnddate, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="dpEndDate" Grid.Column="1" Grid.Row="3" IsTodayHighlighted="True" />
                 <Label Grid.Row="5" Content="Link to testplan (optional):" Height="25"/>
                 <!-- temporarily readonly -->
                 <TextBox Text="{Binding JR.Link,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="txtLinkTestPlan" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightGray" Width="120" IsReadOnly="True"/>
-                <ComboBox SelectedValue="{Binding JR.JobNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="cmbJobNature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
+                <ComboBox ItemsSource="{Binding JobNatures}" SelectedValue="{Binding JR.JobNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="cmbJobNature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="25" Width="120"/>
                 <Label Grid.Column="3" Content="Projectnr. (SAP/Hydra):" Height="25" />
                 <TextBox Text="{Binding JR.HydraProjectnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="Orange" Width="120"/>
                 <Label Grid.Column="3" Grid.Row="1" Content="Eut projectname (nickname):" Height="25" VerticalAlignment="Top"/>
@@ -59,7 +59,7 @@
                 <CheckBox IsChecked="{Binding JR.Battery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" Grid.Row="2" Content="Batteries inside" VerticalAlignment="Center"/>
                 <!--This item will be filled in automatically-->
                 <Label Grid.Column="3" Grid.Row="4" Content="Request date:"/>
-                <TextBox x:Name="txtRequestDate" IsEnabled="False" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
+                <TextBox Text="{Binding JR.RequestDate, StringFormat=dd/MM/yyyy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
                 <!--This item will be filled in automatically-->
                 <Label Grid.Column="3" Grid.Row="5" Content="JR Number:"/>
                 <TextBox x:Name="txtJrNr" IsEnabled="False" Grid.Column="4" Grid.Row="5" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Background="LightBlue" Width="120"/>
@@ -71,7 +71,7 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <ListBox x:Name="ListEUT" Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding EUTs}" SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
+                <ListBox Height="150" ItemTemplate="{DynamicResource EUT}" ItemsSource="{Binding EUTs}" SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
                 <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" Command="{Binding Path=addEUTCommand}" Margin="10"/>
                     <Button Content="Remove Part" Command="{Binding Path=removeEUTCommand}" Margin="10"/>
