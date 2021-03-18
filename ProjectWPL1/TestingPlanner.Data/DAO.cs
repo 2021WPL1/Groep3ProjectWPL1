@@ -9,84 +9,91 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Data
 {
+    // SINGLETON PATTERN
+    // Private constructor, static instance
+    // Ensures only one DBconnection is opened at a time
+    // Ensures connection is closed when not in use
     public class DAO
     {
         // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
 
-        // This functions calls an DAO instance
+        // Calls an DAO instance
         public static DAO Instance()
         {
             return instance;
         }
 
-        // DAO Constructor 
+        // DAO Constructor - PRIVATE
         // Calls an instance from the Barco2021Context and stores this context in the current context
         private DAO()
         {
             this.context = new Barco2021Context();
         }
 
-        // This function creates a Job Request with the following data,
-        // the data is beign retrieved from the requester using the GUI
-        public string AddJobRequest(JR Jr)
-        {
-            string message = null;
 
+        // LISTS
+
+        // Returns list of all JRs
+        public List<RqRequest> GetAllJobRequests()
+        {
+            return context.RqRequests.Include(r => r.IdRequest).ToList();
+        }
+
+        // Returns list of all jobNatures
+        public List<RqJobNature> GetAllJobNatures()
+        {
+            return context.RqJobNatures.ToList();
+        }
+
+        // Returns list of all BarcoDivisions
+        public List<RqBarcoDivision> GetAllDivisions()
+        {
+            return context.RqBarcoDivisions.ToList();
+        }
+
+
+        // JR CHANGES
+
+        // INCOMPLETE
+        // Creates and saves RqRequest based on JR
+        // TODO: save data stored in other tables
+        public void AddJobRequest(JR Jr)
+        {
+            // Copy data from JR to new RqRequest
+            // Used ternary operator to use String.Empty when null
             RqRequest rqrequest = new RqRequest()
             {
-                // JrNumber = "test", // temporary name (hardcoded)
-                JrStatus = Jr.JrStatus,
-                RequestDate = DateTime.Now.Date,
-                Requester = Jr.Requester,
-                BarcoDivision = Jr.BarcoDivision,
+                JrStatus = Jr.JrStatus == null ? string.Empty : Jr.JrStatus,
+                RequestDate = Jr.ExpEnddate, // Nullable
+                Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
+                BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
-                HydraProjectNr = Jr.HydraProjectnumber,
-                ExpectedEnddate = Jr.ExpEnddate,
-                InternRequest = Jr.InternRequest,
+                HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
+                ExpectedEnddate = Jr.ExpEnddate == null? DateTime.Now: Jr.ExpEnddate,
+                InternRequest = Jr.InternRequest, // Bool, default false
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
                 NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
-                Battery = Jr.Battery,
+                Battery = Jr.Battery // Bool, default false
+            };
 
-                //Created but not yet loaded when JR gets returned
-                RqOptionel = new List<RqOptionel> { new RqOptionel
-                {
-
-                    Link = Jr.Link,
-
-                    // The value of Remarks does not get pushed to the Barco2021 Database
-                    Remarks = Jr.Remarks
-                } },
-                RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
-                    {
-                        Pvgresp = Jr.PvgResp,
-                       
-                        
-                        Eut = new List<Eut>{new Eut
-                        {
-                            AvailableDate= Jr.ExpEnddate
-                        }},
-                            TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "a")   
-                            //TestdivisieNavigation = new RqTestDevision { Afkorting = "a"} // Vervangen indien z nog niet bestaat
-                        }
-                    }
-                };
-
-                context.RqRequests.Add(rqrequest);
-                SaveChanges();
-            
-       
-
-            return message;
+            context.RqRequests.Add(rqrequest);
+            SaveChanges();
         }
 
-        public string UpdateJobRequest(JR Jr) // INCOMPLETE
+        // INCOMPLETE
+        // Finds RqRequest by ID, updates based on JR, and saves changes
+        // Sends error message
+        // TODO: update data stored in other tables
+        public string UpdateJobRequest(JR Jr)
         {
-            string message = null;
+            string message = null; // message is null on success
 
+            // Error control
+            // JR Number not empty?
             if (Jr.JrNumber != null)
             {
                 RqRequest rqrequest = context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
@@ -117,29 +124,13 @@ namespace TestingPlanner.Data
             return message;
         }
 
-        // This function returns all the job request and stores them in a list
-        public List<RqRequest> GetAllJobRequests()
-        {
-            return context.RqRequests.Include(r => r.IdRequest).ToList();
-            // return context.RqRequests.ToList();
-        }
-
-        public List<RqJobNature> GetAllJobNatures()
-        {
-            return context.RqJobNatures.ToList();
-        }
-
-        public List<RqBarcoDivision> GetAllDivisions()
-        {
-            return context.RqBarcoDivisions.ToList();
-        }
-
-
+        // INCOMPLETE
+        // Gets existing JR by ID
+        // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
+        // TODO: link EUT's (via RqRequestDetail)
+        // TODO: link RqOptionel
         public JR GetJRWithId(int idrequest)
-        {
-            // ToDo: EUT's (via RqRequestDetail)
-            // ToDo: RqOptionel
-           
+        {           
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
 
@@ -163,20 +154,12 @@ namespace TestingPlanner.Data
             };
            
             return selectedJR;
-      
-
         }
 
-        //private string getPvgResp()
-        //{
-        //    var division = context.RqBarcoDivisionPersons
-        //                   .Include(d => d.AfkPerson).Where(d => d.Pvggroup == PvgGroup)
-        //                   .FirstOrDefault(d => d.AfkDevision == );
-        //    return division.AfkPerson;
-        //}
 
+        // SAVING
 
-        // This function stores all the data from the GUI in the Barco2021 database
+        // Stores all data from GUI in DB
         public void SaveChanges()
         {
             context.SaveChanges();

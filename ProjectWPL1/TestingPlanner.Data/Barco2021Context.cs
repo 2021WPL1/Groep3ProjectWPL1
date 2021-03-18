@@ -5,8 +5,7 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Data
 {
-    // this class is automatically generated from scaffold dbcontext and uses the singelton pattern
-
+    // Automatically generated from scaffold dbcontext
     public partial class Barco2021Context : DbContext
     {
         public Barco2021Context()
