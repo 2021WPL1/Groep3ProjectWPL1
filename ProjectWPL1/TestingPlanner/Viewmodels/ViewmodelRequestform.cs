@@ -32,6 +32,7 @@ namespace TestingPlanner.Viewmodels
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
         public ICommand refreshJRCommand { get; set; }
+        public ICommand addMockEUTCommand { get; set; }
 
         public ObservableCollection<RqRequest> jrs { get; set; }
 
@@ -46,18 +47,6 @@ namespace TestingPlanner.Viewmodels
 
             // addJRCommand calls function to insert new JR
             addJobRequestCommand = new RelayCommand<Window>(InsertJr);
-
-            // Testing
-            EUTs.Add(new EUT
-            {
-                PartNr = "TEST",
-                AvailabilityDate = new DateTime(2021, 03, 12),
-                NetWeight = 1.8,
-                GrossWeight = 2.3,
-                EMC = true,
-                REL = true
-            });
-            // Testing
         }
 
         // Constructor for existing JR
@@ -83,6 +72,7 @@ namespace TestingPlanner.Viewmodels
             refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
+            addMockEUTCommand = new DelegateCommand(addMockEUT);
         }
 
         // Getters/Setters
@@ -145,6 +135,21 @@ namespace TestingPlanner.Viewmodels
         public void removeSelectedEUT()
         {
             EUTs.Remove(SelectedEUT); 
+        }
+
+        // Temporary function to demo datatemplate
+        public void addMockEUT()
+        {
+            EUTs.Add(new EUT
+            {
+                PartNr = "TEST",
+                AvailabilityDate = new DateTime(2021, 03, 12),
+                NetWeight = 1.8,
+                GrossWeight = 2.3,
+                EMC = true,
+                REL = true
+            });
+
         }
     }
 }

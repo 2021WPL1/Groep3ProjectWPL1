@@ -72,6 +72,7 @@
                 <StackPanel Orientation="Horizontal" >
                     <Button Content="Add Part" Command="{Binding Path=addEUTCommand}" Margin="10"/>
                     <Button Content="Remove Part" Command="{Binding Path=removeEUTCommand}" Margin="10"/>
+                    <Button Content="Add Mock EUT" Command="{Binding Path=addMockEUTCommand}" Margin="10" HorizontalAlignment="Right"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
