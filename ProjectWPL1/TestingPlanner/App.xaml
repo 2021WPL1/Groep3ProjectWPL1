@@ -27,7 +27,8 @@
                     <TextBlock Grid.Column="1" Text="Partnumber:" Margin="5"/>
                     <TextBox Grid.Column="2" Text="{Binding PartNr}" Margin="5"/>
                     <TextBlock Grid.Column="3" Text="Foreseen availability date:" Margin="5"/>
-                    <DatePicker Grid.Column="4" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>
+                    <!--<DatePicker Grid.Column="4" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>-->
+                    <DatePicker x:Name="dpAvailabilityDate" Grid.Column="4" IsTodayHighlighted="True" Margin="5" />
                     <TextBlock Grid.Column="5" Text="Net Weight (kg):" Margin="5"/>
                     <TextBox Grid.Column="6" Text="{Binding NetWeight}" Margin="5"/>
                     <TextBlock Grid.Column="5" Grid.Row="1" Text="Gross Weight (kg)" Margin="5"/>

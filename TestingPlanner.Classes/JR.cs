@@ -23,7 +23,7 @@ namespace TestingPlanner
         private string remarks;
         private string barcoDivision;
         private string jobNature;
-        private DateTime expEnddate;
+        private DateTime? expEnddate;
         private string pvgResp;
         private DateTime? requestDate;
 
@@ -49,7 +49,7 @@ namespace TestingPlanner
         public string Remarks { get => remarks; set => remarks = value; }
         public string BarcoDivision { get => barcoDivision; set => barcoDivision = value; }
         public string JobNature { get => jobNature; set => jobNature = value; }
-        public DateTime ExpEnddate { get => expEnddate; set => expEnddate = value; }
+        public DateTime? ExpEnddate { get => expEnddate; set => expEnddate = value; }
         public string PvgResp { get => pvgResp; set => pvgResp = value; }
         public DateTime? RequestDate { get => requestDate; set => requestDate = value; }
     }

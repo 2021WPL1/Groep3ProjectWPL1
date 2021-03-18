@@ -21,7 +21,7 @@ namespace TestingPlanner.Domain.Models
         public string EutProjectname { get; set; }
         public string EutPartnumbers { get; set; }
         public string HydraProjectNr { get; set; }
-        public DateTime ExpectedEnddate { get; set; }
+        public DateTime? ExpectedEnddate { get; set; }
         public bool? InternRequest { get; set; }
         public string GrossWeight { get; set; }
         public string NetWeight { get; set; }
