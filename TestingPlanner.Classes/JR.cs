@@ -50,6 +50,20 @@ namespace TestingPlanner
         public string BarcoDivision { get => barcoDivision; set => barcoDivision = value; }
         public string JobNature { get => jobNature; set => jobNature = value; }
         public DateTime? ExpEnddate { get => expEnddate; set => expEnddate = value; }
+        
+        //Catch DateTime exception (date older than today)
+        /*public DateTime? ExpEnddate
+        {
+            get { return expEnddate; }
+            set
+            {
+                expEnddate = value;
+                if(ExpEnddate < requestDate)
+                {
+                    Messagebox.Show("You are not allowed to select older day than today!");
+                }
+            }
+        }*/
         public string PvgResp { get => pvgResp; set => pvgResp = value; }
         public DateTime? RequestDate { get => requestDate; set => requestDate = value; }
     }
