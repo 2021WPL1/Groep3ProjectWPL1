@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="RequestForm" Height="720" Width="980" 
+        Title="Barco Planning Tool" Height="720" Width="980" 
         mc:Ignorable="d"
         Background="#363636"
-        WindowStyle="None" >
+        WindowStartupLocation="CenterScreen">
     <!--<Window.Resources>
          Selects LBItem when child of LB is selected, maybe move to app.xaml 
          In commentary to check bug 
@@ -80,9 +80,9 @@
                 </StackPanel>
             </GroupBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button  Content="Confirm" Command="{Binding Path=addJobRequestCommand}" CommandParameter="{Binding ElementName=Request}" Width="100" Height="40" Margin="5"/>
-                <Button  Content="Empty fields" Command="{Binding Path=refreshJRCommand}" Width="100" Height="40" Margin="5"/>
-                <Button  Content="Cancel" Command="{Binding Path=cancelCommand}" CommandParameter="{Binding ElementName=Request}" Width="100" Height="40" Margin="5"/>
+                <Button  Content="Confirm" Command="{Binding Path=addJobRequestCommand}" CommandParameter="{Binding ElementName=Request}" Height="40" Margin="5"/>
+                <Button  Content="Empty fields" Command="{Binding Path=refreshJRCommand}" Height="40" Margin="5"/>
+                <Button  Content="Cancel" Command="{Binding Path=cancelCommand}" CommandParameter="{Binding ElementName=Request}" Height="40" Margin="5"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

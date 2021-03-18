@@ -65,13 +65,13 @@ namespace TestingPlanner.Data
                         Pvgresp = Jr.PvgResp,
                        
                         
-                    Eut = new List<Eut>{new Eut
-                    {
-                        AvailableDate= Jr.ExpEnddate
-                    }},
-                        TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "a")   
-                        //TestdivisieNavigation = new RqTestDevision { Afkorting = "a"} // Vervangen indien z nog niet bestaat
-                    }
+                        Eut = new List<Eut>{new Eut
+                        {
+                            AvailableDate= Jr.ExpEnddate
+                        }},
+                            TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "a")   
+                            //TestdivisieNavigation = new RqTestDevision { Afkorting = "a"} // Vervangen indien z nog niet bestaat
+                        }
                     }
                 };
 
