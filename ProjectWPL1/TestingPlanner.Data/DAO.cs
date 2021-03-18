@@ -81,7 +81,6 @@ namespace TestingPlanner.Data
             rqrequest.BarcoDivision = Jr.BarcoDivision;
             rqrequest.JobNature = Jr.JobNature;
             rqrequest.EutProjectname = Jr.EutProjectname;
-            rqrequest.EutPartnumbers = Jr.EutPartnr;
             rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
             rqrequest.ExpectedEnddate = Jr.ExpEnddate;
             rqrequest.InternRequest = Jr.InternRequest;
