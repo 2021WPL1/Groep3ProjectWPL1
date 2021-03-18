@@ -55,7 +55,7 @@ namespace TestingPlanner.Data
                 RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
                 {
                     Pvgresp = Jr.PvgResp,
-                   // Testdivisie = "EMC",
+                    Testdivisie = "EMC",
                 Eut = new List<Eut>{new Eut
                 {
                     AvailableDate= Jr.ExpEnddate
