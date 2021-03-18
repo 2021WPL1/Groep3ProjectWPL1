@@ -31,7 +31,7 @@ namespace TestingPlanner.Viewmodels
         public RelayCommand<Window> cancelCommand { get; set; }
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
-        // We create an ICommand variable addJobRequestCommand
+        public ICommand refreshJRCommand { get; set; }
 
         public ObservableCollection<RqRequest> jrs { get; set; }
 
@@ -42,7 +42,7 @@ namespace TestingPlanner.Viewmodels
         public ViewmodelRequestForm(DAO dao)
         {
             init(dao);
-            this._jr = new JR();
+            refreshJR();
 
             // addJRCommand calls function to insert new JR
             addJobRequestCommand = new RelayCommand<Window>(InsertJr);
@@ -80,6 +80,7 @@ namespace TestingPlanner.Viewmodels
 
             // ICommand initialization
             cancelCommand = new RelayCommand<Window>(ChangeWindows);
+            refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
         }
@@ -95,7 +96,17 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
-        // ICommand functions
+        public EUT SelectedEUT
+        {
+            get { return _selectedEUT; }
+            set
+            {
+                _selectedEUT = value;
+                OnpropertyChanged();
+            }
+        }
+
+        // Command functions
         // This function adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
@@ -118,22 +129,15 @@ namespace TestingPlanner.Viewmodels
             window.Close();
         }
 
+        private void refreshJR()
+        {
+            this.JR = new JR();
+        }
+
         // This function adds an new EUT instance into the GUI RequestForm
         public void addEUT()
         {
             EUTs.Add(new EUT());
-        }
-
-        // This function is responsible to select the user selected eut in the GUI and stores this in the variable _selectedEUT
-        // We will need this variable in the removeSelectedEUT function 
-        public EUT SelectedEUT
-        {
-            get { return _selectedEUT; }
-            set
-            {
-                _selectedEUT = value;
-                OnpropertyChanged();
-            }
         }
 
         // This function will delete the user selected EUT using the _selectedEut variable 
