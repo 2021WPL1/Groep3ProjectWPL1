@@ -17,7 +17,6 @@ namespace TestingPlanner.Viewmodels
     {
         // Jobrequest data container
         private JR _jr;
-        
 
         // Variable _selectedEUT to store the user selected EUT
         private EUT _selectedEUT;
@@ -26,6 +25,9 @@ namespace TestingPlanner.Viewmodels
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
         public ObservableCollection<EUT> EUTs { get; set; }
 
+        // Lists used in GUI
+        public ObservableCollection<string> JobNatures { get; set; }
+        public ObservableCollection<string> Divisions { get; set; }
 
         // Command declaration
         public RelayCommand<Window> addJobRequestCommand { get; set; }
@@ -33,6 +35,7 @@ namespace TestingPlanner.Viewmodels
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
         public ICommand refreshJRCommand { get; set; }
+        public ICommand addMockEUTCommand { get; set; }
 
         public ObservableCollection<RqRequest> jrs { get; set; }
 
@@ -47,18 +50,6 @@ namespace TestingPlanner.Viewmodels
 
             // addJRCommand calls function to insert new JR
             addJobRequestCommand = new RelayCommand<Window>(InsertJr);
-
-            // Testing
-            EUTs.Add(new EUT
-            {
-                /*PartNr = "TEST",
-                AvailabilityDate = new DateTime(2021, 03, 12),
-                NetWeight = 1.8,
-                GrossWeight = 2.3,
-                EMC = true,
-                REL = true*/
-            });
-            // Testing
         }
 
         // Constructor for existing JR
@@ -78,12 +69,15 @@ namespace TestingPlanner.Viewmodels
 
             // Collection initialization
             EUTs = new ObservableCollection<EUT>();
+            JobNatures = new ObservableCollection<string>();
+            Divisions = new ObservableCollection<string>();
 
             // ICommand initialization
             cancelCommand = new RelayCommand<Window>(ChangeWindows);
             refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
+            addMockEUTCommand = new DelegateCommand(addMockEUT);
         }
 
         // Getters/Setters
@@ -93,7 +87,6 @@ namespace TestingPlanner.Viewmodels
             set
             {
                 _jr = value;
-                
                 OnpropertyChanged();
             }
         }
@@ -108,6 +101,24 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        public void Load()
+        {
+            var jobNatures = _dao.GetAllJobNatures();
+            var divisions = _dao.GetAllDivisions();
+            JobNatures.Clear();
+            Divisions.Clear();
+
+            foreach (var jobNature in jobNatures)
+            {
+                JobNatures.Add(jobNature.Nature);
+            }
+
+            foreach (var division in divisions)
+            {
+                Divisions.Add(division.Afkorting);
+            }
+        }
+
         // Command functions
         // This function adds and stores a job request and switches windows
         public void InsertJr(Window window)
@@ -115,10 +126,8 @@ namespace TestingPlanner.Viewmodels
             string message = "The required fields are empty, please fill in all required fields";
            try
            {
-
-           
-            _dao.AddJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window); 
+                _dao.AddJobRequest(JR); // SaveChanges included in function
+                ChangeWindows(window); 
             }
             catch (Exception ex)
             {
@@ -130,8 +139,17 @@ namespace TestingPlanner.Viewmodels
         // This function updates an existing job request and switches windows
         public void UpdateJr(Window window)
         {
-            _dao.UpdateJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window);
+            string error = _dao.UpdateJobRequest(JR); // SaveChanges included in function
+
+            if (error == null)
+            {
+                ChangeWindows(window);
+            }
+            else
+            {
+                MessageBox.Show(error);
+            }
+            
         }
 
         // This function adds a job request and stores this job request in the _dao instance
@@ -145,6 +163,7 @@ namespace TestingPlanner.Viewmodels
         private void refreshJR()
         {
             this.JR = new JR();
+            EUTs.Clear();
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
@@ -158,6 +177,21 @@ namespace TestingPlanner.Viewmodels
         public void removeSelectedEUT()
         {
             EUTs.Remove(SelectedEUT); 
+        }
+
+        // Temporary function to demo datatemplate
+        public void addMockEUT()
+        {
+            EUTs.Add(new EUT
+            {
+                PartNr = "TEST",
+                AvailabilityDate = new DateTime(2021, 03, 12),
+                NetWeight = 1.8,
+                GrossWeight = 2.3,
+                EMC = true,
+                REL = true
+            });
+
         }
     }
 }

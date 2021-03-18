@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="Temp" Height="450" Width="600" Background="#363636" Foreground="White"
         ResizeMode="NoResize"
-        WindowState="Maximized"
-        WindowStyle="SingleBorderWindow"
+        WindowState="Normal"
+        WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Margin="10">

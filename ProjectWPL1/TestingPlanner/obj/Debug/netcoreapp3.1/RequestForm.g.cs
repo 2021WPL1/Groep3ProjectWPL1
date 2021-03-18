@@ -156,12 +156,6 @@ namespace TestingPlanner {
             {
             case 1:
             this.Request = ((TestingPlanner.RequestForm)(target));
-            
-            #line 9 "..\..\..\RequestForm.xaml"
-            this.Request.Loaded += new System.Windows.RoutedEventHandler(this.Window_Loaded);
-            
-            #line default
-            #line hidden
             return;
             case 2:
             this.cmbDivision = ((System.Windows.Controls.ComboBox)(target));
@@ -176,19 +170,13 @@ namespace TestingPlanner {
             this.cmbJobNature = ((System.Windows.Controls.ComboBox)(target));
             return;
             case 6:
-            this.txtRequestDate = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 7:
             this.txtJrNr = ((System.Windows.Controls.TextBox)(target));
             return;
-            case 8:
+            case 7:
             this.cbInternal = ((System.Windows.Controls.CheckBox)(target));
             return;
-            case 9:
+            case 8:
             this.txtSpecialRemarks = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 10:
-            this.ListEUT = ((System.Windows.Controls.ListBox)(target));
             return;
             }
             this._contentLoaded = true;

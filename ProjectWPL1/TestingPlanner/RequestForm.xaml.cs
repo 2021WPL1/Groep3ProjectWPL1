@@ -44,42 +44,7 @@ namespace TestingPlanner
             dao = DAO.Instance();
             viewModel = new ViewmodelRequestForm(DAO.Instance(), idRequest);
             DataContext = viewModel;
-        }
-
-        // The following functions are beign executed when the Request Form GUI is loaded
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            AddAllJobNaturesToCombobox();
-            AddAllDivionsToCombobox();
-            FillInRequestDate();
-        }
-
-        // This function retrieves the information of the job natures from the Barco2021 database and returns these
-        // values in the correct combobox in the Request Form GUI
-        private void AddAllJobNaturesToCombobox()
-        {
-            var jobNatures = context.RqJobNatures.ToList();
-            foreach (RqJobNature jobNature in jobNatures)
-            {
-                cmbJobNature.Items.Add(jobNature.Nature);
-            }
-        }
-
-        // This function retrieves the information of the divisions from the Barco2021 database and returns these values 
-        // into the correct combobox in the Request Form GUI
-        private void AddAllDivionsToCombobox()
-        {
-            var divisions = context.RqBarcoDivisions.ToList();
-            foreach (RqBarcoDivision division in divisions)
-            {
-                cmbDivision.Items.Add(division.Afkorting);
-            }
-        }
-
-        // This function automatically fills in the request date to the current day of the job request 
-        private void FillInRequestDate()
-        {
-            txtRequestDate.Text = DateTime.Now.Date.ToShortDateString();
+            viewModel.Load();
         }
     }
 }
