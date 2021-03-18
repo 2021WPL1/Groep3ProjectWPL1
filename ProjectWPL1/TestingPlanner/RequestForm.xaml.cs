@@ -35,6 +35,7 @@ namespace TestingPlanner
             dao = DAO.Instance();
             viewModel = new ViewmodelRequestForm(DAO.Instance());
             DataContext = viewModel;
+            viewModel.Load();
         }
 
         // Constructor existing
@@ -45,6 +46,7 @@ namespace TestingPlanner
             viewModel = new ViewmodelRequestForm(DAO.Instance(), idRequest);
             DataContext = viewModel;
             viewModel.Load();
+
         }
     }
 }

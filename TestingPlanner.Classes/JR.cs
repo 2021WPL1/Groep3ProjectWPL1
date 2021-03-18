@@ -50,7 +50,8 @@ namespace TestingPlanner
         public string BarcoDivision { get => barcoDivision; set => barcoDivision = value; }
         public string JobNature { get => jobNature; set => jobNature = value; }
         public DateTime? ExpEnddate { get => expEnddate; set => expEnddate = value; }
-        
+      
+
         //Catch DateTime exception (date older than today)
         /*public DateTime? ExpEnddate
         {

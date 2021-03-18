@@ -34,56 +34,51 @@ namespace TestingPlanner.Data
         {
             string message = null;
 
-            if (Jr.JrNumber != null)
+            RqRequest rqrequest = new RqRequest()
             {
-                RqRequest rqrequest = new RqRequest()
-                {
-                    JrNumber = "test", // temporary name (hardcoded)
-                    JrStatus = Jr.JrStatus,
-                    RequestDate = DateTime.Now.Date,
-                    Requester = Jr.Requester,
-                    BarcoDivision = Jr.BarcoDivision,
-                    JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
-                    EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-                    EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
-                    HydraProjectNr = Jr.HydraProjectnumber,
-                    ExpectedEnddate = Jr.ExpEnddate,
-                    InternRequest = Jr.InternRequest,
-                    GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
-                    NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
-                    Battery = Jr.Battery,
-               
-                    //Created but not yet loaded when JR gets returned
-                    RqOptionel = new List<RqOptionel> { new RqOptionel
-                    {
-                   
-                        Link = Jr.Link,
+                // JrNumber = "test", // temporary name (hardcoded)
+                JrStatus = Jr.JrStatus,
+                RequestDate = DateTime.Now.Date,
+                Requester = Jr.Requester,
+                BarcoDivision = Jr.BarcoDivision,
+                JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
+                EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
+                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
+                HydraProjectNr = Jr.HydraProjectnumber,
+                ExpectedEnddate = Jr.ExpEnddate,
+                InternRequest = Jr.InternRequest,
+                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
+                Battery = Jr.Battery,
 
-                        // The value of Remarks does not get pushed to the Barco2021 Database
-                        Remarks = Jr.Remarks
-                    } },
-                    RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
+                //Created but not yet loaded when JR gets returned
+                RqOptionel = new List<RqOptionel> { new RqOptionel
+                {
+
+                    Link = Jr.Link,
+
+                    // The value of Remarks does not get pushed to the Barco2021 Database
+                    Remarks = Jr.Remarks
+                } },
+                RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
                     {
                         Pvgresp = Jr.PvgResp,
-                        Testdivisie = "EMC",
+                       
+                        
                     Eut = new List<Eut>{new Eut
                     {
                         AvailableDate= Jr.ExpEnddate
                     }},
-                        TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "z")
-                        // TestdivisieNavigation = new RqTestDevision { Afkorting = "z"}} // Vervangen indien z nog niet bestaat
+                        TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "a")   
+                        //TestdivisieNavigation = new RqTestDevision { Afkorting = "a"} // Vervangen indien z nog niet bestaat
                     }
                     }
                 };
 
                 context.RqRequests.Add(rqrequest);
                 SaveChanges();
-            }
-            else
-            {
-                message = "Error - empty job request\n" +
-                    "Please fill in all necessary fields";
-            }
+            
+       
 
             return message;
         }
