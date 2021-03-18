@@ -42,7 +42,7 @@ namespace TestingPlanner.Data
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber,
-                ExpectedEnddate = DateTime.Now.Date,
+                ExpectedEnddate = Jr.ExpEnddate,
                 InternRequest = Jr.InternRequest,
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
                 NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
@@ -58,7 +58,7 @@ namespace TestingPlanner.Data
                    // Testdivisie = "EMC",
                 Eut = new List<Eut>{new Eut
                 {
-                    AvailableDate= DateTime.Now.Date
+                    AvailableDate= Jr.ExpEnddate
                 }},
                     TestdivisieNavigation  = context.RqTestDevisions.FirstOrDefault(r => r.Afkorting == "z")
                     // TestdivisieNavigation = new RqTestDevision { Afkorting = "z"}} // Vervangen indien z nog niet bestaat
