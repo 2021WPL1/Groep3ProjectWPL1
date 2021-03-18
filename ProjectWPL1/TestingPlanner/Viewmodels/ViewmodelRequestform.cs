@@ -100,8 +100,19 @@ namespace TestingPlanner.Viewmodels
         // This function adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
+            string message = "The required fields are empty, please fill in all required fields";
+           try
+           {
+
+           
             _dao.AddJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window);
+            ChangeWindows(window); 
+            }
+            catch (Exception ex)
+            {
+
+               MessageBox.Show(message);
+            }
         }
 
         // This function updates an existing job request and switches windows

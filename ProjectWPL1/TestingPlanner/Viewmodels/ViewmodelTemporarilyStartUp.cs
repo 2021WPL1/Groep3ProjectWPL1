@@ -57,9 +57,15 @@ namespace TestingPlanner.Viewmodels
 
         public void OpenExistingJr(Window window)
         {
+           
+
             RequestForm requestformWindow = new RequestForm(SelectedJR);
+
             requestformWindow.Show();
-            window.Close();
+
+
+            window.Close(); 
+           
         }
 
         public void Load()
@@ -71,6 +77,10 @@ namespace TestingPlanner.Viewmodels
             {
                 idRequestsOnly.Add(requestId.IdRequest);
             }
+
+            // This code ensures that we select the first job request by default 
+            // This ensures that we cannot select an not existing job request
+            this.SelectedJR = idRequestsOnly[0];
         }
     }
 }

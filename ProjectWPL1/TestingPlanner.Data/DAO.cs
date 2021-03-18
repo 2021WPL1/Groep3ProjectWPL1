@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Windows;
 using TestingPlanner.Domain.Models;
 
 
@@ -47,9 +48,14 @@ namespace TestingPlanner.Data
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
                 NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 Battery = Jr.Battery,
+               
+                //Created but not yet loaded when JR gets returned
                 RqOptionel = new List<RqOptionel> { new RqOptionel
                 {
+                   
                     Link = Jr.Link,
+
+                    // The value of Remarks does not get pushed to the Barco2021 Database
                     Remarks = Jr.Remarks
                 } },
                 RqRequestDetail = new List<RqRequestDetail> {new RqRequestDetail
@@ -103,7 +109,7 @@ namespace TestingPlanner.Data
         {
             // ToDo: EUT's (via RqRequestDetail)
             // ToDo: RqOptionel
-
+           
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
 
@@ -125,8 +131,10 @@ namespace TestingPlanner.Data
                 NetWeight = selectedRQ.NetWeight,
                 Battery = selectedRQ.Battery
             };
-
+           
             return selectedJR;
+      
+
         }
 
         //private string getPvgResp()
