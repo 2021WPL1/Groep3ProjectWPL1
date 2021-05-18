@@ -2,10 +2,6 @@
 repo for WPL1 - group 3
 
 ### Planning
-Add an X between the brackets to check off the item.
-
-#### Bugfixes
-- [ ] Check MVVM framework - correct one?
 
 #### Week 1
 > voorzien dat via registry er keys en values voor naam, afdeling en functie kunnen opgehaald worden bij opstarten van opstellen van Request. Dit kan misschien ook voorzien worden voor controle van request en inplannen van request (dus 3 reeksen keys)
