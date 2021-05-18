@@ -28,7 +28,7 @@ Add an X between the brackets to check off the item.
 > Optioneel: overzicht van termijn van inplannen van aangevraagde tests (5 dagen overzicht van voorbije maand)
 
 
-- [ ] Autofill request with registry data (name, division,....
+- [ ] Autofill request with registry data (name, division,...)
 - [ ] Send daily mail, at a fixed time, with a list of all requests (if any)
 - [ ] Approval: open request (by planner)
 - [ ] Approval: adapt request (add testers)
@@ -44,19 +44,23 @@ Add an X between the brackets to check off the item.
 
 
 ### GitHub Use Conventions
+
+> Ieder student plaatst in de code (///) zijn naam bij de methode(s) die hij/zij heeft ontwikkeld.
+
 Code and comments will be written in english: [coding conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
 
 New branches start from *shadowTesting*. Branches are named after the functionaility you're trying to implement.
 
 Merging your branch with *shadowTesting*:
-1. Commit your branch
-2. If necessary, stash changes
-3. Pull *shadowTesting*
-4. If necessary, stash changes
-5. Merge *shadowTesting* into your current branch
-6. Resolve conflicts
-7. Commit
-8. **Does your code work?**
+1. Did you add a summary? Did you add your name to your method?
+2. Commit your branch
+3. If necessary, stash changes
+4. Pull *shadowTesting*
+5. If necessary, stash changes
+6. Merge *shadowTesting* into your current branch
+7. Resolve conflicts
+8. Commit
+9. **Does your code work?**
     * YES: stash changes if necessary, then push
     * NO: fix it, go back to 1.
 
