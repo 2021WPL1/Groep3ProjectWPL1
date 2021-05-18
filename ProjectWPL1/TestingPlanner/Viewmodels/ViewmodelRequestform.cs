@@ -157,6 +157,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
+        //EUT in Database
         public void addEUT()
         {
             EUTs.Add(new EUT());
