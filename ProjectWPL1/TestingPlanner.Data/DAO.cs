@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Windows;
 using TestingPlanner.Domain.Models;
 
@@ -18,6 +20,11 @@ namespace TestingPlanner.Data
         // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
+
+        //TEMPORARILY !!!!
+        private static string YourUsername = "Groep3testprog@gmail.com";
+        private static string YourPassword = "Testtest123";
+        private static string MailTo = "Groep3testprog@gmail.com";
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -53,9 +60,7 @@ namespace TestingPlanner.Data
             return context.RqBarcoDivisions.ToList();
         }
 
-
         // JR CHANGES
-
         // INCOMPLETE
         // Creates and saves RqRequest based on JR
         // TODO: save data stored in other tables
@@ -156,9 +161,25 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
+        //Create and send Mail
+        public void SendMail()
+        {
+            using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
+            {
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(YourUsername, YourPassword);
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(YourUsername);
+                mail.To.Add(MailTo);
+                mail.Body = "Inhoud mail";
+                mail.Subject = "Titel";
+                client.Send(mail);
+            }
+        }
 
         // SAVING
-
         // Stores all data from GUI in DB
         public void SaveChanges()
         {

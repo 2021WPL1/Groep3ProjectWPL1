@@ -1454,7 +1454,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "MaterialDesignThemes": "4.0.0"
+          "MaterialDesignThemes": "4.0.0",
+          "MvvmLightLibs": "5.4.1.1"
         },
         "compile": {
           "bin/placeholder/TestingPlanner.Classes.dll": {}
@@ -1470,6 +1471,7 @@
           "EntityFramework": "6.4.4",
           "MaterialDesignThemes": "4.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
+          "MvvmLightLibs": "5.4.1.1",
           "TestingPlanner.Classes": "1.0.0",
           "TestingPlanner.Domain": "1.0.0"
         },
@@ -1486,7 +1488,8 @@
         "dependencies": {
           "EntityFramework": "6.4.4",
           "MaterialDesignThemes": "4.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
+          "MvvmLightLibs": "5.4.1.1"
         },
         "compile": {
           "bin/placeholder/TestingPlanner.Domain.dll": {}
@@ -5702,19 +5705,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kaat\\.nuget\\packages\\": {}
+    "C:\\Users\\Mel\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
       "projectName": "TestingPlanner",
-      "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
-      "packagesPath": "C:\\Users\\Kaat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
+      "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+      "packagesPath": "C:\\Users\\Mel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Kaat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5728,14 +5738,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
-              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
+            "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
             },
-            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
-              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
+            "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
             },
-            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj": {
-              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj"
+            "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj"
             }
           }
         }
@@ -5791,16 +5801,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.12, 3.1.12]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -5809,7 +5809,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   },

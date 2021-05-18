@@ -130,7 +130,10 @@ namespace TestingPlanner.Viewmodels
         public void InsertJr(Window window)
         {
             _dao.AddJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window);
+            ChangeWindows(window); 
+
+            //TEMPORARILY !!!!
+            _dao.SendMail(); 
         }
 
         // Updates existing job request and switches windows
