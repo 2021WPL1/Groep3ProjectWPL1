@@ -22,6 +22,7 @@ namespace TestingPlanner.Viewmodels
         // Jobrequest data container
         // Only one getter/setter needs to be made for all changes in GUI
         private JR _jr;
+        private EUT _eut;
 
         // EUT's
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
@@ -52,6 +53,8 @@ namespace TestingPlanner.Viewmodels
 
             // addJRCommand calls function to insert new JR
             addJobRequestCommand = new RelayCommand<Window>(InsertJr);
+
+
         }
 
         // Constructor for existing JR
@@ -94,7 +97,15 @@ namespace TestingPlanner.Viewmodels
                 OnpropertyChanged();
             }
         }
-
+        public EUT Eut
+        {
+            get { return _eut; }
+            set
+            {
+                _eut = value;
+                OnpropertyChanged();
+            }
+        }
         public EUT SelectedEUT
         {
             get { return _selectedEUT; }
@@ -129,8 +140,10 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
+            
             _dao.AddJobRequest(JR); // SaveChanges included in function
             ChangeWindows(window);
+            
         }
 
         // Updates existing job request and switches windows
@@ -160,9 +173,14 @@ namespace TestingPlanner.Viewmodels
         //EUT in Database
         public void addEUT()
         {
-            //EUTs.Add(_dao.addEUT(Eut));
+            //EUTs.Add(_dao.AddJobRequest(JR));
+            //ChangeWindows(window);
             EUTs.Add(new EUT());
-           
+
+
+            _dao.addEUTToRqRequest(_eut);
+            //_dao.AddJobRequest(JR);
+
         }
 
         // Clear all data in JR

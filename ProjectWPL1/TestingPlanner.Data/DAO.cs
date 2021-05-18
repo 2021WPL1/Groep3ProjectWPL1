@@ -81,31 +81,67 @@ namespace TestingPlanner.Data
             };
             // We create an object of the rqRequestDetail class to statically address the fields of the RqRequestDetail class in the database
             // Static values added to the Pvgresp and Testdivision fields
-            var detail = new RqRequestDetail
-            {
-                Pvgresp = "STEVEN",
-                Testdivisie = "EMC",
+            //var detail = new RqRequestDetail
+            //{
+            //    Pvgresp = "Test",
+            //};
 
-            };
+            //if (Eut.EMC)
+            //{
+            //    detail.Testdivisie = "EMC";
+            //}
 
+            //// We create an object of the Eut class to statically address the fields of the Eut class in the database
+            //// Static values added to the OmschrijvingEut and AvailabilityDate fields
+            //var eut = new Eut
+            //{
+            //    OmschrijvingEut = "Test",
+            //    AvailableDate = new DateTime(2021, 8, 26),
 
-            // We create an object of the Eut class to statically address the fields of the Eut class in the database
-            // Static values added to the OmschrijvingEut and AvailabilityDate fields
-            var eut = new Eut
-            {
-                OmschrijvingEut = "Test",
-                AvailableDate = new DateTime(2021, 8, 26),
-            };
+            //};
 
-            // We add the recent created object eut to the previous detail object
-            detail.Eut.Add(eut);
-            // We combine the detail and rqrequest objects to create one object with all the data 
-            rqrequest.RqRequestDetail.Add(detail);  
+            //// We add the recent created object eut to the previous detail object
+            //detail.Eut.Add(eut);
+            //// We combine the detail and rqrequest objects to create one object with all the data 
+            //rqrequest.RqRequestDetail.Add(detail);  
 
             // We add the combined object and link it to the database using the following code 
             context.RqRequests.Add(rqrequest);
-            
+
             SaveChanges();
+        }
+        
+        public void addEUTToRqRequest(EUT Eut)
+        {
+            var detail = new RqRequestDetail
+            {
+                //Pvgresp = detail.Pvgresp,
+                Pvgresp = "Test",
+                
+
+            };
+
+            context.RqRequestDetails.Add(detail);
+
+            var eut = new Eut
+            {
+                OmschrijvingEut = "Test",
+                AvailableDate = Eut.AvailabilityDate,
+                
+            };
+            detail.Eut.Add(eut);
+
+            //Nullreference exception EMC
+            if (Eut.EMC)
+            {
+                detail.Testdivisie = Eut.EMC.ToString();
+            }
+            else if (Eut.ENV)
+            {
+                detail.Testdivisie = Eut.ENV.ToString();
+            }
+
+
         }
 
         // INCOMPLETE
