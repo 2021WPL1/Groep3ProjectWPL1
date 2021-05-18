@@ -73,14 +73,38 @@ namespace TestingPlanner.Data
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
                 EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
-                ExpectedEnddate = Jr.ExpEnddate == null? DateTime.Now: Jr.ExpEnddate,
+                ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : Jr.ExpEnddate,
                 InternRequest = Jr.InternRequest, // Bool, default false
                 GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
                 NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 Battery = Jr.Battery // Bool, default false
             };
+            // We create an object of the rqRequestDetail class to statically address the fields of the RqRequestDetail class in the database
+            // Static values added to the Pvgresp and Testdivision fields
+            var detail = new RqRequestDetail
+            {
+                Pvgresp = "STEVEN",
+                Testdivisie = "EMC",
 
+            };
+
+
+            // We create an object of the Eut class to statically address the fields of the Eut class in the database
+            // Static values added to the OmschrijvingEut and AvailabilityDate fields
+            var eut = new Eut
+            {
+                OmschrijvingEut = "Test",
+                AvailableDate = new DateTime(2021, 8, 26),
+            };
+
+            // We add the recent created object eut to the previous detail object
+            detail.Eut.Add(eut);
+            // We combine the detail and rqrequest objects to create one object with all the data 
+            rqrequest.RqRequestDetail.Add(detail);  
+
+            // We add the combined object and link it to the database using the following code 
             context.RqRequests.Add(rqrequest);
+            
             SaveChanges();
         }
 
@@ -156,9 +180,8 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
-
+       
         // SAVING
-
         // Stores all data from GUI in DB
         public void SaveChanges()
         {

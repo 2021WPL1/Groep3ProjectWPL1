@@ -160,7 +160,9 @@ namespace TestingPlanner.Viewmodels
         //EUT in Database
         public void addEUT()
         {
+            //EUTs.Add(_dao.addEUT(Eut));
             EUTs.Add(new EUT());
+           
         }
 
         // Clear all data in JR
