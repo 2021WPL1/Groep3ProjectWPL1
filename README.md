@@ -10,38 +10,12 @@ Add an X between the brackets to check off the item.
 #### Week 1
 > voorzien dat via registry er keys en values voor naam, afdeling en functie kunnen opgehaald worden bij opstarten van opstellen van Request. Dit kan misschien ook voorzien worden voor controle van request en inplannen van request (dus 3 reeksen keys)
 
-- [ ] Request form: Registry key + values for *Name*
-- [ ] Request form: Registry key + values for *Department*
-- [ ] Request form: Registry key + values for *Function*
-- [ ] Request validation: Registry key + values for *Name*
-- [ ] Request validation: Registry key + values for *Department*
-- [ ] Request validation: Registry key + values for *Function*
-- [ ] Request planning: Registry key + values for *Name*
-- [ ] Request planning: Registry key + values for *Department*
-- [ ] Request planning: Registry key + values for *Function*
-
 #### Week 2 + Week 3
 > Request gebeurt met gegevens uit registry (naam, divisie, ea)
 > Bij versturen van request wordt 1x per dag (op vast tijdstip) een mail verstuurd naar keurder waarbij alle aanvragen worden vermeld.
 > Goedkeuring: request openen, aanpassen (tester(s) aanduiden) en goedkeuren. Dit levert een volgnummer en een datum van goedkeuren. Er wordt een mail gestuurd naar betrokken testers. Vanaf dan loopt termijn van 5 (werk)dagen.
 > Inplannen: tester opent de jobrequest en bepaalt de datum van de test(s), duidt resources aan (aanduiden als er al gebruik is van resource). Mogelijks aanduiden dat inconsistent voor de resource!
 > Optioneel: overzicht van termijn van inplannen van aangevraagde tests (5 dagen overzicht van voorbije maand)
-
-
-- [ ] Autofill request with registry data (name, division,...)
-- [ ] Send daily mail, at a fixed time, with a list of all requests (if any)
-- [ ] Approval: open request (by planner)
-- [ ] Approval: adapt request (add testers)
-- [ ] Approval: generate serial number
-- [ ] Approval: autofill approval date
-- [ ] Approval: mail added testers
-- [ ] Approval: add 5 day timer
-- [ ] Planning: open request (by tester)
-- [ ] Planning: Determine test dates
-- [ ] Planning: choose resources
-- [ ] Planning: Give warning if the resource in use
-- [ ] Optional: overview of planning delays _(?)_
-
 
 ### GitHub Use Conventions
 
