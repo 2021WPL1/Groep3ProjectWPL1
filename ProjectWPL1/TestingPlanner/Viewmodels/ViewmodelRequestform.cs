@@ -165,7 +165,7 @@ namespace TestingPlanner.Viewmodels
         // Clear all data in JR
         private void refreshJR()
         {
-            this.JR = new JR();
+            this.JR = _dao.GetNewJR();
             EUTs.Clear();
         }
 
