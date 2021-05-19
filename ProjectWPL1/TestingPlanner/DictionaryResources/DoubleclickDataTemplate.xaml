@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="ClickableList">
+        <ListBoxItem>
+            <TextBlock Text="{Binding}">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick"
+                                  Command="{Binding DataContext.showExistingRqCommand}"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+        </ListBoxItem>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -15,7 +15,8 @@
         <Image Style="{StaticResource BarcoLogo}"/>
         <StackPanel Margin="10">
             <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
-                <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="White" Foreground="Black" Margin="10"/>
+                <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" ItemTemplate="{DynamicResource ClickableList}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="White" Foreground="Black" Margin="10">
+                </ListBox>
             </GroupBox>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Button Content="New JR" 

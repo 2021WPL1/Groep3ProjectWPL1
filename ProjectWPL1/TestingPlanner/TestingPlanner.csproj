@@ -33,4 +33,10 @@
     <Resource Include="barco-logo.jpg.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="DictionaryResources\DoubleclickDataTemplate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>
