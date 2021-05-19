@@ -5,6 +5,10 @@
 
 
 *Constants.cs
+.vs
+**/bin
+**/obj
+
 # User-specific files
 *.rsuser
 *.suo
