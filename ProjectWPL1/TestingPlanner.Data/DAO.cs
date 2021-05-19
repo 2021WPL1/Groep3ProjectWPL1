@@ -62,6 +62,7 @@ namespace TestingPlanner.Data
 
         /// <summary>
         /// Gets a JR with user data autofilled
+        /// Kaat
         /// </summary>
         public JR GetNewJR()
         {
