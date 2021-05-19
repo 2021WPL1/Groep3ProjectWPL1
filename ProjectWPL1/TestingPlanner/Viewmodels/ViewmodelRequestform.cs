@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using Microsoft.Toolkit.Mvvm.Input;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
