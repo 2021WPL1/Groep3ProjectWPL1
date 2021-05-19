@@ -97,7 +97,7 @@ namespace TestingPlanner.Viewmodels
                 OnpropertyChanged();
             }
         }
-        public EUT Eut
+        public EUT eut
         {
             get { return _eut; }
             set
@@ -141,7 +141,8 @@ namespace TestingPlanner.Viewmodels
         public void InsertJr(Window window)
         {
             
-            _dao.AddJobRequest(JR); // SaveChanges included in function
+            var test =_dao.AddJobRequest(JR); // SaveChanges included in function
+            _dao.AddEutToRqRequest(test,eut, JR);
             ChangeWindows(window);
             
         }
@@ -178,7 +179,7 @@ namespace TestingPlanner.Viewmodels
             EUTs.Add(new EUT());
 
 
-            _dao.addEUTToRqRequest(Eut);
+        
             //_dao.AddJobRequest(JR);
 
         }

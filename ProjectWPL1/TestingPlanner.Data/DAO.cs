@@ -59,7 +59,7 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Creates and saves RqRequest based on JR
         // TODO: save data stored in other tables
-        public void AddJobRequest(JR Jr)
+        public RqRequest AddJobRequest(JR Jr)
         {
             // Copy data from JR to new RqRequest
             // Used ternary operator to use String.Empty when null
@@ -71,57 +71,61 @@ namespace TestingPlanner.Data
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
+               // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : Jr.ExpEnddate,
                 InternRequest = Jr.InternRequest, // Bool, default false
-                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
-                NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
+               // GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+              //  NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 Battery = Jr.Battery // Bool, default false
             };
 
-            // We add the combined object and link it to the database using the following code 
-            context.RqRequests.Add(rqrequest);
+            // StaticEutMockData();
 
-            SaveChanges();
+            // We add the combined object and link it to the database using the following code 
+            //context.RqRequests.Add(rqrequest);
+
+            return rqrequest;
+            //SaveChanges();
         }
-        
-        public void addEUTToRqRequest(EUT Eut)
+
+        public void AddEutToRqRequest(RqRequest request, EUT eut, JR jr)
         {
-           
+            request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
+            request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
+            request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
+
+
             var detail = new RqRequestDetail
             {
                 //Pvgresp = detail.Pvgresp,
                 Pvgresp = "Test",
-                
-
             };
 
-            
-
-            var eut = new Eut
+            var Eut = new Eut
             {
                 OmschrijvingEut = "Test",
-                AvailableDate = Eut.AvailabilityDate,
-                
+                AvailableDate = eut.AvailabilityDate,
             };
 
             //Nullreference exception EMC
-            if (Eut.EMC)
+            if (eut.EMC)
             {
-                detail.Testdivisie = Eut.EMC.ToString();
+                detail.Testdivisie = eut.EMC.ToString();
             }
-            else if (Eut.ENV)
+            else if (eut.ENV)
             {
-                detail.Testdivisie = Eut.ENV.ToString();
-            }else if (Eut.CMP)
+                detail.Testdivisie = eut.ENV.ToString();
+            }
+            else if (eut.CMP)
             {
-                detail.Testdivisie = Eut.CMP.ToString();
+                detail.Testdivisie = eut.CMP.ToString();
             }
 
-            detail.Eut.Add(eut);
-            context.RqRequestDetails.Add(detail);
-
+            detail.Eut.Add(Eut);
+            request.RqRequestDetail.Add(detail);
+            context.RqRequests.Add(request);
+            SaveChanges();
         }
 
         // INCOMPLETE
@@ -131,7 +135,6 @@ namespace TestingPlanner.Data
         public string UpdateJobRequest(JR Jr)
         {
             string message = null; // message is null on success
-
             // Error control
             // JR Number not empty?
             if (Jr.JrNumber != null)
@@ -170,7 +173,7 @@ namespace TestingPlanner.Data
         // TODO: link EUT's (via RqRequestDetail)
         // TODO: link RqOptionel
         public JR GetJRWithId(int idrequest)
-        {           
+        {
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
 
@@ -192,11 +195,11 @@ namespace TestingPlanner.Data
                 NetWeight = selectedRQ.NetWeight,
                 Battery = selectedRQ.Battery
             };
-           
+
             return selectedJR;
         }
 
-       
+
         // SAVING
         // Stores all data from GUI in DB
         public void SaveChanges()
@@ -205,33 +208,35 @@ namespace TestingPlanner.Data
         }
 
 
+        private void StaticEutMockData()
+        {
+            // We create an object of the rqRequestDetail class to statically address the fields of the RqRequestDetail class in the database
+            // Static values added to the Pvgresp and Testdivision fields
+            // TESTFUNCTIE
+            // public void staticEUT(){
+            //var detail = new RqRequestDetail
+            //{
+            //    Pvgresp = "Test",
+            //};
 
-        // We create an object of the rqRequestDetail class to statically address the fields of the RqRequestDetail class in the database
-        // Static values added to the Pvgresp and Testdivision fields
-        // TESTFUNCTIE
-        // public void staticEUT(){
-        //var detail = new RqRequestDetail
-        //{
-        //    Pvgresp = "Test",
-        //};
+            //if (Eut.EMC)
+            //{
+            //    detail.Testdivisie = "EMC";
+            //}
 
-        //if (Eut.EMC)
-        //{
-        //    detail.Testdivisie = "EMC";
-        //}
+            //// We create an object of the Eut class to statically address the fields of the Eut class in the database
+            //// Static values added to the OmschrijvingEut and AvailabilityDate fields
+            //var eut = new Eut
+            //{
+            //    OmschrijvingEut = "Test",
+            //    AvailableDate = new DateTime(2021, 8, 26),
 
-        //// We create an object of the Eut class to statically address the fields of the Eut class in the database
-        //// Static values added to the OmschrijvingEut and AvailabilityDate fields
-        //var eut = new Eut
-        //{
-        //    OmschrijvingEut = "Test",
-        //    AvailableDate = new DateTime(2021, 8, 26),
+            //};
 
-        //};
-
-        //// We add the recent created object eut to the previous detail object
-        //detail.Eut.Add(eut);
-        //// We combine the detail and rqrequest objects to create one object with all the data 
-        //rqrequest.RqRequestDetail.Add(detail);  
+            //// We add the recent created object eut to the previous detail object
+            //detail.Eut.Add(eut);
+            //// We combine the detail and rqrequest objects to create one object with all the data 
+            //rqrequest.RqRequestDetail.Add(detail);  
+        }
     }
 }
