@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cDsj0fKuoUbvQKnrtSrpbXjMt6qlA3aDIRYB0TDuPOVnvowlIblLEFp6gG4aLMXnYgsmxWdIoKvf8S01Nthm6A==",
+  "dgSpecHash": "aIcX10x0zlFwrFIj7pW/i3KUsvRtjc6F6C4JfzEN4dJutKL7j7Q1QfZae3MeuFni2xN+yk0QnjY7xV+lvIINWQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
   "expectedPackageFiles": [
@@ -30,9 +30,9 @@
     "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.extensions.options\\3.1.10\\microsoft.extensions.options.3.1.10.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.10\\microsoft.extensions.primitives.3.1.10.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.identity.client\\3.0.8\\microsoft.identity.client.3.0.8.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
@@ -85,11 +85,11 @@
     "C:\\Users\\Kaat\\.nuget\\packages\\system.runtime.serialization.formatters\\4.3.0\\system.runtime.serialization.formatters.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.runtime.serialization.json\\4.3.0\\system.runtime.serialization.json.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.runtime.serialization.primitives\\4.3.0\\system.runtime.serialization.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\Kaat\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.security.cryptography.primitives\\4.3.0\\system.security.cryptography.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.7.0\\system.security.cryptography.protecteddata.4.7.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\Kaat\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.security.securestring\\4.3.0\\system.security.securestring.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
@@ -102,9 +102,7 @@
     "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Kaat\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+    "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": [
     {
