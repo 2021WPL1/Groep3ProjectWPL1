@@ -170,7 +170,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
-        //EUT in Database
+        // EUT in Database
         public void addEUT()
         {
             //EUTs.Add(_dao.AddJobRequest(JR));
@@ -178,7 +178,7 @@ namespace TestingPlanner.Viewmodels
             EUTs.Add(new EUT());
 
 
-            _dao.addEUTToRqRequest(_eut);
+            _dao.addEUTToRqRequest(Eut);
             //_dao.AddJobRequest(JR);
 
         }
