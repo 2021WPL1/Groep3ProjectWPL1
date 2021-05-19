@@ -142,7 +142,12 @@ namespace TestingPlanner.Viewmodels
         {
             
             var test =_dao.AddJobRequest(JR); // SaveChanges included in function
-            _dao.AddEutToRqRequest(test,eut, JR);
+
+            foreach (var thisEUT in EUTs)
+            {
+                _dao.AddEutToRqRequest(test, thisEUT, JR);
+            }
+            
             ChangeWindows(window);
             
         }
