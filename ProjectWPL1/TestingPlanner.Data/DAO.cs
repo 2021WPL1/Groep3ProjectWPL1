@@ -21,10 +21,10 @@ namespace TestingPlanner.Data
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
 
-        //TEMPORARILY !!!!
-        private static string YourUsername = "Groep3testprog@gmail.com";
-        private static string YourPassword = "Testtest123";
-        private static string MailTo = "Groep3testprog@gmail.com";
+        //TEMPORARILY email information !!!!
+        private static string mailFrom  = "Groep3testprog@gmail.com";
+        private static string mailFromPassword = "Testtest123";
+        private static string mailTo = "Groep3testprog@gmail.com";
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -157,22 +157,21 @@ namespace TestingPlanner.Data
                 NetWeight = selectedRQ.NetWeight,
                 Battery = selectedRQ.Battery
             };
-           
             return selectedJR;
         }
 
-        //Create and send Mail
+        //Create and send Mail to a gmail account
         public void SendMail()
         {
             using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
-            {
+            {   
                 client.EnableSsl = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(YourUsername, YourPassword);
+                client.Credentials = new NetworkCredential(mailFrom, mailFromPassword);
                 MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(YourUsername);
-                mail.To.Add(MailTo);
+                mail.From = new MailAddress(mailFrom);
+                mail.To.Add(mailTo);
                 mail.Body = "Inhoud mail";
                 mail.Subject = "Titel";
                 client.Send(mail);
