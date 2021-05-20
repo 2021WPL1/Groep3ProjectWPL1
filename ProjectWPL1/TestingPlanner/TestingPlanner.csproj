@@ -33,4 +33,10 @@
     <Resource Include="DictionaryResources\barco-logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="DictionaryResources\DataTemplates.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

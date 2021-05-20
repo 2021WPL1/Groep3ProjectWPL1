@@ -21,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DictionaryResources\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\RequestForm.xaml">
       <SubType>Designer</SubType>
     </Page>
