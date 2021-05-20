@@ -10,9 +10,27 @@
     <Compile Update="Views\RequestForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\StartupPlanner.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StartupRD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StartupTester.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\RequestForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StartupPlanner.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StartupRD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StartupTester.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
