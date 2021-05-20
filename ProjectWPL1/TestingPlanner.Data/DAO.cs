@@ -98,12 +98,7 @@ namespace TestingPlanner.Data
                 Battery = Jr.Battery // Bool, default false
             };
 
-            // StaticEutMockData();
-            // We add the combined object and link it to the database using the following code 
-            //context.RqRequests.Add(rqrequest);
-
             return rqrequest;
-            //SaveChanges();
         }
 
         //MOHAMED
@@ -126,13 +121,15 @@ namespace TestingPlanner.Data
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
             TestDivisionEutIsChecked(eut, testDivision);
 
-            // We 
+            // We link each testdivision to the corresponding id_request
             foreach (string testeut in testDivision)
             {
                 var detail = new RqRequestDetail();
                 detail.Testdivisie = testeut;
                 detail.Euts.Add(new Eut
                 {
+                    // Static added for now
+                    // TODO: Dynamic linking
                     OmschrijvingEut = "EUT1",
                     AvailableDate = DateTime.Now
                 });
@@ -221,7 +218,13 @@ namespace TestingPlanner.Data
         }
 
         //private void StaticEutMockData()
-
+        /// <summary>
+        /// This function checks which of the testdivision are checked via the user input
+        /// If a test division is selected, we store this data in the test division list
+        /// The user input is given via the eut object as a parameter
+        /// </summary>
+        /// <param name="eut"></param>
+        /// <param name="testDivision"></param>
         private void TestDivisionEutIsChecked(EUT eut, List<string> testDivision)
         {
             if (eut.EMC == true)
