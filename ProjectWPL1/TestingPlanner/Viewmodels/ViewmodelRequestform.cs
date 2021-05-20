@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using Microsoft.Toolkit.Mvvm.Input;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -189,7 +189,7 @@ namespace TestingPlanner.Viewmodels
         // Clear all data in JR
         private void refreshJR()
         {
-            this.JR = new JR();
+            this.JR = _dao.GetNewJR();
             EUTs.Clear();
         }
 

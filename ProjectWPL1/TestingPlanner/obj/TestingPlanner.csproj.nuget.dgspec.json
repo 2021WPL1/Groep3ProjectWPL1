@@ -69,6 +69,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.0, )"
+            },
+            "Microsoft.Win32.Registry": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
@@ -238,9 +242,9 @@
               "target": "Package",
               "version": "[3.1.10, )"
             },
-            "MvvmLightLibs": {
+            "Microsoft.Toolkit.Mvvm": {
               "target": "Package",
-              "version": "[5.4.1.1, )"
+              "version": "[7.0.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

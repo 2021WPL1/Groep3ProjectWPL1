@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.CommandWpf;
+﻿using Microsoft.Toolkit.Mvvm.Input;
 using Newtonsoft.Json.Serialization;
 using Prism.Commands;
 using System;

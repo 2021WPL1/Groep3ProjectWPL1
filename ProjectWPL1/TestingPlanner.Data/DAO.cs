@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
+using TestingPlanner.Classes;
 using TestingPlanner;
 using TestingPlanner.Domain.Models;
 
@@ -20,6 +21,8 @@ namespace TestingPlanner.Data
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
 
+        private BarcoUser barcoUser;
+
         // Calls an DAO instance
         public static DAO Instance()
         {
@@ -31,6 +34,7 @@ namespace TestingPlanner.Data
         private DAO()
         {
             this.context = new Barco2021Context();
+            this.barcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
 
@@ -56,6 +60,22 @@ namespace TestingPlanner.Data
 
 
         // JR CHANGES
+
+        /// <summary>
+        /// Gets a JR with user data autofilled
+        /// Kaat
+        /// </summary>
+        public JR GetNewJR()
+        {
+
+            JR autofilledJR = new JR()
+            {
+                Requester = barcoUser.Name,
+                BarcoDivision = barcoUser.Division
+            };
+
+            return autofilledJR;
+        }
 
         // INCOMPLETE
         // Creates and saves RqRequest based on JR
