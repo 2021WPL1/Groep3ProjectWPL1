@@ -7,12 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="RequestForm.xaml.cs">
+    <Compile Update="Views\RequestForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="RequestForm.xaml">
+    <Page Update="Views\RequestForm.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

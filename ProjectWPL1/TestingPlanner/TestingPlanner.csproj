@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="barco-logo.jpg.png" />
+    <Resource Include="DictionaryResources\barco-logo.jpg.png" />
   </ItemGroup>
 
 </Project>
