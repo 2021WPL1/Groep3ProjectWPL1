@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qqYQY+rSBlWnVmatKScJ0faS1WIeFG+mnlNce911p4X3xhgYPoslETal5S6wD1Y/sICoHmmZoR7E4kUVMxurzw==",
+  "dgSpecHash": "kkjjX7nGFcL4vc1aqlimQigWaAsAX8jQ3tv9zT9/MwRb9e5KQwxzShpcjTI2wEFgwVEF5keuYT/mfKg/nWdAtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
+  "projectFilePath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kaat\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512",
@@ -134,5 +134,12 @@
     "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Kaat\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
