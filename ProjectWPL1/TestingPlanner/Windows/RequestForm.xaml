@@ -35,7 +35,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Content="Requester initials:"/>
-                    <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
+                    <TextBox Text="{Binding JR.Requester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" IsEnabled="{Binding IsEnabled}"/>
                     <Label Content="Division:" Grid.Row="1"/>
                     <ComboBox ItemsSource="{Binding Divisions}" 
                               Text="{Binding JR.BarcoDivision, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"

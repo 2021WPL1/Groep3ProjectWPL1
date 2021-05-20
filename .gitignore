@@ -3,7 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-
+*.dtbcache.v2
+*.suo
+*TestingPlanner.Data.assets.cache
+*TestingPlanner.Data.csproj.CoreCompileInputs.cache
+*TestingPlanner.Data.csprojAssemblyReference.cache
+*TestingPlanner.Domain.csprojAssemblyReference.cache
+*TestingPlanner.assets.cache
+*TestingPlanner.csprojAssemblyReference.cache
+*TestingPlanner_MarkupCompile.cache
+*project.nuget.cache
 *Constants.cs
 # User-specific files
 *.rsuser

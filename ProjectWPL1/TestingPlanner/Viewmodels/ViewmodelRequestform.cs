@@ -10,11 +10,13 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
+using TestingPlanner.Windows;
 
 namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelBase
     {
+        public bool IsEnabled { get; set; }
         // Dataconnection
         // Can be moved to parent class?
         private DAO _dao;
@@ -46,6 +48,7 @@ namespace TestingPlanner.Viewmodels
         public ViewmodelRequestForm(DAO dao)
         {
             init(dao);
+            IsEnabled = false;
 
             // JR = new JR
             refreshJR();
