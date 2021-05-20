@@ -20,7 +20,7 @@ namespace TestingPlanner.Data
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
 
-        private BarcoUser barcoUser;
+        public BarcoUser BarcoUser { get; }
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -33,7 +33,7 @@ namespace TestingPlanner.Data
         private DAO()
         {
             this.context = new Barco2021Context();
-            this.barcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
 
@@ -69,8 +69,8 @@ namespace TestingPlanner.Data
 
             JR autofilledJR = new JR()
             {
-                Requester = barcoUser.Name,
-                BarcoDivision = barcoUser.Division
+                Requester = BarcoUser.Name,
+                BarcoDivision = BarcoUser.Division
             };
 
             return autofilledJR;
