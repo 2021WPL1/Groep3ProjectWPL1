@@ -11,6 +11,7 @@ namespace TestingPlanner
 {
     /// <summary>
     /// Interaction logic for App.xaml
+    /// Kaat
     /// </summary>
     public partial class App : Application
     {
@@ -21,16 +22,25 @@ namespace TestingPlanner
             _dao = DAO.Instance();
         }
 
+        /// <summary>
+        /// Selects which window to open based on the user function in the registry
+        /// Kaat
+        /// </summary>
         private void AppStart(object sender, StartupEventArgs e)
         {
             Window StartWindow;
-            if (_dao.BarcoUser.Function == "TEST")
+
+            switch (_dao.BarcoUser.Function)
             {
-                StartWindow = new Temp();
-            }
-            else
-            {
-                StartWindow = new RequestForm();
+                case "TEST":
+                    StartWindow = new Temp(); // To do: tester start screen
+                    break;
+                case "PLAN":
+                    StartWindow = new Temp(); // To do: Planner start screen
+                    break;
+                default:
+                    StartWindow = new Temp(); // To do: general start screen
+                    break;
             }
 
             StartWindow.Show();
