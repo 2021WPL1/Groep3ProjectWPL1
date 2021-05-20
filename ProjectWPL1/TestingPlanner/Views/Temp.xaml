@@ -1,4 +1,4 @@
-﻿<Window x:Class="TestingPlanner.Temp"
+﻿<Window x:Class="TestingPlanner.Views.Temp"
         Name="tempWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
