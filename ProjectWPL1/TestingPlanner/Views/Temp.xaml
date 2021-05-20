@@ -27,6 +27,17 @@
                         CommandParameter="{Binding ElementName=tempWindow}" 
                         Margin="10"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="DEV: Open employee startup" 
+                        Command="{Binding Path=openEmployeeStartupCommand}" 
+                        Margin="10"/>
+                <Button Content="DEV: Open planner startup" 
+                        Command="{Binding Path=openPlannerStartupCommand}" 
+                        Margin="10"/>
+                <Button Content="DEV: Open tester startup" 
+                        Command="{Binding Path=openTesterStartupCommand}" 
+                        Margin="10"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </Window>
