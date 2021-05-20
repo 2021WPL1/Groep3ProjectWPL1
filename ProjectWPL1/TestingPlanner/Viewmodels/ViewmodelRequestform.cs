@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
+using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
