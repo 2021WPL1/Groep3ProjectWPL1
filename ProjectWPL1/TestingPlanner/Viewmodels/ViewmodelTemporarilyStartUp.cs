@@ -74,7 +74,7 @@ namespace TestingPlanner.Viewmodels
             }
 
             // first JR selected by default --> Selected JR can't be null
-      //      this.SelectedJR = idRequestsOnly[0];
+             this.SelectedJR = idRequestsOnly[0];
         }
 
         // Command functions
