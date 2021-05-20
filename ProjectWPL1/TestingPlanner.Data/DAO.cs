@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
+using TestingPlanner;
 using TestingPlanner.Domain.Models;
 
 
@@ -71,17 +72,13 @@ namespace TestingPlanner.Data
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
-               // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : Jr.ExpEnddate,
                 InternRequest = Jr.InternRequest, // Bool, default false
-               // GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
-              //  NetWeight = Jr.NetWeight == null ? string.Empty : Jr.NetWeight,
                 Battery = Jr.Battery // Bool, default false
             };
 
             // StaticEutMockData();
-
             // We add the combined object and link it to the database using the following code 
             //context.RqRequests.Add(rqrequest);
 
@@ -89,43 +86,29 @@ namespace TestingPlanner.Data
             //SaveChanges();
         }
 
-        public void AddEutToRqRequest(RqRequest request, EUT eut, JR jr)
-        {
-            request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
-            request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
+        //MOHAMED
+        //Mattieeuww
+        public void AddEutToRqRequest(RqRequest request, EUT eut)
+        {   
+            List<string> testDivision = new List<string>();
+
+            request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
+            request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
+            TestDivisionEutIsChecked(eut, testDivision);
 
-
-            var detail = new RqRequestDetail
+            foreach (string testeut in testDivision)
             {
-                //Pvgresp = detail.Pvgresp,
-                Pvgresp = "Test",
+                var detail = new RqRequestDetail();
+                detail.Testdivisie = testeut;
+                detail.Euts.Add(new Eut
+                {
+                    OmschrijvingEut = "EUT1",
+                    AvailableDate = DateTime.Now
+                });
+                request.RqRequestDetails.Add(detail);
             };
-
-            var Eut = new Eut
-            {
-                OmschrijvingEut = "Test",
-                AvailableDate = eut.AvailabilityDate,
-            };
-
-            //Nullreference exception EMC
-            if (eut.EMC)
-            {
-                detail.Testdivisie = eut.EMC.ToString();
-            }
-            else if (eut.ENV)
-            {
-                detail.Testdivisie = eut.ENV.ToString();
-            }
-            else if (eut.CMP)
-            {
-                detail.Testdivisie = eut.CMP.ToString();
-            }
-
-            detail.Eut.Add(Eut);
-            request.RqRequestDetail.Add(detail);
             context.RqRequests.Add(request);
-            SaveChanges();
         }
 
         // INCOMPLETE
@@ -207,36 +190,30 @@ namespace TestingPlanner.Data
             context.SaveChanges();
         }
 
+        //private void StaticEutMockData()
 
-        private void StaticEutMockData()
+        private void TestDivisionEutIsChecked(EUT eut, List<string> testDivision)
         {
-            // We create an object of the rqRequestDetail class to statically address the fields of the RqRequestDetail class in the database
-            // Static values added to the Pvgresp and Testdivision fields
-            // TESTFUNCTIE
-            // public void staticEUT(){
-            //var detail = new RqRequestDetail
-            //{
-            //    Pvgresp = "Test",
-            //};
-
-            //if (Eut.EMC)
-            //{
-            //    detail.Testdivisie = "EMC";
-            //}
-
-            //// We create an object of the Eut class to statically address the fields of the Eut class in the database
-            //// Static values added to the OmschrijvingEut and AvailabilityDate fields
-            //var eut = new Eut
-            //{
-            //    OmschrijvingEut = "Test",
-            //    AvailableDate = new DateTime(2021, 8, 26),
-
-            //};
-
-            //// We add the recent created object eut to the previous detail object
-            //detail.Eut.Add(eut);
-            //// We combine the detail and rqrequest objects to create one object with all the data 
-            //rqrequest.RqRequestDetail.Add(detail);  
+            if (eut.EMC == true)
+            {
+                testDivision.Add("EMC");
+            }
+            if (eut.ENV == true)
+            {
+                testDivision.Add("ENV");
+            }
+            if (eut.REL == true)
+            {
+                testDivision.Add("REL");
+            }
+            if (eut.SAV == true)
+            {
+                testDivision.Add("SAV");
+            }
+            if (eut.ECO == true)
+            {
+                testDivision.Add("ECO");
+            }
         }
     }
 }

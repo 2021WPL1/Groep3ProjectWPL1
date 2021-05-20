@@ -141,13 +141,13 @@ namespace TestingPlanner.Viewmodels
         public void InsertJr(Window window)
         {
             
-            var test =_dao.AddJobRequest(JR); // SaveChanges included in function
+            var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
 
             foreach (var thisEUT in EUTs)
             {
-                _dao.AddEutToRqRequest(test, thisEUT, JR);
+                _dao.AddEutToRqRequest(jr, thisEUT);
             }
-            
+            _dao.SaveChanges();
             ChangeWindows(window);
             
         }
@@ -182,9 +182,6 @@ namespace TestingPlanner.Viewmodels
             //EUTs.Add(_dao.AddJobRequest(JR));
             //ChangeWindows(window);
             EUTs.Add(new EUT());
-
-
-        
             //_dao.AddJobRequest(JR);
 
         }
@@ -209,8 +206,8 @@ namespace TestingPlanner.Viewmodels
             {
                 PartNr = "TEST",
                 AvailabilityDate = new DateTime(2021, 03, 12),
-                NetWeight = 1.8,
-                GrossWeight = 2.3,
+                NetWeight = "1.8",
+                GrossWeight = "2.3",
                 EMC = true,
                 REL = true
             });

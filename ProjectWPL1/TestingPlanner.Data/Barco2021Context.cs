@@ -56,7 +56,7 @@ namespace TestingPlanner.Data
                     .HasMaxLength(50);
 
                 entity.HasOne(d => d.IdRqDetailNavigation)
-                    .WithMany(p => p.Eut)
+                    .WithMany(p => p.Euts)
                     .HasForeignKey(d => d.IdRqDetail)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("EUT_Rq_RequestDetail_FK");
@@ -143,7 +143,7 @@ namespace TestingPlanner.Data
                     .HasMaxLength(1000);
 
                 entity.HasOne(d => d.IdRequestNavigation)
-                    .WithMany(p => p.RqOptionel)
+                    .WithMany(p => p.RqOptionels)
                     .HasForeignKey(d => d.IdRequest)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Rq_Optionel_Rq_Request_FK");
@@ -240,13 +240,13 @@ namespace TestingPlanner.Data
                     .HasMaxLength(4);
 
                 entity.HasOne(d => d.IdRequestNavigation)
-                    .WithMany(p => p.RqRequestDetail)
+                    .WithMany(p => p.RqRequestDetails)
                     .HasForeignKey(d => d.IdRequest)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Rq_RequestDetail_Rq_Request_FK");
 
                 entity.HasOne(d => d.TestdivisieNavigation)
-                    .WithMany(p => p.RqRequestDetail)
+                    .WithMany(p => p.RqRequestDetails)
                     .HasForeignKey(d => d.Testdivisie)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Rq_RequestDetail_Rq_TestDevision_FK");

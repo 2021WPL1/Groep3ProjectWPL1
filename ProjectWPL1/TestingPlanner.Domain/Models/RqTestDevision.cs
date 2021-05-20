@@ -7,12 +7,12 @@ namespace TestingPlanner.Domain.Models
     {
         public RqTestDevision()
         {
-            RqRequestDetail = new HashSet<RqRequestDetail>();
+            RqRequestDetails = new HashSet<RqRequestDetail>();
         }
 
         public string Afkorting { get; set; }
         public string Naam { get; set; }
 
-        public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
+        public virtual ICollection<RqRequestDetail> RqRequestDetails { get; set; }
     }
 }
