@@ -376,7 +376,6 @@ C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\T
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.pdb
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.genruntimeconfig.cache
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Temp.baml
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Temp.g.cs
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\App.baml
@@ -645,3 +644,14 @@ C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.dll
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.pdb
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.genruntimeconfig.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\DictionaryResources\DataTemplates.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\RequestForm.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupPlanner.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupRD.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupTester.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\Temp.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\RequestForm.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupPlanner.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupRD.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupTester.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\Temp.baml

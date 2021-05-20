@@ -223,29 +223,45 @@ namespace TestingPlanner.Data
         /// If a test division is selected, we store this data in the test division list
         /// The user input is given via the eut object as a parameter
         /// </summary>
-        /// <param name="eut"></param>
-        /// <param name="testDivision"></param>
         private void TestDivisionEutIsChecked(EUT eut, List<string> testDivision)
         {
-            if (eut.EMC == true)
+            // Mohamed
+            //if (eut.EMC == true)
+            //{
+            //    testDivision.Add("EMC");
+            //}
+            //if (eut.ENV == true)
+            //{
+            //    testDivision.Add("ENV");
+            //}
+            //if (eut.REL == true)
+            //{
+            //    testDivision.Add("REL");
+            //}
+            //if (eut.SAV == true)
+            //{
+            //    testDivision.Add("SAV");
+            //}
+            //if (eut.ECO == true)
+            //{
+            //    testDivision.Add("ECO");
+            //}
+
+            // Kaat
+            // Iterate over all properties of an EUT
+            foreach (var property in typeof(EUT).GetProperties())
             {
-                testDivision.Add("EMC");
-            }
-            if (eut.ENV == true)
-            {
-                testDivision.Add("ENV");
-            }
-            if (eut.REL == true)
-            {
-                testDivision.Add("REL");
-            }
-            if (eut.SAV == true)
-            {
-                testDivision.Add("SAV");
-            }
-            if (eut.ECO == true)
-            {
-                testDivision.Add("ECO");
+                // Divisions are bools
+                // Skip if the property is not a bool
+                if (property.PropertyType == typeof(bool))
+                {
+                    // If the division is checked
+                    if ((bool)property.GetValue(eut))
+                    {
+                        // Add the division to the list
+                        testDivision.Add(property.Name);
+                    }
+                };
             }
         }
     }
