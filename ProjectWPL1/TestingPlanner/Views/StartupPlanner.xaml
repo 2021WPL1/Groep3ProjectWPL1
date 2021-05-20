@@ -9,9 +9,12 @@
     <StackPanel>
         <Image Style="{StaticResource BarcoLogo}"/>
         <StackPanel Margin="10">
-            <GroupBox Header="Startscreen Planning Responsible" BorderThickness="0.1">
-                <TextBlock Text="This is the startup screen for the planner"/>
+            <GroupBox Header="Approval queue" BorderThickness="0.1">
+                <ListBox Height="150"/>
             </GroupBox>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="Open JR details"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </Window>
