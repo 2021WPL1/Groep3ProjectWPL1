@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Input;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
+using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
@@ -29,6 +30,9 @@ namespace TestingPlanner.Viewmodels
         // RelayCommand<Class> takes object of type class as input
         public RelayCommand<Window> addNewRqCommand { get; set; }
         public RelayCommand<Window> showExistingRqCommand { get; set; }
+        public ICommand openTesterStartupCommand { get; set; }
+        public ICommand openPlannerStartupCommand { get; set; }
+        public ICommand openEmployeeStartupCommand { get; set; }
 
         //Constructor
         public ViewmodelTemporarilyStartUp(DAO dao)
@@ -41,6 +45,9 @@ namespace TestingPlanner.Viewmodels
             // Command initialization
             addNewRqCommand = new RelayCommand<Window>(OpenEmptyJR);
             showExistingRqCommand = new RelayCommand<Window>(OpenExistingJr);
+            openTesterStartupCommand = new DelegateCommand(openTesterStartup);
+            openPlannerStartupCommand = new DelegateCommand(openPlannerStartup);
+            openEmployeeStartupCommand = new DelegateCommand(openEmployeeStartup);
         }
 
         // Getters/Setters
@@ -84,6 +91,27 @@ namespace TestingPlanner.Viewmodels
             RequestForm requestformWindow = new RequestForm(SelectedJR);
             requestformWindow.Show();
             window.Close();
+        }
+
+        // Kaat
+        public void openTesterStartup()
+        {
+            Window testerStartup = new StartupTester();
+            testerStartup.Show();
+        }
+
+        // Kaat
+        public void openPlannerStartup()
+        {
+            Window plannerStartup = new StartupPlanner();
+            plannerStartup.Show();
+        }
+
+        // Kaat
+        public void openEmployeeStartup()
+        {
+            Window employeeStartup = new StartupRD();
+            employeeStartup.Show();
         }
     }
 }

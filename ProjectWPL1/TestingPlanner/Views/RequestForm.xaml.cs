@@ -16,7 +16,7 @@ using TestingPlanner.Domain.Models;
 using TestingPlanner.Viewmodels;
 
 
-namespace TestingPlanner
+namespace TestingPlanner.Views
 {
     /// <summary>
     /// Interaction logic for RequestForm.xaml
