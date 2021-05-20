@@ -9,9 +9,13 @@
     <StackPanel>
         <Image Style="{StaticResource BarcoLogo}"/>
         <StackPanel Margin="10">
-            <GroupBox Header="Startscreen R&amp;D" BorderThickness="0.1">
-                <TextBlock Text="This is the startup screen for R&amp;D personnel"/>
+            <GroupBox Header="Open Job Requests" BorderThickness="0.1">
+                <ListBox Height="150"/>
             </GroupBox>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="New JR"/>
+                <Button Content="Open JR details"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </Window>

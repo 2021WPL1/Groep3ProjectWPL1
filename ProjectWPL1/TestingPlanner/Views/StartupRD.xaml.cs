@@ -13,10 +13,14 @@ using System.Windows.Shapes;
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for StartupRD.xaml
+    /// Start screen for R&D employees
+    /// Kaat
     /// </summary>
     public partial class StartupRD : Window
     {
+        // No bindings yet
+        // Viewmodel: Needs list of JR's where user is the requester
+
         public StartupRD()
         {
             InitializeComponent();
