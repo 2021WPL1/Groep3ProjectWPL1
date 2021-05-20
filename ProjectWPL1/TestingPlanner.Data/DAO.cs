@@ -107,7 +107,14 @@ namespace TestingPlanner.Data
         }
 
         //MOHAMED
-        //Mattieeuww
+        //Matti
+        /// <summary>
+        /// This function adds the input from the EUT part to the request object
+        /// We create local variables to address the fields of the corresponding tables
+        /// The combined object is eventually given to the context
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="eut"></param>
         public void AddEutToRqRequest(RqRequest request, EUT eut)
         {   
             List<string> testDivision = new List<string>();
@@ -115,8 +122,11 @@ namespace TestingPlanner.Data
             request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
             request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
+
+            //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
             TestDivisionEutIsChecked(eut, testDivision);
 
+            // We 
             foreach (string testeut in testDivision)
             {
                 var detail = new RqRequestDetail();
