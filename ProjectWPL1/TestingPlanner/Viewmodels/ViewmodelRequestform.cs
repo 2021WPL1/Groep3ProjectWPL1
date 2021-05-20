@@ -148,9 +148,9 @@ namespace TestingPlanner.Viewmodels
             {
                 _dao.AddEutToRqRequest(jr, thisEUT);
             }
+            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
-            ChangeWindows(window);
-            
+            ChangeWindows(window);          
         }
 
         // Updates existing job request and switches windows
@@ -180,11 +180,7 @@ namespace TestingPlanner.Viewmodels
         // EUT in Database
         public void addEUT()
         {
-            //EUTs.Add(_dao.AddJobRequest(JR));
-            //ChangeWindows(window);
             EUTs.Add(new EUT());
-            //_dao.AddJobRequest(JR);
-
         }
 
         // Clear all data in JR
