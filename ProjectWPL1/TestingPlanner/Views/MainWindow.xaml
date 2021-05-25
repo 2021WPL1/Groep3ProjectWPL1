@@ -1,0 +1,30 @@
+﻿<Window x:Class="TestingPlanner.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:TestingPlanner.Views"
+        xmlns:viewModels="clr-namespace:TestingPlanner.Viewmodels"
+        xmlns:local="clr-namespace:TestingPlanner.Views"
+        mc:Ignorable="d"
+        Height="720" Width="980" Background="#363636" Foreground="White"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        WindowStyle="ThreeDBorderWindow"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:ViewmodelTest}">
+            <local:Test/>
+        </DataTemplate>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
+            <Image Style="{StaticResource BarcoLogo}"/>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
+                <ContentControl Content="{Binding}"/>
+            </GroupBox>
+        </StackPanel>
+    </StackPanel>
+</Window>

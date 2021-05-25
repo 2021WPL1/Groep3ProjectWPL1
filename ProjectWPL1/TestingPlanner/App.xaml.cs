@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TestingPlanner.Data;
+using TestingPlanner.Viewmodels;
 using TestingPlanner.Views;
 
 namespace TestingPlanner
@@ -21,6 +22,14 @@ namespace TestingPlanner
         public App()
         {
             _dao = DAO.Instance();
+        }
+
+        private void StartingUp(object sender, StartupEventArgs e)
+        {
+            MainWindow app = new MainWindow();
+            ViewmodelTest context = new ViewmodelTest(_dao);
+            app.DataContext = context;
+            app.Show();
         }
 
         /// <summary>

@@ -12,7 +12,10 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
-        <Image Style="{StaticResource BarcoLogo}"/>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
+            <Image Style="{StaticResource BarcoLogo}"/>
+            
+        </StackPanel>
         <StackPanel Margin="10">
             <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
                 <ListBox Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" Background="White" Foreground="Black" Margin="10"/>

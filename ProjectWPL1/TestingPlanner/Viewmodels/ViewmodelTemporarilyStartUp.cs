@@ -40,7 +40,7 @@ namespace TestingPlanner.Viewmodels
             this._dao = dao;
 
             // Collection initialization
-            idRequestsOnly = new ObservableCollection<int>(); 
+            idRequestsOnly = new ObservableCollection<int>();
 
             // Command initialization
             addNewRqCommand = new RelayCommand<Window>(OpenEmptyJR);
@@ -74,7 +74,7 @@ namespace TestingPlanner.Viewmodels
             }
 
             // first JR selected by default --> Selected JR can't be null
-             this.SelectedJR = idRequestsOnly[0];
+            this.SelectedJR = idRequestsOnly[0];
         }
 
         // Command functions
