@@ -65,6 +65,17 @@ namespace TestingPlanner.Viewmodels
 
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
+            List<RqRequestDetail> testt = _dao.rqDetail(idRequest);
+            foreach (var id in testt)
+            {
+
+                List<EUT> test = _dao.EutTemplate(id);
+                foreach (var VARIABLE in test)
+                {
+                    FillEUT(VARIABLE);
+                }
+
+            }
 
             // addJRCommand calls function to save existing JR
             addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
@@ -182,6 +193,11 @@ namespace TestingPlanner.Viewmodels
         {
             EUTs.Add(new EUT());
         }
+        public void FillEUT(EUT eut)
+        {
+            EUTs.Add(eut);
+        }
+
 
         // Clear all data in JR
         private void refreshJR()

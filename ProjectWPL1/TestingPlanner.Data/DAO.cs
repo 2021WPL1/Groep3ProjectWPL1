@@ -208,11 +208,22 @@ namespace TestingPlanner.Data
 
             return selectedJR;
         }
+        
+    public List<RqRequestDetail> rqDetail(int idrequest)
+    {
+    List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
+        return DetailRQ;
+    }
 
+    public List<Eut> EutTemplate(RqRequestDetail RqdetailId)
+    {
+    List<Eut> details = context.Euts.Where(eut => eut.IdRqDetail == RqdetailId.IdRqDetail).ToList();
+        return details;
+    }
 
-        // SAVING
-        // Stores all data from GUI in DB
-        public void SaveChanges()
+    // SAVING
+    // Stores all data from GUI in DB
+    public void SaveChanges()
         {
             context.SaveChanges();
         }
