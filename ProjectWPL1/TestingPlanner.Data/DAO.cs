@@ -18,7 +18,7 @@ namespace TestingPlanner.Data
     public class DAO
     {
         // Variables
-        private Barco2021Context context;
+        private Barco2021ContextOLD context;
         private static readonly DAO instance = new DAO();
 
         public BarcoUser BarcoUser { get; }
@@ -33,7 +33,7 @@ namespace TestingPlanner.Data
         // Calls an instance from the Barco2021Context and stores this context in the current context
         private DAO()
         {
-            this.context = new Barco2021Context();
+            this.context = new Barco2021ContextOLD();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
@@ -93,7 +93,7 @@ namespace TestingPlanner.Data
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
-                ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : Jr.ExpEnddate,
+                ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
                 InternRequest = Jr.InternRequest, // Bool, default false
                 Battery = Jr.Battery // Bool, default false
             };
@@ -159,7 +159,7 @@ namespace TestingPlanner.Data
                 rqrequest.JobNature = Jr.JobNature;
                 rqrequest.EutProjectname = Jr.EutProjectname;
                 rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
-                rqrequest.ExpectedEnddate = Jr.ExpEnddate;
+                rqrequest.ExpectedEnddate = (DateTime)Jr.ExpEnddate; // Not nullable, so needs to be casted
                 rqrequest.InternRequest = Jr.InternRequest;
                 rqrequest.GrossWeight = Jr.GrossWeight;
                 rqrequest.NetWeight = Jr.NetWeight;
