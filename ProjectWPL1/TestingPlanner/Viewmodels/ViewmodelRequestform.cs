@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,6 +18,7 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelBase
     {
+       
         // Dataconnection
         // Can be moved to parent class?
         private DAO _dao;
@@ -68,13 +71,21 @@ namespace TestingPlanner.Viewmodels
             List<RqRequestDetail> testt = _dao.rqDetail(idRequest);
             foreach (var id in testt)
             {
-
-                List<EUT> test = _dao.EutTemplate(id);
-                foreach (var VARIABLE in test)
+                Barco2021Context context = new Barco2021Context();
+                var request = context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
+                JR jr = new JR
                 {
-                    FillEUT(VARIABLE);
-                }
-
+                    IdRequest = request.IdRequest,
+                    GrossWeight = request.GrossWeight,
+                    NetWeight = request.NetWeight
+                };
+                int requestdetailId = id.IdRqDetail;
+                FillEUT(requestdetailId,jr);
+                //List<Eut> test = _dao.EutTemplate(id);
+                //foreach (EUT VARIABLE in test)
+                //{
+                //    FillEUT(VARIABLE);
+                //}
             }
 
             // addJRCommand calls function to save existing JR
@@ -152,12 +163,14 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
-            
+         
             var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
-
+            int count = 0;
             foreach (var thisEUT in EUTs)
             {
-                _dao.AddEutToRqRequest(jr, thisEUT);
+                
+                count++;
+                _dao.AddEutToRqRequest(jr, thisEUT,count.ToString());
             }
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
@@ -191,11 +204,26 @@ namespace TestingPlanner.Viewmodels
         // EUT in Database
         public void addEUT()
         {
+           
             EUTs.Add(new EUT());
         }
-        public void FillEUT(EUT eut)
-        {
-            EUTs.Add(eut);
+        public void FillEUT(int id,JR jr)
+        { //List<Eut> test = _dao.EutTemplate(id);
+          //foreach (EUT VARIABLE in test)
+          //{
+          //    FillEUT(VARIABLE);
+          //}
+          Barco2021Context context = new Barco2021Context();
+         Eut details = context.Euts.FirstOrDefault(e => e.IdRqDetail == id);
+
+         EUT EUTss =new EUT
+         {   IdRqDetail = details.IdRqDetail, 
+             OmschrijvingEut = details.OmschrijvingEut,
+             PartNr = jr.EutPartnr,
+             GrossWeight = jr.GrossWeight,
+             NetWeight =  jr.NetWeight
+         };
+          EUTs.Add(EUTss);
         }
 
 
@@ -209,7 +237,7 @@ namespace TestingPlanner.Viewmodels
         // deletes selected EUT via _selectedEut variable
         public void removeSelectedEUT()
         {
-            EUTs.Remove(SelectedEUT); 
+            EUTs.Remove(SelectedEUT);
         }
 
         // Temporary function to demo loading EUT datatemplate

@@ -13,6 +13,8 @@ namespace TestingPlanner
         private DateTime _availabilityDate;
         private string _netWeight;
         private string _grossWeight;
+        private int _idRqDetail;
+        private string _omschrijvingEut;
 
         // Tests to execute
         // TODO: function to check if necessart RQDetail already exists
@@ -45,6 +47,8 @@ namespace TestingPlanner
         public DateTime AvailabilityDate { get => _availabilityDate; set => _availabilityDate = value; }
         public string NetWeight { get => _netWeight; set => _netWeight = value; }
         public string GrossWeight { get => _grossWeight; set => _grossWeight = value; }
+        public int IdRqDetail { get => _idRqDetail; set => _idRqDetail = value; }
+        public string OmschrijvingEut { get => _omschrijvingEut; set => _omschrijvingEut = value; }
 
         public bool EMC { get => _emc; set => _emc = value; }
         public bool ENV { get => _env; set => _env = value; }

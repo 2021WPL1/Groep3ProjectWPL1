@@ -58,7 +58,6 @@ namespace TestingPlanner.Data
             return context.RqBarcoDivisions.ToList();
         }
 
-
         // JR CHANGES
 
         /// <summary>
@@ -67,7 +66,6 @@ namespace TestingPlanner.Data
         /// </summary>
         public JR GetNewJR()
         {
-
             JR autofilledJR = new JR()
             {
                 Requester = BarcoUser.Name,
@@ -110,8 +108,8 @@ namespace TestingPlanner.Data
         /// </summary>
         /// <param name="request"></param>
         /// <param name="eut"></param>
-        public void AddEutToRqRequest(RqRequest request, EUT eut)
-        {   
+        public void AddEutToRqRequest(RqRequest request, EUT eut, string omschrijvings)
+        {
             List<string> testDivision = new List<string>();
 
             request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
@@ -130,7 +128,7 @@ namespace TestingPlanner.Data
                 {
                     // Static added for now
                     // TODO: Dynamic linking
-                    OmschrijvingEut = "EUT1",
+                    OmschrijvingEut = "EUT" + omschrijvings,
                     AvailableDate = DateTime.Now
                 });
                 request.RqRequestDetails.Add(detail);
@@ -147,7 +145,7 @@ namespace TestingPlanner.Data
             string message = null; // message is null on success
             // Error control
             // JR Number not empty?
-            if (Jr.JrNumber != null)
+            if (Jr.BarcoDivision != null)
             {
                 RqRequest rqrequest = context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
 
@@ -173,7 +171,6 @@ namespace TestingPlanner.Data
                 message = "Error - empty job request\n" +
                     "Please fill in all necessary fields";
             }
-
             return message;
         }
 
@@ -208,22 +205,23 @@ namespace TestingPlanner.Data
 
             return selectedJR;
         }
-        
-    public List<RqRequestDetail> rqDetail(int idrequest)
-    {
-    List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
-        return DetailRQ;
-    }
 
-    public List<Eut> EutTemplate(RqRequestDetail RqdetailId)
-    {
-    List<Eut> details = context.Euts.Where(eut => eut.IdRqDetail == RqdetailId.IdRqDetail).ToList();
-        return details;
-    }
+        public List<RqRequestDetail> rqDetail(int idrequest)
+        {
+            List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
+            return DetailRQ;
+        }
 
-    // SAVING
-    // Stores all data from GUI in DB
-    public void SaveChanges()
+        //public EUT EutTemplate(int id)
+        //{
+
+        //    var details = context.Euts.FirstOrDefault(e=>e.IdRqDetail == id);
+        //    return details;
+        //}
+
+        // SAVING
+        // Stores all data from GUI in DB
+        public void SaveChanges()
         {
             context.SaveChanges();
         }
@@ -236,28 +234,6 @@ namespace TestingPlanner.Data
         /// </summary>
         private void TestDivisionEutIsChecked(EUT eut, List<string> testDivision)
         {
-            // Mohamed
-            //if (eut.EMC == true)
-            //{
-            //    testDivision.Add("EMC");
-            //}
-            //if (eut.ENV == true)
-            //{
-            //    testDivision.Add("ENV");
-            //}
-            //if (eut.REL == true)
-            //{
-            //    testDivision.Add("REL");
-            //}
-            //if (eut.SAV == true)
-            //{
-            //    testDivision.Add("SAV");
-            //}
-            //if (eut.ECO == true)
-            //{
-            //    testDivision.Add("ECO");
-            //}
-
             // Kaat
             // Iterate over all properties of an EUT
             foreach (var property in typeof(EUT).GetProperties())
