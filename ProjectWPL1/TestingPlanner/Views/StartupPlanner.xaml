@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner.Views"
         mc:Ignorable="d"
-        Title="StartupPlanner" Height="450" Width="800">
+        Height="720" Width="980" Background="#363636" Foreground="White"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        WindowStyle="ThreeDBorderWindow"
+        WindowStartupLocation="CenterScreen">
     <StackPanel>
         <Image Style="{StaticResource BarcoLogo}"/>
         <StackPanel Margin="10">
