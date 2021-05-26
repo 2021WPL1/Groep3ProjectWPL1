@@ -80,12 +80,7 @@ namespace TestingPlanner.Viewmodels
                     NetWeight = request.NetWeight
                 };
                 int requestdetailId = id.IdRqDetail;
-                FillEUT(requestdetailId,jr);
-                //List<Eut> test = _dao.EutTemplate(id);
-                //foreach (EUT VARIABLE in test)
-                //{
-                //    FillEUT(VARIABLE);
-                //}
+                FillEUT(idRequest,jr);
             }
 
             // addJRCommand calls function to save existing JR
@@ -163,12 +158,10 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
-         
             var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
             int count = 0;
             foreach (var thisEUT in EUTs)
             {
-                
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT,count.ToString());
             }
@@ -204,7 +197,6 @@ namespace TestingPlanner.Viewmodels
         // EUT in Database
         public void addEUT()
         {
-           
             EUTs.Add(new EUT());
         }
         public void FillEUT(int id,JR jr)
@@ -215,17 +207,26 @@ namespace TestingPlanner.Viewmodels
           //}
           Barco2021Context context = new Barco2021Context();
          Eut details = context.Euts.FirstOrDefault(e => e.IdRqDetail == id);
-
-         EUT EUTss =new EUT
-         {   IdRqDetail = details.IdRqDetail, 
-             OmschrijvingEut = details.OmschrijvingEut,
-             PartNr = jr.EutPartnr,
-             GrossWeight = jr.GrossWeight,
-             NetWeight =  jr.NetWeight
-         };
-          EUTs.Add(EUTss);
+         List<Eut> eutss = context.Euts.Where(e => e.IdRqDetailNavigation.IdRequest == id).ToList();
+         List<string> count = new List<string>();
+         foreach (var eut in eutss)
+         {
+             if(count.Contains(eut.OmschrijvingEut)==false)
+             {
+                 count.Add(eut.OmschrijvingEut);
+                 EUT EUTss = new EUT
+                 {
+                     IdRqDetail = details.IdRqDetail,
+                     OmschrijvingEut = details.OmschrijvingEut,
+                     PartNr = jr.EutPartnr,
+                     GrossWeight = jr.GrossWeight,
+                     NetWeight = jr.NetWeight
+                 };
+                 EUTs.Add(EUTss);
+             }
+         }
+        
         }
-
 
         // Clear all data in JR
         private void refreshJR()
