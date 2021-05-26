@@ -68,8 +68,13 @@ namespace TestingPlanner.Viewmodels
 
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
-            List<RqRequestDetail> testt = _dao.rqDetail(idRequest);
-            foreach (var id in testt)
+
+            
+            List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);
+
+            // We use a foreach to loop over every item in the eutList
+            // And link the user inputed data to the correct variables
+            foreach (var id in eutList)
             {
                 Barco2021Context context = new Barco2021Context();
                 var request = context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
@@ -79,6 +84,8 @@ namespace TestingPlanner.Viewmodels
                     GrossWeight = request.GrossWeight,
                     NetWeight = request.NetWeight
                 };
+
+                // The following line uses the the requestDetail id to get the linked eut objects.
                 int requestdetailId = id.IdRqDetail;
                 FillEUT(idRequest,jr);
             }
@@ -158,10 +165,16 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
+         
             var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
+
+            // We declare a local variable to count the number of created EUTs
             int count = 0;
+
+            // We use a foreach to loop over EUT object in the ObservableCollection EUTs
             foreach (var thisEUT in EUTs)
             {
+                
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT,count.ToString());
             }
@@ -199,6 +212,12 @@ namespace TestingPlanner.Viewmodels
         {
             EUTs.Add(new EUT());
         }
+
+        /// <summary>
+        /// This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="jr"></param>
         public void FillEUT(int id,JR jr)
         { //List<Eut> test = _dao.EutTemplate(id);
           //foreach (EUT VARIABLE in test)
