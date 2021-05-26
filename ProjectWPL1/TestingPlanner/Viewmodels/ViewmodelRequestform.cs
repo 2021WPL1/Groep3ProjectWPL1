@@ -143,8 +143,10 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
-        // Function used in code behind
-        // Loads jobNatures, divisions in cbb
+        /// <summary>
+        /// Function used in code behind
+        /// Loads jobNatures, divisions in cbb
+        /// </summary>
         public void Load()
         {
             var jobNatures = _dao.GetAllJobNatures();
@@ -163,8 +165,11 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
-        // Command functions
-        // Adds and stores a job request and switches windows
+        /// <summary>
+        /// Command functions
+        /// Adds and stores a job request and switches windows
+        /// </summary>
+        /// <param name="window"></param>
         public void InsertJr(Window window)
         {
          
@@ -185,7 +190,10 @@ namespace TestingPlanner.Viewmodels
             ChangeWindows(window);          
         }
 
-        // Updates existing job request and switches windows
+        /// <summary>
+        /// Updates existing job request and switches windows
+        /// </summary>
+        /// <param name="window"></param>
         public void UpdateJr(Window window)
         {
             string error = _dao.UpdateJobRequest(JR); // SaveChanges included in function
@@ -200,7 +208,10 @@ namespace TestingPlanner.Viewmodels
             }    
         }
 
-        // Adds and stores job request in DB via _dao instance
+        /// <summary>
+        /// Adds and stores job request in DB via _dao instance
+        /// </summary>
+        /// <param name="window"></param>
         private void ChangeWindows(Window window)
         {
             Temp overviewWindow = new Temp();
@@ -208,8 +219,10 @@ namespace TestingPlanner.Viewmodels
             window.Close();
         }
 
-        // This function adds an new EUT instance into the GUI RequestForm
-        // EUT in Database
+        /// <summary>
+        /// This function adds an new EUT instance into the GUI RequestForm
+        /// EUT in Database
+        /// </summary>
         public void addEUT()
         {
             EUTs.Add(new EUT());
@@ -246,20 +259,26 @@ namespace TestingPlanner.Viewmodels
         
         }
 
-        // Clear all data in JR
+        /// <summary>
+        /// Clear all data in JR
+        /// </summary>
         private void refreshJR()
         {
             this.JR = _dao.GetNewJR();
             EUTs.Clear();
         }
 
-        // deletes selected EUT via _selectedEut variable
+        /// <summary>
+        /// deletes selected EUT via _selectedEut variable
+        /// </summary>
         public void removeSelectedEUT()
         {
             EUTs.Remove(SelectedEUT);
         }
 
-        // Temporary function to demo loading EUT datatemplate
+        /// <summary>
+        /// Temporary function to demo loading EUT datatemplate
+        /// </summary>
         public void addMockEUT()
         {
             EUTs.Add(new EUT

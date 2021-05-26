@@ -178,9 +178,11 @@ namespace TestingPlanner.Data
                 rqrequest.Battery = Jr.Battery;
 
                 // Matti voorlopig
+                // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
                 RqOptionel rqo = context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
                 rqo.Link = Jr.Link;
                 rqo.Remarks = Jr.Remarks;
+                // We combine the rqo and rqrequest objects
                 rqrequest.RqOptionels.Add(rqo);
 
 
@@ -205,7 +207,6 @@ namespace TestingPlanner.Data
         {
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
-
             RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
             // Create new JR with necessary data
             JR selectedJR = new JR
@@ -224,10 +225,9 @@ namespace TestingPlanner.Data
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,              
                 Battery = selectedRQ.Battery,
+                //EutPartnr = selectedRQ.EutPartnumbers,
 
-                // Test
-                EutPartnr = selectedRQ.EutPartnumbers,
-                // Matti voorlopig
+                // Testing
                 Link = selectedRQO.Link,
                 Remarks = selectedRQO.Remarks,
 
