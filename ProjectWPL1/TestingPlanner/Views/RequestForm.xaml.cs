@@ -47,5 +47,6 @@ namespace TestingPlanner.Views
             DataContext = viewModel;
             viewModel.Load();
         }
+    
     }
 }

@@ -23,6 +23,8 @@ namespace TestingPlanner.Viewmodels
         // Can be moved to parent class?
         private DAO _dao;
 
+        Barco2021Context context = new Barco2021Context();
+
         // Jobrequest data container
         // Only one getter/setter needs to be made for all changes in GUI
         private JR _jr;
@@ -224,13 +226,12 @@ namespace TestingPlanner.Viewmodels
           //{
           //    FillEUT(VARIABLE);
           //}
-          Barco2021Context context = new Barco2021Context();
-         Eut details = context.Euts.FirstOrDefault(e => e.IdRqDetail == id);
+         RqRequestDetail details = context.RqRequestDetails.FirstOrDefault(e => e.IdRequest == id);
          List<Eut> eutss = context.Euts.Where(e => e.IdRqDetailNavigation.IdRequest == id).ToList();
          List<string> count = new List<string>();
          foreach (var eut in eutss)
          {
-             if(count.Contains(eut.OmschrijvingEut)==false)
+             if(count.Contains(eut.OmschrijvingEut) == false)
              {
                  count.Add(eut.OmschrijvingEut);
                  EUT EUTss = new EUT

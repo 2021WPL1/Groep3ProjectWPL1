@@ -91,10 +91,24 @@ namespace TestingPlanner.Data
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
+                
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
                 InternRequest = Jr.InternRequest, // Bool, default false
                 Battery = Jr.Battery // Bool, default false
             };
+
+
+            // Matti voorlopig
+            // We create a rqo object of the RqOptionel class to save the following fields in the database with the user input
+            RqOptionel rqo = new RqOptionel
+            {
+                Link = Jr.Link == null ? string.Empty : Jr.Link,
+                Remarks = Jr.Remarks == null ? string.Empty : Jr.Remarks,
+
+            };
+            // We combine the rqo object with the rqrequest object and return the combined object
+            rqrequest.RqOptionels.Add(rqo);
+
 
             return rqrequest;
         }
@@ -116,6 +130,10 @@ namespace TestingPlanner.Data
             request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
 
+            //RqOptionel rqo = new RqOptionel
+            //{
+            //    Link = eut.
+            //};
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
             TestDivisionEutIsChecked(eut, testDivision);
 
@@ -162,6 +180,14 @@ namespace TestingPlanner.Data
                 rqrequest.NetWeight = Jr.NetWeight;
                 rqrequest.Battery = Jr.Battery;
 
+                //Matti voorlopig
+                RqOptionel rqo = context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
+                rqo.Link = Jr.Link;
+                rqo.Remarks = Jr.Remarks;
+                rqrequest.RqOptionels.Add(rqo);
+
+
+
                 context.RqRequest.Update(rqrequest);
                 SaveChanges();
             }
@@ -183,6 +209,7 @@ namespace TestingPlanner.Data
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
 
+            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
             // Create new JR with necessary data
             JR selectedJR = new JR
             {
@@ -199,7 +226,12 @@ namespace TestingPlanner.Data
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,
-                Battery = selectedRQ.Battery
+                Battery = selectedRQ.Battery,
+
+                //Matti voorlopig
+                Link = selectedRQO.Link,
+                Remarks = selectedRQO.Remarks,
+                
             };
 
             return selectedJR;
