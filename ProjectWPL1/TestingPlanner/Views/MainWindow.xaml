@@ -14,8 +14,18 @@
             <Image Style="{StaticResource BarcoLogo}"/>
         </StackPanel>
         <StackPanel Margin="10">
-            <GroupBox Header="Planned JobRequests" BorderThickness="0.1">
-                <ContentControl Content="{Binding}"/>
+            <GroupBox BorderThickness="0.1">
+                <GroupBox.Header>
+                    <!-- This could be done more efficiently? -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="Welcome "/>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding User.Name}"/>
+                        <TextBlock FontSize="16" Text=" ("/>
+                        <TextBlock FontSize="16" Text="{Binding User.Division}"/>
+                        <TextBlock FontSize="16" Text=")"/>
+                    </StackPanel>
+                </GroupBox.Header>
+                <ContentControl Content="{Binding ViewModel}"/>
             </GroupBox>
         </StackPanel>
     </StackPanel>

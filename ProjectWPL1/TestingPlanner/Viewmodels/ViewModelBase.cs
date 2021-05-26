@@ -23,6 +23,24 @@ namespace TestingPlanner.Viewmodels
         // Start boilerplate code
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // ROYCODE
+        // CallerMember: Decorator, attribute; 
+        // geeft de naam van de eigenschap die de methode heeft aangeroepen
+        //protected virtual void SetProperty<T>(ref T member, T val, [CallerMemberName] string propertyName = null)
+        //{
+        //    if (object.Equals(member, val)) return;
+        //    member = val;
+        //    RaisePropertyChanged(propertyName);
+        //}
+
+        //protected virtual void RaisePropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+        //}
+
         protected virtual void OnpropertyChanged([CallerMemberName] string property = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));

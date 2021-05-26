@@ -12,23 +12,19 @@
         </GroupBox>
         <StackPanel Orientation="Horizontal" Margin="10">
             <Button Content="New JR" 
-                        Command="{Binding Path=addNewRqCommand, Mode=OneWay}" 
-                        CommandParameter="{Binding ElementName=tempWindow}" 
+                        Command="{Binding DataContext.DisplayNewJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}" 
                         Margin="10"/>
             <Button Content="Open JR details" 
-                        Command="{Binding Path=showExistingRqCommand}" 
-                        CommandParameter="{Binding ElementName=tempWindow}" 
                         Margin="10"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <Button Content="DEV: Open employee startup" 
-                        Command="{Binding Path=openEmployeeStartupCommand}" 
                         Margin="10"/>
             <Button Content="DEV: Open planner startup" 
-                        Command="{Binding Path=openPlannerStartupCommand}" 
                         Margin="10"/>
             <Button Content="DEV: Open tester startup" 
-                        Command="{Binding Path=openTesterStartupCommand}" 
                         Margin="10"/>
         </StackPanel>
     </StackPanel>

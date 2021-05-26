@@ -21,14 +21,8 @@ namespace TestingPlanner.Views
     {        
         public MainWindow()
         {
+            DataContext = new ViewModelMain();
             InitializeComponent();
-            DataContext = new ViewmodelTemporarilyStartUp();
-        }
-
-        public MainWindow(ViewModelBase viewModel)
-        {
-            InitializeComponent();
-            DataContext = viewModel;
         }
     }
 }

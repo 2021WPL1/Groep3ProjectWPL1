@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelStartupPlanner
+    class ViewModelStartupPlanner: ViewModelBase
     {
     }
 }

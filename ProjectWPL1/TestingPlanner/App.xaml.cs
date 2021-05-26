@@ -35,16 +35,16 @@ namespace TestingPlanner
             switch (_dao.BarcoUser.Function)
             {
                 case "DEV":
-                    StartWindow = new MainWindow(new ViewmodelTemporarilyStartUp());
+                    StartWindow = new MainWindow();
                     break;
                 case "TEST":
-                    StartWindow = new MainWindow(new ViewmodelRequestForm()); // To do: tester start screen
+                    StartWindow = new MainWindow(); // To do: tester start screen
                     break;
                 case "PLAN":
-                    StartWindow = new MainWindow(new ViewmodelRequestForm()); // To do: Planner start screen
+                    StartWindow = new MainWindow(); // To do: Planner start screen
                     break;
                 default:
-                    StartWindow = new MainWindow(new ViewmodelRequestForm()); // To do: general start screen
+                    StartWindow = new MainWindow(); // To do: general start screen
                     break;
             }
 
