@@ -142,7 +142,7 @@ namespace TestingPlanner.Viewmodels
             }
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
-            ChangeWindows(window);          
+            ChangeWindows(window);         
         }
 
         // Updates existing job request and switches windows

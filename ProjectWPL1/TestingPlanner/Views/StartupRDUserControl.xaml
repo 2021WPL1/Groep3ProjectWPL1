@@ -8,7 +8,9 @@
              d:DesignHeight="800" d:DesignWidth="600" d:Background="#363636">
     <StackPanel Margin="10">
         <GroupBox Header="Open Job Requests" BorderThickness="0.1">
-            <ListBox Height="150"/>
+            <ListBox ItemsSource="{Binding idRequestsOnly}" 
+                     SelectedItem="{Binding SelectedJR, Mode=TwoWay}"
+                     Height="150"/>
         </GroupBox>
         <StackPanel Orientation="Horizontal" Margin="10">
             <Button Content="New JR" 
