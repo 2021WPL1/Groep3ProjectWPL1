@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,6 +18,7 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelBase
     {
+       
         // Dataconnection
         // Can be moved to parent class?
         private DAO _dao;
@@ -65,6 +68,27 @@ namespace TestingPlanner.Viewmodels
 
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
+
+            
+            List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);
+
+            // We use a foreach to loop over every item in the eutList
+            // And link the user inputed data to the correct variables
+            foreach (var id in eutList)
+            {
+                Barco2021Context context = new Barco2021Context();
+                var request = context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
+                JR jr = new JR
+                {
+                    IdRequest = request.IdRequest,
+                    GrossWeight = request.GrossWeight,
+                    NetWeight = request.NetWeight
+                };
+
+                // The following line uses the the requestDetail id to get the linked eut objects.
+                int requestdetailId = id.IdRqDetail;
+                FillEUT(idRequest,jr);
+            }
 
             // addJRCommand calls function to save existing JR
             addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
@@ -141,12 +165,18 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
-            
+         
             var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
 
+            // We declare a local variable to count the number of created EUTs
+            int count = 0;
+
+            // We use a foreach to loop over EUT object in the ObservableCollection EUTs
             foreach (var thisEUT in EUTs)
             {
-                _dao.AddEutToRqRequest(jr, thisEUT);
+                
+                count++;
+                _dao.AddEutToRqRequest(jr, thisEUT,count.ToString());
             }
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
@@ -183,6 +213,40 @@ namespace TestingPlanner.Viewmodels
             EUTs.Add(new EUT());
         }
 
+        /// <summary>
+        /// This function ensures that the existing data of an eut is read from the database and loaded into the requestForm xaml
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="jr"></param>
+        public void FillEUT(int id,JR jr)
+        { //List<Eut> test = _dao.EutTemplate(id);
+          //foreach (EUT VARIABLE in test)
+          //{
+          //    FillEUT(VARIABLE);
+          //}
+          Barco2021Context context = new Barco2021Context();
+         Eut details = context.Euts.FirstOrDefault(e => e.IdRqDetail == id);
+         List<Eut> eutss = context.Euts.Where(e => e.IdRqDetailNavigation.IdRequest == id).ToList();
+         List<string> count = new List<string>();
+         foreach (var eut in eutss)
+         {
+             if(count.Contains(eut.OmschrijvingEut)==false)
+             {
+                 count.Add(eut.OmschrijvingEut);
+                 EUT EUTss = new EUT
+                 {
+                     IdRqDetail = details.IdRqDetail,
+                     OmschrijvingEut = details.OmschrijvingEut,
+                     PartNr = jr.EutPartnr,
+                     GrossWeight = jr.GrossWeight,
+                     NetWeight = jr.NetWeight
+                 };
+                 EUTs.Add(EUTss);
+             }
+         }
+        
+        }
+
         // Clear all data in JR
         private void refreshJR()
         {
@@ -193,7 +257,7 @@ namespace TestingPlanner.Viewmodels
         // deletes selected EUT via _selectedEut variable
         public void removeSelectedEUT()
         {
-            EUTs.Remove(SelectedEUT); 
+            EUTs.Remove(SelectedEUT);
         }
 
         // Temporary function to demo loading EUT datatemplate
