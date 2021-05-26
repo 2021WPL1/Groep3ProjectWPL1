@@ -15,8 +15,13 @@ namespace TestingPlanner.Viewmodels
         private ViewModelBase _viewModel;
         public BarcoUser User { get; set; }
 
+        // TODO: check if ICommand also works
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
+        public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
+        public DelegateCommand DisplayPlannerStartupCommand { get; set; }
+        public DelegateCommand DisplayTesterStartupCommand { get; set; }
+        public DelegateCommand DisplayDevStartupCommand { get; set; }
        
         public ViewModelMain()
         {
@@ -25,6 +30,10 @@ namespace TestingPlanner.Viewmodels
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
+            DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
+            DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
+            DisplayTesterStartupCommand = new DelegateCommand(DisplayTesterStartup);
+            DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
         }
 
         // Getters/Setters
@@ -47,6 +56,25 @@ namespace TestingPlanner.Viewmodels
         public void DisplayExistingJR()
         {
             this.ViewModel = new ViewmodelRequestForm(((ViewModelCollection)this.ViewModel).SelectedJR);
+        }
+
+        public void DisplayEmployeeStartup()
+        {
+            this.ViewModel = new ViewModelStartupRD();
+        }
+
+        public void DisplayPlannerStartup()
+        {
+            this.ViewModel = new ViewModelStartupPlanner();
+        }
+        public void DisplayTesterStartup()
+        {
+            this.ViewModel = new ViewModelStartupTester();
+        }
+
+        public void DisplayDevStartup()
+        {
+            this.ViewModel = new ViewmodelTemporarilyStartUp();
         }
     }
 }
