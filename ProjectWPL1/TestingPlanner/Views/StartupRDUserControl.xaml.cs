@@ -8,20 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Start screen for R&D employees
-    /// Kaat
+    /// Interaction logic for StartupRDUserControl.xaml
     /// </summary>
-    public partial class StartupRD : Window
+    public partial class StartupRDUserControl : UserControl
     {
-        // No bindings yet
-        // Viewmodel: Needs list of JR's where user is the requester
-
-        public StartupRD()
+        public StartupRDUserControl()
         {
             InitializeComponent();
         }

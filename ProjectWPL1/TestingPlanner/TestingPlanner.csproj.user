@@ -10,19 +10,19 @@
     <Compile Update="Views\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\RequestForm.xaml.cs">
+    <Compile Update="Views\RequestFormUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StartupPlanner.xaml.cs">
+    <Compile Update="Views\StartupPlannerUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StartupRD.xaml.cs">
+    <Compile Update="Views\StartupRDUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StartupTester.xaml.cs">
+    <Compile Update="Views\StartupTesterUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Test.xaml.cs">
+    <Compile Update="Views\TempUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -33,19 +33,19 @@
     <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\RequestForm.xaml">
+    <Page Update="Views\RequestFormUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StartupPlanner.xaml">
+    <Page Update="Views\StartupPlannerUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StartupRD.xaml">
+    <Page Update="Views\StartupRDUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StartupTester.xaml">
+    <Page Update="Views\StartupTesterUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Test.xaml">
+    <Page Update="Views\TempUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

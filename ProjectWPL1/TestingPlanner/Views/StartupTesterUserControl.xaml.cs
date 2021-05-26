@@ -8,30 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestingPlanner.Data;
-using TestingPlanner.Viewmodels;
 
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StartupTesterUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartupTesterUserControl : UserControl
     {
-        private DAO _dao;
-
-        
-        public MainWindow()
+        public StartupTesterUserControl()
         {
             InitializeComponent();
-            DataContext = new ViewmodelTemporarilyStartUp(_dao);
-        }
-
-        public MainWindow(ViewModelBase viewModel)
-        {
-            InitializeComponent();
-            DataContext = viewModel;
         }
     }
 }

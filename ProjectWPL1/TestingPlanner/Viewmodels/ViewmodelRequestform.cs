@@ -16,10 +16,6 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelBase
     {
-        // Dataconnection
-        // Can be moved to parent class?
-        private DAO _dao;
-
         // Jobrequest data container
         // Only one getter/setter needs to be made for all changes in GUI
         private JR _jr;
@@ -45,23 +41,21 @@ namespace TestingPlanner.Viewmodels
         public ICommand addMockEUTCommand { get; set; }
 
         // Constructor for new JR
-        public ViewmodelRequestForm(DAO dao)
+        public ViewmodelRequestForm()
         {
-            init(dao);
+            init();
 
             // JR = new JR
             refreshJR();
 
             // addJRCommand calls function to insert new JR
             addJobRequestCommand = new RelayCommand<Window>(InsertJr);
-
-
         }
 
         // Constructor for existing JR
         public ViewmodelRequestForm(DAO dao, int idRequest)
         {
-            init(dao);
+            init();
 
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
@@ -71,10 +65,8 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Code reused in both constructors
-        private void init(DAO dao)
+        private void init()
         {
-            this._dao = dao;
-
             // Collection initialization
             EUTs = new ObservableCollection<EUT>();
             JobNatures = new ObservableCollection<string>();
@@ -171,7 +163,7 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores job request in DB via _dao instance
         private void ChangeWindows(Window window)
         {
-            Temp overviewWindow = new Temp();
+            MainWindow overviewWindow = new MainWindow(new ViewmodelTemporarilyStartUp(_dao));
             overviewWindow.Show();
             window.Close();
         }

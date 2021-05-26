@@ -18,10 +18,6 @@ namespace TestingPlanner.Viewmodels
     // TODO: datatemplate for JR's
     public class ViewmodelTemporarilyStartUp : ViewModelBase
     {
-        // Dataconnection
-        // Can be moved to parent class?
-        private DAO _dao;
-
         // Jobrequest IDs
         public ObservableCollection<int> idRequestsOnly { get; set; }
         private int _selectedJR; // Will be passed to ctor RQF to open existing JR
@@ -35,10 +31,8 @@ namespace TestingPlanner.Viewmodels
         public ICommand openEmployeeStartupCommand { get; set; }
 
         //Constructor
-        public ViewmodelTemporarilyStartUp(DAO dao)
+        public ViewmodelTemporarilyStartUp()
         {
-            this._dao = dao;
-
             // Collection initialization
             idRequestsOnly = new ObservableCollection<int>();
 
@@ -80,7 +74,7 @@ namespace TestingPlanner.Viewmodels
         // Command functions
         public void OpenEmptyJR(Window window)
         {
-            RequestForm requestformWindow = new RequestForm();
+            MainWindow requestformWindow = new MainWindow(new ViewmodelRequestForm(_dao));
             requestformWindow.Show();
             window.Close();
         }
@@ -88,7 +82,7 @@ namespace TestingPlanner.Viewmodels
         public void OpenExistingJr(Window window)
         {
             // Passes selected JR ID to new RQF
-            RequestForm requestformWindow = new RequestForm(SelectedJR);
+            MainWindow requestformWindow = new MainWindow(new ViewmodelRequestForm(_dao));
             requestformWindow.Show();
             window.Close();
         }
@@ -96,21 +90,21 @@ namespace TestingPlanner.Viewmodels
         // Kaat
         public void openTesterStartup()
         {
-            Window testerStartup = new StartupTester();
+            Window testerStartup = new MainWindow();
             testerStartup.Show();
         }
 
         // Kaat
         public void openPlannerStartup()
         {
-            Window plannerStartup = new StartupPlanner();
+            Window plannerStartup = new MainWindow();
             plannerStartup.Show();
         }
 
         // Kaat
         public void openEmployeeStartup()
         {
-            Window employeeStartup = new StartupRD();
+            Window employeeStartup = new MainWindow();
             employeeStartup.Show();
         }
     }

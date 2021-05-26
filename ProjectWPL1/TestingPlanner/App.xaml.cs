@@ -24,14 +24,6 @@ namespace TestingPlanner
             _dao = DAO.Instance();
         }
 
-        private void StartingUp(object sender, StartupEventArgs e)
-        {
-            MainWindow app = new MainWindow();
-            ViewmodelTest context = new ViewmodelTest(_dao);
-            app.DataContext = context;
-            app.Show();
-        }
-
         /// <summary>
         /// Selects which window to open based on the user function in the registry
         /// Kaat
@@ -43,16 +35,16 @@ namespace TestingPlanner
             switch (_dao.BarcoUser.Function)
             {
                 case "DEV":
-                    StartWindow = new Temp();
+                    StartWindow = new MainWindow(new ViewmodelTemporarilyStartUp(DAO.Instance()));
                     break;
                 case "TEST":
-                    StartWindow = new StartupTester(); // To do: tester start screen
+                    StartWindow = new MainWindow(new ViewmodelRequestForm(DAO.Instance())); // To do: tester start screen
                     break;
                 case "PLAN":
-                    StartWindow = new StartupPlanner(); // To do: Planner start screen
+                    StartWindow = new MainWindow(new ViewmodelRequestForm(DAO.Instance())); // To do: Planner start screen
                     break;
                 default:
-                    StartWindow = new StartupRD(); // To do: general start screen
+                    StartWindow = new MainWindow(new ViewmodelRequestForm(DAO.Instance())); // To do: general start screen
                     break;
             }
 

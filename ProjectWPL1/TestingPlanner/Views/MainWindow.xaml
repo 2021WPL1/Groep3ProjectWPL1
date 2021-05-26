@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:TestingPlanner.Views"
         xmlns:viewModels="clr-namespace:TestingPlanner.Viewmodels"
         xmlns:local="clr-namespace:TestingPlanner.Views"
         mc:Ignorable="d"
@@ -13,8 +12,11 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModels:ViewmodelTest}">
-            <local:Test/>
+        <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
+            <local:TempUserControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ViewmodelRequestForm}">
+            <local:RequestFormUserControl/>
         </DataTemplate>
     </Window.Resources>
     <StackPanel>
