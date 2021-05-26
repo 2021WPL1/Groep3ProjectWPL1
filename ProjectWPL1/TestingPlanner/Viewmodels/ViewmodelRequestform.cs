@@ -163,7 +163,7 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores job request in DB via _dao instance
         private void ChangeWindows(Window window)
         {
-            MainWindow overviewWindow = new MainWindow(new ViewmodelTemporarilyStartUp(_dao));
+            MainWindow overviewWindow = new MainWindow(new ViewmodelTemporarilyStartUp());
             overviewWindow.Show();
             window.Close();
         }

@@ -74,7 +74,7 @@ namespace TestingPlanner.Viewmodels
         // Command functions
         public void OpenEmptyJR(Window window)
         {
-            MainWindow requestformWindow = new MainWindow(new ViewmodelRequestForm(_dao));
+            MainWindow requestformWindow = new MainWindow(new ViewmodelRequestForm());
             requestformWindow.Show();
             window.Close();
         }
@@ -82,7 +82,7 @@ namespace TestingPlanner.Viewmodels
         public void OpenExistingJr(Window window)
         {
             // Passes selected JR ID to new RQF
-            MainWindow requestformWindow = new MainWindow(new ViewmodelRequestForm(_dao));
+            MainWindow requestformWindow = new MainWindow(new ViewmodelRequestForm());
             requestformWindow.Show();
             window.Close();
         }

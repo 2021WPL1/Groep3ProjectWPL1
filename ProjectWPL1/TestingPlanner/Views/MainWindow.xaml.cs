@@ -18,14 +18,11 @@ namespace TestingPlanner.Views
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        private DAO _dao;
-
-        
+    {        
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ViewmodelTemporarilyStartUp(_dao);
+            DataContext = new ViewmodelTemporarilyStartUp();
         }
 
         public MainWindow(ViewModelBase viewModel)
