@@ -84,16 +84,18 @@
             </StackPanel>
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Confirm" 
-                        Command="{Binding Path=addJobRequestCommand}" 
-                        CommandParameter="{Binding ElementName=Request}" 
-                        Height="40" Margin="5"/>
+            <Button Content="Confirm"
+                    Command="{Binding DataContext.SaveJrCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                    Height="40" Margin="5"/>
             <Button Content="Empty All Fields"
                         Command="{Binding Path=refreshJRCommand}"
                         Height="40" Margin="5"/>
             <Button Content="Cancel"
-                        Command="{Binding Path=cancelCommand}" 
-                        CommandParameter="{Binding ElementName=Request}"
+                        Command="{Binding DataContext.DisplayDevStartupCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
                         Height="40" Margin="5"/>
         </StackPanel>
     </StackPanel>

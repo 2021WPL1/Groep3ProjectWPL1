@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlanner.Classes;
@@ -22,6 +23,7 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand DisplayPlannerStartupCommand { get; set; }
         public DelegateCommand DisplayTesterStartupCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
+        public DelegateCommand SaveJrCommand { get; set; }
        
         public ViewModelMain()
         {
@@ -34,6 +36,7 @@ namespace TestingPlanner.Viewmodels
             DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
             DisplayTesterStartupCommand = new DelegateCommand(DisplayTesterStartup);
             DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
+
         }
 
         // Getters/Setters
@@ -48,13 +51,16 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Command methods
+        // TODO: add method to switch return window based on function
         public void DisplayNewJR()
         {
+            SaveJrCommand = new DelegateCommand(InsertJr);
             this.ViewModel = new ViewmodelRequestForm();
         }
 
         public void DisplayExistingJR()
         {
+            SaveJrCommand = new DelegateCommand(UpdateJr);
             this.ViewModel = new ViewmodelRequestForm(((ViewModelCollection)this.ViewModel).SelectedJR);
         }
 
@@ -75,6 +81,37 @@ namespace TestingPlanner.Viewmodels
         public void DisplayDevStartup()
         {
             this.ViewModel = new ViewmodelTemporarilyStartUp();
+        }
+
+        // JR CRUD
+        // Command functions
+        // Adds and stores a job request and switches windows
+        public void InsertJr()
+        {
+            var jr = _dao.AddJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+            foreach (var thisEUT in ((ViewModelContainer)this.ViewModel).EUTs)
+            {
+                _dao.AddEutToRqRequest(jr, thisEUT);
+            }
+            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+            _dao.SaveChanges();
+            DisplayDevStartup();
+        }
+
+        // Updates existing job request and switches windows
+        public void UpdateJr()
+        {
+            string error = _dao.UpdateJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+            if (error == null)
+            {
+                DisplayDevStartup();
+            }
+            else
+            {
+                MessageBox.Show(error);
+            }
         }
     }
 }

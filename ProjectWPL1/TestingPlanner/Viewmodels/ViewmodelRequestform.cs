@@ -14,18 +14,8 @@ using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewmodelRequestForm : ViewModelBase
+    public class ViewmodelRequestForm : ViewModelContainer
     {
-        // Jobrequest data container
-        // Only one getter/setter needs to be made for all changes in GUI
-        private JR _jr;
-        private EUT _eut;
-
-        // EUT's
-        // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
-        public ObservableCollection<EUT> EUTs { get; set; }
-        private EUT _selectedEUT;
-
         // Combobox contents
         public ObservableCollection<string> JobNatures { get; set; }
         public ObservableCollection<string> Divisions { get; set; }
@@ -41,75 +31,39 @@ namespace TestingPlanner.Viewmodels
         public ICommand addMockEUTCommand { get; set; }
 
         // Constructor for new JR
-        public ViewmodelRequestForm()
+        public ViewmodelRequestForm() : base()
         {
             init();
+            Load();
 
             // JR = new JR
             refreshJR();
-
-            // addJRCommand calls function to insert new JR
-            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
         }
 
         // Constructor for existing JR
-        public ViewmodelRequestForm(int idRequest)
+        public ViewmodelRequestForm(int idRequest) : base()
         {
             init();
+            Load();
 
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
-
-            // addJRCommand calls function to save existing JR
-            addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
         }
 
         // Code reused in both constructors
         private void init()
         {
             // Collection initialization
-            EUTs = new ObservableCollection<EUT>();
             JobNatures = new ObservableCollection<string>();
             Divisions = new ObservableCollection<string>();
 
             // Command initialization
-            cancelCommand = new RelayCommand<Window>(ChangeWindows);
             refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
             addMockEUTCommand = new DelegateCommand(addMockEUT);
         }
 
-        // Getters/Setters
-        public JR JR
-        {
-            get { return _jr; }
-            set
-            {
-                _jr = value;
-                OnpropertyChanged();
-            }
-        }
-        public EUT eut
-        {
-            get { return _eut; }
-            set
-            {
-                _eut = value;
-                OnpropertyChanged();
-            }
-        }
-        public EUT SelectedEUT
-        {
-            get { return _selectedEUT; }
-            set
-            {
-                _selectedEUT = value;
-                OnpropertyChanged();
-            }
-        }
-
-        // Function used in code behind
         // Loads jobNatures, divisions in cbb
         public void Load()
         {
@@ -127,45 +81,6 @@ namespace TestingPlanner.Viewmodels
             {
                 Divisions.Add(division.Afkorting);
             }
-        }
-
-        // Command functions
-        // Adds and stores a job request and switches windows
-        public void InsertJr(Window window)
-        {
-            
-            var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
-
-            foreach (var thisEUT in EUTs)
-            {
-                _dao.AddEutToRqRequest(jr, thisEUT);
-            }
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-            ChangeWindows(window);         
-        }
-
-        // Updates existing job request and switches windows
-        public void UpdateJr(Window window)
-        {
-            string error = _dao.UpdateJobRequest(JR); // SaveChanges included in function
-
-            if (error == null)
-            {
-                ChangeWindows(window);
-            }
-            else
-            {
-                MessageBox.Show(error);
-            }    
-        }
-
-        // Adds and stores job request in DB via _dao instance
-        private void ChangeWindows(Window window)
-        {
-            MainWindow overviewWindow = new MainWindow();
-            overviewWindow.Show();
-            window.Close();
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
