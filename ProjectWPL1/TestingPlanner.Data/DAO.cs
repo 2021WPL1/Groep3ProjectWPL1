@@ -204,6 +204,27 @@ namespace TestingPlanner.Data
 
             return selectedJR;
         }
+
+        public List <EUT> GetEut(RqRequest rq)
+        {
+           
+            List<RqRequestDetail> rqdetail = context.RqRequestDetails.Include(e => e.Euts).Where(r => r.IdRequest == rq.IdRequest).ToList();
+            var EutList = new Eut();
+            List<EUT> eutObject = new List<EUT>();
+
+            foreach (var eutss in rqdetail)
+            {
+                //List<Eut> eut = context.Euts.Where(e => e.IdRqDetail == eutss.IdRqDetail).ToList();
+                EutList = context.Euts.FirstOrDefault(e => e.IdRqDetail == eutss.IdRqDetail);
+                eutObject.Add(  new EUT
+                 {
+                    OmschrijvingEut = EutList.OmschrijvingEut,
+                 });
+            }
+            return eutObject;
+    }
+
+
         /// <summary>
         /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
         /// </summary>
