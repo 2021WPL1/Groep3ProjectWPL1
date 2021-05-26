@@ -221,16 +221,14 @@ namespace TestingPlanner.Viewmodels
         /// <param name="id"></param>
         /// <param name="jr"></param>
         public void FillEUT(int id,JR jr)
-        { //List<Eut> test = _dao.EutTemplate(id);
-          //foreach (EUT VARIABLE in test)
-          //{
-          //    FillEUT(VARIABLE);
-          //}
-         RqRequestDetail details = context.RqRequestDetails.FirstOrDefault(e => e.IdRequest == id);
+        { 
+
+         Eut details = context.Euts.FirstOrDefault(e => e.IdRqDetail == id);
          List<Eut> eutss = context.Euts.Where(e => e.IdRqDetailNavigation.IdRequest == id).ToList();
          List<string> count = new List<string>();
          foreach (var eut in eutss)
          {
+             
              if(count.Contains(eut.OmschrijvingEut) == false)
              {
                  count.Add(eut.OmschrijvingEut);

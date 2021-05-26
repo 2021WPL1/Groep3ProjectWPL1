@@ -98,7 +98,7 @@ namespace TestingPlanner.Data
             };
 
 
-            // Matti voorlopig
+            //Matti voorlopig
             // We create a rqo object of the RqOptionel class to save the following fields in the database with the user input
             RqOptionel rqo = new RqOptionel
             {
@@ -124,16 +124,13 @@ namespace TestingPlanner.Data
         /// <param name="eut"></param>
         public void AddEutToRqRequest(RqRequest request, EUT eut, string EutNr)
         {
+
             List<string> testDivision = new List<string>();
 
             request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
             request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
 
-            //RqOptionel rqo = new RqOptionel
-            //{
-            //    Link = eut.
-            //};
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
             TestDivisionEutIsChecked(eut, testDivision);
 
@@ -180,7 +177,7 @@ namespace TestingPlanner.Data
                 rqrequest.NetWeight = Jr.NetWeight;
                 rqrequest.Battery = Jr.Battery;
 
-                //Matti voorlopig
+                // Matti voorlopig
                 RqOptionel rqo = context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
                 rqo.Link = Jr.Link;
                 rqo.Remarks = Jr.Remarks;
@@ -225,13 +222,15 @@ namespace TestingPlanner.Data
                 ExpEnddate = selectedRQ.ExpectedEnddate,
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
-                NetWeight = selectedRQ.NetWeight,
+                NetWeight = selectedRQ.NetWeight,              
                 Battery = selectedRQ.Battery,
 
-                //Matti voorlopig
+                // Test
+                EutPartnr = selectedRQ.EutPartnumbers,
+                // Matti voorlopig
                 Link = selectedRQO.Link,
                 Remarks = selectedRQO.Remarks,
-                
+
             };
 
             return selectedJR;
