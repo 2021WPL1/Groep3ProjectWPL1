@@ -17,10 +17,8 @@ namespace TestingPlanner.Viewmodels
         private int _selectedJR; // Will be passed to ctor RQF to open existing JR
 
         //Constructor
-        public ViewModelStartupRD(DAO dao)
+        public ViewModelStartupRD()
         {
-            this._dao = dao;
-
             // Collection initialization
             idRequestsOnly = new ObservableCollection<int>();
         }
