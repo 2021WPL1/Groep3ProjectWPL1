@@ -18,7 +18,7 @@ namespace TestingPlanner.Data
     public class DAO
     {
         // Variables
-        private Barco2021ContextOLD context;
+        private Barco2021Context context;
         private static readonly DAO instance = new DAO();
 
         public BarcoUser BarcoUser { get; }
@@ -33,7 +33,7 @@ namespace TestingPlanner.Data
         // Calls an instance from the Barco2021Context and stores this context in the current context
         private DAO()
         {
-            this.context = new Barco2021ContextOLD();
+            this.context = new Barco2021Context();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
@@ -43,19 +43,19 @@ namespace TestingPlanner.Data
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
         {
-            return context.RqRequests.Include(r => r.IdRequest).ToList();
+            return context.RqRequest.Include(r => r.IdRequest).ToList();
         }
 
         // Returns list of all jobNatures
         public List<RqJobNature> GetAllJobNatures()
         {
-            return context.RqJobNatures.ToList();
+            return context.RqJobNature.ToList();
         }
 
         // Returns list of all BarcoDivisions
         public List<RqBarcoDivision> GetAllDivisions()
         {
-            return context.RqBarcoDivisions.ToList();
+            return context.RqBarcoDivision.ToList();
         }
 
         // JR CHANGES
@@ -132,7 +132,7 @@ namespace TestingPlanner.Data
 
                 request.RqRequestDetails.Add(detail);
             };
-            context.RqRequests.Add(request);
+            context.RqRequest.Add(request);
         }
 
         // INCOMPLETE
@@ -146,7 +146,7 @@ namespace TestingPlanner.Data
             // JR Number not empty?
             if (Jr.BarcoDivision != null)
             {
-                RqRequest rqrequest = context.RqRequests.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+                RqRequest rqrequest = context.RqRequest.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
 
                 rqrequest.JrNumber = Jr.JrNumber;
                 rqrequest.JrStatus = Jr.JrStatus;
@@ -162,7 +162,7 @@ namespace TestingPlanner.Data
                 rqrequest.NetWeight = Jr.NetWeight;
                 rqrequest.Battery = Jr.Battery;
 
-                context.RqRequests.Update(rqrequest);
+                context.RqRequest.Update(rqrequest);
                 SaveChanges();
             }
             else
@@ -181,7 +181,7 @@ namespace TestingPlanner.Data
         public JR GetJRWithId(int idrequest)
         {
             // Find selected RqRequest
-            RqRequest selectedRQ = context.RqRequests.FirstOrDefault(rq => rq.IdRequest == idrequest);
+            RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
 
             // Create new JR with necessary data
             JR selectedJR = new JR

@@ -77,7 +77,7 @@ namespace TestingPlanner.Viewmodels
             foreach (var id in eutList)
             {
                 Barco2021Context context = new Barco2021Context();
-                var request = context.RqRequests.FirstOrDefault(e => e.IdRequest == id.IdRequest);
+                var request = context.RqRequest.FirstOrDefault(e => e.IdRequest == id.IdRequest);
                 JR jr = new JR
                 {
                     IdRequest = request.IdRequest,

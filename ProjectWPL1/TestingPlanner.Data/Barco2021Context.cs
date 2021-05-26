@@ -15,19 +15,19 @@ namespace TestingPlanner.Domain.Models
         {
         }
 
-        public virtual DbSet<Eut> Eut { get; set; }
+        public virtual DbSet<Eut> Euts { get; set; }
         public virtual DbSet<Person> Person { get; set; }
-        public virtual DbSet<PlPlanning> PlPlanning { get; set; }
-        public virtual DbSet<PlPlanningsKalender> PlPlanningsKalender { get; set; }
-        public virtual DbSet<PlResources> PlResources { get; set; }
-        public virtual DbSet<PlResourcesDivision> PlResourcesDivision { get; set; }
+        public virtual DbSet<PlPlanning> PlPlannings { get; set; }
+        public virtual DbSet<PlPlanningsKalender> PlPlanningsKalenders { get; set; }
+        public virtual DbSet<PlResources> PlResource { get; set; }
+        public virtual DbSet<PlResourcesDivision> PlResourcesDivisions { get; set; }
         public virtual DbSet<PlVerletdagen> PlVerletdagen { get; set; }
         public virtual DbSet<RqBarcoDivision> RqBarcoDivision { get; set; }
         public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPerson { get; set; }
         public virtual DbSet<RqJobNature> RqJobNature { get; set; }
-        public virtual DbSet<RqOptionel> RqOptionel { get; set; }
+        public virtual DbSet<RqOptionel> RqOptionels { get; set; }
         public virtual DbSet<RqRequest> RqRequest { get; set; }
-        public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
+        public virtual DbSet<RqRequestDetail> RqRequestDetails { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
         public virtual DbSet<Statistiek> Statistiek { get; set; }
 
@@ -35,8 +35,8 @@ namespace TestingPlanner.Domain.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server= LAPTOP-508LAAEA\\VIVES;Database=Barco2021;Trusted_Connection=True;");
+
+                optionsBuilder.UseSqlServer(Constants.CONNECTION_STRING);
             }
         }
 
