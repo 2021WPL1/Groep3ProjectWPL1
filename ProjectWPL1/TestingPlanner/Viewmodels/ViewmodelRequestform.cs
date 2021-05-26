@@ -133,7 +133,7 @@ namespace TestingPlanner.Viewmodels
             ChangeWindows(window); 
 
             //TEMPORARILY !!!!
-            _dao.SendMail(); 
+            _dao.Sendmail(); 
         }
 
         // Updates existing job request and switches windows
