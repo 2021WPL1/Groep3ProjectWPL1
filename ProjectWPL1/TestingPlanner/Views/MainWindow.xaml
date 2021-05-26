@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Height="720" Width="980" Background="#363636" Foreground="White"
-        ResizeMode="NoResize"
-        WindowState="Normal"
+        WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
@@ -25,7 +24,9 @@
                         <TextBlock FontSize="16" Text=")"/>
                     </StackPanel>
                 </GroupBox.Header>
-                <ContentControl Content="{Binding ViewModel}"/>
+                <ScrollViewer MaxHeight="600">
+                    <ContentControl Content="{Binding ViewModel}"/>
+                </ScrollViewer>
             </GroupBox>
         </StackPanel>
     </StackPanel>

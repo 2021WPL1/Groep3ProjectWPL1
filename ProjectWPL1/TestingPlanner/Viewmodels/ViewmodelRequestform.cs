@@ -53,7 +53,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Constructor for existing JR
-        public ViewmodelRequestForm(DAO dao, int idRequest)
+        public ViewmodelRequestForm(int idRequest)
         {
             init();
 

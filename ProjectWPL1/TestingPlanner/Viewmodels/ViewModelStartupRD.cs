@@ -10,28 +10,12 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewModelStartupRD : ViewModelBase
+    public class ViewModelStartupRD : ViewModelCollection
     {
-        // Jobrequest IDs
-        public ObservableCollection<int> idRequestsOnly { get; set; }
-        private int _selectedJR; // Will be passed to ctor RQF to open existing JR
-
         //Constructor
-        public ViewModelStartupRD()
+        public ViewModelStartupRD() : base()
         {
-            // Collection initialization
-            idRequestsOnly = new ObservableCollection<int>();
-        }
-
-        // Getters/Setters
-        public int SelectedJR
-        {
-            get => _selectedJR;
-            set
-            {
-                _selectedJR = value;
-                OnpropertyChanged();
-            }
+            Load();
         }
 
         // Function used in code behind
@@ -47,7 +31,7 @@ namespace TestingPlanner.Viewmodels
             }
 
             // first JR selected by default --> Selected JR can't be null
-            this.SelectedJR = idRequestsOnly[0];
+            base.SelectedJR = idRequestsOnly[0];
         }
     }
 }

@@ -16,13 +16,15 @@ namespace TestingPlanner.Viewmodels
         public BarcoUser User { get; set; }
 
         public DelegateCommand DisplayNewJRCommand { get; set; }
+        public DelegateCommand DisplayExistingJRCommand { get; set; }
        
         public ViewModelMain()
         {
             this.ViewModel = new ViewmodelTemporarilyStartUp();
             this.User = _dao.BarcoUser;
 
-            DisplayNewJRCommand = new DelegateCommand(DisplayView);
+            DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
+            DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
         }
 
         // Getters/Setters
@@ -36,9 +38,15 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
-        public void DisplayView()
+        // Command methods
+        public void DisplayNewJR()
         {
             this.ViewModel = new ViewmodelRequestForm();
+        }
+
+        public void DisplayExistingJR()
+        {
+            this.ViewModel = new ViewmodelRequestForm(((ViewModelCollection)this.ViewModel).SelectedJR);
         }
     }
 }

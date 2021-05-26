@@ -16,12 +16,8 @@ namespace TestingPlanner.Viewmodels
     // TEMPORARY SCREEN
     // Proof of concept: loading list of JR's from database
     // TODO: datatemplate for JR's
-    public class ViewmodelTemporarilyStartUp : ViewModelBase
+    public class ViewmodelTemporarilyStartUp : ViewModelCollection
     {
-        // Jobrequest IDs
-        public ObservableCollection<int> idRequestsOnly { get; set; }
-        private int _selectedJR; // Will be passed to ctor RQF to open existing JR
-
         // Command declaration
         // RelayCommand<Class> takes object of type class as input
         public RelayCommand<Window> addNewRqCommand { get; set; }
@@ -31,28 +27,16 @@ namespace TestingPlanner.Viewmodels
         public ICommand openEmployeeStartupCommand { get; set; }
 
         //Constructor
-        public ViewmodelTemporarilyStartUp()
+        public ViewmodelTemporarilyStartUp():base()
         {
-            // Collection initialization
-            idRequestsOnly = new ObservableCollection<int>();
-
             // Command initialization
             addNewRqCommand = new RelayCommand<Window>(OpenEmptyJR);
             showExistingRqCommand = new RelayCommand<Window>(OpenExistingJr);
             openTesterStartupCommand = new DelegateCommand(openTesterStartup);
             openPlannerStartupCommand = new DelegateCommand(openPlannerStartup);
             openEmployeeStartupCommand = new DelegateCommand(openEmployeeStartup);
-        }
 
-        // Getters/Setters
-        public int SelectedJR
-        {
-            get => _selectedJR;
-            set
-            {
-                _selectedJR = value;
-                OnpropertyChanged();
-            }
+            Load();
         }
 
         // Function used in code behind
