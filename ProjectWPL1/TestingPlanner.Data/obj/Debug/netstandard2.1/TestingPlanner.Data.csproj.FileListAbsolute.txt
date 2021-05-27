@@ -111,6 +111,10 @@ C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.AssemblyInfo.cs
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CoreCompileInputs.cache
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.dll
+<<<<<<< HEAD
+=======
+C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
+>>>>>>> shadowTesting
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.deps.json
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.dll
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Data.pdb
@@ -119,4 +123,7 @@ C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Classes.pdb
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\bin\Debug\netstandard2.1\TestingPlanner.Domain.pdb
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Data\obj\Debug\netstandard2.1\TestingPlanner.Data.pdb
+=======
+>>>>>>> shadowTesting

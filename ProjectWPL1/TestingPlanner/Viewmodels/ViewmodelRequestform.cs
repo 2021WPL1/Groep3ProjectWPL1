@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using Microsoft.Toolkit.Mvvm.Input;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
+using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
@@ -22,6 +23,7 @@ namespace TestingPlanner.Viewmodels
         // Jobrequest data container
         // Only one getter/setter needs to be made for all changes in GUI
         private JR _jr;
+        private EUT _eut;
 
         // EUT's
         // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
@@ -52,6 +54,8 @@ namespace TestingPlanner.Viewmodels
 
             // addJRCommand calls function to insert new JR
             addJobRequestCommand = new RelayCommand<Window>(InsertJr);
+
+
         }
 
         // Constructor for existing JR
@@ -94,7 +98,15 @@ namespace TestingPlanner.Viewmodels
                 OnpropertyChanged();
             }
         }
-
+        public EUT eut
+        {
+            get { return _eut; }
+            set
+            {
+                _eut = value;
+                OnpropertyChanged();
+            }
+        }
         public EUT SelectedEUT
         {
             get { return _selectedEUT; }
@@ -129,11 +141,16 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr(Window window)
         {
-            _dao.AddJobRequest(JR); // SaveChanges included in function
-            ChangeWindows(window); 
+            
+            var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
 
-            //TEMPORARILY !!!!
-            _dao.Sendmail(); 
+            foreach (var thisEUT in EUTs)
+            {
+                _dao.AddEutToRqRequest(jr, thisEUT);
+            }
+            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+            _dao.SaveChanges();
+            ChangeWindows(window);          
         }
 
         // Updates existing job request and switches windows
@@ -160,6 +177,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // This function adds an new EUT instance into the GUI RequestForm
+        // EUT in Database
         public void addEUT()
         {
             EUTs.Add(new EUT());
@@ -168,7 +186,7 @@ namespace TestingPlanner.Viewmodels
         // Clear all data in JR
         private void refreshJR()
         {
-            this.JR = new JR();
+            this.JR = _dao.GetNewJR();
             EUTs.Clear();
         }
 
@@ -185,8 +203,8 @@ namespace TestingPlanner.Viewmodels
             {
                 PartNr = "TEST",
                 AvailabilityDate = new DateTime(2021, 03, 12),
-                NetWeight = 1.8,
-                GrossWeight = 2.3,
+                NetWeight = "1.8",
+                GrossWeight = "2.3",
                 EMC = true,
                 REL = true
             });
