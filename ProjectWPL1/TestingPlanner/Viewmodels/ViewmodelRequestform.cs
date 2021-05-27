@@ -235,10 +235,7 @@ namespace TestingPlanner.Viewmodels
         {
             EUTs.Add(new EUT
             {
-                PartNr = "TEST",
                 AvailabilityDate = new DateTime(2021, 03, 12),
-                NetWeight = "1.8",
-                GrossWeight = "2.3",
                 EMC = true,
                 REL = true
             });

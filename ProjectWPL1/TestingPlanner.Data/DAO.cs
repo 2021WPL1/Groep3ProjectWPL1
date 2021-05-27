@@ -112,8 +112,6 @@ namespace TestingPlanner.Data
         {
             List<string> testDivision = new List<string>();
 
-            request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
-            request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
 
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
@@ -213,7 +211,7 @@ namespace TestingPlanner.Data
             
             foreach (var detail in rqDetailsForJR)
             {
-                List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail = detail.IdRqDetail).ToList(); ;
+                List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
 
                 var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
 
