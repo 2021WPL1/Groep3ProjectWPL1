@@ -12,11 +12,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-<<<<<<< HEAD
-    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
-=======
-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
->>>>>>> shadowTesting
   </ItemGroup>
 
   <ItemGroup>

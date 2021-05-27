@@ -6,15 +6,8 @@
       "version": "3.1.0"
     },
     "additionalProbingPaths": [
-<<<<<<< HEAD
-      "C:\\Users\\dewin\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\dewin\\.nuget\\packages",
-=======
-      "C:\\Users\\Mel\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Mel\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
->>>>>>> shadowTesting
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Users\\Kaat\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Kaat\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
