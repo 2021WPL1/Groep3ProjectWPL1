@@ -5608,34 +5608,26 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\matti\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Kaat\\.nuget\\packages\\": {}
->>>>>>> LoadEUTs
+    "C:\\Users\\Mel\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
       "projectName": "TestingPlanner",
-      "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
-      "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
+      "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
+      "packagesPath": "C:\\Users\\Mel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
-      "projectName": "TestingPlanner",
-      "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\TestingPlanner.csproj",
-      "packagesPath": "C:\\Users\\Kaat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\Kaat\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> LoadEUTs
+        "C:\\Users\\Mel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5649,25 +5641,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-<<<<<<< HEAD
-            "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
-              "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
+            "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
             },
-            "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
-              "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
+            "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
             },
-            "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj": {
-              "projectPath": "C:\\Users\\matti\\source\\repos\\2021WPL1Groep3\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj"
-=======
-            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj": {
-              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Data\\TestingPlanner.Data.csproj"
-            },
-            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj": {
-              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj"
-            },
-            "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj": {
-              "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj"
->>>>>>> LoadEUTs
+            "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj": {
+              "projectPath": "C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\TestingPlanner.Classes\\TestingPlanner.Classes.csproj"
             }
           }
         }
@@ -5734,5 +5715,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Mel\\Desktop\\Vives\\Werkplekleren 1\\ProjectWPL1\\ProjectWPL1\\TestingPlanner\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
