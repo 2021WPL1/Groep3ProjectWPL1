@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,13 +19,11 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelBase
     {
-       
+
         // Dataconnection
         // Can be moved to parent class?
         private DAO _dao;
-
         Barco2021Context context = new Barco2021Context();
-
         // Jobrequest data container
         // Only one getter/setter needs to be made for all changes in GUI
         private JR _jr;
@@ -71,27 +70,17 @@ namespace TestingPlanner.Viewmodels
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
 
-            
-            List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);
 
+            List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);
             // We use a foreach to loop over every item in the eutList
             // And link the user inputed data to the correct variables
+            var request = new RqRequest();
             foreach (var id in eutList)
             {
-                Barco2021Context context = new Barco2021Context();
-                var request = context.RqRequest.FirstOrDefault(e => e.IdRequest == id.IdRequest);
-                JR jr = new JR
-                {
-                    IdRequest = request.IdRequest,
-                    GrossWeight = request.GrossWeight,
-                    NetWeight = request.NetWeight
-                };
-
-                // The following line uses the the requestDetail id to get the linked eut objects.
-                int requestdetailId = id.IdRqDetail;
-                FillEUT(idRequest,jr);
+                request = context.RqRequest.FirstOrDefault(e => e.IdRequest == id.IdRequest);
+               
             }
-
+            FillEUT(request);
             // addJRCommand calls function to save existing JR
             addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
         }
@@ -172,8 +161,8 @@ namespace TestingPlanner.Viewmodels
         /// <param name="window"></param>
         public void InsertJr(Window window)
         {
-         
-            var jr =_dao.AddJobRequest(JR); // SaveChanges included in function
+
+            var jr = _dao.AddJobRequest(JR); // SaveChanges included in function
 
             // We declare a local variable to count the number of created EUTs
             int count = 0;
@@ -181,13 +170,12 @@ namespace TestingPlanner.Viewmodels
             // We use a foreach to loop over EUT object in the ObservableCollection EUTs
             foreach (var thisEUT in EUTs)
             {
-                
                 count++;
-                _dao.AddEutToRqRequest(jr, thisEUT,count.ToString());
+                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
-            ChangeWindows(window);          
+            ChangeWindows(window);
         }
 
         /// <summary>
@@ -205,7 +193,7 @@ namespace TestingPlanner.Viewmodels
             else
             {
                 MessageBox.Show(error);
-            }    
+            }
         }
 
         /// <summary>
@@ -233,31 +221,14 @@ namespace TestingPlanner.Viewmodels
         /// </summary>
         /// <param name="id"></param>
         /// <param name="jr"></param>
-        public void FillEUT(int id,JR jr)
-        { 
-
-         Eut details = context.Euts.FirstOrDefault(e => e.IdRqDetail == id);
-         List<Eut> eutss = context.Euts.Where(e => e.IdRqDetailNavigation.IdRequest == id).ToList();
-         List<string> count = new List<string>();
-         foreach (var eut in eutss)
-         {
-             
-             if(count.Contains(eut.OmschrijvingEut) == false)
-             {
-                 count.Add(eut.OmschrijvingEut);
-                 EUT EUTss = new EUT
-                 {
-                     IdRqDetail = details.IdRqDetail,
-                     OmschrijvingEut = details.OmschrijvingEut,
-                     PartNr = jr.EutPartnr,
-                     GrossWeight = jr.GrossWeight,
-                     NetWeight = jr.NetWeight
-                 };
-                 EUTs.Add(EUTss);
-             }
-         }
-        
+        public void FillEUT( RqRequest rq)
+        {
+            foreach (var objecten in _dao.GetEut(rq))
+            {
+                EUTs.Add(objecten);
+            }
         }
+
 
         /// <summary>
         /// Clear all data in JR
@@ -283,10 +254,7 @@ namespace TestingPlanner.Viewmodels
         {
             EUTs.Add(new EUT
             {
-                PartNr = "TEST",
                 AvailabilityDate = new DateTime(2021, 03, 12),
-                NetWeight = "1.8",
-                GrossWeight = "2.3",
                 EMC = true,
                 REL = true
             });

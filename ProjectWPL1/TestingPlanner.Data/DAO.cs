@@ -127,8 +127,8 @@ namespace TestingPlanner.Data
 
             List<string> testDivision = new List<string>();
 
-            request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
-            request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
+            request.GrossWeight = "0";
+            request.NetWeight = "0";
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
 
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
@@ -235,6 +235,45 @@ namespace TestingPlanner.Data
 
             return selectedJR;
         }
+
+        // Mohamed, Kaat
+        public List <EUT> GetEut(RqRequest rq)
+        {
+            List<RqRequestDetail> rqDetailsForJR = context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
+            List<EUT> EUTObjects = new List<EUT>();
+            
+            foreach (var detail in rqDetailsForJR)
+            {
+                List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
+
+                var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
+
+                foreach (var eut in eutsForDetail)
+                {
+                    EUT selectedEUTObject = EUTObjects.SingleOrDefault(obj => obj.OmschrijvingEut == eut.OmschrijvingEut);
+
+                    if (selectedEUTObject is null)
+                    {
+                        selectedEUTObject = new EUT
+                        {
+                            IdRqDetail = eut.IdRqDetail,
+                            AvailabilityDate = eut.AvailableDate,
+                            OmschrijvingEut = eut.OmschrijvingEut,
+                        };
+    
+                        EUTObjects.Add(selectedEUTObject);
+                    }
+
+                    divisionBool.SetValue(selectedEUTObject, true);
+
+
+                }
+            }
+
+            return EUTObjects;
+    }
+
+
         /// <summary>
         /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
         /// </summary>
