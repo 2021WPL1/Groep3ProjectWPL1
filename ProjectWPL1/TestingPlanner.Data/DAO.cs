@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Windows;
 using TestingPlanner.Classes;
 using TestingPlanner;
@@ -22,6 +24,12 @@ namespace TestingPlanner.Data
         private static readonly DAO instance = new DAO();
 
         public BarcoUser BarcoUser { get; }
+
+        //List with all addresses 
+        List<string> addresses = new List<string>();
+        //Email login info
+        private static string mailFrom = "groep3testprog@gmail.com";
+        private static string mailFromPassword = "Testtest123";
 
         // Calls an DAO instance
         public static DAO Instance()
@@ -236,6 +244,31 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
+        //Create and send Mail to all gmail account from list
+        public void Sendmail()
+        {
+            using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
+            {
+                //addresses.Add("mohamed.elouzatie@student.vives.be");
+                //addresses.Add("Kaat.ceusters@student.vives.be");
+                addresses.Add("matti.snauwaert@student.vives.be");
+                addresses.Add("dewintere.arne@gmail.com");
+                addresses.Add("arne.dewintere@student.vives.be");
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(mailFrom, mailFromPassword);
+                client.EnableSsl = true;
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(mailFrom);
+                mail.Body = "Am i on time?";
+                mail.Subject = "I'm a scheduled mail";
+                foreach (var address in addresses)
+                {
+                    mail.To.Add(address);
+                }
+                client.Send(mail);
+            }
+        }
         // Mohamed, Kaat
         public List <EUT> GetEut(RqRequest rq)
         {
