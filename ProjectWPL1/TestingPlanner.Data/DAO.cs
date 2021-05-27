@@ -205,23 +205,40 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
+        // Mohamed, Kaat
         public List <EUT> GetEut(RqRequest rq)
         {
-           
-            List<RqRequestDetail> rqdetail = context.RqRequestDetails.Include(e => e.Euts).Where(r => r.IdRequest == rq.IdRequest).ToList();
-            var EutList = new Eut();
-            List<EUT> eutObject = new List<EUT>();
-
-            foreach (var eutss in rqdetail)
+            List<RqRequestDetail> rqDetailsForJR = context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
+            List<EUT> EUTObjects = new List<EUT>();
+            
+            foreach (var detail in rqDetailsForJR)
             {
-                //List<Eut> eut = context.Euts.Where(e => e.IdRqDetail == eutss.IdRqDetail).ToList();
-                EutList = context.Euts.FirstOrDefault(e => e.IdRqDetail == eutss.IdRqDetail);
-                eutObject.Add(  new EUT
-                 {
-                    OmschrijvingEut = EutList.OmschrijvingEut,
-                 });
+                List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail = detail.IdRqDetail).ToList(); ;
+
+                var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
+
+                foreach (var eut in eutsForDetail)
+                {
+                    EUT selectedEUTObject = EUTObjects.SingleOrDefault(obj => obj.OmschrijvingEut == eut.OmschrijvingEut);
+
+                    if (selectedEUTObject is null)
+                    {
+                        selectedEUTObject = new EUT
+                        {
+                            IdRqDetail = eut.IdRqDetail,
+                            AvailabilityDate = eut.AvailableDate,
+                            OmschrijvingEut = eut.OmschrijvingEut,
+                        };
+                    }
+
+                    divisionBool.SetValue(selectedEUTObject, true);
+
+                    EUTObjects.Add(selectedEUTObject);
+
+                }
             }
-            return eutObject;
+
+            return EUTObjects;
     }
 
 
