@@ -92,6 +92,7 @@ namespace TestingPlanner.Data
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
+               // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : Jr.ExpEnddate,
                 InternRequest = Jr.InternRequest, // Bool, default false
@@ -158,6 +159,7 @@ namespace TestingPlanner.Data
                 rqrequest.BarcoDivision = Jr.BarcoDivision;
                 rqrequest.JobNature = Jr.JobNature;
                 rqrequest.EutProjectname = Jr.EutProjectname;
+                rqrequest.EutPartnumbers = Jr.EutPartnr;
                 rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
                 rqrequest.ExpectedEnddate = Jr.ExpEnddate;
                 rqrequest.InternRequest = Jr.InternRequest;
@@ -198,6 +200,7 @@ namespace TestingPlanner.Data
                 BarcoDivision = selectedRQ.BarcoDivision,
                 JobNature = selectedRQ.JobNature,
                 EutProjectname = selectedRQ.EutProjectname,
+                EutPartnr = selectedRQ.EutPartnumbers,
                 HydraProjectnumber = selectedRQ.HydraProjectNr,
                 ExpEnddate = selectedRQ.ExpectedEnddate,
                 InternRequest = selectedRQ.InternRequest,
