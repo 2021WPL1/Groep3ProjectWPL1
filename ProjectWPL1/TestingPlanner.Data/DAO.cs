@@ -115,8 +115,8 @@ namespace TestingPlanner.Data
         {   
             List<string> testDivision = new List<string>();
 
-            request.GrossWeight = eut.GrossWeight == null ? string.Empty : eut.GrossWeight;
-            request.NetWeight = eut.NetWeight == null ? string.Empty : eut.NetWeight;
+            request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
+            request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
 
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
