@@ -5,14 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlanner.Views"
         mc:Ignorable="d"
-        Title="StartupPlanner" Height="450" Width="800">
+        Title="StartupPlanner"
+        Height="720" Width="980" Background="#363636" Foreground="White">
     <StackPanel>
-        <Image Style="{StaticResource BarcoLogo}"/>
-        <StackPanel Margin="10">
-            <GroupBox Header="Approval queue" BorderThickness="0.1">
-                <ListBox Height="150"/>
+        <Image Style="{StaticResource BarcoLogo}" Width="158"/>
+        <StackPanel Margin="10" Height="472">
+            <GroupBox Header="Approval queue" BorderThickness="0.1" Height="359">
+                <TabControl Background="#363636" Margin="0,23,0,-5">
+                    <TabItem Header="EMC">
+                        <Grid Background="#363636" Height="217">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="White" Text="DIVISION"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="White" Text="PROJECT NAME"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="White" Text="JR nr"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center" Foreground="White" Text="STATUS"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Foreground="White" Text="FORESEEN DATE"/>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstDiv" Background="#363636" Grid.Column="0" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstProjectname" Background="#363636" Grid.Column="1" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstJrnr" Background="#363636" Grid.Column="2" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstStatus" Background="#363636" Grid.Column="3" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstForeseendate" Background="#363636" Grid.Column="4" BorderThickness="0"></ListBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="ENV">
+                        <Grid Background="#363636" Height="217">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="White" Text="DIVISION"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="White" Text="PROJECT NAME"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="White" Text="JR nr"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center" Foreground="White" Text="STATUS"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Foreground="White" Text="FORESEEN DATE"/>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstEnvdiv" Background="#363636" Grid.Column="0" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstEnvprojectname" Background="#363636" Grid.Column="1" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstEnvjrnr" Background="#363636" Grid.Column="2" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstEnvstatus" Background="#363636" Grid.Column="3" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstEnvforeseendate" Background="#363636" Grid.Column="4" BorderThickness="0"></ListBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="REL">
+                        <Grid Background="#363636" Height="217">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="White" Text="DIVISION"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="White" Text="PROJECT NAME"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="White" Text="JR nr"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center" Foreground="White" Text="STATUS"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Foreground="White" Text="FORESEEN DATE"/>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstReldiv" Background="#363636" Grid.Column="0" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstRelprojectname" Background="#363636" Grid.Column="1" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstReljrnr" Background="#363636" Grid.Column="2" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstRelstatus" Background="#363636" Grid.Column="3" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstRelforeseendate" Background="#363636" Grid.Column="4" BorderThickness="0"></ListBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="SAF">
+                        <Grid Background="#363636" Height="217">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="White" Text="DIVISION"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="White" Text="PROJECT NAME"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="White" Text="JR nr"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center" Foreground="White" Text="STATUS"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Foreground="White" Text="FORESEEN DATE"/>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstSafdiv" Background="#363636" Grid.Column="0" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstSafprojectname" Background="#363636" Grid.Column="1" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstSafjrnr" Background="#363636" Grid.Column="2" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstSafstatus" Background="#363636" Grid.Column="3" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstSafforeseendate" Background="#363636" Grid.Column="4" BorderThickness="0"></ListBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="PCK">
+                        <Grid Background="#363636" Height="217">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="White" Text="DIVISION"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="White" Text="PROJECT NAME"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="White" Text="JR nr"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Center" Foreground="White" Text="STATUS"/>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Foreground="White" Text="FORESEEN DATE"/>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstPckdiv" Background="#363636" Grid.Column="0" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstPckprojectname" Background="#363636" Grid.Column="1" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstPckjrnr" Background="#363636" Grid.Column="2" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstPckstatus" Background="#363636" Grid.Column="3" BorderThickness="0"></ListBox>
+                            <ListBox HorizontalAlignment="Center" Foreground="White" Name="lstPckforeseendate" Background="#363636" Grid.Column="4" BorderThickness="0"></ListBox>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
             </GroupBox>
-            <StackPanel Orientation="Horizontal" Margin="10">
+            <StackPanel Orientation="Horizontal" Height="48">
                 <Button Content="Open JR details"/>
             </StackPanel>
         </StackPanel>
