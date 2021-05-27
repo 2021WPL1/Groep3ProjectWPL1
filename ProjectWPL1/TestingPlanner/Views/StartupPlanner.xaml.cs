@@ -20,40 +20,22 @@ namespace TestingPlanner.Views
         public StartupPlanner()
         {
             InitializeComponent();
-            AddDataToListbox();
+            AddDataToSearch();
         }
 
-        private void AddDataToListbox()
+        private void AddDataToSearch()
         {
-            lstDiv.Items.Add("HC");
-            lstProjectname.Items.Add("MDPC-8127");
-            lstJrnr.Items.Add("000798");
-            lstStatus.Items.Add("Planned");
-            lstForeseendate.Items.Add("29/05/2021");
+            cbmSearchdevision.Items.Add("HC");
+            cbmSearchdevision.Items.Add("EP-LD");
+            cbmSearchdevision.Items.Add("EP-NET-KAR");
+            cbmSearchdevision.Items.Add("EP-NET-KND");
+            cbmSearchdevision.Items.Add("EP-PROJ-CAV");
 
-            lstEnvdiv.Items.Add("HC");
-            lstEnvprojectname.Items.Add("MDPC-7927");
-            lstEnvjrnr.Items.Add("000753");
-            lstEnvstatus.Items.Add("Delayed");
-            lstEnvforeseendate.Items.Add("30/05/2021");
-
-            lstReldiv.Items.Add("HC");
-            lstRelprojectname.Items.Add("MDPC-7428");
-            lstReljrnr.Items.Add("000453");
-            lstRelstatus.Items.Add("Delayed");
-            lstRelforeseendate.Items.Add("02/06/2021");
-
-            lstSafdiv.Items.Add("HC");
-            lstSafprojectname.Items.Add("MDPC-8051");
-            lstSafjrnr.Items.Add("000946");
-            lstSafstatus.Items.Add("Completed");
-            lstSafforeseendate.Items.Add("01/06/2021");
-
-            lstPckdiv.Items.Add("HC");
-            lstPckprojectname.Items.Add("MDPC-7362");
-            lstPckjrnr.Items.Add("000451");
-            lstPckstatus.Items.Add("Planned");
-            lstPckforeseendate.Items.Add("02/06/2021");
+            cbmSearchstatus.Items.Add("Planned");
+            cbmSearchstatus.Items.Add("JR Planned");
+            cbmSearchstatus.Items.Add("Passed");
+            cbmSearchstatus.Items.Add("Not Planned");
+            cbmSearchstatus.Items.Add("Ongoing");
         }
     }
 }
