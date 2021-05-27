@@ -112,6 +112,8 @@ namespace TestingPlanner.Data
         {
             List<string> testDivision = new List<string>();
 
+            request.GrossWeight = "0";
+            request.NetWeight = "0";
             request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
 
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
@@ -227,11 +229,12 @@ namespace TestingPlanner.Data
                             AvailabilityDate = eut.AvailableDate,
                             OmschrijvingEut = eut.OmschrijvingEut,
                         };
+    
+                        EUTObjects.Add(selectedEUTObject);
                     }
 
                     divisionBool.SetValue(selectedEUTObject, true);
 
-                    EUTObjects.Add(selectedEUTObject);
 
                 }
             }
