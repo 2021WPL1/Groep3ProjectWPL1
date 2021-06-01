@@ -6,49 +6,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Compile Update="Views\MainWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\RequestFormUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\StartupPlannerUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\StartupRDUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\StartupTesterUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\TempUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="DictionaryResources\ViewTemplates.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="DictionaryResources\DataTemplates.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\RequestFormUserControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\StartupPlannerUserControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\StartupRDUserControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\StartupTesterUserControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\TempUserControl.xaml">
+    <Page Update="Views\RequestForm.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
