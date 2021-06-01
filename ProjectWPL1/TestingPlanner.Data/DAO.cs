@@ -556,7 +556,7 @@ namespace TestingPlanner.Data
                 IdRequest = request.IdRequest,
                 JrNr = request.JrNumber,
                 Requestdate = request.RequestDate,
-                DueDate = DateTime.Now.AddDays(5),
+                DueDate = request.RequestDate == null? request.RequestDate: ((DateTime)request.RequestDate).AddDays(5),
                 TestDiv = division,
                 TestDivStatus = "In plan", // use enums?
             };
