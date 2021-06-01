@@ -32,7 +32,7 @@ namespace TestingPlanner.Viewmodels
                 OnpropertyChanged();
             }
         }
-        public EUT eut
+        public EUT Eut
         {
             get { return _eut; }
             set
