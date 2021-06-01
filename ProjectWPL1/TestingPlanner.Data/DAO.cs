@@ -310,18 +310,6 @@ namespace TestingPlanner.Data
             return EUTObjects;
         }
 
-
-        /// <summary>
-        /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
-        /// </summary>
-        /// <param name="idrequest"></param>
-        /// <returns></returns>
-        public List<RqRequestDetail> rqDetail(int idrequest)
-        {
-            List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
-            return DetailRQ;
-        }
-
         // Approval
         /// <summary>
         /// Approved items will be displayed in the queue for the respective teams
@@ -360,6 +348,17 @@ namespace TestingPlanner.Data
         public void SaveChanges()
         {
             context.SaveChanges();
+        }
+
+        /// <summary>
+        /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
+        /// </summary>
+        /// <param name="idrequest"></param>
+        /// <returns></returns>
+        public List<RqRequestDetail> rqDetail(int idrequest)
+        {
+            List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
+            return DetailRQ;
         }
 
         /// <summary>
