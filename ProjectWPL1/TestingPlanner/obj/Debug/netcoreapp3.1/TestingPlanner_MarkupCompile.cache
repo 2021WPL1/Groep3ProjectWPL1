@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
-11-1576150276
+11-2113155360
 
-18-574633671
+20667142741
 2211323875410
-DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\PlannedTestScherm.xaml;Views\RequestForm.xaml;Views\RequestFormUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\PlannedTestScherm.xaml;Views\RequestFormUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;Views\TestFormUserControl.xaml;
 
 False
 

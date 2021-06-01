@@ -744,3 +744,5 @@ C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\PlannedTestScherm.baml
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\PlannedTestScherm.g.cs
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\PlannedTestScherm.baml
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\TestFormUserControl.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\TestFormUserControl.baml

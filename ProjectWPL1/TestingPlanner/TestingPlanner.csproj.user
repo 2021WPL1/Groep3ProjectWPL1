@@ -10,6 +10,9 @@
     <Compile Update="Views\PlannedTestScherm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TestFormUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\PlannedTestScherm.xaml">
@@ -18,7 +21,7 @@
     <Page Update="DictionaryResources\DataTemplates.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\RequestForm.xaml">
+    <Page Update="Views\TestFormUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

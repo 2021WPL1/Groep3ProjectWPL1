@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelStartupTester : ViewModelCollection
+    class ViewModelStartupTester : ViewModelCollectionRQ
     {
         public ViewModelStartupTester() : base()
         {

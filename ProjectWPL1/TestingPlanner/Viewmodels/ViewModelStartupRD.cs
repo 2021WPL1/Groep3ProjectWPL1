@@ -11,7 +11,7 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewModelStartupRD : ViewModelCollection
+    public class ViewModelStartupRD : ViewModelCollectionRQ
     {
         //Constructor
         public ViewModelStartupRD() : base()

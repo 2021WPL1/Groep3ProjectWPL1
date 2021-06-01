@@ -22,4 +22,7 @@
     <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
         <views:TempUserControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelTestForm}">
+        <views:TestFormUserControl/>
+    </DataTemplate>
 </ResourceDictionary>
