@@ -17,23 +17,8 @@ using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewmodelRequestForm : ViewModelBase
+    public class ViewmodelRequestForm : ViewModelContainer
     {
-
-        // Dataconnection
-        // Can be moved to parent class?
-        private DAO _dao;
-        Barco2021Context context = new Barco2021Context();
-        // Jobrequest data container
-        // Only one getter/setter needs to be made for all changes in GUI
-        private JR _jr;
-        private EUT _eut;
-
-        // EUT's
-        // Does not necessarily need to be linked to JR? We can retrieve the JR ID and add it in DAO
-        public ObservableCollection<EUT> EUTs { get; set; }
-        private EUT _selectedEUT;
-
         // Combobox contents
         public ObservableCollection<string> JobNatures { get; set; }
         public ObservableCollection<string> Divisions { get; set; }
@@ -49,23 +34,20 @@ namespace TestingPlanner.Viewmodels
         public ICommand addMockEUTCommand { get; set; }
 
         // Constructor for new JR
-        public ViewmodelRequestForm(DAO dao)
+        public ViewmodelRequestForm() : base()
         {
-            init(dao);
+            init();
+            Load();
 
             // JR = new JR
             refreshJR();
-
-            // addJRCommand calls function to insert new JR
-            addJobRequestCommand = new RelayCommand<Window>(InsertJr);
-
-
         }
 
         // Constructor for existing JR
-        public ViewmodelRequestForm(DAO dao, int idRequest)
+        public ViewmodelRequestForm(int idRequest) : base()
         {
-            init(dao);
+            init();
+            Load();
 
             // Look for JR with correct ID
             this._jr = _dao.GetJRWithId(idRequest);
@@ -86,56 +68,20 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Code reused in both constructors
-        private void init(DAO dao)
+        private void init()
         {
-            this._dao = dao;
-
             // Collection initialization
-            EUTs = new ObservableCollection<EUT>();
             JobNatures = new ObservableCollection<string>();
             Divisions = new ObservableCollection<string>();
 
             // Command initialization
-            cancelCommand = new RelayCommand<Window>(ChangeWindows);
             refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
             addMockEUTCommand = new DelegateCommand(addMockEUT);
         }
 
-        // Getters/Setters
-        public JR JR
-        {
-            get { return _jr; }
-            set
-            {
-                _jr = value;
-                OnpropertyChanged();
-            }
-        }
-        public EUT eut
-        {
-            get { return _eut; }
-            set
-            {
-                _eut = value;
-                OnpropertyChanged();
-            }
-        }
-        public EUT SelectedEUT
-        {
-            get { return _selectedEUT; }
-            set
-            {
-                _selectedEUT = value;
-                OnpropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Function used in code behind
-        /// Loads jobNatures, divisions in cbb
-        /// </summary>
+        // Loads jobNatures, divisions in cbb
         public void Load()
         {
             var jobNatures = _dao.GetAllJobNatures();
@@ -152,59 +98,6 @@ namespace TestingPlanner.Viewmodels
             {
                 Divisions.Add(division.Afkorting);
             }
-        }
-
-        /// <summary>
-        /// Command functions
-        /// Adds and stores a job request and switches windows
-        /// </summary>
-        /// <param name="window"></param>
-        public void InsertJr(Window window)
-        {
-
-            var jr = _dao.AddJobRequest(JR); // SaveChanges included in function
-
-            // We declare a local variable to count the number of created EUTs
-            int count = 0;
-
-            // We use a foreach to loop over EUT object in the ObservableCollection EUTs
-            foreach (var thisEUT in EUTs)
-            {
-                count++;
-                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
-            }
-            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
-            _dao.SaveChanges();
-            ChangeWindows(window);
-        }
-
-        /// <summary>
-        /// Updates existing job request and switches windows
-        /// </summary>
-        /// <param name="window"></param>
-        public void UpdateJr(Window window)
-        {
-            string error = _dao.UpdateJobRequest(JR); // SaveChanges included in function
-
-            if (error == null)
-            {
-                ChangeWindows(window);
-            }
-            else
-            {
-                MessageBox.Show(error);
-            }
-        }
-
-        /// <summary>
-        /// Adds and stores job request in DB via _dao instance
-        /// </summary>
-        /// <param name="window"></param>
-        private void ChangeWindows(Window window)
-        {
-            Temp overviewWindow = new Temp();
-            overviewWindow.Show();
-            window.Close();
         }
 
         /// <summary>
