@@ -156,7 +156,7 @@ namespace TestingPlanner.Data
                 {
                     // Static added for now
                     // TODO: Dynamic linking
-                    OmschrijvingEut = EutNr,
+                    OmschrijvingEut = "EUT" + EutNr,
                     AvailableDate = eut.AvailabilityDate.Date
 
                 });
