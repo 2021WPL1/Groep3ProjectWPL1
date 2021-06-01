@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -22,7 +23,7 @@ namespace TestingPlanner.Viewmodels
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
             idRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
