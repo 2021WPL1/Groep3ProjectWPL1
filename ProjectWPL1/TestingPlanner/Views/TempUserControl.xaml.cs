@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for StartupPlanner.xaml
+    /// Interaction logic for TempUserControl.xaml
     /// </summary>
-    public partial class StartupPlanner : Window
+    public partial class TempUserControl : UserControl
     {
-        public StartupPlanner()
+        public TempUserControl()
         {
             InitializeComponent();
         }

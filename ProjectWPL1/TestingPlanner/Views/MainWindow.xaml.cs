@@ -11,31 +11,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlanner.Data;
-using TestingPlanner.Domain.Models;
 using TestingPlanner.Viewmodels;
 
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for Temporarily.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Temp : Window
+    public partial class MainWindow : Window
     {
-
-        // Global variables
-        private ViewmodelTemporarilyStartUp tempviewmodel;
-        static DAO dao;
         private static Timer timer;
-
-        // Constructor
-        public Temp()
+        private static DAO _dao;
+        public MainWindow()
         {
+            DataContext = new ViewModelMain();
             InitializeComponent();
-            dao = DAO.Instance();
-            tempviewmodel = new ViewmodelTemporarilyStartUp(DAO.Instance());
-            DataContext = tempviewmodel;
-            tempviewmodel.Load();
-
+            
             Schedule_Timer();
         }
         static void Schedule_Timer()
@@ -58,7 +49,7 @@ namespace TestingPlanner.Views
         {
             Console.WriteLine("Timer has stopped");
             timer.Stop();
-            dao.Sendmail();
+            _dao.Sendmail();
             Schedule_Timer();
         }
     }

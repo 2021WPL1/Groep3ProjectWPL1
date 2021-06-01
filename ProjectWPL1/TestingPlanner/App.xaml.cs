@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TestingPlanner.Data;
+using TestingPlanner.Viewmodels;
 using TestingPlanner.Views;
 
 namespace TestingPlanner
@@ -34,16 +35,16 @@ namespace TestingPlanner
             switch (_dao.BarcoUser.Function)
             {
                 case "DEV":
-                    StartWindow = new Temp();
+                    StartWindow = new MainWindow();
                     break;
                 case "TEST":
-                    StartWindow = new StartupTester(); // To do: tester start screen
+                    StartWindow = new MainWindow(); // To do: tester start screen
                     break;
                 case "PLAN":
-                    StartWindow = new StartupPlanner(); // To do: Planner start screen
+                    StartWindow = new MainWindow(); // To do: Planner start screen
                     break;
                 default:
-                    StartWindow = new StartupRD(); // To do: general start screen
+                    StartWindow = new MainWindow(); // To do: general start screen
                     break;
             }
 

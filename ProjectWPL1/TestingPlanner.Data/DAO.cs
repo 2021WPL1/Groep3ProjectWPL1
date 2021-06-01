@@ -102,11 +102,16 @@ namespace TestingPlanner.Data
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
                 JobNature = Jr.JobNature == null ? string.Empty : Jr.JobNature,
                 EutProjectname = Jr.EutProjectname == null ? string.Empty : Jr.EutProjectname,
+               // EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr,
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
                 
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : (DateTime)Jr.ExpEnddate, // Not nullable, so needs to be casted
                 InternRequest = Jr.InternRequest, // Bool, default false
-                Battery = Jr.Battery // Bool, default false
+                Battery = Jr.Battery, // Bool, default false
+
+                NetWeight = Jr.NetWeight == null? string.Empty : Jr.NetWeight,
+                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr
             };
 
 
@@ -139,9 +144,9 @@ namespace TestingPlanner.Data
 
             List<string> testDivision = new List<string>();
 
-            request.GrossWeight = "0";
-            request.NetWeight = "0";
-            request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
+            //request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
+            //request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
+            //request.EutPartnumbers = eut.PartNr;
 
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
             TestDivisionEutIsChecked(eut, testDivision);
@@ -153,8 +158,11 @@ namespace TestingPlanner.Data
                 detail.Testdivisie = testeut;
                 detail.Euts.Add(new Eut
                 {
+                    // Static added for now
+                    // TODO: Dynamic linking
                     OmschrijvingEut = "EUT" + EutNr,
-                    AvailableDate = DateTime.Now
+                    AvailableDate = eut.AvailabilityDate.Date
+
                 });
 
                 detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
@@ -184,6 +192,7 @@ namespace TestingPlanner.Data
                 rqrequest.BarcoDivision = Jr.BarcoDivision;
                 rqrequest.JobNature = Jr.JobNature;
                 rqrequest.EutProjectname = Jr.EutProjectname;
+                rqrequest.EutPartnumbers = Jr.EutPartnr;
                 rqrequest.HydraProjectNr = Jr.HydraProjectnumber;
                 rqrequest.ExpectedEnddate = (DateTime)Jr.ExpEnddate; // Not nullable, so needs to be casted
                 rqrequest.InternRequest = Jr.InternRequest;
@@ -231,6 +240,7 @@ namespace TestingPlanner.Data
                 BarcoDivision = selectedRQ.BarcoDivision,
                 JobNature = selectedRQ.JobNature,
                 EutProjectname = selectedRQ.EutProjectname,
+                EutPartnr = selectedRQ.EutPartnumbers,
                 HydraProjectnumber = selectedRQ.HydraProjectNr,
                 ExpEnddate = selectedRQ.ExpectedEnddate,
                 InternRequest = selectedRQ.InternRequest,
@@ -279,7 +289,6 @@ namespace TestingPlanner.Data
             List<RqRequestDetail> rqDetailsForJR = context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
             List<EUT> EUTObjects = new List<EUT>();
             
-
             foreach (var detail in rqDetailsForJR)
             {
                 List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
@@ -296,7 +305,7 @@ namespace TestingPlanner.Data
                         selectedEUTObject = new EUT
                         {
                             IdRqDetail = eut.IdRqDetail,
-                            AvailabilityDate = eut.AvailableDate,
+                            AvailabilityDate = (DateTime)eut.AvailableDate,
                             OmschrijvingEut = eut.OmschrijvingEut,
                         };
     

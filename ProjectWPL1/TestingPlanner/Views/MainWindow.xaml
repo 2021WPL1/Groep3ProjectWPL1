@@ -1,0 +1,51 @@
+﻿<Window x:Class="TestingPlanner.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Height="720" Width="980" Background="#363636" Foreground="White"
+        WindowState="Maximized"
+        WindowStyle="ThreeDBorderWindow"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
+            <Image Style="{StaticResource BarcoLogo}"/>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <GroupBox BorderThickness="0.1">
+                <GroupBox.Header>
+                    <!-- This could be done more efficiently? -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="Welcome "/>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding User.Name}"/>
+                        <TextBlock FontSize="16" Text=" ("/>
+                        <TextBlock FontSize="16" Text="{Binding User.Division}"/>
+                        <TextBlock FontSize="16" Text=")"/>
+                    </StackPanel>
+                </GroupBox.Header>
+                <ScrollViewer Height="450">
+                    <ContentControl Content="{Binding ViewModel}"/>
+                </ScrollViewer>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="DEV: Open employee startup" 
+                    Command="{Binding DisplayEmployeeStartupCommand,
+                            Mode=OneWay}" 
+                    Margin="10"/>
+                <Button Content="DEV: Open planner startup" 
+                    Command="{Binding DisplayPlannerStartupCommand,
+                            Mode=OneWay}" 
+                        Margin="10"/>
+                <Button Content="DEV: Open tester startup" 
+                    Command="{Binding DisplayTesterStartupCommand, 
+                            Mode=OneWay}" 
+                        Margin="10"/>
+                <Button Content="DEV: Open tester startup" 
+                    Command="{Binding DisplayDevStartupCommand, 
+                            Mode=OneWay}" 
+                        Margin="10"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

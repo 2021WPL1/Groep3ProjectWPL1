@@ -10,8 +10,11 @@ namespace TestingPlanner
     {
         // Variables
         private int _idRqDetail;
-        private DateTime? _availabilityDate;
+        private DateTime _availabilityDate;
         private string _omschrijvingEut;
+        private string _partNr;
+        private string _netWeight;
+        private string _grossWeight;
 
         // Tests to execute
         // TODO: function to check if necessart RQDetail already exists
@@ -34,7 +37,10 @@ namespace TestingPlanner
         // Constructor
         public EUT()
         {
-            _availabilityDate = new DateTime();
+            _partNr = null;
+            _availabilityDate = DateTime.Now;
+            _netWeight = "0";
+            _grossWeight = "0";
 
             // Tests are not active on start
             _emc = false;
@@ -46,8 +52,9 @@ namespace TestingPlanner
         }
 
         // Getters/Setters
+        public string PartNr { get => _partNr; set => _partNr = value; }
         public int IdRqDetail { get => _idRqDetail; set => _idRqDetail = value; }
-        public DateTime? AvailabilityDate { get => _availabilityDate; set => _availabilityDate = value; }
+        public DateTime AvailabilityDate { get => _availabilityDate; set => _availabilityDate = value; }
         public string OmschrijvingEut { get => _omschrijvingEut; set => _omschrijvingEut = value; }
 
         public bool EMC { get => _emc; set => _emc = value; }
