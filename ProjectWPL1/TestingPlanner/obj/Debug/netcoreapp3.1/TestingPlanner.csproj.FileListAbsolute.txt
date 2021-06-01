@@ -667,3 +667,5 @@ C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupRD.baml
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\StartupTester.baml
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\Temp.baml
+C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\PlannedTestScherm.g.cs
+C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\PlannedTestScherm.baml

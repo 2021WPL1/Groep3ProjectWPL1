@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
-72038788018
+81951082063
 
-10265066865
+112035682952
 221-732590709
-DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\PlannedTestScherm.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;
 
 False
 
