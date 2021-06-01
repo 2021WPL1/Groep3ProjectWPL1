@@ -33,8 +33,6 @@ namespace TestingPlanner
         // JR Constructor
         public JR()
         {
-            this.requestDate = DateTime.Now.Date;
-
             // TEMP FIX
             // Autofill Weights
             grossWeight = "0";
