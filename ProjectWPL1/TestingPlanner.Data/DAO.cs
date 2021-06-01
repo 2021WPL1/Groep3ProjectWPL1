@@ -157,6 +157,8 @@ namespace TestingPlanner.Data
                     AvailableDate = DateTime.Now
                 });
 
+                detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
+
                 request.RqRequestDetails.Add(detail);
             };
             context.RqRequest.Add(request);
@@ -408,6 +410,22 @@ namespace TestingPlanner.Data
             return planning;
         }
 
+        /// <summary>
+        /// Returns a string with the PVGResponsible(s)
+        /// </summary>
+        // Kaat
+        private string GetPVGResp(string testDivision, string barcoDivision)
+        {
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            var responsiblesList = context.RqBarcoDivisionPerson.
+                Where(bpd => bpd.AfkDevision == barcoDivision && bpd.Pvggroup == testDivision).
+                Select(bdp => bdp.AfkPerson);
 
+            // Create a string from the list
+            string responsiblesString = String.Join(", ", responsiblesList);
+
+            return responsiblesString;
+        }
     }
 }
