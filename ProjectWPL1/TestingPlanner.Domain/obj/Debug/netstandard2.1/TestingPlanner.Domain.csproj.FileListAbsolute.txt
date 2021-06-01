@@ -69,3 +69,4 @@ C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.dll
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.pdb
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner.Domain\obj\Debug\netstandard2.1\TestingPlanner.Domain.csprojAssemblyReference.cache

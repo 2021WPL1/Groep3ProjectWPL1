@@ -22,6 +22,9 @@ namespace TestingPlanner.Data
         // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
+        
+        // Counter for JR number
+        private int jrCounter;
 
         public BarcoUser BarcoUser { get; }
 
@@ -43,6 +46,7 @@ namespace TestingPlanner.Data
         {
             this.context = new Barco2021Context();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.jrCounter = 0;
         }
 
 
@@ -304,7 +308,7 @@ namespace TestingPlanner.Data
             }
 
             return EUTObjects;
-    }
+        }
 
 
         /// <summary>
@@ -316,6 +320,39 @@ namespace TestingPlanner.Data
         {
             List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
             return DetailRQ;
+        }
+
+        // Approval
+        /// <summary>
+        /// Approved items will be displayed in the queue for the respective teams
+        /// Creates a record in the Pl_planning table.
+        /// </summary>
+        /// <param name="request">Request object</param>
+        public void ApproveRequest(int jrId)
+        {
+            var DetailList = rqDetail(jrId);
+            var request = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == jrId);
+
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct();
+
+            // On approval, set JR number and request date
+            // Change JR status too?
+            request.JrNumber = $"JRDEV{jrCounter}";
+            request.RequestDate = DateTime.Now;
+
+            // increase job request counter
+            jrCounter++;
+
+            // Create a new planning record for each unique division
+            foreach (string division in divisions)
+            {
+                var planning = CreatePlPlanning(request, division);
+                context.Add(planning);
+            }
+
+            SaveChanges();
+
         }
 
         // SAVING
@@ -349,5 +386,29 @@ namespace TestingPlanner.Data
                 };
             }
         }
+
+        /// <summary>
+        /// Returns a PlPlanning for the given job request and division
+        /// </summary>
+        /// <param name="request">Job Request</param>
+        /// <param name="division">Test team division</param>
+        /// <returns>PlPlanning with request and division data</returns>
+        /// Kaat
+        private PlPlanning CreatePlPlanning(RqRequest request, string division)
+        {
+            var planning = new PlPlanning
+            {
+                IdRequest = request.IdRequest,
+                JrNr = request.JrNumber,
+                Requestdate = request.RequestDate,
+                DueDate = DateTime.Now.AddDays(5),
+                TestDiv = division,
+                TestDivStatus = "In plan", // use enums?
+            };
+
+            return planning;
+        }
+
+
     }
 }
