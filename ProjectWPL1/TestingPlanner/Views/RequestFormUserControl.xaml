@@ -44,13 +44,13 @@
                               Grid.Column="1" Grid.Row="2"/>
 
                 <Label Content="Partnumber(s):" Grid.Row="5"/>
-                <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding PartNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding JR.EutPartnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Grid.Row="6" Content="Net Weight(s) (kg):"/>
-                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding JR.NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Grid.Row="7" Content="Gross Weight(s) (kg):"/>
-                <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="7" Grid.Column="1"  Text="{Binding JR.GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="" Grid.Row="9"/>
 

@@ -96,7 +96,11 @@ namespace TestingPlanner.Data
                 HydraProjectNr = Jr.HydraProjectnumber == null ? string.Empty : Jr.HydraProjectnumber,
                 ExpectedEnddate = Jr.ExpEnddate == null ? DateTime.Now : Jr.ExpEnddate,
                 InternRequest = Jr.InternRequest, // Bool, default false
-                Battery = Jr.Battery // Bool, default false
+                Battery = Jr.Battery, // Bool, default false
+
+                NetWeight = Jr.NetWeight == null? string.Empty : Jr.NetWeight,
+                GrossWeight = Jr.GrossWeight == null ? string.Empty : Jr.GrossWeight,
+                EutPartnumbers = Jr.EutPartnr == null ? string.Empty : Jr.EutPartnr
             };
 
             return rqrequest;
@@ -115,9 +119,9 @@ namespace TestingPlanner.Data
         {   
             List<string> testDivision = new List<string>();
 
-            request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
-            request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
-            request.EutPartnumbers = request.EutPartnumbers == null ? string.Empty : request.EutPartnumbers;
+            //request.GrossWeight = request.GrossWeight == null ? string.Empty : request.GrossWeight;
+            //request.NetWeight = request.NetWeight == null ? string.Empty : request.NetWeight;
+            //request.EutPartnumbers = eut.PartNr;
 
             //We call the TestDivisionEutIsChecked function to check which testdivisions are checked
             TestDivisionEutIsChecked(eut, testDivision);
@@ -135,6 +139,7 @@ namespace TestingPlanner.Data
                     // Test
 
                     AvailableDate = eut.AvailabilityDate.Date
+                    //AvailableDate = eut.AvailabilityDate
                 //AvailableDate = DateTime.Now
             });
                 request.RqRequestDetails.Add(detail);
