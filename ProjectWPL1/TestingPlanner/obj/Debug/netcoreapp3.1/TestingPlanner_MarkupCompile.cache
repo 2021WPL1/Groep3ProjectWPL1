@@ -5,14 +5,19 @@ winexe
 C#
 .cs
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
 =======
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
 >>>>>>> shadowTesting
+=======
+C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
+>>>>>>> origin/AddPlannerView_Arne
 TestingPlanner
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+<<<<<<< HEAD
 <<<<<<< HEAD
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
 7333098047
@@ -28,6 +33,14 @@ C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanne
 221-1809618414
 DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\RequestForm.xaml;Views\RequestFormUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;
 >>>>>>> shadowTesting
+=======
+C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
+81951082063
+
+112035682952
+221-732590709
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\PlannedTestScherm.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;
+>>>>>>> origin/AddPlannerView_Arne
 
 False
 

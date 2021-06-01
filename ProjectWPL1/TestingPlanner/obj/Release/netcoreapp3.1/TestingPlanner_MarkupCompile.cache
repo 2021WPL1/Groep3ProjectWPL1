@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Release\netcoreapp3.1\
+C:\Users\dewin\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Release\netcoreapp3.1\
 TestingPlanner
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
+<<<<<<< HEAD
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
 9-299790755
 
 141612726565
 221-405601468
 DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\MainWindow.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;Views\Test.xaml;
+=======
+C:\Users\dewin\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
+81951082063
+
+112035682952
+2211573908851
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\PlannedTestScherm.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;
+>>>>>>> origin/AddPlannerView_Arne
 
 True
 

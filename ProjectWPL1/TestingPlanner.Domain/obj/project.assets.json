@@ -7212,11 +7212,17 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Kaat\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\dewin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+>>>>>>> origin/AddPlannerView_Arne
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
       "projectName": "TestingPlanner.Domain",
       "projectPath": "C:\\Users\\Kaat\\Documents\\Vives\\Kwartaal 3\\Werkplekleren\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
@@ -7225,6 +7231,19 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kaat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\dewin\\Source\\Repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
+      "projectName": "TestingPlanner.Domain",
+      "projectPath": "C:\\Users\\dewin\\Source\\Repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\TestingPlanner.Domain.csproj",
+      "packagesPath": "C:\\Users\\dewin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dewin\\Source\\Repos\\2021WPL1Groep3\\ProjectWPL1\\ProjectWPL1\\TestingPlanner.Domain\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\dewin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> origin/AddPlannerView_Arne
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7284,7 +7303,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   },
