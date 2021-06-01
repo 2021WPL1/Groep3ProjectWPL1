@@ -27,7 +27,7 @@ namespace TestingPlanner
         public EUT()
         {
             _partNr = null;
-            _availabilityDate = new DateTime();
+            _availabilityDate = DateTime.Now;
             _netWeight = "0";
             _grossWeight = "0";
 

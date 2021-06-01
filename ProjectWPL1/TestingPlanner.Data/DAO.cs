@@ -132,8 +132,11 @@ namespace TestingPlanner.Data
                     // Static added for now
                     // TODO: Dynamic linking
                     OmschrijvingEut = "EUT1",
-                    AvailableDate = DateTime.Now
-                });
+                    // Test
+
+                    AvailableDate = eut.AvailabilityDate.Date
+                //AvailableDate = DateTime.Now
+            });
                 request.RqRequestDetails.Add(detail);
             };
             context.RqRequests.Add(request);
