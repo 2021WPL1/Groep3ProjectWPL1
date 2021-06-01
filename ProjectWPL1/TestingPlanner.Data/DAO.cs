@@ -215,8 +215,6 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        // TODO: link EUT's (via RqRequestDetail)
-        // TODO: link RqOptionel
         public JR GetJRWithId(int idrequest)
         {
             // Find selected RqRequest
@@ -281,11 +279,13 @@ namespace TestingPlanner.Data
             List<RqRequestDetail> rqDetailsForJR = context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
             List<EUT> EUTObjects = new List<EUT>();
             
+
             foreach (var detail in rqDetailsForJR)
             {
                 List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
 
                 var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
+                var divisionPVGResp = typeof(EUT).GetProperty(detail.Testdivisie + "pvg");
 
                 foreach (var eut in eutsForDetail)
                 {
@@ -303,9 +303,11 @@ namespace TestingPlanner.Data
                         EUTObjects.Add(selectedEUTObject);
                     }
 
+                    // Set division to true
                     divisionBool.SetValue(selectedEUTObject, true);
 
-
+                    // Copy PVGResponsible
+                    divisionPVGResp.SetValue(selectedEUTObject, detail.Pvgresp);
                 }
             }
 
