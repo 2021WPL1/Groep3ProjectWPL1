@@ -315,6 +315,7 @@ namespace TestingPlanner.Data
         }
 
         // Approval
+
         /// <summary>
         /// Approved items will be displayed in the queue for the respective teams
         /// Creates a record in the Pl_planning table.
@@ -345,6 +346,148 @@ namespace TestingPlanner.Data
 
             SaveChanges();
 
+        }
+
+        // Planning
+        // STILL NEEDS TO BE TESTED (Kaat)
+
+        // Creates and saves RqRequest based on JR
+        // Kaat
+        public void CreateNewTest(Test test)
+        {
+            var jr = GetJRWithId(test.RQId);
+
+            var planningsKalender = new PlPlanningsKalender
+            {
+                IdRequest = jr.IdRequest,
+                JrNr = jr.JrNumber,
+                JrStatus = jr.JrStatus,
+                Omschrijving = test.Description,
+                Startdatum = test.StartDate,
+                Einddatum = test.EndDate,
+                Testdiv = test.TestDivision,
+                Resources = test.Resource,
+                TestStatus = "Planned"
+            };
+
+            context.Add(planningsKalender);
+            context.SaveChanges();
+        }
+
+        public Test GetTest(int testId)
+        {
+            // Find selected PlPlanningsKalender
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
+
+            // Create new test based on PlPlanningsKalender
+            var test = new Test
+            {
+                Description = dbTest.Omschrijving,
+                RQId = dbTest.IdRequest,
+                TestDivision = dbTest.Testdiv,
+                StartDate = dbTest.Startdatum,
+                EndDate = dbTest.Einddatum,
+                Resource = dbTest.Resources,
+                Status = dbTest.TestStatus
+            };
+
+            return test;
+        }
+
+        public Test GetTest(PlPlanningsKalender dbTest)
+        {
+            // Create new test based on PlPlanningsKalender
+            var test = new Test
+            {
+                Description = dbTest.Omschrijving,
+                RQId = dbTest.IdRequest,
+                TestDivision = dbTest.Testdiv,
+                StartDate = dbTest.Startdatum,
+                EndDate = dbTest.Einddatum,
+                Resource = dbTest.Resources,
+                Status = dbTest.TestStatus
+            };
+
+            return test;
+        }
+
+        // Finds PlPlanningsKalender by PlanningsKalenders ID, updates based on Test, and saves changes
+        // Kaat
+        public void UpdateTest(int id, Test test)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.Omschrijving = test.Description;
+            dbTest.Startdatum = test.StartDate;
+            dbTest.Einddatum = test.EndDate;
+            dbTest.Testdiv = test.TestDivision;
+            dbTest.Resources = test.Resource;
+
+            SaveChanges();
+        }
+
+        // Updates status of test
+        // Kaat
+        public void UpdateTestStatus(int id, string status)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.TestStatus = status;
+
+            SaveChanges();
+        }
+
+        // Finds all test linked to this JR Id
+        // Kaat
+        public List<Test> GetTestsForJR(int jrId)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId).
+                ToList();
+
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // Finds all tests for a division linked to this JR id
+        // Kaat
+        public List<Test> GetTestsForJR(int jrId, string division)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId && pk.Testdiv == division).
+                ToList();
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
         }
 
         // SAVING
