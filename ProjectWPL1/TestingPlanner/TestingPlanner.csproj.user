@@ -24,11 +24,5 @@
     <Page Update="Views\StartupPlanner.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StartupRD.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\StartupTester.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 </Project>
