@@ -8,7 +8,7 @@ namespace TestingPlanner.Viewmodels
     public abstract class ViewModelCollection : ViewModelBase
     {
         public ObservableCollection<int> idRequestsOnly { get; set; }
-        protected int _selectedJR; // Will be passed to ctor RQF to open existing JR
+        protected int _selectedJR;
 
         //Constructor
         public ViewModelCollection()

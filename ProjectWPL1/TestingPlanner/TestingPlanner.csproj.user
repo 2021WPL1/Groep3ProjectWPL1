@@ -21,8 +21,5 @@
     <Page Update="Views\RequestForm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StartupPlanner.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 </Project>
