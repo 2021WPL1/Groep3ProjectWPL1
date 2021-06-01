@@ -21,15 +21,12 @@ namespace TestingPlanner.Views
     public partial class MainWindow : Window
     {
         private static Timer timer;
+        private static DAO _dao;
         public MainWindow()
         {
             DataContext = new ViewModelMain();
             InitializeComponent();
-            dao = DAO.Instance();
-            tempviewmodel = new ViewmodelTemporarilyStartUp(DAO.Instance());
-            DataContext = tempviewmodel;
-            tempviewmodel.Load();
-
+            
             Schedule_Timer();
         }
         static void Schedule_Timer()
@@ -52,7 +49,7 @@ namespace TestingPlanner.Views
         {
             Console.WriteLine("Timer has stopped");
             timer.Stop();
-            dao.Sendmail();
+            _dao.Sendmail();
             Schedule_Timer();
         }
     }

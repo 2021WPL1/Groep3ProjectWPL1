@@ -10,8 +10,11 @@ namespace TestingPlanner
     {
         // Variables
         private int _idRqDetail;
-        private DateTime? _availabilityDate;
+        private DateTime _availabilityDate;
         private string _omschrijvingEut;
+        private string _partNr;
+        private string _netWeight;
+        private string _grossWeight;
 
         // Tests to execute
         // TODO: function to check if necessart RQDetail already exists

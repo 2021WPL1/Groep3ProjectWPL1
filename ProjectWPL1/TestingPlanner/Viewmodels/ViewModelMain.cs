@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -89,10 +90,11 @@ namespace TestingPlanner.Viewmodels
         public void InsertJr()
         {
             var jr = _dao.AddJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
-
+            int count = 0;
             foreach (var thisEUT in ((ViewModelContainer)this.ViewModel).EUTs)
             {
-                _dao.AddEutToRqRequest(jr, thisEUT);
+                count++;
+                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();

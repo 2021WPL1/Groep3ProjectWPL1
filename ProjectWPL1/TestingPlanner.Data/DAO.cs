@@ -299,7 +299,7 @@ namespace TestingPlanner.Data
                         selectedEUTObject = new EUT
                         {
                             IdRqDetail = eut.IdRqDetail,
-                            AvailabilityDate = eut.AvailableDate,
+                            AvailabilityDate = (DateTime)eut.AvailableDate,
                             OmschrijvingEut = eut.OmschrijvingEut,
                         };
     

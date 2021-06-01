@@ -19,6 +19,7 @@ namespace TestingPlanner.Viewmodels
 {
     public class ViewmodelRequestForm : ViewModelContainer
     {
+        private Barco2021Context context = new Barco2021Context();
         // Combobox contents
         public ObservableCollection<string> JobNatures { get; set; }
         public ObservableCollection<string> Divisions { get; set; }
@@ -63,8 +64,7 @@ namespace TestingPlanner.Viewmodels
                
             }
             FillEUT(request);
-            // addJRCommand calls function to save existing JR
-            addJobRequestCommand = new RelayCommand<Window>(UpdateJr);
+          
         }
 
         // Code reused in both constructors
