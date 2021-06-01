@@ -25,6 +25,15 @@ namespace TestingPlanner
         private bool _pck;
         private bool _eco;
 
+        // PVGResponsobles for this test
+        public string EMCpvg { get; set; }
+        public string ENVpvg { get; set; }
+        public string RELpvg { get; set; }
+        public string SAVpvg { get; set; }
+        public string PCKpvg { get; set; }
+        public string ECOpvg { get; set; }
+
+
         // Constructor
         public EUT()
         {

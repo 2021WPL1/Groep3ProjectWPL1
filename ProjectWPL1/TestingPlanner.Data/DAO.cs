@@ -22,6 +22,9 @@ namespace TestingPlanner.Data
         // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
+        
+        // Counter for JR number
+        private int jrCounter;
 
         public BarcoUser BarcoUser { get; }
 
@@ -43,6 +46,7 @@ namespace TestingPlanner.Data
         {
             this.context = new Barco2021Context();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
+            this.jrCounter = 0;
         }
 
 
@@ -160,6 +164,9 @@ namespace TestingPlanner.Data
                     AvailableDate = eut.AvailabilityDate.Date
 
                 });
+
+                detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
+
                 request.RqRequestDetails.Add(detail);
             };
             context.RqRequest.Add(request);
@@ -217,8 +224,6 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        // TODO: link EUT's (via RqRequestDetail)
-        // TODO: link RqOptionel
         public JR GetJRWithId(int idrequest)
         {
             // Find selected RqRequest
@@ -289,6 +294,7 @@ namespace TestingPlanner.Data
                 List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
 
                 var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
+                var divisionPVGResp = typeof(EUT).GetProperty(detail.Testdivisie + "pvg");
 
                 foreach (var eut in eutsForDetail)
                 {
@@ -306,15 +312,199 @@ namespace TestingPlanner.Data
                         EUTObjects.Add(selectedEUTObject);
                     }
 
+                    // Set division to true
                     divisionBool.SetValue(selectedEUTObject, true);
 
-
+                    // Copy PVGResponsible
+                    divisionPVGResp.SetValue(selectedEUTObject, detail.Pvgresp);
                 }
             }
 
             return EUTObjects;
-    }
+        }
 
+        // Approval
+
+        /// <summary>
+        /// Approved items will be displayed in the queue for the respective teams
+        /// Creates a record in the Pl_planning table.
+        /// </summary>
+        /// <param name="request">Request object</param>
+        public void ApproveRequest(int jrId)
+        {
+            var DetailList = rqDetail(jrId);
+            var request = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == jrId);
+
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct();
+
+            // On approval, set JR number and request date
+            // Change JR status too?
+            request.JrNumber = $"JRDEV{jrCounter}";
+            request.RequestDate = DateTime.Now;
+
+            // increase job request counter
+            jrCounter++;
+
+            // Create a new planning record for each unique division
+            foreach (string division in divisions)
+            {
+                var planning = CreatePlPlanning(request, division);
+                context.Add(planning);
+            }
+
+            SaveChanges();
+
+        }
+
+        // Planning
+        // STILL NEEDS TO BE TESTED (Kaat)
+
+        // Creates and saves RqRequest based on JR
+        // Kaat
+        public void CreateNewTest(Test test)
+        {
+            var jr = GetJRWithId(test.RQId);
+
+            var planningsKalender = new PlPlanningsKalender
+            {
+                IdRequest = jr.IdRequest,
+                JrNr = jr.JrNumber,
+                JrStatus = jr.JrStatus,
+                Omschrijving = test.Description,
+                Startdatum = test.StartDate,
+                Einddatum = test.EndDate,
+                Testdiv = test.TestDivision,
+                Resources = test.Resource,
+                TestStatus = "Planned"
+            };
+
+            context.Add(planningsKalender);
+            context.SaveChanges();
+        }
+
+        public Test GetTest(int testId)
+        {
+            // Find selected PlPlanningsKalender
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
+
+            // Create new test based on PlPlanningsKalender
+            var test = new Test
+            {
+                Description = dbTest.Omschrijving,
+                RQId = dbTest.IdRequest,
+                TestDivision = dbTest.Testdiv,
+                StartDate = dbTest.Startdatum,
+                EndDate = dbTest.Einddatum,
+                Resource = dbTest.Resources,
+                Status = dbTest.TestStatus
+            };
+
+            return test;
+        }
+
+        public Test GetTest(PlPlanningsKalender dbTest)
+        {
+            // Create new test based on PlPlanningsKalender
+            var test = new Test
+            {
+                Description = dbTest.Omschrijving,
+                RQId = dbTest.IdRequest,
+                TestDivision = dbTest.Testdiv,
+                StartDate = dbTest.Startdatum,
+                EndDate = dbTest.Einddatum,
+                Resource = dbTest.Resources,
+                Status = dbTest.TestStatus
+            };
+
+            return test;
+        }
+
+        // Finds PlPlanningsKalender by PlanningsKalenders ID, updates based on Test, and saves changes
+        // Kaat
+        public void UpdateTest(int id, Test test)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.Omschrijving = test.Description;
+            dbTest.Startdatum = test.StartDate;
+            dbTest.Einddatum = test.EndDate;
+            dbTest.Testdiv = test.TestDivision;
+            dbTest.Resources = test.Resource;
+
+            SaveChanges();
+        }
+
+        // Updates status of test
+        // Kaat
+        public void UpdateTestStatus(int id, string status)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.TestStatus = status;
+
+            SaveChanges();
+        }
+
+        // Finds all test linked to this JR Id
+        // Kaat
+        public List<Test> GetTestsForJR(int jrId)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId).
+                ToList();
+
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // Finds all tests for a division linked to this JR id
+        // Kaat
+        public List<Test> GetTestsForJR(int jrId, string division)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId && pk.Testdiv == division).
+                ToList();
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // SAVING
+        // Stores all data from GUI in DB
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
 
         /// <summary>
         /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
@@ -325,13 +515,6 @@ namespace TestingPlanner.Data
         {
             List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
             return DetailRQ;
-        }
-
-        // SAVING
-        // Stores all data from GUI in DB
-        public void SaveChanges()
-        {
-            context.SaveChanges();
         }
 
         /// <summary>
@@ -357,6 +540,46 @@ namespace TestingPlanner.Data
                     }
                 };
             }
+        }
+
+        /// <summary>
+        /// Returns a PlPlanning for the given job request and division
+        /// </summary>
+        /// <param name="request">Job Request</param>
+        /// <param name="division">Test team division</param>
+        /// <returns>PlPlanning with request and division data</returns>
+        /// Kaat
+        private PlPlanning CreatePlPlanning(RqRequest request, string division)
+        {
+            var planning = new PlPlanning
+            {
+                IdRequest = request.IdRequest,
+                JrNr = request.JrNumber,
+                Requestdate = request.RequestDate,
+                DueDate = DateTime.Now.AddDays(5),
+                TestDiv = division,
+                TestDivStatus = "In plan", // use enums?
+            };
+
+            return planning;
+        }
+
+        /// <summary>
+        /// Returns a string with the PVGResponsible(s)
+        /// </summary>
+        // Kaat
+        private string GetPVGResp(string testDivision, string barcoDivision)
+        {
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            var responsiblesList = context.RqBarcoDivisionPerson.
+                Where(bpd => bpd.AfkDevision == barcoDivision && bpd.Pvggroup == testDivision).
+                Select(bdp => bdp.AfkPerson);
+
+            // Create a string from the list
+            string responsiblesString = String.Join(", ", responsiblesList);
+
+            return responsiblesString;
         }
     }
 }
