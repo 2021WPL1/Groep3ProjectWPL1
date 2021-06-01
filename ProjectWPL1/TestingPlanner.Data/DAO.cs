@@ -70,6 +70,35 @@ namespace TestingPlanner.Data
             return context.RqBarcoDivision.ToList();
         }
 
+        // Returns list of all Equipment
+        public List<PlResources> GetResources()
+        {
+            return context.PlResource.ToList();
+        }
+
+        // Returns list of Equipment for a given TestDivision
+        public List<PlResources> GetResources(string TestDivision)
+        {
+            var idList = context.PlResourcesDivisions.Select(rd => rd.ResourcesId).ToList();
+
+            // try with mapping?
+            var resourceList = new List<PlResources>();
+
+            foreach (var id in idList)
+            {
+                resourceList.Add(GetResource(id));
+            }
+
+            return resourceList;
+
+
+        }
+
+        public PlResources GetResource(int id)
+        {
+            return context.PlResource.SingleOrDefault(r => r.Id == id);
+        }
+
         // JR CHANGES
 
         /// <summary>
