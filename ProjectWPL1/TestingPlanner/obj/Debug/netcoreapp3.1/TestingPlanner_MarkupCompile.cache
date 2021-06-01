@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
-3-286009606
+10-532208570
 
-7-1532682347
-2241701560107
-DictionaryResources\BasicStyles.xaml;RequestForm.xaml;Temp.xaml;
+17-490652717
+221-1809618414
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\RequestForm.xaml;Views\RequestFormUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;
 
-False
+True
 

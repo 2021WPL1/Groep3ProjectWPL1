@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- DataTemplate to display EUT's in listboxes/listviews-->
+    <!-- TODO: add to DictionaryResources/Merged dictionaries-->
+    <DataTemplate x:Key="EUT">
+        <ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch" Background="#3ea4c4" Foreground="White">
+            <Grid HorizontalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>                   
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!-- Find a way to display the number of the EUT, or delete alltogether?-->
+                <TextBlock Grid.RowSpan="2" Text="EUT" Margin="5"/>
+                <TextBlock Grid.Column="6" Text="Foreseen availability date:" Margin="5"/>
+                <DatePicker Grid.Row="2" Grid.Column="6" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Center" TextElement.Foreground="White">
+                    <CheckBox IsChecked="{Binding EMC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="EMC" FontSize="11" VerticalContentAlignment="Center" Margin="5"/>
+                    <CheckBox IsChecked="{Binding ENV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="ENVIRONMENTAL" FontSize="11" VerticalContentAlignment="Center" Margin="5"/>
+                    <CheckBox IsChecked="{Binding REL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="RELIABILITY" FontSize="11" VerticalContentAlignment="Center"  Margin="5"/>
+                    <CheckBox IsChecked="{Binding SAV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PRODUCT &#x0a;SAFETY" FontSize="11" VerticalContentAlignment="Center" Margin="5"/>
+                    <CheckBox IsChecked="{Binding PCK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PACKAGING" FontSize="11" VerticalContentAlignment="Center" Margin="5"/>
+                    <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN &#x0a;COMPLIANCE" FontSize="11" VerticalContentAlignment="Center" Margin="5"/>
+                </StackPanel>
+            </Grid>
+        </ListBoxItem>
+    </DataTemplate>
+
+</ResourceDictionary>

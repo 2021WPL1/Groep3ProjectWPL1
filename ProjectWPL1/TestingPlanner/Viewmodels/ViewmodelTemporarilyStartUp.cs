@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.CommandWpf;
+﻿using Microsoft.Toolkit.Mvvm.Input;
 using Newtonsoft.Json.Serialization;
 using Prism.Commands;
 using System;
@@ -9,49 +9,34 @@ using System.Windows;
 using System.Windows.Input;
 using TestingPlanner.Data;
 using TestingPlanner.Domain.Models;
+using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
     // TEMPORARY SCREEN
     // Proof of concept: loading list of JR's from database
     // TODO: datatemplate for JR's
-    public class ViewmodelTemporarilyStartUp : ViewModelBase
+    public class ViewmodelTemporarilyStartUp : ViewModelCollection
     {
-        // Dataconnection
-        // Can be moved to parent class?
-        private DAO _dao;
-
-        // Jobrequest IDs
-        public ObservableCollection<int> idRequestsOnly { get; set; }
-        private int _selectedJR; // Will be passed to ctor RQF to open existing JR
-
         // Command declaration
         // RelayCommand<Class> takes object of type class as input
         public RelayCommand<Window> addNewRqCommand { get; set; }
         public RelayCommand<Window> showExistingRqCommand { get; set; }
+        public ICommand openTesterStartupCommand { get; set; }
+        public ICommand openPlannerStartupCommand { get; set; }
+        public ICommand openEmployeeStartupCommand { get; set; }
 
         //Constructor
-        public ViewmodelTemporarilyStartUp(DAO dao)
+        public ViewmodelTemporarilyStartUp():base()
         {
-            this._dao = dao;
-
-            // Collection initialization
-            idRequestsOnly = new ObservableCollection<int>(); 
-
             // Command initialization
             addNewRqCommand = new RelayCommand<Window>(OpenEmptyJR);
             showExistingRqCommand = new RelayCommand<Window>(OpenExistingJr);
-        }
+            openTesterStartupCommand = new DelegateCommand(openTesterStartup);
+            openPlannerStartupCommand = new DelegateCommand(openPlannerStartup);
+            openEmployeeStartupCommand = new DelegateCommand(openEmployeeStartup);
 
-        // Getters/Setters
-        public int SelectedJR
-        {
-            get => _selectedJR;
-            set
-            {
-                _selectedJR = value;
-                OnpropertyChanged();
-            }
+            Load();
         }
 
         // Function used in code behind
@@ -73,7 +58,7 @@ namespace TestingPlanner.Viewmodels
         // Command functions
         public void OpenEmptyJR(Window window)
         {
-            RequestForm requestformWindow = new RequestForm();
+            MainWindow requestformWindow = new MainWindow();
             requestformWindow.Show();
             window.Close();
         }
@@ -81,9 +66,30 @@ namespace TestingPlanner.Viewmodels
         public void OpenExistingJr(Window window)
         {
             // Passes selected JR ID to new RQF
-            RequestForm requestformWindow = new RequestForm(SelectedJR);
+            MainWindow requestformWindow = new MainWindow();
             requestformWindow.Show();
             window.Close();
+        }
+
+        // Kaat
+        public void openTesterStartup()
+        {
+            Window testerStartup = new MainWindow();
+            testerStartup.Show();
+        }
+
+        // Kaat
+        public void openPlannerStartup()
+        {
+            Window plannerStartup = new MainWindow();
+            plannerStartup.Show();
+        }
+
+        // Kaat
+        public void openEmployeeStartup()
+        {
+            Window employeeStartup = new MainWindow();
+            employeeStartup.Show();
         }
     }
 }

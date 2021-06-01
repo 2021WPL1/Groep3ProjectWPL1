@@ -6,13 +6,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Compile Update="RequestForm.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="RequestForm.xaml">
+    <Page Update="DictionaryResources\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RequestForm.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

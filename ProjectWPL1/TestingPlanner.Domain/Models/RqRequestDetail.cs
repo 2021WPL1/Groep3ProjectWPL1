@@ -7,7 +7,7 @@ namespace TestingPlanner.Domain.Models
     {
         public RqRequestDetail()
         {
-            Eut = new HashSet<Eut>();
+            Euts = new HashSet<Eut>();
         }
 
         public int IdRqDetail { get; set; }
@@ -17,6 +17,6 @@ namespace TestingPlanner.Domain.Models
 
         public virtual RqRequest IdRequestNavigation { get; set; }
         public virtual RqTestDevision TestdivisieNavigation { get; set; }
-        public virtual ICollection<Eut> Eut { get; set; }
+        public virtual ICollection<Eut> Euts { get; set; }
     }
 }

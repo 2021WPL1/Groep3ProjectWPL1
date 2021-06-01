@@ -7,8 +7,10 @@ namespace TestingPlanner.Domain.Models
     {
         public RqRequest()
         {
-            RqOptionel = new HashSet<RqOptionel>();
-            RqRequestDetail = new HashSet<RqRequestDetail>();
+            PlPlannings = new HashSet<PlPlanning>();
+            PlPlanningsKalenders = new HashSet<PlPlanningsKalender>();
+            RqOptionels = new HashSet<RqOptionel>();
+            RqRequestDetails = new HashSet<RqRequestDetail>();
         }
 
         public int IdRequest { get; set; }
@@ -21,13 +23,15 @@ namespace TestingPlanner.Domain.Models
         public string EutProjectname { get; set; }
         public string EutPartnumbers { get; set; }
         public string HydraProjectNr { get; set; }
-        public DateTime? ExpectedEnddate { get; set; }
+        public DateTime ExpectedEnddate { get; set; }
         public bool? InternRequest { get; set; }
         public string GrossWeight { get; set; }
         public string NetWeight { get; set; }
         public bool Battery { get; set; }
 
-        public virtual ICollection<RqOptionel> RqOptionel { get; set; }
-        public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
+        public virtual ICollection<PlPlanning> PlPlannings { get; set; }
+        public virtual ICollection<PlPlanningsKalender> PlPlanningsKalenders { get; set; }
+        public virtual ICollection<RqOptionel> RqOptionels { get; set; }
+        public virtual ICollection<RqRequestDetail> RqRequestDetails { get; set; }
     }
 }

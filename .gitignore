@@ -5,6 +5,22 @@
 
 
 *Constants.cs
+.vs
+.suo
+**/bin
+**/obj
+
+*.dtbcache.v2
+*.suo
+*TestingPlanner.Data.assets.cache
+*TestingPlanner.Data.csproj.CoreCompileInputs.cache
+*TestingPlanner.Data.csprojAssemblyReference.cache
+*TestingPlanner.Domain.csprojAssemblyReference.cache
+*TestingPlanner.assets.cache
+*TestingPlanner.csprojAssemblyReference.cache
+*TestingPlanner_MarkupCompile.cache
+*project.nuget.cache
+
 # User-specific files
 *.rsuser
 *.suo

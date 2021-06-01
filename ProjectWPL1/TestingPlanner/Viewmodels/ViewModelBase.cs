@@ -1,16 +1,18 @@
-﻿using GalaSoft.MvvmLight.Command;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
+using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
     // TODO: move window change to parent class
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        protected DAO _dao = DAO.Instance();
+
         // Constructor
         public ViewModelBase()
         {

@@ -1,11 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using TestingPlanner.Domain.Models;
 
-namespace TestingPlanner.Data
+namespace TestingPlanner.Domain.Models
 {
-    // Automatically generated from scaffold dbcontext
     public partial class Barco2021Context : DbContext
     {
         public Barco2021Context()
@@ -18,21 +16,26 @@ namespace TestingPlanner.Data
         }
 
         public virtual DbSet<Eut> Euts { get; set; }
-        public virtual DbSet<Person> Persons { get; set; }
-        public virtual DbSet<RqBarcoDivision> RqBarcoDivisions { get; set; }
-        public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPersons { get; set; }
-        public virtual DbSet<RqJobNature> RqJobNatures { get; set; }
+        public virtual DbSet<Person> Person { get; set; }
+        public virtual DbSet<PlPlanning> PlPlannings { get; set; }
+        public virtual DbSet<PlPlanningsKalender> PlPlanningsKalenders { get; set; }
+        public virtual DbSet<PlResources> PlResource { get; set; }
+        public virtual DbSet<PlResourcesDivision> PlResourcesDivisions { get; set; }
+        public virtual DbSet<PlVerletdagen> PlVerletdagen { get; set; }
+        public virtual DbSet<RqBarcoDivision> RqBarcoDivision { get; set; }
+        public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPerson { get; set; }
+        public virtual DbSet<RqJobNature> RqJobNature { get; set; }
         public virtual DbSet<RqOptionel> RqOptionels { get; set; }
-        public virtual DbSet<RqRequest> RqRequests { get; set; }
+        public virtual DbSet<RqRequest> RqRequest { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetails { get; set; }
-        public virtual DbSet<RqTestDevision> RqTestDevisions { get; set; }
+        public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
+        public virtual DbSet<Statistiek> Statistiek { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // If not present
-                // Create class constants with connection string
+
                 optionsBuilder.UseSqlServer(Constants.CONNECTION_STRING);
             }
         }
@@ -56,7 +59,7 @@ namespace TestingPlanner.Data
                     .HasMaxLength(50);
 
                 entity.HasOne(d => d.IdRqDetailNavigation)
-                    .WithMany(p => p.Eut)
+                    .WithMany(p => p.Euts)
                     .HasForeignKey(d => d.IdRqDetail)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("EUT_Rq_RequestDetail_FK");
@@ -72,6 +75,164 @@ namespace TestingPlanner.Data
                 entity.Property(e => e.Familienaam).HasMaxLength(50);
 
                 entity.Property(e => e.Voornaam).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<PlPlanning>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("planning_PK");
+
+                entity.ToTable("Pl_planning");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id_planning")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.DueDate).HasColumnType("date");
+
+                entity.Property(e => e.IdRequest).HasColumnName("id_request");
+
+                entity.Property(e => e.JrNr)
+                    .HasColumnName("JR_Nr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Requestdate)
+                    .HasColumnName("requestdate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.TestDiv)
+                    .HasColumnName("testDiv")
+                    .HasMaxLength(4);
+
+                entity.Property(e => e.TestDivPlanDate)
+                    .HasColumnName("testDiv_planDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.TestDivStatus)
+                    .HasColumnName("testDiv_status")
+                    .HasMaxLength(20);
+
+                entity.HasOne(d => d.IdRequestNavigation)
+                    .WithMany(p => p.PlPlannings)
+                    .HasForeignKey(d => d.IdRequest)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("planning_Rq_Request_FK");
+            });
+
+            modelBuilder.Entity<PlPlanningsKalender>(entity =>
+            {
+                entity.ToTable("Pl_planningsKalender");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Einddatum)
+                    .HasColumnName("einddatum")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.IdRequest).HasColumnName("id_request");
+
+                entity.Property(e => e.JrNr)
+                    .HasColumnName("JR_nr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.JrStatus)
+                    .HasColumnName("JR_status")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Omschrijving)
+                    .HasColumnName("omschrijving")
+                    .HasMaxLength(150);
+
+                entity.Property(e => e.Reserve)
+                    .HasColumnName("reserve?")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Resources).HasColumnName("resources");
+
+                entity.Property(e => e.Startdatum)
+                    .HasColumnName("startdatum")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.TestStatus)
+                    .HasColumnName("test_status")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Testdiv)
+                    .HasColumnName("testdiv")
+                    .HasMaxLength(5);
+
+                entity.HasOne(d => d.IdRequestNavigation)
+                    .WithMany(p => p.PlPlanningsKalenders)
+                    .HasForeignKey(d => d.IdRequest)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("planningsKalender_Rq_Request_FK");
+
+                entity.HasOne(d => d.ResourcesNavigation)
+                    .WithMany(p => p.PlPlanningsKalenders)
+                    .HasForeignKey(d => d.Resources)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("planningsKalender_Resources_FK");
+            });
+
+            modelBuilder.Entity<PlResources>(entity =>
+            {
+                entity.ToTable("Pl_Resources");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.KleurHex)
+                    .HasColumnName("kleur-hex")
+                    .HasMaxLength(8);
+
+                entity.Property(e => e.KleurRgb)
+                    .HasColumnName("kleur - rgb")
+                    .HasMaxLength(11);
+
+                entity.Property(e => e.Naam)
+                    .HasColumnName("naam")
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<PlResourcesDivision>(entity =>
+            {
+                entity.ToTable("Pl_ResourcesDivision");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.DivisionAfkorting)
+                    .IsRequired()
+                    .HasColumnName("Division_Afkorting")
+                    .HasMaxLength(4);
+
+                entity.Property(e => e.ResourcesId).HasColumnName("Resources_ID");
+
+                entity.HasOne(d => d.DivisionAfkortingNavigation)
+                    .WithMany(p => p.PlResourcesDivisions)
+                    .HasForeignKey(d => d.DivisionAfkorting)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("ResourcesDivision_Rq_TestDevision_FK");
+
+                entity.HasOne(d => d.Resources)
+                    .WithMany(p => p.PlResourcesDivisions)
+                    .HasForeignKey(d => d.ResourcesId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("ResourcesDivision_Resources_FK");
+            });
+
+            modelBuilder.Entity<PlVerletdagen>(entity =>
+            {
+                entity.HasKey(e => e.Datum)
+                    .HasName("Verletdagen_PK");
+
+                entity.ToTable("Pl_Verletdagen");
+
+                entity.Property(e => e.Datum)
+                    .HasColumnName("datum")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Omschrijving)
+                    .HasColumnName("omschrijving")
+                    .HasMaxLength(30);
             });
 
             modelBuilder.Entity<RqBarcoDivision>(entity =>
@@ -143,7 +304,7 @@ namespace TestingPlanner.Data
                     .HasMaxLength(1000);
 
                 entity.HasOne(d => d.IdRequestNavigation)
-                    .WithMany(p => p.RqOptionel)
+                    .WithMany(p => p.RqOptionels)
                     .HasForeignKey(d => d.IdRequest)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Rq_Optionel_Rq_Request_FK");
@@ -240,13 +401,13 @@ namespace TestingPlanner.Data
                     .HasMaxLength(4);
 
                 entity.HasOne(d => d.IdRequestNavigation)
-                    .WithMany(p => p.RqRequestDetail)
+                    .WithMany(p => p.RqRequestDetails)
                     .HasForeignKey(d => d.IdRequest)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Rq_RequestDetail_Rq_Request_FK");
 
                 entity.HasOne(d => d.TestdivisieNavigation)
-                    .WithMany(p => p.RqRequestDetail)
+                    .WithMany(p => p.RqRequestDetails)
                     .HasForeignKey(d => d.Testdivisie)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Rq_RequestDetail_Rq_TestDevision_FK");
@@ -266,6 +427,19 @@ namespace TestingPlanner.Data
                 entity.Property(e => e.Naam)
                     .HasColumnName("naam")
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Statistiek>(entity =>
+            {
+                entity.ToTable("statistiek");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.JrNr)
+                    .HasColumnName("JR_nr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Maand).HasColumnName("maand");
             });
 
             OnModelCreatingPartial(modelBuilder);
