@@ -21,7 +21,7 @@ namespace TestingPlanner.Viewmodels
 
             foreach (var requestId in requestIds)
             {
-                idRequestsOnly.Add(requestId.IdRequest);
+                idRequestsOnly.Add(requestId);
             }
 
             // first JR selected by default --> Selected JR can't be null

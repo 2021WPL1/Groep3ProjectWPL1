@@ -1,12 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- DataTemplate to display EUT's in listboxes/listviews-->
-    <!-- TODO: add to DictionaryResources/Merged dictionaries-->
+    <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
     <DataTemplate x:Key="EUT">
         <ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch" Background="#3ea4c4" Foreground="White">
             <Grid HorizontalAlignment="Stretch" >
-                <Grid.ColumnDefinitions>                   
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -36,5 +35,4 @@
             </Grid>
         </ListBoxItem>
     </DataTemplate>
-
 </ResourceDictionary>

@@ -51,7 +51,7 @@ namespace TestingPlanner.Viewmodels
             Load();
 
             // Look for JR with correct ID
-            this._jr = _dao.GetJRWithId(idRequest);
+            this._jr = _dao.GetJR(idRequest);
 
 
             List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);

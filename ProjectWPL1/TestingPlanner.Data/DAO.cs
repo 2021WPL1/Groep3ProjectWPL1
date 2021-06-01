@@ -224,7 +224,7 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        public JR GetJRWithId(int idrequest)
+        public JR GetJR(int idrequest)
         {
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
@@ -246,6 +246,40 @@ namespace TestingPlanner.Data
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,              
+                Battery = selectedRQ.Battery,
+                //EutPartnr = selectedRQ.EutPartnumbers,
+
+                // Testing
+                Link = selectedRQO.Link,
+                Remarks = selectedRQO.Remarks,
+
+            };
+
+            return selectedJR;
+        }
+
+        public JR GetJR(RqRequest selectedRQ)
+        {
+            // Find related RqOptionel
+            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
+
+            // Create new JR with necessary data
+            JR selectedJR = new JR
+            {
+                IdRequest = selectedRQ.IdRequest,
+                JrNumber = selectedRQ.JrNumber,
+                JrStatus = selectedRQ.JrStatus,
+                RequestDate = selectedRQ.RequestDate,
+                Requester = selectedRQ.Requester,
+                BarcoDivision = selectedRQ.BarcoDivision,
+                JobNature = selectedRQ.JobNature,
+                EutProjectname = selectedRQ.EutProjectname,
+                EutPartnr = selectedRQ.EutPartnumbers,
+                HydraProjectnumber = selectedRQ.HydraProjectNr,
+                ExpEnddate = selectedRQ.ExpectedEnddate,
+                InternRequest = selectedRQ.InternRequest,
+                GrossWeight = selectedRQ.GrossWeight,
+                NetWeight = selectedRQ.NetWeight,
                 Battery = selectedRQ.Battery,
                 //EutPartnr = selectedRQ.EutPartnumbers,
 
@@ -364,7 +398,7 @@ namespace TestingPlanner.Data
         // Kaat
         public void CreateNewTest(Test test)
         {
-            var jr = GetJRWithId(test.RQId);
+            var jr = GetJR(test.RQId);
 
             var planningsKalender = new PlPlanningsKalender
             {
