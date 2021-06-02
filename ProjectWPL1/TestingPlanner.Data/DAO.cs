@@ -405,7 +405,10 @@ namespace TestingPlanner.Data
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
-                CreateAndAddPlPlanning(request, division);
+                var planning = CreatePlPlanning(request, division);
+
+                context.Add(planning);
+                context.SaveChanges();
             }
         }
 
@@ -619,7 +622,7 @@ namespace TestingPlanner.Data
         /// <param name="division">Test team division</param>
         /// <returns>PlPlanning with request and division data</returns>
         /// Kaat
-        private void CreateAndAddPlPlanning(RqRequest request, string division)
+        private PlPlanning CreatePlPlanning(RqRequest request, string division)
         {
             var planning = new PlPlanning
             {
@@ -631,8 +634,7 @@ namespace TestingPlanner.Data
                 TestDivStatus = "In plan", // use enums?
             };
 
-            context.Add(planning);
-            context.SaveChanges();
+            return planning;
         }
 
         /// <summary>
