@@ -10,9 +10,9 @@
         <GroupBox.Header>
             <StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="16" Text="Planning "/>
-                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding SelectedTest.Testdiv}"/>
+                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding SelectedPlan.TestDiv}"/>
                 <TextBlock FontSize="16" Text=" for "/>
-                <TextBlock FontSize="16" Text="{Binding SelectedTest.Testdiv}"/>
+                <TextBlock FontSize="16" Text="{Binding SelectedPlan.JrNr}"/>
             </StackPanel>
         </GroupBox.Header>
         <StackPanel Margin="10">
@@ -28,7 +28,7 @@
                 <DatePicker SelectedDate="{Binding SelectedTest.Einddatum}" IsTodayHighlighted="True" Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Add/Update" Margin="5"/>
+                <Button Content="New JR" Command="{Binding Path=addEUTCommand}" Margin="5"/>
                 <Button Content="Delete" Margin="5"/>
             </StackPanel>
             <ListView ItemsSource="{Binding Tests}" SelectedItem="{Binding SelectedTest, Mode=TwoWay}" Height="250">
@@ -44,6 +44,7 @@
             </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Mark as planned" Margin="5"/>
+                <Button Content="Cancel" Margin="5"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>

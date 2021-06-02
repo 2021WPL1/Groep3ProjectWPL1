@@ -433,7 +433,7 @@ namespace TestingPlanner.Data
             return context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
         }
 
-        // Creates and saves RqRequest based on JR
+        // Creates and saves Plplanningskalender based on Test
         // Kaat
         public void CreateNewTest(Test test)
         {
