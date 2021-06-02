@@ -30,14 +30,6 @@ namespace TestingPlanner.Views
             DataContext = new ViewModelMain();
             mail.Schedule_Timer();
             InitializeComponent();
-
-            Schedule_Timer();
-        }
-
-            //mail = MailService.Instance();
-           
-          
-        
             mail.Schedule_Timer();
         }
     }
