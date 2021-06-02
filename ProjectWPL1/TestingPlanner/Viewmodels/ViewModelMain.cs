@@ -56,13 +56,23 @@ namespace TestingPlanner.Viewmodels
         public void DisplayNewJR()
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
-            this.ViewModel = new ViewmodelRequestForm();
+            this.ViewModel = new ViewModelRequestformRD();
         }
 
         public void DisplayExistingJR()
         {
             SaveJrCommand = new DelegateCommand(UpdateJr);
-            this.ViewModel = new ViewmodelRequestForm(((ViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest);
+
+            var ExistingJrId = ((ViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
+
+            if (this.ViewModel is ViewModelStartupPlanner)
+            {
+                 this.ViewModel = new ViewModelRequestFormPlan(ExistingJrId);
+            }
+            else
+            {
+                this.ViewModel = new ViewModelRequestformRD(ExistingJrId);
+            }
         }
 
         public void DisplayEmployeeStartup()

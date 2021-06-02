@@ -17,7 +17,7 @@ using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewmodelRequestForm : ViewModelContainer
+    public class ViewModelRequestformRD : ViewModelContainer
     {
         private Barco2021Context context = new Barco2021Context();
         // Combobox contents
@@ -35,7 +35,7 @@ namespace TestingPlanner.Viewmodels
         public ICommand addMockEUTCommand { get; set; }
 
         // Constructor for new JR
-        public ViewmodelRequestForm() : base()
+        public ViewModelRequestformRD() : base()
         {
             init();
             Load();
@@ -45,7 +45,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Constructor for existing JR
-        public ViewmodelRequestForm(int idRequest) : base()
+        public ViewModelRequestformRD(int idRequest) : base()
         {
             init();
             Load();
@@ -60,6 +60,7 @@ namespace TestingPlanner.Viewmodels
             var request = new RqRequest();
             foreach (var id in eutList)
             {
+                // Use DAO? --> base class
                 request = context.RqRequest.FirstOrDefault(e => e.IdRequest == id.IdRequest);
                
             }

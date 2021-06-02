@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for RequestFormUserControl.xaml
+    /// Interaction logic for RequestFormRDUserControl.xaml
     /// </summary>
-    public partial class RequestFormUserControl : UserControl
+    public partial class RequestFormRDUserControl : UserControl
     {
-        public RequestFormUserControl()
+        public RequestFormRDUserControl()
         {
             InitializeComponent();
         }
