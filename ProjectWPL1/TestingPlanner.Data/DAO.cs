@@ -71,12 +71,14 @@ namespace TestingPlanner.Data
         }
 
         // Returns list of all Equipment
+        // Kaat
         public List<PlResources> GetResources()
         {
             return context.PlResource.ToList();
         }
 
         // Returns list of Equipment for a given TestDivision
+        // Kaat
         public List<PlResources> GetResources(string TestDivision)
         {
             var idList = context.PlResourcesDivisions.Select(rd => rd.ResourcesId).ToList();
@@ -90,10 +92,9 @@ namespace TestingPlanner.Data
             }
 
             return resourceList;
-
-
         }
 
+        // Gets a resource by id
         public PlResources GetResource(int id)
         {
             return context.PlResource.SingleOrDefault(r => r.Id == id);
