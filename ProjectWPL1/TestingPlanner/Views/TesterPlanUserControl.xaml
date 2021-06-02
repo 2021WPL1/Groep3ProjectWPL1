@@ -21,8 +21,11 @@
             </ListView>
         </GroupBox>
         <StackPanel Orientation="Horizontal" Margin="10">
-            <Button Content="Plan" 
-                        Margin="10"/>
+            <Button Content="Plan"
+                    Command="{Binding DataContext.DisplayTestPlanningCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
+                    Height="40" Margin="5"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

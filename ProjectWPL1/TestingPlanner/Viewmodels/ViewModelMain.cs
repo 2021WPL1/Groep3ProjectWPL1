@@ -26,6 +26,7 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand DisplayDevStartupCommand { get; set; }
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
+        public DelegateCommand DisplayTestPlanningCommand { get; set; }
        
         public ViewModelMain()
         {
@@ -39,7 +40,7 @@ namespace TestingPlanner.Viewmodels
             DisplayTesterStartupCommand = new DelegateCommand(DisplayTesterStartup);
             DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
             ApproveJRCommand = new DelegateCommand(ApproveJR);
-
+            DisplayTestPlanningCommand = new DelegateCommand(DisplayTestPlanning);
         }
 
         // Getters/Setters
@@ -138,6 +139,15 @@ namespace TestingPlanner.Viewmodels
             _dao.ApproveRequest(jrId);
 
             this.ViewModel = new ViewModelStartupPlanner();
+        }
+
+        // Switch to test planning for tester
+        public void DisplayTestPlanning()
+        {
+            // get id from JR
+            var plan = ((ViewModelTesterPlan)this.ViewModel).SelectedPlan;
+
+            this.ViewModel = new ViewModelTestForm(plan);
         }
     }
 }

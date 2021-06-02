@@ -77,7 +77,7 @@ namespace TestingPlanner.Data
         // Kaat
         public List<PlResources> GetResources(string TestDivision)
         {
-            var idList = context.PlResourcesDivisions.Select(rd => rd.ResourcesId).ToList();
+            var idList = context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
 
             // try with mapping?
             var resourceList = new List<PlResources>();
