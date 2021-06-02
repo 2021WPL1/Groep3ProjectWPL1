@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -10,7 +11,7 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewModelStartupRD : ViewModelCollection
+    public class ViewModelStartupRD : ViewModelCollectionRQ
     {
         //Constructor
         public ViewModelStartupRD() : base()
@@ -22,16 +23,13 @@ namespace TestingPlanner.Viewmodels
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
             idRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
             {
-                idRequestsOnly.Add(requestId.IdRequest);
+                idRequestsOnly.Add(requestId);
             }
-
-            // first JR selected by default --> Selected JR can't be null
-            base.SelectedJR = idRequestsOnly[0];
         }
     }
 }

@@ -25,6 +25,8 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand DisplayTesterStartupCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
         public DelegateCommand SaveJrCommand { get; set; }
+        public DelegateCommand ApproveJRCommand { get; set; }
+        public DelegateCommand DisplayTestPlanningCommand { get; set; }
        
         public ViewModelMain()
         {
@@ -37,7 +39,8 @@ namespace TestingPlanner.Viewmodels
             DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
             DisplayTesterStartupCommand = new DelegateCommand(DisplayTesterStartup);
             DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
-
+            ApproveJRCommand = new DelegateCommand(ApproveJR);
+            DisplayTestPlanningCommand = new DelegateCommand(DisplayTestPlanning);
         }
 
         // Getters/Setters
@@ -56,13 +59,23 @@ namespace TestingPlanner.Viewmodels
         public void DisplayNewJR()
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
-            this.ViewModel = new ViewmodelRequestForm();
+            this.ViewModel = new ViewModelRequestformRD();
         }
 
         public void DisplayExistingJR()
         {
             SaveJrCommand = new DelegateCommand(UpdateJr);
-            this.ViewModel = new ViewmodelRequestForm(((ViewModelCollection)this.ViewModel).SelectedJR);
+
+            var ExistingJrId = ((ViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
+
+            if (this.ViewModel is ViewModelStartupPlanner)
+            {
+                 this.ViewModel = new ViewModelRequestFormPlan(ExistingJrId);
+            }
+            else
+            {
+                this.ViewModel = new ViewModelRequestformRD(ExistingJrId);
+            }
         }
 
         public void DisplayEmployeeStartup()
@@ -76,7 +89,8 @@ namespace TestingPlanner.Viewmodels
         }
         public void DisplayTesterStartup()
         {
-            this.ViewModel = new ViewModelStartupTester();
+            //this.ViewModel = new ViewModelStartupTester();
+            this.ViewModel = new ViewModelTesterPlan();
         }
 
         public void DisplayDevStartup()
@@ -114,6 +128,26 @@ namespace TestingPlanner.Viewmodels
             {
                 MessageBox.Show(error);
             }
+        }
+
+        // Switch screen for planner
+        // Kaat
+        public void ApproveJR()
+        {
+            int jrId = ((ViewModelContainer)this.ViewModel).JR.IdRequest;
+
+            _dao.ApproveRequest(jrId);
+
+            this.ViewModel = new ViewModelStartupPlanner();
+        }
+
+        // Switch to test planning for tester
+        public void DisplayTestPlanning()
+        {
+            // get id from JR
+            var plan = ((ViewModelTesterPlan)this.ViewModel).SelectedPlan;
+
+            this.ViewModel = new ViewModelTestForm(plan);
         }
     }
 }

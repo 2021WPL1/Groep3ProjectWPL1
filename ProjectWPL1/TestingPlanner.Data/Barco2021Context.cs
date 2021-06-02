@@ -79,14 +79,14 @@ namespace TestingPlanner.Domain.Models
 
             modelBuilder.Entity<PlPlanning>(entity =>
             {
-                entity.HasKey(e => e.Id)
+                entity.HasKey(e => e.IdPlanning)
                     .HasName("planning_PK");
 
                 entity.ToTable("Pl_planning");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id_planning")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdPlanning)
+                    .HasColumnName("id_planning");
+                //.ValueGeneratedNever();
 
                 entity.Property(e => e.DueDate).HasColumnType("date");
 

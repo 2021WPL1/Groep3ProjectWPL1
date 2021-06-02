@@ -22,9 +22,6 @@ namespace TestingPlanner.Data
         // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
-        
-        // Counter for JR number
-        private int jrCounter;
 
         public BarcoUser BarcoUser { get; }
 
@@ -46,7 +43,6 @@ namespace TestingPlanner.Data
         {
             this.context = new Barco2021Context();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
-            this.jrCounter = 0;
         }
 
 
@@ -68,6 +64,36 @@ namespace TestingPlanner.Data
         public List<RqBarcoDivision> GetAllDivisions()
         {
             return context.RqBarcoDivision.ToList();
+        }
+
+        // Returns list of all Equipment
+        // Kaat
+        public List<PlResources> GetResources()
+        {
+            return context.PlResource.ToList();
+        }
+
+        // Returns list of Equipment for a given TestDivision
+        // Kaat
+        public List<PlResources> GetResources(string TestDivision)
+        {
+            var idList = context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
+
+            // try with mapping?
+            var resourceList = new List<PlResources>();
+
+            foreach (var id in idList)
+            {
+                resourceList.Add(GetResource(id));
+            }
+
+            return resourceList;
+        }
+
+        // Gets a resource by id
+        public PlResources GetResource(int id)
+        {
+            return context.PlResource.SingleOrDefault(r => r.Id == id);
         }
 
         // JR CHANGES
@@ -96,7 +122,7 @@ namespace TestingPlanner.Data
             // Used ternary operator to use String.Empty when null
             RqRequest rqrequest = new RqRequest()
             {
-                JrStatus = Jr.JrStatus == null ? string.Empty : Jr.JrStatus,
+                JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
                 RequestDate = Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
@@ -224,7 +250,7 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        public JR GetJRWithId(int idrequest)
+        public JR GetJR(int idrequest)
         {
             // Find selected RqRequest
             RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
@@ -246,6 +272,40 @@ namespace TestingPlanner.Data
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
                 NetWeight = selectedRQ.NetWeight,              
+                Battery = selectedRQ.Battery,
+                //EutPartnr = selectedRQ.EutPartnumbers,
+
+                // Testing
+                Link = selectedRQO.Link,
+                Remarks = selectedRQO.Remarks,
+
+            };
+
+            return selectedJR;
+        }
+
+        public JR GetJR(RqRequest selectedRQ)
+        {
+            // Find related RqOptionel
+            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
+
+            // Create new JR with necessary data
+            JR selectedJR = new JR
+            {
+                IdRequest = selectedRQ.IdRequest,
+                JrNumber = selectedRQ.JrNumber,
+                JrStatus = selectedRQ.JrStatus,
+                RequestDate = selectedRQ.RequestDate,
+                Requester = selectedRQ.Requester,
+                BarcoDivision = selectedRQ.BarcoDivision,
+                JobNature = selectedRQ.JobNature,
+                EutProjectname = selectedRQ.EutProjectname,
+                EutPartnr = selectedRQ.EutPartnumbers,
+                HydraProjectnumber = selectedRQ.HydraProjectNr,
+                ExpEnddate = selectedRQ.ExpectedEnddate,
+                InternRequest = selectedRQ.InternRequest,
+                GrossWeight = selectedRQ.GrossWeight,
+                NetWeight = selectedRQ.NetWeight,
                 Battery = selectedRQ.Battery,
                 //EutPartnr = selectedRQ.EutPartnumbers,
 
@@ -329,42 +389,55 @@ namespace TestingPlanner.Data
         /// Approved items will be displayed in the queue for the respective teams
         /// Creates a record in the Pl_planning table.
         /// </summary>
-        /// <param name="request">Request object</param>
         public void ApproveRequest(int jrId)
         {
             var DetailList = rqDetail(jrId);
-            var request = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == jrId);
+            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
-            var divisions = DetailList.Select(d => d.Testdivisie).Distinct();
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
-            // Change JR status too?
-            request.JrNumber = $"JRDEV{jrCounter}";
+            request.JrNumber = $"JRDEV{request.IdRequest.ToString("D5")}";
             request.RequestDate = DateTime.Now;
-
-            // increase job request counter
-            jrCounter++;
+            request.JrStatus = "in plan";
 
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
                 var planning = CreatePlPlanning(request, division);
+
                 context.Add(planning);
+                context.SaveChanges();
             }
-
-            SaveChanges();
-
         }
 
-        // Planning
-        // STILL NEEDS TO BE TESTED (Kaat)
 
-        // Creates and saves RqRequest based on JR
+        // Planning
+
+        /// <summary>
+        /// Returns list of all Plannings in database
+        /// </summary>
+        /// Kaat
+        public List<PlPlanning> GetPlPlannings()
+        {
+            return context.PlPlannings.ToList();
+        }
+
+        /// <summary>
+        /// Returns list of all Plannings for a division
+        /// </summary>
+        /// Kaat
+        public List<PlPlanning> GetPlPlannings(string division)
+        {
+            return context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
+        }
+
+        // Creates and saves Plplanningskalender based on Test
         // Kaat
         public void CreateNewTest(Test test)
         {
-            var jr = GetJRWithId(test.RQId);
+            var jr = GetJR(test.RQId);
 
             var planningsKalender = new PlPlanningsKalender
             {

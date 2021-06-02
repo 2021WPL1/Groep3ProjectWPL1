@@ -7,8 +7,8 @@
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewmodelRequestForm}">
-        <views:RequestFormUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestformRD}">
+        <views:RequestFormRDUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelStartupPlanner}">
         <views:StartupPlannerUserControl/>
@@ -21,5 +21,14 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
         <views:TempUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelTestForm}">
+        <views:TestFormUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
+        <views:RequestFormPlanUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelTesterPlan}">
+        <views:TesterPlanUserControl/>
     </DataTemplate>
 </ResourceDictionary>
