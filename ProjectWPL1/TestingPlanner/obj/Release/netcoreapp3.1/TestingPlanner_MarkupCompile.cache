@@ -9,21 +9,12 @@ TestingPlanner
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-<<<<<<< HEAD
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
-9-299790755
-
-141612726565
-221-405601468
-DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\MainWindow.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;Views\Test.xaml;
-=======
 C:\Users\dewin\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
-81951082063
+12-1807766837
 
-112035682952
+22-1163098890
 2211573908851
-DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;Views\PlannedTestScherm.xaml;Views\RequestForm.xaml;Views\StartupPlanner.xaml;Views\StartupRD.xaml;Views\StartupTester.xaml;Views\Temp.xaml;
->>>>>>> origin/AddPlannerView_Arne
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\PlannedTestScherm.xaml;Views\RequestFormPlanUserControl.xaml;Views\RequestFormRDUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;Views\TestFormUserControl.xaml;
 
 True
 
