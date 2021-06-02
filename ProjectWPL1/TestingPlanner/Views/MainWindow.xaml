@@ -41,7 +41,7 @@
                     Command="{Binding DisplayTesterStartupCommand, 
                             Mode=OneWay}" 
                         Margin="10"/>
-                <Button Content="DEV: Open tester startup" 
+                <Button Content="DEV: Open Dev startup" 
                     Command="{Binding DisplayDevStartupCommand, 
                             Mode=OneWay}" 
                         Margin="10"/>
