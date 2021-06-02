@@ -379,7 +379,6 @@ C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanne
 C:\Users\matti\source\repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Temp.baml
 >>>>>>> origin/AddPlannerView_Arne
 <<<<<<< Updated upstream
-=======
 >>>>>>> origin/AddMailService_Arne
 >>>>>>> Stashed changes
 C:\Users\dewin\Source\Repos\2021WPL1Groep3\ProjectWPL1\ProjectWPL1\TestingPlanner\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

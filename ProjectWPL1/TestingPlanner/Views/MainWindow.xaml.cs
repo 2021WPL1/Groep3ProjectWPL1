@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestingPlanner.Classes;
 using TestingPlanner.Data;
 using TestingPlanner.Viewmodels;
 
@@ -25,13 +26,11 @@ namespace TestingPlanner.Views
         MailService mail = new MailService();
         public MainWindow()
         // Global variables
-        MailService mail = new MailService();
-
         {
             DataContext = new ViewModelMain();
             mail.Schedule_Timer();
             InitializeComponent();
-            
+
             Schedule_Timer();
         }
 
@@ -41,6 +40,5 @@ namespace TestingPlanner.Views
         
             mail.Schedule_Timer();
         }
-       
     }
 }

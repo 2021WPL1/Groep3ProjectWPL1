@@ -581,5 +581,13 @@ namespace TestingPlanner.Data
 
             return responsiblesString;
         }
+
+        public void FindAllJrLast24h()
+        {
+            List<RqRequest> rq = context.RqRequest.Where(r => 
+                r.RequestDate <= DateTime.Now&& 
+                (r.RequestDate >= DateTime.Now.AddHours(-24))
+            ).ToList();
+        }
     }
 }
