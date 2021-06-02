@@ -28,7 +28,6 @@ namespace TestingPlanner.Views
         // Global variables
         {
             DataContext = new ViewModelMain();
-            mail.Schedule_Timer();
             InitializeComponent();
             mail.Schedule_Timer();
         }
