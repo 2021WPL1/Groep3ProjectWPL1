@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestingPlanner.Classes;
 using TestingPlanner.Data;
 using TestingPlanner.Viewmodels;
 
@@ -22,35 +23,14 @@ namespace TestingPlanner.Views
     {
         private static Timer timer;
         private static DAO _dao;
+        MailService mail = new MailService();
         public MainWindow()
+        // Global variables
         {
             DataContext = new ViewModelMain();
+            mail.Schedule_Timer();
             InitializeComponent();
-            
-            Schedule_Timer();
-        }
-        static void Schedule_Timer()
-        {
-            DateTime nowtime = DateTime.Now;
-            DateTime scheduletime = new DateTime(nowtime.Year, nowtime.Month, nowtime.Day, 14, 23, 0, 0);
-
-            if (nowtime > scheduletime)
-            {
-                scheduletime = scheduletime.AddDays(1);
-            }
-
-            double tickTime = (double)(scheduletime - DateTime.Now).TotalMilliseconds;
-            timer = new Timer(tickTime);
-            timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
-            timer.Start();
-        }
-
-        static void timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            Console.WriteLine("Timer has stopped");
-            timer.Stop();
-            _dao.Sendmail();
-            Schedule_Timer();
+            mail.Schedule_Timer();
         }
     }
 }
