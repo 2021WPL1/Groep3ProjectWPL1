@@ -86,7 +86,6 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
-                <!-- Matti: naam dynamicResource aanpassen om andere datatemplate in te laden-->
                 <ListBox x:Name="ListEUT" Height="150" Background="#363636"
                              ItemTemplate="{DynamicResource EUT}" 
                              ItemsSource="{Binding EUTs}" 
@@ -103,6 +102,9 @@
         </GroupBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Approve"
+                    Command="{Binding DataContext.ApproveJRCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"
                         Height="40" Margin="5"/>
             <Button Content="Save changes"
                     Command="{Binding DataContext.SaveJrCommand, 

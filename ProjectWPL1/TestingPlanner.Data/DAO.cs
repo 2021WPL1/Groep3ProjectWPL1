@@ -126,7 +126,7 @@ namespace TestingPlanner.Data
             // Used ternary operator to use String.Empty when null
             RqRequest rqrequest = new RqRequest()
             {
-                JrStatus = Jr.JrStatus == null ? string.Empty : Jr.JrStatus,
+                JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
                 RequestDate = Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
@@ -393,19 +393,18 @@ namespace TestingPlanner.Data
         /// Approved items will be displayed in the queue for the respective teams
         /// Creates a record in the Pl_planning table.
         /// </summary>
-        /// <param name="request">Request object</param>
         public void ApproveRequest(int jrId)
         {
             var DetailList = rqDetail(jrId);
-            var request = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == jrId);
+            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
-            var divisions = DetailList.Select(d => d.Testdivisie).Distinct();
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
-            // Change JR status too?
             request.JrNumber = $"JRDEV{jrCounter}";
             request.RequestDate = DateTime.Now;
+            request.JrStatus = "in plan";
 
             // increase job request counter
             jrCounter++;
@@ -413,13 +412,10 @@ namespace TestingPlanner.Data
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
-                var planning = CreatePlPlanning(request, division);
-                context.Add(planning);
+                CreateAndAddPlPlanning(request, division);
             }
-
-            SaveChanges();
-
         }
+
 
         // Planning
         // STILL NEEDS TO BE TESTED (Kaat)
@@ -613,7 +609,7 @@ namespace TestingPlanner.Data
         /// <param name="division">Test team division</param>
         /// <returns>PlPlanning with request and division data</returns>
         /// Kaat
-        private PlPlanning CreatePlPlanning(RqRequest request, string division)
+        private void CreateAndAddPlPlanning(RqRequest request, string division)
         {
             var planning = new PlPlanning
             {
@@ -625,7 +621,8 @@ namespace TestingPlanner.Data
                 TestDivStatus = "In plan", // use enums?
             };
 
-            return planning;
+            context.Add(planning);
+            context.SaveChanges();
         }
 
         /// <summary>
