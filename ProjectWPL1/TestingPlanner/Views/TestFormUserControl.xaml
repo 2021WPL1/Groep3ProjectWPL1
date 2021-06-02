@@ -20,25 +20,25 @@
             <StackPanel Orientation="Horizontal">
                 <ComboBox ItemsSource="{Binding Resources}" 
                           DisplayMemberPath="Naam"
-                          Text="{Binding SelectedTest.Resources,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          Text="{Binding EditingTest.Resource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Grid.Column="1" Grid.Row="2" Margin="10"/>
-                <TextBox Text="{Binding SelectedTest.Omschrijving ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+                <TextBox Text="{Binding EditingTest.Description ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
                 <!--Currently two datepickers for start/end, looking into using one to get an array? -->
-                <DatePicker SelectedDate="{Binding SelectedTest.Startdatum}" IsTodayHighlighted="True" Margin="5"/>
-                <DatePicker SelectedDate="{Binding SelectedTest.Einddatum}" IsTodayHighlighted="True" Margin="5"/>
+                <DatePicker SelectedDate="{Binding EditingTest.StartDate}" IsTodayHighlighted="True" Margin="5"/>
+                <DatePicker SelectedDate="{Binding EditingTest.EndDate}" IsTodayHighlighted="True" Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="New JR" Command="{Binding Path=addEUTCommand}" Margin="5"/>
-                <Button Content="Delete" Margin="5"/>
+                <Button Content="Add Test" Command="{Binding Path=AddNewTestCommand}" Margin="5"/>
+                <Button Content="Clear Test" Command="{Binding Path=ClearTestCommand}" Margin="5"/>
+                <Button Content="Remove Test" Margin="5"/>
             </StackPanel>
             <ListView ItemsSource="{Binding Tests}" SelectedItem="{Binding SelectedTest, Mode=TwoWay}" Height="250">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNr}" />
-                        <GridViewColumn Header="Test Id" DisplayMemberBinding="{Binding Id}" />
-                        <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding Startdatum, StringFormat=d}" />
-                        <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding Einddatum, StringFormat=d}" />
-                        <GridViewColumn Header="Test Division" DisplayMemberBinding="{Binding TestDiv}" />
+                        <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                        <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate, StringFormat=d}" />
+                        <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate, StringFormat=d}" />
                     </GridView>
                 </ListView.View>
             </ListView>

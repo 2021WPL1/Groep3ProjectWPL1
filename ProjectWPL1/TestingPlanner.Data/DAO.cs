@@ -91,9 +91,16 @@ namespace TestingPlanner.Data
         }
 
         // Gets a resource by id
+        // Kaat
         public PlResources GetResource(int id)
         {
             return context.PlResource.SingleOrDefault(r => r.Id == id);
+        }
+
+        // Gets a resource by id
+        public PlResources GetResource(string name)
+        {
+            return context.PlResource.SingleOrDefault(r => r.Naam == name);
         }
 
         // JR CHANGES
@@ -448,7 +455,7 @@ namespace TestingPlanner.Data
                 Startdatum = test.StartDate,
                 Einddatum = test.EndDate,
                 Testdiv = test.TestDivision,
-                Resources = test.Resource,
+                Resources = GetResource(test.Resource).Id,
                 TestStatus = "Planned"
             };
 
@@ -461,19 +468,7 @@ namespace TestingPlanner.Data
             // Find selected PlPlanningsKalender
             var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
 
-            // Create new test based on PlPlanningsKalender
-            var test = new Test
-            {
-                Description = dbTest.Omschrijving,
-                RQId = dbTest.IdRequest,
-                TestDivision = dbTest.Testdiv,
-                StartDate = dbTest.Startdatum,
-                EndDate = dbTest.Einddatum,
-                Resource = dbTest.Resources,
-                Status = dbTest.TestStatus
-            };
-
-            return test;
+            return GetTest(dbTest);
         }
 
         public Test GetTest(PlPlanningsKalender dbTest)
@@ -486,7 +481,7 @@ namespace TestingPlanner.Data
                 TestDivision = dbTest.Testdiv,
                 StartDate = dbTest.Startdatum,
                 EndDate = dbTest.Einddatum,
-                Resource = dbTest.Resources,
+                Resource = GetResource(dbTest.Resources).Naam,
                 Status = dbTest.TestStatus
             };
 
@@ -510,7 +505,7 @@ namespace TestingPlanner.Data
             dbTest.Startdatum = test.StartDate;
             dbTest.Einddatum = test.EndDate;
             dbTest.Testdiv = test.TestDivision;
-            dbTest.Resources = test.Resource;
+            dbTest.Resources = GetResource(test.Resource).Id;
 
             SaveChanges();
         }
