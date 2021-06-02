@@ -12,10 +12,11 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
-                        <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
-                        <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
+                        <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNumber}" />
                         <GridViewColumn Header="Eut Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate}" />
+                        <GridViewColumn Header="Hydra Project Number" DisplayMemberBinding="{Binding HydraProjectNr}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding JrStatus}" />
                     </GridView>
                 </ListView.View>
             </ListView>

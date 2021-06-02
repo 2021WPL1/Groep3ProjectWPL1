@@ -15,7 +15,7 @@
                         <GridViewColumn Header="Division" DisplayMemberBinding="{Binding BarcoDivision}" />
                         <GridViewColumn Header="Requester" DisplayMemberBinding="{Binding Requester}" />
                         <GridViewColumn Header="Eut Projectname" DisplayMemberBinding="{Binding EutProjectname}" />
-                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate}" />
+                        <GridViewColumn Header="Expected End Date" DisplayMemberBinding="{Binding ExpectedEnddate, StringFormat=d}" />
                     </GridView>
                 </ListView.View>
             </ListView>
