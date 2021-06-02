@@ -88,7 +88,8 @@ namespace TestingPlanner.Viewmodels
         }
         public void DisplayTesterStartup()
         {
-            this.ViewModel = new ViewModelStartupTester();
+            //this.ViewModel = new ViewModelStartupTester();
+            this.ViewModel = new ViewModelTesterPlan();
         }
 
         public void DisplayDevStartup()

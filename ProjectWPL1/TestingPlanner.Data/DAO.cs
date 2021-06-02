@@ -22,9 +22,6 @@ namespace TestingPlanner.Data
         // Variables
         private Barco2021Context context;
         private static readonly DAO instance = new DAO();
-        
-        // Counter for JR number
-        private int jrCounter;
 
         public BarcoUser BarcoUser { get; }
 
@@ -46,7 +43,6 @@ namespace TestingPlanner.Data
         {
             this.context = new Barco2021Context();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
-            this.jrCounter = 0;
         }
 
 
@@ -402,12 +398,9 @@ namespace TestingPlanner.Data
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
-            request.JrNumber = $"JRDEV{jrCounter}";
+            request.JrNumber = $"JRDEV{request.IdRequest.ToString("D5")}";
             request.RequestDate = DateTime.Now;
             request.JrStatus = "in plan";
-
-            // increase job request counter
-            jrCounter++;
 
             // Create a new planning record for each unique division
             foreach (string division in divisions)
@@ -418,7 +411,24 @@ namespace TestingPlanner.Data
 
 
         // Planning
-        // STILL NEEDS TO BE TESTED (Kaat)
+
+        /// <summary>
+        /// Returns list of all Plannings in database
+        /// </summary>
+        /// Kaat
+        public List<PlPlanning> GetPlPlannings()
+        {
+            return context.PlPlannings.ToList();
+        }
+
+        /// <summary>
+        /// Returns list of all Plannings for a division
+        /// </summary>
+        /// Kaat
+        public List<PlPlanning> GetPlPlannings(string division)
+        {
+            return context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
+        }
 
         // Creates and saves RqRequest based on JR
         // Kaat

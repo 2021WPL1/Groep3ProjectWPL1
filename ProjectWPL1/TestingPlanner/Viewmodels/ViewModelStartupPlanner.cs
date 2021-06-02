@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TestingPlanner.Viewmodels
@@ -16,16 +17,14 @@ namespace TestingPlanner.Viewmodels
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            // Get unapproved JR's
+            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve");
             idRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
             {
                 idRequestsOnly.Add(requestId);
             }
-
-            // first JR selected by default --> Selected JR can't be null
-            base.SelectedJR = idRequestsOnly[0];
         }
     }
 }

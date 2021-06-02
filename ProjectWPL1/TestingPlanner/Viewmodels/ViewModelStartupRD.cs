@@ -30,9 +30,6 @@ namespace TestingPlanner.Viewmodels
             {
                 idRequestsOnly.Add(requestId);
             }
-
-            // first JR selected by default --> Selected JR can't be null
-            base.SelectedJR = idRequestsOnly[0];
         }
     }
 }

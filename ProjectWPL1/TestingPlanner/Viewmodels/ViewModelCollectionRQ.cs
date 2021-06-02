@@ -12,10 +12,13 @@ namespace TestingPlanner.Viewmodels
         protected RqRequest _selectedJR;
 
         //Constructor
-        public ViewModelCollectionRQ()
+        public ViewModelCollectionRQ() : base()
         {
             // Collection initialization
             idRequestsOnly = new ObservableCollection<RqRequest>();
+
+            // empty jr selected by default
+            _selectedJR = new RqRequest();
         }
 
         // Getters/Setters

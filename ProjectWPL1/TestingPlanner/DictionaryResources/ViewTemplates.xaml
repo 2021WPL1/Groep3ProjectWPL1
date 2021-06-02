@@ -28,4 +28,7 @@
     <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
         <views:RequestFormPlanUserControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelTesterPlan}">
+        <views:TesterPlanUserControl/>
+    </DataTemplate>
 </ResourceDictionary>
