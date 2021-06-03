@@ -30,7 +30,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Add Test" Command="{Binding Path=AddNewTestCommand}" Margin="5"/>
                 <Button Content="Clear Test" Command="{Binding Path=ClearTestCommand}" Margin="5"/>
-                <Button Content="Remove Test" Margin="5"/>
+                <Button Content="Remove Test" Command="{Binding Path=DeleteTestCommand}" Margin="5"/>
             </StackPanel>
             <ListView ItemsSource="{Binding Tests}" SelectedItem="{Binding SelectedTest, Mode=TwoWay}" Height="250">
                 <ListView.View>
@@ -43,6 +43,7 @@
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Save New Tests" Margin="5"/>
                 <Button Content="Mark as planned" Margin="5"/>
                 <Button Content="Cancel" Margin="5"/>
             </StackPanel>

@@ -46,6 +46,16 @@ namespace TestingPlanner.Data
         }
 
 
+        /// <summary>
+        /// Removes unsaved changed by replacing the context by a new instance
+        /// </summary>
+        /// Kaat
+        public void RemoveChanges()
+        {
+            context = new Barco2021Context();
+        }
+
+
         // LISTS
 
         // Returns list of all JRs
@@ -476,6 +486,7 @@ namespace TestingPlanner.Data
             // Create new test based on PlPlanningsKalender
             var test = new Test
             {
+                DbTestId = dbTest.Id,
                 Description = dbTest.Omschrijving,
                 RQId = dbTest.IdRequest,
                 TestDivision = dbTest.Testdiv,
@@ -526,6 +537,24 @@ namespace TestingPlanner.Data
             dbTest.TestStatus = status;
 
             SaveChanges();
+        }
+
+        public void DeleteTest(int id)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            context.Remove(dbTest);
+
+            // Savechanges on saving of Tests
+            // User can still cancel -> New DBContext, removing saved changes
+            // SaveChanges();
         }
 
         // Finds all test linked to this JR Id

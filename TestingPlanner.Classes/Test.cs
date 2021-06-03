@@ -6,6 +6,7 @@ namespace TestingPlanner.Classes
 {
     public class Test
     {
+        public int? DbTestId { get; set; }
         public string Description { get; set; }
         public int RQId { get; set; }
         public string TestDivision { get; set; }

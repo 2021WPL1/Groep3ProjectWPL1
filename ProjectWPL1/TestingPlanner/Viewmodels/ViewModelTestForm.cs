@@ -9,6 +9,7 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
+    // Kaat
     class ViewModelTestForm : ViewModelBase
     {
         // Listbox with equipment
@@ -23,6 +24,7 @@ namespace TestingPlanner.Viewmodels
 
         public ICommand AddNewTestCommand { get; set; }
         public ICommand ClearTestCommand { get; set; }
+        public ICommand DeleteTestCommand { get; set; }
 
         public ViewModelTestForm(PlPlanning planning)
         {
@@ -38,6 +40,7 @@ namespace TestingPlanner.Viewmodels
 
             AddNewTestCommand = new DelegateCommand(AddTest);
             ClearTestCommand = new DelegateCommand(ClearTest);
+            DeleteTestCommand = new DelegateCommand(DeleteTest);
 
             EditingTest = new Test();
         }
@@ -89,6 +92,24 @@ namespace TestingPlanner.Viewmodels
         {
             EditingTest = new Test();
         }
+
+        public void DeleteTest()
+        {
+            if (SelectedTest == null)
+            {
+                return;
+            }
+
+            if (selectedTest.DbTestId != null)
+            {
+                _dao.DeleteTest((int)selectedTest.DbTestId);
+            }
+            
+            Tests.Remove(SelectedTest);
+
+            EditingTest = new Test();
+        }
+
 
     }
 }
