@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using Prism.Commands;
 using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
@@ -31,7 +32,8 @@ namespace TestingPlanner.Viewmodels
             Divisions = new ObservableCollection<string>();
 
             Load();
-
+            addEUTCommand = new DelegateCommand(AddEUT);
+            removeEUTCommand = new DelegateCommand(removeSelectedEUT);
             // Look for JR with correct ID
             this._jr = _dao.GetJR(idRequest);
 
