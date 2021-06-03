@@ -13,8 +13,6 @@ namespace TestingPlanner
         public DateTime AvailabilityDate { get; set; }
         public string OmschrijvingEut { get; set; }
         public string PartNr { get; set; }
-        public string NetWeight { get; set; }
-        public string GrossWeight { get; set; }
 
         // Tests to execute
         public bool EMC { get; set; }

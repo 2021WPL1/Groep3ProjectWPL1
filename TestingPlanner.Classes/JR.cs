@@ -10,35 +10,24 @@ namespace TestingPlanner
     {
 
         // Required variables for the job request
-        // INCOMPLETE
-        private int idRequest;
-        private string jrNumber;
-        private string jrStatus;
-        private string requester;
-        private string eutProjectname;
-        private string eutPartnr;
-        private string hydraProjectnumber;
-        private bool? internRequest;
-        private string grossWeight;
-        private string netWeight;
-        private bool battery;
-        private string link;
-        private string remarks;
-        private string barcoDivision;
-        private string jobNature;
-        private DateTime? expEnddate;
-        private DateTime? requestDate;
+        public int IdRequest { get; set; }
+        public string JrNumber { get; set; }
+        public string JrStatus { get; set; }
+        public string Requester { get; set; }
+        public string EutProjectname { get; set; }
+        public string EutPartnr { get; set; }
+        public string HydraProjectnumber { get; set; }
+        public bool? InternRequest { get; set; }
+        public string GrossWeight { get; set; }
+        public string NetWeight { get; set; }
+        public bool Battery { get; set; }
+        public string Link { get; set; }
+        public string Remarks { get; set; }
+        public string BarcoDivision { get; set; }
+        public string JobNature { get; set; }
+        public DateTime? ExpEnddate { get; set; }
+        public DateTime? RequestDate { get; set; }
 
-
-
-        // JR Constructor
-        public JR()
-        {
-            // TEMP FIX
-            // Autofill Weights
-            grossWeight = "0";
-            netWeight = "0";
-        }
         // PVGResponsobles for this test
         public string EMCpvg { get; set; }
         public string ENVpvg { get; set; }
@@ -46,24 +35,5 @@ namespace TestingPlanner
         public string SAVpvg { get; set; }
         public string PCKpvg { get; set; }
         public string ECOpvg { get; set; }
-
-        // Getters/setters
-        public int IdRequest { get => idRequest; set => idRequest = value; }
-        public string JrNumber { get => jrNumber; set => jrNumber = value; }
-        public string JrStatus { get => jrStatus; set => jrStatus = value; }
-        public string Requester { get => requester; set => requester = value; }
-        public string EutProjectname { get => eutProjectname; set => eutProjectname = value; }
-        public string EutPartnr { get => eutPartnr; set => eutPartnr = value; }
-        public string HydraProjectnumber { get => hydraProjectnumber; set => hydraProjectnumber = value; }
-        public bool? InternRequest { get => internRequest; set => internRequest = value; }
-        public string GrossWeight { get => grossWeight; set => grossWeight = value; }
-        public string NetWeight { get => netWeight; set => netWeight = value; }
-        public bool Battery { get => battery; set => battery = value; }
-        public string Link { get => link; set => link = value; }
-        public string Remarks { get => remarks; set => remarks = value; }
-        public string BarcoDivision { get => barcoDivision; set => barcoDivision = value; }
-        public string JobNature { get => jobNature; set => jobNature = value; }
-        public DateTime? ExpEnddate { get => expEnddate; set => expEnddate = value; }
-        public DateTime? RequestDate { get => requestDate; set => requestDate = value; }
     }
 }
