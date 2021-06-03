@@ -47,6 +47,16 @@ namespace TestingPlanner.Data
         }
 
 
+        /// <summary>
+        /// Removes unsaved changed by replacing the context by a new instance
+        /// </summary>
+        /// Kaat
+        public void RemoveChanges()
+        {
+            context = new Barco2021Context();
+        }
+
+
         // LISTS
 
         // Returns list of all JRs
@@ -92,9 +102,16 @@ namespace TestingPlanner.Data
         }
 
         // Gets a resource by id
+        // Kaat
         public PlResources GetResource(int id)
         {
             return context.PlResource.SingleOrDefault(r => r.Id == id);
+        }
+
+        // Gets a resource by name
+        public PlResources GetResource(string name)
+        {
+            return context.PlResource.SingleOrDefault(r => r.Naam == name);
         }
 
         // JR CHANGES
@@ -157,6 +174,7 @@ namespace TestingPlanner.Data
             return rqrequest;
         }
 
+
         //MOHAMED
         //Matti
         /// <summary>
@@ -181,8 +199,34 @@ namespace TestingPlanner.Data
             // We link each testdivision to the corresponding id_request
             foreach (string testeut in testDivision)
             {
-                var detail = new RqRequestDetail();
-                detail.Testdivisie = testeut;
+                // Find an existing detail - Kaat
+                // THIS WILL GIVE ERRORS IF YOU HAVE MULTIPLE DETAILS FOR A GIVEN COMBO IN YOUR DB
+                var detail = context.RqRequestDetails.
+                    Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
+                    SingleOrDefault();
+
+                // If no detail exists for this JR/TestDiv combination in the db
+                // Possible if JR not yet in DB
+                // Check rq list
+                if (detail is null)
+                {
+                    detail = request.RqRequestDetails.
+                    Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
+                    SingleOrDefault();
+                }
+
+                // If still no detail exists for this JR/TestDiv combination
+                // Create a new one - Kaat
+                if (detail is null)
+                {
+                    detail = new RqRequestDetail();
+
+                    detail.Testdivisie = testeut;
+                    detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
+
+                    request.RqRequestDetails.Add(detail);
+                }
+
                 detail.Euts.Add(new Eut
                 {
                     // Static added for now
@@ -192,9 +236,7 @@ namespace TestingPlanner.Data
 
                 });
 
-                detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
 
-                request.RqRequestDetails.Add(detail);
             };
             context.RqRequest.Add(request);
         }
@@ -407,12 +449,43 @@ namespace TestingPlanner.Data
             // On approval, set JR number and request date
             request.JrNumber = $"JRDEV{request.IdRequest.ToString("D5")}";
             request.RequestDate = DateTime.Now;
-            request.JrStatus = "in plan";
+            request.JrStatus = "In Plan";
 
             // Create a new planning record for each unique division
             foreach (string division in divisions)
             {
                 var planning = CreatePlPlanning(request, division);
+
+                context.Add(planning);
+                context.SaveChanges();
+            }
+        }
+
+        public void ApproveInternalRequest(int jrId)
+        {
+            var DetailList = rqDetail(jrId);
+            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
+
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
+
+            // On approval, set JR number and request date
+            request.JrNumber = $"INTRN{request.IdRequest.ToString("D5")}";
+            request.RequestDate = DateTime.Now;
+            request.JrStatus = "In Plan";
+
+            // Create a new planning record for each unique division
+            foreach (string division in divisions)
+            {
+                var planning = new PlPlanning
+                {
+                    IdRequest = request.IdRequest,
+                    JrNr = request.JrNumber,
+                    Requestdate = request.RequestDate,
+                    DueDate = null,
+                    TestDiv = division,
+                    TestDivStatus = "In plan",
+                };
 
                 context.Add(planning);
                 context.SaveChanges();
@@ -440,6 +513,7 @@ namespace TestingPlanner.Data
             return context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
         }
 
+
         // Creates and saves Plplanningskalender based on Test
         // Kaat
         public void CreateNewTest(Test test)
@@ -453,10 +527,10 @@ namespace TestingPlanner.Data
                 JrStatus = jr.JrStatus,
                 Omschrijving = test.Description,
                 Startdatum = test.StartDate,
-                Einddatum = test.EndDate,
+                Einddatum = test.EndDate is null? test.StartDate : test.EndDate,
                 Testdiv = test.TestDivision,
-                Resources = test.Resource,
-                TestStatus = "Planned"
+                Resources = GetResource(test.Resource).Id,
+                TestStatus = test.Status
             };
 
             context.Add(planningsKalender);
@@ -468,19 +542,7 @@ namespace TestingPlanner.Data
             // Find selected PlPlanningsKalender
             var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
 
-            // Create new test based on PlPlanningsKalender
-            var test = new Test
-            {
-                Description = dbTest.Omschrijving,
-                RQId = dbTest.IdRequest,
-                TestDivision = dbTest.Testdiv,
-                StartDate = dbTest.Startdatum,
-                EndDate = dbTest.Einddatum,
-                Resource = dbTest.Resources,
-                Status = dbTest.TestStatus
-            };
-
-            return test;
+            return GetTest(dbTest);
         }
 
         public Test GetTest(PlPlanningsKalender dbTest)
@@ -488,12 +550,13 @@ namespace TestingPlanner.Data
             // Create new test based on PlPlanningsKalender
             var test = new Test
             {
+                DbTestId = dbTest.Id,
                 Description = dbTest.Omschrijving,
                 RQId = dbTest.IdRequest,
                 TestDivision = dbTest.Testdiv,
                 StartDate = dbTest.Startdatum,
                 EndDate = dbTest.Einddatum,
-                Resource = dbTest.Resources,
+                Resource = GetResource(dbTest.Resources).Naam,
                 Status = dbTest.TestStatus
             };
 
@@ -517,14 +580,30 @@ namespace TestingPlanner.Data
             dbTest.Startdatum = test.StartDate;
             dbTest.Einddatum = test.EndDate;
             dbTest.Testdiv = test.TestDivision;
-            dbTest.Resources = test.Resource;
+            dbTest.Resources = GetResource(test.Resource).Id;
 
             SaveChanges();
         }
 
         // Updates status of test
         // Kaat
-        public void UpdateTestStatus(int id, string status)
+        public void UpdateTestStatus(Test test)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == test.DbTestId);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.TestStatus = test.Status;
+
+            SaveChanges();
+        }
+
+        public void DeleteTest(int id)
         {
             // Get existing PlPK
             var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
@@ -535,9 +614,11 @@ namespace TestingPlanner.Data
                 return;
             }
 
-            dbTest.TestStatus = status;
+            context.Remove(dbTest);
 
-            SaveChanges();
+            // Savechanges on saving of Tests
+            // User can still cancel -> New DBContext, removing saved changes
+            // SaveChanges();
         }
 
         // Finds all test linked to this JR Id
@@ -548,6 +629,27 @@ namespace TestingPlanner.Data
 
             var planningsKalenders = context.PlPlanningsKalenders.
                 Where(pk => pk.IdRequest == jrId).
+                ToList();
+
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // Finds all test linked to this JR Id and division
+        // Not linked to plan so can't use plPlanning
+        // Kaat
+        public List<Test> GetTestsForJRAndDivision(int jrId, string testDivision)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId && pk.Testdiv == testDivision).
                 ToList();
 
 
@@ -578,6 +680,106 @@ namespace TestingPlanner.Data
 
             return tests;
         }
+
+        public List<Test> GetAllTests()
+        {
+            // Find selected PlPlanningsKalender
+            var dbTests = context.PlPlanningsKalenders.ToList();
+
+            var uiTests = new List<Test>();
+
+            foreach (var item in dbTests)
+            {
+                uiTests.Add(GetTest(item));
+            }
+
+            return uiTests;
+        }
+
+        /// <summary>
+        /// Set JR status to Finished if all related plans are finished
+        /// </summary>
+        /// <param name="rqId"></param>
+        public void SetRqStatusIfComplete(int rqId)
+        {
+            // Get all planning
+            var planningList = context.PlPlannings.Where(pl => pl.IdRequest == rqId).ToList();
+
+            // Leave function if there is an unfinished planning
+            if (planningList.Exists(pl => pl.TestDivStatus != "Finished"))
+            {
+                return;
+            }
+
+            // Get request
+            var dbRq = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == rqId);
+
+            dbRq.JrStatus = "Finished";
+
+            SaveChanges();
+
+        }
+
+
+        public List<Test> GetAllTestsForDivision(string testDivision)
+        {
+            // Find selected PlPlanningsKalender
+            var dbTests = context.PlPlanningsKalenders.Where(plk => plk.Testdiv == testDivision).ToList();
+
+            var uiTests = new List<Test>();
+
+            foreach (var item in dbTests)
+            {
+                uiTests.Add(GetTest(item));
+            }
+
+            return uiTests;
+        }
+
+        // Kaat
+        public bool IsResourceDoubleBooked(Test test)
+        {
+            if (test.Resource is null || test.StartDate is null)
+            {
+                return false;
+            }
+            var newStartDate = test.StartDate;
+
+            // If there is no endDate, set startDate as EndDate
+            var newEndDate = test.EndDate == null? newStartDate: test.EndDate;
+
+            // get resource number
+            int resourceID = GetResource(test.Resource).Id;
+
+            // Get all uses of this resource
+            var resourceUses = context.PlPlanningsKalenders.Where(plk => plk.Resources == resourceID).ToList();
+
+            // Get and remove plPlanningskalender related to test
+            var thisDbTest = context.PlPlanningsKalenders.SingleOrDefault(plk => plk.Id == test.DbTestId);
+            resourceUses.Remove(thisDbTest);
+
+            // If new pk enddate is before existing pk startdate
+            // but new pk startdate is not before existing pk enddate
+
+            //if (resourceUses.Exists(u => u.Einddatum >= startDate && u.Startdatum <= endDate))
+            //{
+            //    return true;
+            //}
+
+            foreach (var item in resourceUses)
+            {
+                bool one = item.Einddatum is null? item.Startdatum >= newStartDate: item.Einddatum >= newStartDate;
+                bool two = newEndDate >= item.Startdatum;
+
+                if (one && two)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
 
         // SAVING
         // Stores all data from GUI in DB

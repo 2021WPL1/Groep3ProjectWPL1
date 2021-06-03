@@ -38,6 +38,7 @@
             </Grid>
         </ListBoxItem>
     </DataTemplate>
+    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 
     <!--Data template for pvg responsible in the Gui-->
     <DataTemplate x:Key="PVGRes">

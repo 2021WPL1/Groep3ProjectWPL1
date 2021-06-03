@@ -16,6 +16,9 @@
     <Compile Update="Views\TesterPlanUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TesterTestUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\TestFormUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TesterPlanUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TesterTestUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TestFormUserControl.xaml">

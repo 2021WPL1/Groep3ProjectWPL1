@@ -76,10 +76,9 @@
                 <Label Content="JR Number:" Grid.Column="3" Grid.Row="6"/>
                 <TextBox Grid.Column="4" Grid.Row="6" IsEnabled="False"/>
                 <!--TODO: disable for users not part of testteam, enable and autofill for testteam-->
-                <CheckBox Content="Internal" Grid.Column="4" Grid.Row="7" IsEnabled="False"/>
-
+                <CheckBox Content="Internal" Grid.Column="4" Grid.Row="7" IsChecked="{Binding JR.InternRequest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
                 <Label Content="Expected end date:" Grid.Row="10" Grid.Column="3"/>
-                <DatePicker SelectedDate ="{Binding JR.ExpEnddate, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                <DatePicker SelectedDate ="{Binding JR.ExpEnddate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Grid.Column="4" Grid.Row="10" IsTodayHighlighted="True" />
 
                 <Label Content="Special remarks (optional):" Grid.Row="11"/>

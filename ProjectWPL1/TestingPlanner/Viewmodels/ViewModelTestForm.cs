@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
+using TestingPlanner.Classes;
 using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
+    // Kaat
     class ViewModelTestForm : ViewModelBase
     {
         // Listbox with equipment
@@ -16,43 +19,218 @@ namespace TestingPlanner.Viewmodels
         // Plan for these tests
         public PlPlanning SelectedPlan { get; set; }
 
-        public ObservableCollection<PlPlanningsKalender> Tests { get; set; }
-        private PlPlanningsKalender selectedTest;
+        public ObservableCollection<Test> Tests { get; set; }
+        private Visibility doubleBooked;
+        private Test selectedTest;
+        private Test editingTest;
+
+        // Used to triigger check for dates
+        private DateTime? startDate;
+        private DateTime? endDate;
 
         public ICommand AddNewTestCommand { get; set; }
+        public ICommand ClearTestCommand { get; set; }
+        public ICommand DeleteTestCommand { get; set; }
 
         public ViewModelTestForm(PlPlanning planning)
         {
             SelectedPlan = planning;
 
             Resources = new ObservableCollection<PlResources>();
-            Tests = new ObservableCollection<PlPlanningsKalender>();
+            Tests = new ObservableCollection<Test>();
 
             foreach (var item in _dao.GetResources(planning.TestDiv))
             {
                 Resources.Add(item);
             }
 
-            AddNewTestCommand = new DelegateCommand(AddTest);
+            foreach (var item in _dao.GetTestsForJRAndDivision(SelectedPlan.IdRequest, SelectedPlan.TestDiv))
+            {
+                Tests.Add(item);
+            }
 
-            SelectedPlan = planning;
+            AddNewTestCommand = new DelegateCommand(AddTest);
+            ClearTestCommand = new DelegateCommand(ClearTest);
+            DeleteTestCommand = new DelegateCommand(DeleteTest);
+
+            EditingTest = new Test();
+            doubleBooked = Visibility.Hidden;
         }
 
 
-        public PlPlanningsKalender SelectedTest
+        public Test SelectedTest
         {
             get => selectedTest;
             set
             {
                 selectedTest = value;
+                EditingTest = selectedTest;
+                OnpropertyChanged();
+            }
+        }
+
+        public Test EditingTest
+        {
+            get => editingTest;
+            set
+            {
+                editingTest = value;
+                StartDate = editingTest is null? null :  editingTest.StartDate;
+                EndDate = editingTest is null ? null : editingTest.EndDate;
+                OnpropertyChanged();
+            }
+        }
+
+        public DateTime? StartDate 
+        { 
+            get => startDate;
+            set
+            {
+                startDate = value;
+                editingTest.StartDate = value;
+                SetVisibility();
+                OnpropertyChanged();
+            }
+        }
+
+        public DateTime? EndDate
+        {
+            get => endDate;
+            set
+            {
+                endDate = value;
+                editingTest.EndDate = value;
+                SetVisibility();
+                OnpropertyChanged();
+            }
+        }
+
+        public Visibility DoubleBooked 
+        { 
+            get => doubleBooked;
+            set
+            {
+                doubleBooked = value;
                 OnpropertyChanged();
             }
         }
 
         public void AddTest()
         {
-            Tests.Add(new PlPlanningsKalender());
+            if (startDate > endDate)
+            {
+                MessageBox.Show("End Date Can't be before Start Date");
+                return;
+            }
+
+            Test newTest = new Test
+            {
+                Description = EditingTest.Description,
+                RQId = SelectedPlan.IdRequest,
+                TestDivision = SelectedPlan.TestDiv,
+                StartDate = editingTest.StartDate,
+                EndDate = editingTest.EndDate,
+                Resource = editingTest.Resource,
+                Status = editingTest.Status
+            };
+
+            Tests.Add(newTest);
+            EditingTest = new Test();
         }
 
+        public void ClearTest()
+        {
+            EditingTest = new Test();
+        }
+
+        public void DeleteTest()
+        {
+            if (SelectedTest == null)
+            {
+                return;
+            }
+
+            if (selectedTest.DbTestId != null)
+            {
+                _dao.DeleteTest((int)selectedTest.DbTestId);
+            }
+            
+            Tests.Remove(SelectedTest);
+
+            EditingTest = new Test();
+        }
+
+        public void SaveTests()
+        {
+            foreach (var test in Tests)
+            {
+                if (test.DbTestId == null)
+                {
+                    _dao.CreateNewTest(test);
+                }
+                else
+                {
+                    _dao.UpdateTest((int)test.DbTestId, test);
+                }
+            }
+
+            _dao.SaveChanges();
+        }
+
+        /// <summary>
+        /// Set the status for the plan as completed if all test dates are filled in
+        /// </summary>
+        /// <returns></returns>
+        public bool ApprovePlan()
+        {
+            // Check if all startdates are filled in
+            // if (tests.Exists(t => t.StartDate == null))
+            // Does not work for Observable Collections
+            foreach (var test in Tests)
+            {
+                if (test.StartDate == null)
+                {
+                    MessageBox.Show("Please fill in all dates");
+                    return false;
+                }
+            }
+
+            foreach (var test in Tests)
+            {
+                test.Status = "Planned";
+
+                if (test.EndDate == null)
+                {
+                    test.EndDate = test.StartDate;
+                }
+            }
+
+            SelectedPlan.TestDivStatus = "Finished";
+            SelectedPlan.TestDivPlanDate = DateTime.Now;
+
+            // includes savechanges
+            SaveTests();
+
+            _dao.SetRqStatusIfComplete(SelectedPlan.IdRequest);
+
+            return true;
+        }
+
+        private void SetVisibility()
+        {
+            bool isDoubleBooked = _dao.IsResourceDoubleBooked(editingTest);
+
+            if (isDoubleBooked)
+            {
+                // Show
+                DoubleBooked = Visibility.Visible;
+                return;
+            }
+
+            // Hide
+            DoubleBooked = Visibility.Hidden;
+
+        }
+          
     }
 }

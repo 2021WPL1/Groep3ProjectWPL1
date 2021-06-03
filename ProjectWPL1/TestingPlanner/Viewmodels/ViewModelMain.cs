@@ -22,25 +22,41 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
         public DelegateCommand DisplayPlannerStartupCommand { get; set; }
-        public DelegateCommand DisplayTesterStartupCommand { get; set; }
+        public DelegateCommand DisplayTesterPlanCommand { get; set; }
+        public DelegateCommand DisplayTesterTestCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
+        public DelegateCommand SaveTestsAndReturnCommand { get; set; }
+        public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
+        public DelegateCommand TesterReturnCommand { get; set; }
+
+        // Visibility of buttons
+        public Visibility NewRequests { get; set; }
+        public Visibility ApproveRequests { get; set; }
+        public Visibility Test { get; set; }
+        public Visibility SeeAll { get; set; }
        
         public ViewModelMain()
         {
-            this.ViewModel = new ViewmodelTemporarilyStartUp();
             this.User = _dao.BarcoUser;
 
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
             DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
-            DisplayTesterStartupCommand = new DelegateCommand(DisplayTesterStartup);
+            DisplayTesterPlanCommand = new DelegateCommand(DisplayTesterPlan);
+            DisplayTesterTestCommand = new DelegateCommand(DisplayTesterTest);
             DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
             ApproveJRCommand = new DelegateCommand(ApproveJR);
             DisplayTestPlanningCommand = new DelegateCommand(DisplayTestPlanning);
+            SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
+            ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
+            TesterReturnCommand = new DelegateCommand(TesterReturn);
+
+            SetWindowProperties();
+
         }
 
         // Getters/Setters
@@ -60,6 +76,12 @@ namespace TestingPlanner.Viewmodels
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
             this.ViewModel = new ViewModelRequestformRD();
+        }
+
+        public void DisplayNewInternalJR()
+        {
+            SaveJrCommand = new DelegateCommand(InsertInternalJr);
+            this.ViewModel = new ViewModelRequestformRD(true);
         }
 
         public void DisplayExistingJR()
@@ -87,10 +109,14 @@ namespace TestingPlanner.Viewmodels
         {
             this.ViewModel = new ViewModelStartupPlanner();
         }
-        public void DisplayTesterStartup()
+        public void DisplayTesterPlan()
         {
-            //this.ViewModel = new ViewModelStartupTester();
             this.ViewModel = new ViewModelTesterPlan();
+        }
+
+        public void DisplayTesterTest()
+        {
+            this.ViewModel = new ViewModelTesterTest();
         }
 
         public void DisplayDevStartup()
@@ -105,13 +131,37 @@ namespace TestingPlanner.Viewmodels
         {
             var jr = _dao.AddJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
             int count = 0;
+
             foreach (var thisEUT in ((ViewModelContainer)this.ViewModel).EUTs)
             {
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
             }
+
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
+            DisplayDevStartup();
+        }
+
+        // Change so no JR and no 
+        public void InsertInternalJr()
+        {
+            var jr = _dao.AddJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+
+            jr.JrStatus = "In Plan";
+            
+            int count = 0;
+            foreach (var thisEUT in ((ViewModelContainer)this.ViewModel).EUTs)
+            {
+                count++;
+                _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
+            }
+
+            // Here we call the SaveChanges method, so that we can link several EUTs to one JR
+            _dao.SaveChanges();
+
+            _dao.ApproveInternalRequest(jr.IdRequest);
+
             DisplayDevStartup();
         }
 
@@ -149,5 +199,73 @@ namespace TestingPlanner.Viewmodels
 
             this.ViewModel = new ViewModelTestForm(plan);
         }
+
+        public void SaveTestsAndReturn()
+        {
+            ((ViewModelTestForm)this.ViewModel).SaveTests();
+            this.ViewModel = new ViewModelTesterPlan();
+        }
+
+        public void ApprovePlanAndReturn()
+        {
+            var isSaved = ((ViewModelTestForm)this.ViewModel).ApprovePlan();
+
+            if (isSaved)
+            {
+                this.ViewModel = new ViewModelTesterPlan();
+            }
+        }
+
+        public void TesterReturn()
+        {
+            _dao.RemoveChanges();
+            this.ViewModel = new ViewModelTesterPlan();
+        }
+
+        private void SetWindowProperties()
+        {
+            switch (_dao.BarcoUser.Function)
+            {
+                case "DEV":
+                    NewRequests = Visibility.Visible;
+                    ApproveRequests = Visibility.Visible;
+                    Test = Visibility.Visible;
+                    SeeAll = Visibility.Visible;
+
+                    this.ViewModel = new ViewmodelTemporarilyStartUp();
+
+                    break;
+                case "TEST":
+                    NewRequests = Visibility.Visible;
+                    ApproveRequests = Visibility.Hidden;
+                    Test = Visibility.Visible;
+                    SeeAll = Visibility.Hidden;
+
+                    DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
+
+                    this.ViewModel = new ViewModelTesterPlan();
+
+                    break;
+                case "PLAN":
+                    NewRequests = Visibility.Hidden;
+                    ApproveRequests = Visibility.Visible;
+                    Test = Visibility.Hidden;
+                    SeeAll = Visibility.Hidden;
+
+                    this.ViewModel = new ViewModelStartupPlanner();
+
+                    break;
+                default:
+                    NewRequests = Visibility.Visible;
+                    ApproveRequests = Visibility.Hidden;
+                    Test = Visibility.Hidden;
+                    SeeAll = Visibility.Hidden;
+
+                    this.ViewModel = new ViewModelStartupRD();
+
+                    break;
+            }
+        }
+
     }
 }

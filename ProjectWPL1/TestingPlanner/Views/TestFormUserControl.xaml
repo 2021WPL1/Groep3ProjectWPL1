@@ -20,31 +20,54 @@
             <StackPanel Orientation="Horizontal">
                 <ComboBox ItemsSource="{Binding Resources}" 
                           DisplayMemberPath="Naam"
-                          Text="{Binding SelectedTest.Resources,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                          Grid.Column="1" Grid.Row="2" Margin="10"/>
-                <TextBox Text="{Binding SelectedTest.Omschrijving ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+                          Text="{Binding EditingTest.Resource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          Margin="10"
+                          >
+                    <!--
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}">
+                            <Setter Property="Background" Value="{StaticResource ResourceColor}"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle> 
+                    -->
+                </ComboBox>
+                
+                <TextBox Text="{Binding EditingTest.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
                 <!--Currently two datepickers for start/end, looking into using one to get an array? -->
-                <DatePicker SelectedDate="{Binding SelectedTest.Startdatum}" IsTodayHighlighted="True" Margin="5"/>
-                <DatePicker SelectedDate="{Binding SelectedTest.Einddatum}" IsTodayHighlighted="True" Margin="5"/>
+                <DatePicker SelectedDate="{Binding StartDate}" IsTodayHighlighted="True" Margin="5"/>
+                <DatePicker SelectedDate="{Binding EndDate}" IsTodayHighlighted="True" Margin="5"/>
+                <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" 
+                           Background="Red" 
+                           Visibility="{Binding DoubleBooked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="New JR" Command="{Binding Path=addEUTCommand}" Margin="5"/>
-                <Button Content="Delete" Margin="5"/>
+                <Button Content="Add Test" Command="{Binding Path=AddNewTestCommand}" Margin="5"/>
+                <Button Content="Clear Test" Command="{Binding Path=ClearTestCommand}" Margin="5"/>
+                <Button Content="Remove Test" Command="{Binding Path=DeleteTestCommand}" Margin="5"/>
             </StackPanel>
             <ListView ItemsSource="{Binding Tests}" SelectedItem="{Binding SelectedTest, Mode=TwoWay}" Height="250">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Job Request Number" DisplayMemberBinding="{Binding JrNr}" />
-                        <GridViewColumn Header="Test Id" DisplayMemberBinding="{Binding Id}" />
-                        <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding Startdatum, StringFormat=d}" />
-                        <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding Einddatum, StringFormat=d}" />
-                        <GridViewColumn Header="Test Division" DisplayMemberBinding="{Binding TestDiv}" />
+                        <GridViewColumn Header="Resource" DisplayMemberBinding="{Binding Resource}" />
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                        <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate, StringFormat=d}" />
+                        <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate, StringFormat=d}" />
                     </GridView>
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Mark as planned" Margin="5"/>
-                <Button Content="Cancel" Margin="5"/>
+                <Button Content="Save New Tests" Margin="5"
+                        Command="{Binding DataContext.SaveTestsAndReturnCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"/>
+                <Button Content="Mark as planned" Margin="5"
+                        Command="{Binding DataContext.ApprovePlanAndReturnCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"/>
+                <Button Content="Cancel" Margin="5"
+                        Command="{Binding DataContext.TesterReturnCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>

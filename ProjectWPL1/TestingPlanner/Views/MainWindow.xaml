@@ -24,28 +24,36 @@
                         <TextBlock FontSize="16" Text=")"/>
                     </StackPanel>
                 </GroupBox.Header>
+                <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Button Content="Your requests" 
+                            Command="{Binding DisplayEmployeeStartupCommand,
+                            Mode=OneWay}" 
+                            Visibility="{Binding NewRequests}"
+                            Margin="10"/>
+                    <Button Content="Edit/Approve requests" 
+                            Command="{Binding DisplayPlannerStartupCommand,
+                            Mode=OneWay}" 
+                            Visibility="{Binding ApproveRequests}"
+                            Margin="10"/>
+                    <Button Content="Plan tests" 
+                            Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
+                            Visibility="{Binding Test}"
+                            Margin="10"/>
+                    <Button Content="View/Update tests" 
+                            Command="{Binding DisplayTesterTestCommand, Mode=OneWay}"
+                            Visibility="{Binding Test}"
+                            Margin="10"/>
+                    <Button Content="Development"
+                        Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
+                            Visibility="{Binding SeeAll}"
+                        Margin="10"/>
+                    </StackPanel>
                 <ScrollViewer Height="450">
                     <ContentControl Content="{Binding ViewModel}"/>
                 </ScrollViewer>
+                </StackPanel>
             </GroupBox>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Button Content="DEV: Open employee startup" 
-                    Command="{Binding DisplayEmployeeStartupCommand,
-                            Mode=OneWay}" 
-                    Margin="10"/>
-                <Button Content="DEV: Open planner startup" 
-                    Command="{Binding DisplayPlannerStartupCommand,
-                            Mode=OneWay}" 
-                        Margin="10"/>
-                <Button Content="DEV: Open tester startup" 
-                    Command="{Binding DisplayTesterStartupCommand, 
-                            Mode=OneWay}" 
-                        Margin="10"/>
-                <Button Content="DEV: Open Dev startup" 
-                    Command="{Binding DisplayDevStartupCommand, 
-                            Mode=OneWay}" 
-                        Margin="10"/>
-            </StackPanel>
         </StackPanel>
     </StackPanel>
 </Window>

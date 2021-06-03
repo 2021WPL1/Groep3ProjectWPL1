@@ -6,12 +6,18 @@ namespace TestingPlanner.Classes
 {
     public class Test
     {
+        public int? DbTestId { get; set; }
         public string Description { get; set; }
         public int RQId { get; set; }
         public string TestDivision { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public int Resource { get; set; }
+        public string Resource { get; set; }
         public string Status { get; set; }
+
+        public Test()
+        {
+            Status = "Unconfirmed";
+        }
     }
 }
