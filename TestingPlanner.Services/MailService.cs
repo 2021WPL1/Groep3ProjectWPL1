@@ -12,12 +12,12 @@ namespace TestingPlanner.Services
     {
         private System.Timers.Timer timer;
         
-        
         //List with all addresses 
         List<string> addresses = new List<string>();
-            //Email login info
-            private static string mailFrom = "groep3testprog@gmail.com";
-            private static string mailFromPassword = "Testtest123";
+
+        //Email login info
+        private static string mailFrom = "groep3testprog@gmail.com";
+        private static string mailFromPassword = "Testtest123";
 
         //Create and send Mail to all gmail account from list// Arne
         public void Sendmail()
@@ -25,9 +25,6 @@ namespace TestingPlanner.Services
             Schedule_Timer();
             using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
             {
-                //addresses.Add("mohamed.elouzatie@student.vives.be");
-                //addresses.Add("Kaat.ceusters@student.vives.be");
-                //addresses.Add("matti.snauwaert@student.vives.be");
                 addresses.Add("dewintere.arne@gmail.com");
                 addresses.Add("arne.dewintere@student.vives.be");
                 addresses.Add("matti.snauwaert@student.vives.be");
@@ -46,6 +43,7 @@ namespace TestingPlanner.Services
                 client.Send(mail);
             }
         }
+
         // zorgt voor een vast tijdstip op een dag die dan iets moet uitvoeren
         public void Schedule_Timer()
         {
@@ -63,7 +61,8 @@ namespace TestingPlanner.Services
                 timer = new System.Timers.Timer(tickTime);
                 timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
                 timer.Start();
-            }
+        }
+
         // Wanneer de timer stopt voert hij de sendmail functie uit en roept opnieuw de schedule_timer aan en die gaat dan een 
         // dag bij tellen.
         public void timer_Elapsed(object sender, ElapsedEventArgs e)
