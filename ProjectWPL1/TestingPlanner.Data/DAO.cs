@@ -203,7 +203,17 @@ namespace TestingPlanner.Data
                     Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
                     SingleOrDefault();
 
-                // If no detail exists for this JR/TestDiv combination
+                // If no detail exists for this JR/TestDiv combination in the db
+                // Possible if JR not yet in DB
+                // Check rq list
+                if (detail is null)
+                {
+                    detail = request.RqRequestDetails.
+                    Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
+                    SingleOrDefault();
+                }
+
+                // If still no detail exists for this JR/TestDiv combination
                 // Create a new one - Kaat
                 if (detail is null)
                 {
