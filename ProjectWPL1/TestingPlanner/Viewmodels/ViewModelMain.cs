@@ -29,6 +29,7 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
         public DelegateCommand SaveTestsAndReturnCommand { get; set; }
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
+        public DelegateCommand TesterReturnCommand { get; set; }
        
         public ViewModelMain()
         {
@@ -45,6 +46,7 @@ namespace TestingPlanner.Viewmodels
             DisplayTestPlanningCommand = new DelegateCommand(DisplayTestPlanning);
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
+            TesterReturnCommand = new DelegateCommand(TesterReturn);
         }
 
         // Getters/Setters
@@ -168,6 +170,12 @@ namespace TestingPlanner.Viewmodels
             {
                 this.ViewModel = new ViewModelTesterPlan();
             }
+        }
+
+        public void TesterReturn()
+        {
+            _dao.RemoveChanges();
+            this.ViewModel = new ViewModelTesterPlan();
         }
     }
 }

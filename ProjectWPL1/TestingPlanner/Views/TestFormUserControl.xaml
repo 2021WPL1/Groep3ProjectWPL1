@@ -51,7 +51,10 @@
                         Command="{Binding DataContext.ApprovePlanAndReturnCommand, 
                             RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
                             Mode=OneWay}"/>
-                <Button Content="Cancel" Margin="5"/>
+                <Button Content="Cancel" Margin="5"
+                        Command="{Binding DataContext.TesterReturnCommand, 
+                            RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, 
+                            Mode=OneWay}"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>
