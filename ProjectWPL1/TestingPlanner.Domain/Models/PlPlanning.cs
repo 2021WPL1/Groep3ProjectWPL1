@@ -5,8 +5,7 @@ namespace TestingPlanner.Domain.Models
 {
     public partial class PlPlanning
     {
-        // public int IdPlanning { get; set; } // Not recognized
-        public int Id { get; set; }
+        public int IdPlanning { get; set; }
         public int IdRequest { get; set; }
         public string JrNr { get; set; }
         public DateTime? Requestdate { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace TestingPlanner.Data
     {
         // Variables
         private Barco2021Context context;
-        private static readonly DAO instance = new DAO();
+        private static readonly DAO instance = new DAO(); 
 
         public BarcoUser BarcoUser { get; }
 
@@ -46,6 +47,16 @@ namespace TestingPlanner.Data
         }
 
 
+        /// <summary>
+        /// Removes unsaved changed by replacing the context by a new instance
+        /// </summary>
+        /// Kaat
+        public void RemoveChanges()
+        {
+            context = new Barco2021Context();
+        }
+
+
         // LISTS
 
         // Returns list of all JRs
@@ -66,6 +77,43 @@ namespace TestingPlanner.Data
             return context.RqBarcoDivision.ToList();
         }
 
+        // Returns list of all Equipment
+        // Kaat
+        public List<PlResources> GetResources()
+        {
+            return context.PlResource.ToList();
+        }
+
+        // Returns list of Equipment for a given TestDivision
+        // Kaat
+        public List<PlResources> GetResources(string TestDivision)
+        {
+            var idList = context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
+
+            // try with mapping?
+            var resourceList = new List<PlResources>();
+
+            foreach (var id in idList)
+            {
+                resourceList.Add(GetResource(id));
+            }
+
+            return resourceList;
+        }
+
+        // Gets a resource by id
+        // Kaat
+        public PlResources GetResource(int id)
+        {
+            return context.PlResource.SingleOrDefault(r => r.Id == id);
+        }
+
+        // Gets a resource by name
+        public PlResources GetResource(string name)
+        {
+            return context.PlResource.SingleOrDefault(r => r.Naam == name);
+        }
+
         // JR CHANGES
 
         /// <summary>
@@ -76,7 +124,7 @@ namespace TestingPlanner.Data
         {
             JR autofilledJR = new JR()
             {
-                Requester = BarcoUser.Name,
+             Requester = BarcoUser.Name,
                 BarcoDivision = BarcoUser.Division
             };
 
@@ -92,7 +140,7 @@ namespace TestingPlanner.Data
             // Used ternary operator to use String.Empty when null
             RqRequest rqrequest = new RqRequest()
             {
-                JrStatus = Jr.JrStatus == null ? string.Empty : Jr.JrStatus,
+                JrStatus = Jr.JrStatus == null ? "To approve" : Jr.JrStatus,
                 RequestDate = Jr.ExpEnddate, // Nullable
                 Requester = Jr.Requester == null ? string.Empty : Jr.Requester,
                 BarcoDivision = Jr.BarcoDivision == null ? string.Empty : Jr.BarcoDivision,
@@ -126,6 +174,7 @@ namespace TestingPlanner.Data
             return rqrequest;
         }
 
+
         //MOHAMED
         //Matti
         /// <summary>
@@ -150,8 +199,34 @@ namespace TestingPlanner.Data
             // We link each testdivision to the corresponding id_request
             foreach (string testeut in testDivision)
             {
-                var detail = new RqRequestDetail();
-                detail.Testdivisie = testeut;
+                // Find an existing detail - Kaat
+                // THIS WILL GIVE ERRORS IF YOU HAVE MULTIPLE DETAILS FOR A GIVEN COMBO IN YOUR DB
+                var detail = context.RqRequestDetails.
+                    Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
+                    SingleOrDefault();
+
+                // If no detail exists for this JR/TestDiv combination in the db
+                // Possible if JR not yet in DB
+                // Check rq list
+                if (detail is null)
+                {
+                    detail = request.RqRequestDetails.
+                    Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
+                    SingleOrDefault();
+                }
+
+                // If still no detail exists for this JR/TestDiv combination
+                // Create a new one - Kaat
+                if (detail is null)
+                {
+                    detail = new RqRequestDetail();
+
+                    detail.Testdivisie = testeut;
+                    detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
+
+                    request.RqRequestDetails.Add(detail);
+                }
+
                 detail.Euts.Add(new Eut
                 {
                     // Static added for now
@@ -160,7 +235,8 @@ namespace TestingPlanner.Data
                     AvailableDate = eut.AvailabilityDate.Date
 
                 });
-                request.RqRequestDetails.Add(detail);
+
+
             };
             context.RqRequest.Add(request);
         }
@@ -217,13 +293,51 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
-        // TODO: link EUT's (via RqRequestDetail)
-        // TODO: link RqOptionel
-        public JR GetJRWithId(int idrequest)
+        
+        public JR GetJR(int idrequest)
         {
-            // Find selected RqRequest
-            RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
-            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+
+           
+
+                // Find selected RqRequest
+                RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
+                RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+                // Create new JR with necessary data
+                JR selectedJR = new JR
+                {
+                    IdRequest = selectedRQ.IdRequest,
+                    JrNumber = selectedRQ.JrNumber,
+                    JrStatus = selectedRQ.JrStatus,
+                    RequestDate = selectedRQ.RequestDate,
+                    Requester = selectedRQ.Requester,
+                    BarcoDivision = selectedRQ.BarcoDivision,
+                    JobNature = selectedRQ.JobNature,
+                    EutProjectname = selectedRQ.EutProjectname,
+                    EutPartnr = selectedRQ.EutPartnumbers,
+                    HydraProjectnumber = selectedRQ.HydraProjectNr,
+                    ExpEnddate = selectedRQ.ExpectedEnddate,
+                    InternRequest = selectedRQ.InternRequest,
+                    GrossWeight = selectedRQ.GrossWeight,
+                    NetWeight = selectedRQ.NetWeight,
+                    Battery = selectedRQ.Battery,
+                    //EutPartnr = selectedRQ.EutPartnumbers,
+
+                    // Testing
+                    Link = selectedRQO.Link,
+                    Remarks = selectedRQO.Remarks,
+
+                };
+            
+
+            return selectedJR;
+            
+        }
+
+        public JR GetJR(RqRequest selectedRQ)
+        {
+            // Find related RqOptionel
+            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
+
             // Create new JR with necessary data
             JR selectedJR = new JR
             {
@@ -240,7 +354,7 @@ namespace TestingPlanner.Data
                 ExpEnddate = selectedRQ.ExpectedEnddate,
                 InternRequest = selectedRQ.InternRequest,
                 GrossWeight = selectedRQ.GrossWeight,
-                NetWeight = selectedRQ.NetWeight,              
+                NetWeight = selectedRQ.NetWeight,
                 Battery = selectedRQ.Battery,
                 //EutPartnr = selectedRQ.EutPartnumbers,
 
@@ -253,7 +367,7 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
-        //Create and send Mail to all gmail account from list
+        //Create and send Mail to all gmail account from list // Mohamed //Arne
         public void Sendmail()
         {
             using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
@@ -289,6 +403,7 @@ namespace TestingPlanner.Data
                 List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
 
                 var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
+                var divisionPVGResp = typeof(EUT).GetProperty(detail.Testdivisie + "pvg");
 
                 foreach (var eut in eutsForDetail)
                 {
@@ -306,15 +421,372 @@ namespace TestingPlanner.Data
                         EUTObjects.Add(selectedEUTObject);
                     }
 
+                    // Set division to true
                     divisionBool.SetValue(selectedEUTObject, true);
 
-
+                    // Copy PVGResponsible
+                    divisionPVGResp.SetValue(selectedEUTObject, detail.Pvgresp);
                 }
             }
 
             return EUTObjects;
-    }
+        }
 
+        // Approval
+
+        /// <summary>
+        /// Approved items will be displayed in the queue for the respective teams
+        /// Creates a record in the Pl_planning table.
+        /// </summary>
+        public void ApproveRequest(int jrId)
+        {
+            var DetailList = rqDetail(jrId);
+            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
+
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
+
+            // On approval, set JR number and request date
+            request.JrNumber = $"JRDEV{request.IdRequest.ToString("D5")}";
+            request.RequestDate = DateTime.Now;
+            request.JrStatus = "In Plan";
+
+            // Create a new planning record for each unique division
+            foreach (string division in divisions)
+            {
+                var planning = CreatePlPlanning(request, division);
+
+                context.Add(planning);
+                context.SaveChanges();
+            }
+        }
+
+        public void ApproveInternalRequest(int jrId)
+        {
+            var DetailList = rqDetail(jrId);
+            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
+
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
+
+            // On approval, set JR number and request date
+            request.JrNumber = $"INTRN{request.IdRequest.ToString("D5")}";
+            request.RequestDate = DateTime.Now;
+            request.JrStatus = "In Plan";
+
+            // Create a new planning record for each unique division
+            foreach (string division in divisions)
+            {
+                var planning = new PlPlanning
+                {
+                    IdRequest = request.IdRequest,
+                    JrNr = request.JrNumber,
+                    Requestdate = request.RequestDate,
+                    DueDate = null,
+                    TestDiv = division,
+                    TestDivStatus = "In plan",
+                };
+
+                context.Add(planning);
+                context.SaveChanges();
+            }
+        }
+
+
+        // Planning
+
+        /// <summary>
+        /// Returns list of all Plannings in database
+        /// </summary>
+        /// Kaat
+        public List<PlPlanning> GetPlPlannings()
+        {
+            return context.PlPlannings.ToList();
+        }
+
+        /// <summary>
+        /// Returns list of all Plannings for a division
+        /// </summary>
+        /// Kaat
+        public List<PlPlanning> GetPlPlannings(string division)
+        {
+            return context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
+        }
+
+
+        // Creates and saves Plplanningskalender based on Test
+        // Kaat
+        public void CreateNewTest(Test test)
+        {
+            var jr = GetJR(test.RQId);
+
+            var planningsKalender = new PlPlanningsKalender
+            {
+                IdRequest = jr.IdRequest,
+                JrNr = jr.JrNumber,
+                JrStatus = jr.JrStatus,
+                Omschrijving = test.Description,
+                Startdatum = test.StartDate,
+                Einddatum = test.EndDate is null? test.StartDate : test.EndDate,
+                Testdiv = test.TestDivision,
+                Resources = GetResource(test.Resource).Id,
+                TestStatus = test.Status
+            };
+
+            context.Add(planningsKalender);
+            context.SaveChanges();
+        }
+
+        public Test GetTest(int testId)
+        {
+            // Find selected PlPlanningsKalender
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
+
+            return GetTest(dbTest);
+        }
+
+        public Test GetTest(PlPlanningsKalender dbTest)
+        {
+            // Create new test based on PlPlanningsKalender
+            var test = new Test
+            {
+                DbTestId = dbTest.Id,
+                Description = dbTest.Omschrijving,
+                RQId = dbTest.IdRequest,
+                TestDivision = dbTest.Testdiv,
+                StartDate = dbTest.Startdatum,
+                EndDate = dbTest.Einddatum,
+                Resource = GetResource(dbTest.Resources).Naam,
+                Status = dbTest.TestStatus
+            };
+
+            return test;
+        }
+
+        // Finds PlPlanningsKalender by PlanningsKalenders ID, updates based on Test, and saves changes
+        // Kaat
+        public void UpdateTest(int id, Test test)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.Omschrijving = test.Description;
+            dbTest.Startdatum = test.StartDate;
+            dbTest.Einddatum = test.EndDate;
+            dbTest.Testdiv = test.TestDivision;
+            dbTest.Resources = GetResource(test.Resource).Id;
+
+            SaveChanges();
+        }
+
+        // Updates status of test
+        // Kaat
+        public void UpdateTestStatus(Test test)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == test.DbTestId);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            dbTest.TestStatus = test.Status;
+
+            SaveChanges();
+        }
+
+        public void DeleteTest(int id)
+        {
+            // Get existing PlPK
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+
+            // Leave if test not found
+            if (dbTest is null)
+            {
+                return;
+            }
+
+            context.Remove(dbTest);
+
+            // Savechanges on saving of Tests
+            // User can still cancel -> New DBContext, removing saved changes
+            // SaveChanges();
+        }
+
+        // Finds all test linked to this JR Id
+        // Kaat
+        public List<Test> GetTestsForJR(int jrId)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId).
+                ToList();
+
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // Finds all test linked to this JR Id and division
+        // Not linked to plan so can't use plPlanning
+        // Kaat
+        public List<Test> GetTestsForJRAndDivision(int jrId, string testDivision)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId && pk.Testdiv == testDivision).
+                ToList();
+
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // Finds all tests for a division linked to this JR id
+        // Kaat
+        public List<Test> GetTestsForJR(int jrId, string division)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId && pk.Testdiv == division).
+                ToList();
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        public List<Test> GetAllTests()
+        {
+            // Find selected PlPlanningsKalender
+            var dbTests = context.PlPlanningsKalenders.ToList();
+
+            var uiTests = new List<Test>();
+
+            foreach (var item in dbTests)
+            {
+                uiTests.Add(GetTest(item));
+            }
+
+            return uiTests;
+        }
+
+        /// <summary>
+        /// Set JR status to Finished if all related plans are finished
+        /// </summary>
+        /// <param name="rqId"></param>
+        public void SetRqStatusIfComplete(int rqId)
+        {
+            // Get all planning
+            var planningList = context.PlPlannings.Where(pl => pl.IdRequest == rqId).ToList();
+
+            // Leave function if there is an unfinished planning
+            if (planningList.Exists(pl => pl.TestDivStatus != "Finished"))
+            {
+                return;
+            }
+
+            // Get request
+            var dbRq = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == rqId);
+
+            dbRq.JrStatus = "Finished";
+
+            SaveChanges();
+
+        }
+
+
+        public List<Test> GetAllTestsForDivision(string testDivision)
+        {
+            // Find selected PlPlanningsKalender
+            var dbTests = context.PlPlanningsKalenders.Where(plk => plk.Testdiv == testDivision).ToList();
+
+            var uiTests = new List<Test>();
+
+            foreach (var item in dbTests)
+            {
+                uiTests.Add(GetTest(item));
+            }
+
+            return uiTests;
+        }
+
+        // Kaat
+        public bool IsResourceDoubleBooked(Test test)
+        {
+            if (test.Resource is null || test.StartDate is null)
+            {
+                return false;
+            }
+            var newStartDate = test.StartDate;
+
+            // If there is no endDate, set startDate as EndDate
+            var newEndDate = test.EndDate == null? newStartDate: test.EndDate;
+
+            // get resource number
+            int resourceID = GetResource(test.Resource).Id;
+
+            // Get all uses of this resource
+            var resourceUses = context.PlPlanningsKalenders.Where(plk => plk.Resources == resourceID).ToList();
+
+            // Get and remove plPlanningskalender related to test
+            var thisDbTest = context.PlPlanningsKalenders.SingleOrDefault(plk => plk.Id == test.DbTestId);
+            resourceUses.Remove(thisDbTest);
+
+            // If new pk enddate is before existing pk startdate
+            // but new pk startdate is not before existing pk enddate
+
+            //if (resourceUses.Exists(u => u.Einddatum >= startDate && u.Startdatum <= endDate))
+            //{
+            //    return true;
+            //}
+
+            foreach (var item in resourceUses)
+            {
+                bool one = item.Einddatum is null? item.Startdatum >= newStartDate: item.Einddatum >= newStartDate;
+                bool two = newEndDate >= item.Startdatum;
+
+                if (one && two)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        // SAVING
+        // Stores all data from GUI in DB
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
 
         /// <summary>
         /// This function creates a list of rqRequestDetails objects that are linked to the given idRequest via the parameter
@@ -325,13 +797,6 @@ namespace TestingPlanner.Data
         {
             List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
             return DetailRQ;
-        }
-
-        // SAVING
-        // Stores all data from GUI in DB
-        public void SaveChanges()
-        {
-            context.SaveChanges();
         }
 
         /// <summary>
@@ -356,6 +821,73 @@ namespace TestingPlanner.Data
                         testDivision.Add(property.Name);
                     }
                 };
+            }
+        }
+
+        /// <summary>
+        /// Returns a PlPlanning for the given job request and division
+        /// </summary>
+        /// <param name="request">Job Request</param>
+        /// <param name="division">Test team division</param>
+        /// <returns>PlPlanning with request and division data</returns>
+        /// Kaat
+        private PlPlanning CreatePlPlanning(RqRequest request, string division)
+        {
+            var planning = new PlPlanning
+            {
+                IdRequest = request.IdRequest,
+                JrNr = request.JrNumber,
+                Requestdate = request.RequestDate,
+                DueDate = request.RequestDate == null? request.RequestDate: ((DateTime)request.RequestDate).AddDays(5),
+                TestDiv = division,
+                TestDivStatus = "In plan", // use enums?
+            };
+
+            return planning;
+        }
+
+        /// <summary>
+        /// Returns a string with the PVGResponsible(s)
+        /// </summary>
+        // Kaat
+        private string GetPVGResp(string testDivision, string barcoDivision)
+        {
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            var responsiblesList = context.RqBarcoDivisionPerson.
+                Where(bpd => bpd.AfkDevision == barcoDivision && bpd.Pvggroup == testDivision).
+                Select(bdp => bdp.AfkPerson);
+
+            // Create a string from the list
+            string responsiblesString = String.Join(", ", responsiblesList);
+
+            return responsiblesString;
+        }
+        //Mohamed
+        public void FindAllJrLast24h()
+        {
+            List<RqRequest> rq = context.RqRequest.Where(r => 
+                r.RequestDate <= DateTime.Now&& 
+                (r.RequestDate >= DateTime.Now.AddHours(-24))
+            ).ToList();
+        }
+         
+        //Mati//Kaat//Mohamed
+        public void printPvg(int idrequest,JR jr)
+        { 
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            List<RqRequestDetail> listDetail =
+                context.RqRequestDetails.Where(rqdetail => rqdetail.IdRequest == idrequest).ToList();
+            foreach (var item in listDetail)
+            {
+                var property = typeof(JR).GetProperty(item.Testdivisie + "pvg");
+
+                if (property != null)
+                {
+                    property.SetValue(jr ,item.Pvgresp);
+                }
+                
             }
         }
     }

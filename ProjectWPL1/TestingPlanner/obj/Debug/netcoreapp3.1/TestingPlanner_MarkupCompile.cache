@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\
 TestingPlanner
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\Mel\Desktop\Vives\Werkplekleren 1\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
-10-532208570
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\App.xaml
+14-534021040
 
-17-490652717
-221-1809618414
-DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\RequestForm.xaml;Views\RequestFormUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;
+26-1523376118
+2211323875410
+DictionaryResources\BasicStyles.xaml;DictionaryResources\DataTemplates.xaml;DictionaryResources\ViewTemplates.xaml;Views\MainWindow.xaml;Views\PlannedTestScherm.xaml;Views\RequestFormPlanUserControl.xaml;Views\RequestFormRDUserControl.xaml;Views\StartupPlannerUserControl.xaml;Views\StartupRDUserControl.xaml;Views\StartupTesterUserControl.xaml;Views\TempUserControl.xaml;Views\TesterPlanUserControl.xaml;Views\TesterTestUserControl.xaml;Views\TestFormUserControl.xaml;
 
 True
 
