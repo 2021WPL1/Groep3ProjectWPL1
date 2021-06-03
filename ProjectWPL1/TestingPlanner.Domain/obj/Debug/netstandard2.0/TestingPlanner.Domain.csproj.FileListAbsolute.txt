@@ -1,8 +1,0 @@
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\bin\Debug\netstandard2.0\TestingPlanner.Domain.deps.json
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\bin\Debug\netstandard2.0\TestingPlanner.Domain.dll
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\bin\Debug\netstandard2.0\TestingPlanner.Domain.pdb
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\obj\Debug\netstandard2.0\TestingPlanner.Domain.AssemblyInfoInputs.cache
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\obj\Debug\netstandard2.0\TestingPlanner.Domain.AssemblyInfo.cs
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\obj\Debug\netstandard2.0\TestingPlanner.Domain.csproj.CoreCompileInputs.cache
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\obj\Debug\netstandard2.0\TestingPlanner.Domain.dll
-C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\TestingPlanner.Domain\obj\Debug\netstandard2.0\TestingPlanner.Domain.pdb
