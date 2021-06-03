@@ -129,6 +129,10 @@ namespace TestingPlanner.Viewmodels
             _dao.SaveChanges();
         }
 
+        /// <summary>
+        /// Set the status for the plan as completed if all test dates are filled in
+        /// </summary>
+        /// <returns></returns>
         public bool ApprovePlan()
         {
             // Check if all startdates are filled in
@@ -153,6 +157,8 @@ namespace TestingPlanner.Viewmodels
 
             // includes savechanges
             SaveTests();
+
+            _dao.SetRqStatusIfComplete(SelectedPlan.IdRequest);
 
             return true;
         }

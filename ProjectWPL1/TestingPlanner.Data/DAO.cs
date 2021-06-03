@@ -657,6 +657,30 @@ namespace TestingPlanner.Data
             return uiTests;
         }
 
+        /// <summary>
+        /// Set JR status to Finished if all related plans are finished
+        /// </summary>
+        /// <param name="rqId"></param>
+        public void SetRqStatusIfComplete(int rqId)
+        {
+            // Get all planning
+            var planningList = context.PlPlannings.Where(pl => pl.IdRequest == rqId).ToList();
+
+            // Leave function if there is an unfinished planning
+            if (planningList.Exists(pl => pl.TestDivStatus != "Finished"))
+            {
+                return;
+            }
+
+            // Get request
+            var dbRq = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == rqId);
+
+            dbRq.JrStatus = "Finished";
+
+            SaveChanges();
+
+        }
+
 
         public List<Test> GetAllTestsForDivision(string testDivision)
         {
