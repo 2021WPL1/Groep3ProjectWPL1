@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TestingPlanner.Domain.Models;
 
-namespace TestingPlanner.Domain.Models
+namespace TestingPlanner.Data
 {
     public partial class Barco2021Context : DbContext
     {

@@ -24,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TestingPlanner.Classes\TestingPlanner.Classes.csproj" />
-    <ProjectReference Include="..\TestingPlanner.Data\TestingPlanner.Data.csproj" />
-    <ProjectReference Include="..\TestingPlanner.Domain\TestingPlanner.Domain.csproj" />
+    <ProjectReference Include="..\TestingPlanner.Services\TestingPlanner.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
