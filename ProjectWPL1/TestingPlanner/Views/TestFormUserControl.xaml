@@ -37,7 +37,7 @@
                 <DatePicker SelectedDate="{Binding StartDate}" IsTodayHighlighted="True" Margin="5"/>
                 <DatePicker SelectedDate="{Binding EndDate}" IsTodayHighlighted="True" Margin="5"/>
                 <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" 
-                           Background="Red" 
+                           Background="Red" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Visibility="{Binding DoubleBooked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
