@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Timers;
 
-namespace TestingPlanner.Classes
+namespace TestingPlanner.Services
 {
     public class MailService
     {

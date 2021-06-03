@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingPlanner.Classes", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingPlanner.Domain", "TestingPlanner.Domain\TestingPlanner.Domain.csproj", "{E185C5FD-E775-4B9E-B85A-AB4A50B672A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingPlanner.Data", "TestingPlanner.Services\TestingPlanner.Data.csproj", "{B21FB36F-FA6A-4F00-9A00-6994BA8EEBBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingPlanner.Services", "TestingPlanner.Services\TestingPlanner.Services.csproj", "{B21FB36F-FA6A-4F00-9A00-6994BA8EEBBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingPlanner", "TestingPlanner.UI.MVVM\TestingPlanner.csproj", "{79D9C381-D982-4BE1-8175-5639E1522FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingPlanner.UI.MVVM", "TestingPlanner.UI.MVVM\TestingPlanner.UI.MVVM.csproj", "{79D9C381-D982-4BE1-8175-5639E1522FBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

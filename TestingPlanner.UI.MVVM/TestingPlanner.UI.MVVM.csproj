@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestingPlanner.Services\TestingPlanner.Data.csproj" />
+    <ProjectReference Include="..\TestingPlanner.Services\TestingPlanner.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
