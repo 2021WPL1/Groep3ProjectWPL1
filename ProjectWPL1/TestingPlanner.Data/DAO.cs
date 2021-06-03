@@ -107,7 +107,7 @@ namespace TestingPlanner.Data
         {
             JR autofilledJR = new JR()
             {
-                Requester = BarcoUser.Name,
+             Requester = BarcoUser.Name,
                 BarcoDivision = BarcoUser.Division
             };
 
@@ -251,38 +251,44 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
+        
         public JR GetJR(int idrequest)
         {
-            // Find selected RqRequest
-            RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
-            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
-            // Create new JR with necessary data
-            JR selectedJR = new JR
-            {
-                IdRequest = selectedRQ.IdRequest,
-                JrNumber = selectedRQ.JrNumber,
-                JrStatus = selectedRQ.JrStatus,
-                RequestDate = selectedRQ.RequestDate,
-                Requester = selectedRQ.Requester,
-                BarcoDivision = selectedRQ.BarcoDivision,
-                JobNature = selectedRQ.JobNature,
-                EutProjectname = selectedRQ.EutProjectname,
-                EutPartnr = selectedRQ.EutPartnumbers,
-                HydraProjectnumber = selectedRQ.HydraProjectNr,
-                ExpEnddate = selectedRQ.ExpectedEnddate,
-                InternRequest = selectedRQ.InternRequest,
-                GrossWeight = selectedRQ.GrossWeight,
-                NetWeight = selectedRQ.NetWeight,              
-                Battery = selectedRQ.Battery,
-                //EutPartnr = selectedRQ.EutPartnumbers,
 
-                // Testing
-                Link = selectedRQO.Link,
-                Remarks = selectedRQO.Remarks,
+           
 
-            };
+                // Find selected RqRequest
+                RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
+                RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+                // Create new JR with necessary data
+                JR selectedJR = new JR
+                {
+                    IdRequest = selectedRQ.IdRequest,
+                    JrNumber = selectedRQ.JrNumber,
+                    JrStatus = selectedRQ.JrStatus,
+                    RequestDate = selectedRQ.RequestDate,
+                    Requester = selectedRQ.Requester,
+                    BarcoDivision = selectedRQ.BarcoDivision,
+                    JobNature = selectedRQ.JobNature,
+                    EutProjectname = selectedRQ.EutProjectname,
+                    EutPartnr = selectedRQ.EutPartnumbers,
+                    HydraProjectnumber = selectedRQ.HydraProjectNr,
+                    ExpEnddate = selectedRQ.ExpectedEnddate,
+                    InternRequest = selectedRQ.InternRequest,
+                    GrossWeight = selectedRQ.GrossWeight,
+                    NetWeight = selectedRQ.NetWeight,
+                    Battery = selectedRQ.Battery,
+                    //EutPartnr = selectedRQ.EutPartnumbers,
+
+                    // Testing
+                    Link = selectedRQO.Link,
+                    Remarks = selectedRQO.Remarks,
+
+                };
+            
 
             return selectedJR;
+            
         }
 
         public JR GetJR(RqRequest selectedRQ)
