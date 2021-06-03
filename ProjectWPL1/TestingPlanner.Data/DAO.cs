@@ -173,6 +173,7 @@ namespace TestingPlanner.Data
             return rqrequest;
         }
 
+
         //MOHAMED
         //Matti
         /// <summary>
@@ -447,6 +448,37 @@ namespace TestingPlanner.Data
             foreach (string division in divisions)
             {
                 var planning = CreatePlPlanning(request, division);
+
+                context.Add(planning);
+                context.SaveChanges();
+            }
+        }
+
+        public void ApproveInternalRequest(int jrId)
+        {
+            var DetailList = rqDetail(jrId);
+            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
+
+            // List of unique test divisions checked in this JR
+            var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
+
+            // On approval, set JR number and request date
+            request.JrNumber = $"INTRN{request.IdRequest.ToString("D5")}";
+            request.RequestDate = DateTime.Now;
+            request.JrStatus = "In Plan";
+
+            // Create a new planning record for each unique division
+            foreach (string division in divisions)
+            {
+                var planning = new PlPlanning
+                {
+                    IdRequest = request.IdRequest,
+                    JrNr = request.JrNumber,
+                    Requestdate = request.RequestDate,
+                    DueDate = null,
+                    TestDiv = division,
+                    TestDivStatus = "In plan",
+                };
 
                 context.Add(planning);
                 context.SaveChanges();

@@ -35,13 +35,15 @@ namespace TestingPlanner.Viewmodels
         public ICommand addMockEUTCommand { get; set; }
 
         // Constructor for new JR
-        public ViewModelRequestformRD() : base()
+        public ViewModelRequestformRD(bool isInternalRequest = false) : base()
         {
             init();
             Load();
 
             // JR = new JR
             refreshJR();
+
+            _jr.InternRequest = isInternalRequest;
         }
 
         // Constructor for existing JR
