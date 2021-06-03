@@ -24,28 +24,31 @@
                         <TextBlock FontSize="16" Text=")"/>
                     </StackPanel>
                 </GroupBox.Header>
-                <ScrollViewer Height="450">
-                    <ContentControl Content="{Binding ViewModel}"/>
-                </ScrollViewer>
-            </GroupBox>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Button Content="DEV: Open employee startup" 
+                <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Button Content="Your requests" 
                     Command="{Binding DisplayEmployeeStartupCommand,
                             Mode=OneWay}" 
                     Margin="10"/>
-                <Button Content="DEV: Open planner startup" 
+                    <Button Content="Edit/Approve requests" 
                     Command="{Binding DisplayPlannerStartupCommand,
                             Mode=OneWay}" 
                         Margin="10"/>
-                <Button Content="DEV: Open tester startup" 
-                    Command="{Binding DisplayTesterStartupCommand, 
-                            Mode=OneWay}" 
-                        Margin="10"/>
-                <Button Content="DEV: Open Dev startup" 
-                    Command="{Binding DisplayDevStartupCommand, 
-                            Mode=OneWay}" 
-                        Margin="10"/>
-            </StackPanel>
+                        <Button Content="Plan tests" 
+                                Command="{Binding DisplayTesterPlanCommand, Mode=OneWay}"
+                                Margin="10"/>
+                        <Button Content="View/Update tests" 
+                                Command="{Binding DisplayTesterTestCommand, Mode=OneWay}"
+                                Margin="10"/>
+                        <Button Content="Development"
+                                Command="{Binding DisplayDevStartupCommand, Mode=OneWay}" 
+                                Margin="10"/>
+                </StackPanel>
+                <ScrollViewer Height="450">
+                    <ContentControl Content="{Binding ViewModel}"/>
+                </ScrollViewer>
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
     </StackPanel>
 </Window>

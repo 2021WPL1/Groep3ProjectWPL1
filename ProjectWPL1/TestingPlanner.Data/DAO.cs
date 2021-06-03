@@ -548,10 +548,10 @@ namespace TestingPlanner.Data
 
         // Updates status of test
         // Kaat
-        public void UpdateTestStatus(int id, string status)
+        public void UpdateTestStatus(Test test)
         {
             // Get existing PlPK
-            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == test.DbTestId);
 
             // Leave if test not found
             if (dbTest is null)
@@ -559,7 +559,7 @@ namespace TestingPlanner.Data
                 return;
             }
 
-            dbTest.TestStatus = status;
+            dbTest.TestStatus = test.Status;
 
             SaveChanges();
         }

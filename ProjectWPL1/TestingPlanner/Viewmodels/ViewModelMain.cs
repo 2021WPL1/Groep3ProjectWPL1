@@ -22,7 +22,8 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
         public DelegateCommand DisplayPlannerStartupCommand { get; set; }
-        public DelegateCommand DisplayTesterStartupCommand { get; set; }
+        public DelegateCommand DisplayTesterPlanCommand { get; set; }
+        public DelegateCommand DisplayTesterTestCommand { get; set; }
         public DelegateCommand DisplayDevStartupCommand { get; set; }
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
@@ -40,7 +41,8 @@ namespace TestingPlanner.Viewmodels
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);
             DisplayPlannerStartupCommand = new DelegateCommand(DisplayPlannerStartup);
-            DisplayTesterStartupCommand = new DelegateCommand(DisplayTesterStartup);
+            DisplayTesterPlanCommand = new DelegateCommand(DisplayTesterPlan);
+            DisplayTesterTestCommand = new DelegateCommand(DisplayTesterTest);
             DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
             ApproveJRCommand = new DelegateCommand(ApproveJR);
             DisplayTestPlanningCommand = new DelegateCommand(DisplayTestPlanning);
@@ -93,10 +95,13 @@ namespace TestingPlanner.Viewmodels
         {
             this.ViewModel = new ViewModelStartupPlanner();
         }
-        public void DisplayTesterStartup()
+        public void DisplayTesterPlan()
         {
-            //this.ViewModel = new ViewModelStartupTester();
-            //this.ViewModel = new ViewModelTesterPlan();
+            this.ViewModel = new ViewModelTesterPlan();
+        }
+
+        public void DisplayTesterTest()
+        {
             this.ViewModel = new ViewModelTesterTest();
         }
 
