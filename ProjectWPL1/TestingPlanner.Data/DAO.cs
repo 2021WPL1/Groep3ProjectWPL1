@@ -520,7 +520,7 @@ namespace TestingPlanner.Data
                 JrStatus = jr.JrStatus,
                 Omschrijving = test.Description,
                 Startdatum = test.StartDate,
-                Einddatum = test.EndDate,
+                Einddatum = test.EndDate is null? test.StartDate : test.EndDate,
                 Testdiv = test.TestDivision,
                 Resources = GetResource(test.Resource).Id,
                 TestStatus = test.Status
@@ -736,10 +736,10 @@ namespace TestingPlanner.Data
             {
                 return false;
             }
-            var startDate = test.StartDate;
+            var newStartDate = test.StartDate;
 
             // If there is no endDate, set startDate as EndDate
-            var endDate = test.EndDate == null? startDate: test.EndDate;
+            var newEndDate = test.EndDate == null? newStartDate: test.EndDate;
 
             // get resource number
             int resourceID = GetResource(test.Resource).Id;
@@ -747,12 +747,27 @@ namespace TestingPlanner.Data
             // Get all uses of this resource
             var resourceUses = context.PlPlanningsKalenders.Where(plk => plk.Resources == resourceID).ToList();
 
+            // Get and remove plPlanningskalender related to test
+            var thisDbTest = context.PlPlanningsKalenders.SingleOrDefault(plk => plk.Id == test.DbTestId);
+            resourceUses.Remove(thisDbTest);
+
             // If new pk enddate is before existing pk startdate
             // but new pk startdate is not before existing pk enddate
 
-            if (resourceUses.Exists(u => u.Einddatum >= startDate && u.Startdatum <= endDate))
+            //if (resourceUses.Exists(u => u.Einddatum >= startDate && u.Startdatum <= endDate))
+            //{
+            //    return true;
+            //}
+
+            foreach (var item in resourceUses)
             {
-                return true;
+                bool one = item.Einddatum is null? item.Startdatum >= newStartDate: item.Einddatum >= newStartDate;
+                bool two = newEndDate >= item.Startdatum;
+
+                if (one && two)
+                {
+                    return true;
+                }
             }
 
             return false;

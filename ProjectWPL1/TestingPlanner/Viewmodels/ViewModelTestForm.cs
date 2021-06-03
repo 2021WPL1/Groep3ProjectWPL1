@@ -20,9 +20,13 @@ namespace TestingPlanner.Viewmodels
         public PlPlanning SelectedPlan { get; set; }
 
         public ObservableCollection<Test> Tests { get; set; }
-        public Visibility DoubleBooked { get; set; }
+        private Visibility doubleBooked;
         private Test selectedTest;
         private Test editingTest;
+
+        // Used to triigger check for dates
+        private DateTime? startDate;
+        private DateTime? endDate;
 
         public ICommand AddNewTestCommand { get; set; }
         public ICommand ClearTestCommand { get; set; }
@@ -50,7 +54,7 @@ namespace TestingPlanner.Viewmodels
             DeleteTestCommand = new DelegateCommand(DeleteTest);
 
             EditingTest = new Test();
-            SetVisibility(false);
+            doubleBooked = Visibility.Hidden;
         }
 
 
@@ -71,13 +75,54 @@ namespace TestingPlanner.Viewmodels
             set
             {
                 editingTest = value;
-                SetVisibility(_dao.IsResourceDoubleBooked(EditingTest));
+                StartDate = editingTest is null? null :  editingTest.StartDate;
+                EndDate = editingTest is null ? null : editingTest.EndDate;
+                OnpropertyChanged();
+            }
+        }
+
+        public DateTime? StartDate 
+        { 
+            get => startDate;
+            set
+            {
+                startDate = value;
+                editingTest.StartDate = value;
+                SetVisibility();
+                OnpropertyChanged();
+            }
+        }
+
+        public DateTime? EndDate
+        {
+            get => endDate;
+            set
+            {
+                endDate = value;
+                editingTest.EndDate = value;
+                SetVisibility();
+                OnpropertyChanged();
+            }
+        }
+
+        public Visibility DoubleBooked 
+        { 
+            get => doubleBooked;
+            set
+            {
+                doubleBooked = value;
                 OnpropertyChanged();
             }
         }
 
         public void AddTest()
         {
+            if (startDate > endDate)
+            {
+                MessageBox.Show("End Date Can't be before Start Date");
+                return;
+            }
+
             Test newTest = new Test
             {
                 Description = EditingTest.Description,
@@ -171,17 +216,19 @@ namespace TestingPlanner.Viewmodels
             return true;
         }
 
-        private void SetVisibility(bool isDoubleBooked)
+        private void SetVisibility()
         {
+            bool isDoubleBooked = _dao.IsResourceDoubleBooked(editingTest);
+
             if (isDoubleBooked)
             {
                 // Show
-                DoubleBooked = (Visibility)0;
+                DoubleBooked = Visibility.Visible;
                 return;
             }
 
             // Hide
-            DoubleBooked = (Visibility)1;
+            DoubleBooked = Visibility.Hidden;
 
         }
           

@@ -32,11 +32,13 @@
                     -->
                 </ComboBox>
                 
-                <TextBox Text="{Binding EditingTest.Description ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+                <TextBox Text="{Binding EditingTest.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
                 <!--Currently two datepickers for start/end, looking into using one to get an array? -->
-                <DatePicker SelectedDate="{Binding EditingTest.StartDate}" IsTodayHighlighted="True" Margin="5"/>
-                <DatePicker SelectedDate="{Binding EditingTest.EndDate}" IsTodayHighlighted="True" Margin="5"/>
-                <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" Background="Red" Visibility="{Binding DoubleBooked}"/>
+                <DatePicker SelectedDate="{Binding StartDate}" IsTodayHighlighted="True" Margin="5"/>
+                <DatePicker SelectedDate="{Binding EndDate}" IsTodayHighlighted="True" Margin="5"/>
+                <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" 
+                           Background="Red" 
+                           Visibility="{Binding DoubleBooked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Add Test" Command="{Binding Path=AddNewTestCommand}" Margin="5"/>
