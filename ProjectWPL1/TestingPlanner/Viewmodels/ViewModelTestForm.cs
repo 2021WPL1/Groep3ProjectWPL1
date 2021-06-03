@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using TestingPlanner.Classes;
 using TestingPlanner.Domain.Models;
@@ -38,7 +39,7 @@ namespace TestingPlanner.Viewmodels
                 Resources.Add(item);
             }
 
-            foreach (var item in _dao.GetTestsForJR(SelectedPlan.IdRequest))
+            foreach (var item in _dao.GetTestsForJRAndDivision(SelectedPlan.IdRequest, SelectedPlan.TestDiv))
             {
                 Tests.Add(item);
             }
@@ -58,10 +59,6 @@ namespace TestingPlanner.Viewmodels
             {
                 selectedTest = value;
                 EditingTest = selectedTest;
-                //EditingTest.Description = SelectedTest.Description;
-                //EditingTest.StartDate = SelectedTest.StartDate;
-                //EditingTest.EndDate = SelectedTest.EndDate;
-                //EditingTest.Resource = SelectedTest.Resource;
                 OnpropertyChanged();
             }
         }
@@ -86,7 +83,7 @@ namespace TestingPlanner.Viewmodels
                 StartDate = editingTest.StartDate,
                 EndDate = editingTest.EndDate,
                 Resource = editingTest.Resource,
-                // Status = TBD
+                Status = editingTest.Status
             };
 
             Tests.Add(newTest);
@@ -132,6 +129,32 @@ namespace TestingPlanner.Viewmodels
             _dao.SaveChanges();
         }
 
+        public bool ApprovePlan()
+        {
+            // Check if all startdates are filled in
+            // if (tests.Exists(t => t.StartDate == null))
+            // Does not work for Observable Collections
+            foreach (var test in Tests)
+            {
+                if (test.StartDate == null)
+                {
+                    MessageBox.Show("Please fill in all dates");
+                    return false;
+                }
+            }
 
+            foreach (var test in Tests)
+            {
+                test.Status = "Planned";
+            }
+
+            SelectedPlan.TestDivStatus = "Finished";
+
+            // includes savechanges
+            SaveTests();
+
+            return true;
+        }
+          
     }
 }

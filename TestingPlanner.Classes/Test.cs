@@ -14,5 +14,10 @@ namespace TestingPlanner.Classes
         public DateTime? EndDate { get; set; }
         public string Resource { get; set; }
         public string Status { get; set; }
+
+        public Test()
+        {
+            Status = "Unconfirmed";
+        }
     }
 }

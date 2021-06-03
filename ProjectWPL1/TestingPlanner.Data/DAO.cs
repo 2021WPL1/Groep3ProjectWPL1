@@ -441,7 +441,7 @@ namespace TestingPlanner.Data
             // On approval, set JR number and request date
             request.JrNumber = $"JRDEV{request.IdRequest.ToString("D5")}";
             request.RequestDate = DateTime.Now;
-            request.JrStatus = "in plan";
+            request.JrStatus = "In Plan";
 
             // Create a new planning record for each unique division
             foreach (string division in divisions)
@@ -491,7 +491,7 @@ namespace TestingPlanner.Data
                 Einddatum = test.EndDate,
                 Testdiv = test.TestDivision,
                 Resources = GetResource(test.Resource).Id,
-                TestStatus = "Planned"
+                TestStatus = test.Status
             };
 
             context.Add(planningsKalender);
@@ -590,6 +590,27 @@ namespace TestingPlanner.Data
 
             var planningsKalenders = context.PlPlanningsKalenders.
                 Where(pk => pk.IdRequest == jrId).
+                ToList();
+
+
+            foreach (var item in planningsKalenders)
+            {
+                var newTest = GetTest(item);
+                tests.Add(newTest);
+            }
+
+            return tests;
+        }
+
+        // Finds all test linked to this JR Id and division
+        // Not linked to plan so can't use plPlanning
+        // Kaat
+        public List<Test> GetTestsForJRAndDivision(int jrId, string testDivision)
+        {
+            var tests = new List<Test>();
+
+            var planningsKalenders = context.PlPlanningsKalenders.
+                Where(pk => pk.IdRequest == jrId && pk.Testdiv == testDivision).
                 ToList();
 
 
