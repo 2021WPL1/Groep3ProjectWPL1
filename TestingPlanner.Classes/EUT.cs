@@ -32,8 +32,6 @@ namespace TestingPlanner
         public string SAVpvg { get; set; }
         public string PCKpvg { get; set; }
         public string ECOpvg { get; set; }
-
-
         // Constructor
         public EUT()
         {

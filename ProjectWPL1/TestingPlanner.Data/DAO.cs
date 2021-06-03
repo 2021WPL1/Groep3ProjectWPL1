@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace TestingPlanner.Data
     {
         // Variables
         private Barco2021Context context;
-        private static readonly DAO instance = new DAO();
+        private static readonly DAO instance = new DAO(); 
 
         public BarcoUser BarcoUser { get; }
 
@@ -123,7 +124,7 @@ namespace TestingPlanner.Data
         {
             JR autofilledJR = new JR()
             {
-                Requester = BarcoUser.Name,
+             Requester = BarcoUser.Name,
                 BarcoDivision = BarcoUser.Division
             };
 
@@ -292,38 +293,44 @@ namespace TestingPlanner.Data
         // INCOMPLETE
         // Gets existing JR by ID
         // TODO: catch nullRefEx - Currently impossible due to selecting listitem on load
+        
         public JR GetJR(int idrequest)
         {
-            // Find selected RqRequest
-            RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
-            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
-            // Create new JR with necessary data
-            JR selectedJR = new JR
-            {
-                IdRequest = selectedRQ.IdRequest,
-                JrNumber = selectedRQ.JrNumber,
-                JrStatus = selectedRQ.JrStatus,
-                RequestDate = selectedRQ.RequestDate,
-                Requester = selectedRQ.Requester,
-                BarcoDivision = selectedRQ.BarcoDivision,
-                JobNature = selectedRQ.JobNature,
-                EutProjectname = selectedRQ.EutProjectname,
-                EutPartnr = selectedRQ.EutPartnumbers,
-                HydraProjectnumber = selectedRQ.HydraProjectNr,
-                ExpEnddate = selectedRQ.ExpectedEnddate,
-                InternRequest = selectedRQ.InternRequest,
-                GrossWeight = selectedRQ.GrossWeight,
-                NetWeight = selectedRQ.NetWeight,              
-                Battery = selectedRQ.Battery,
-                //EutPartnr = selectedRQ.EutPartnumbers,
 
-                // Testing
-                Link = selectedRQO.Link,
-                Remarks = selectedRQO.Remarks,
+           
 
-            };
+                // Find selected RqRequest
+                RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
+                RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+                // Create new JR with necessary data
+                JR selectedJR = new JR
+                {
+                    IdRequest = selectedRQ.IdRequest,
+                    JrNumber = selectedRQ.JrNumber,
+                    JrStatus = selectedRQ.JrStatus,
+                    RequestDate = selectedRQ.RequestDate,
+                    Requester = selectedRQ.Requester,
+                    BarcoDivision = selectedRQ.BarcoDivision,
+                    JobNature = selectedRQ.JobNature,
+                    EutProjectname = selectedRQ.EutProjectname,
+                    EutPartnr = selectedRQ.EutPartnumbers,
+                    HydraProjectnumber = selectedRQ.HydraProjectNr,
+                    ExpEnddate = selectedRQ.ExpectedEnddate,
+                    InternRequest = selectedRQ.InternRequest,
+                    GrossWeight = selectedRQ.GrossWeight,
+                    NetWeight = selectedRQ.NetWeight,
+                    Battery = selectedRQ.Battery,
+                    //EutPartnr = selectedRQ.EutPartnumbers,
+
+                    // Testing
+                    Link = selectedRQO.Link,
+                    Remarks = selectedRQO.Remarks,
+
+                };
+            
 
             return selectedJR;
+            
         }
 
         public JR GetJR(RqRequest selectedRQ)
@@ -360,7 +367,7 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
-        //Create and send Mail to all gmail account from list
+        //Create and send Mail to all gmail account from list // Mohamed //Arne
         public void Sendmail()
         {
             using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
@@ -856,13 +863,32 @@ namespace TestingPlanner.Data
 
             return responsiblesString;
         }
-
+        //Mohamed
         public void FindAllJrLast24h()
         {
             List<RqRequest> rq = context.RqRequest.Where(r => 
                 r.RequestDate <= DateTime.Now&& 
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
+        }
+         
+        //Mati//Kaat//Mohamed
+        public void printPvg(int idrequest,JR jr)
+        { 
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            List<RqRequestDetail> listDetail =
+                context.RqRequestDetails.Where(rqdetail => rqdetail.IdRequest == idrequest).ToList();
+            foreach (var item in listDetail)
+            {
+                var property = typeof(JR).GetProperty(item.Testdivisie + "pvg");
+
+                if (property != null)
+                {
+                    property.SetValue(jr ,item.Pvgresp);
+                }
+                
+            }
         }
     }
 }
