@@ -38,6 +38,11 @@ namespace TestingPlanner.Viewmodels
                 Resources.Add(item);
             }
 
+            foreach (var item in _dao.GetTestsForJR(SelectedPlan.IdRequest))
+            {
+                Tests.Add(item);
+            }
+
             AddNewTestCommand = new DelegateCommand(AddTest);
             ClearTestCommand = new DelegateCommand(ClearTest);
             DeleteTestCommand = new DelegateCommand(DeleteTest);
