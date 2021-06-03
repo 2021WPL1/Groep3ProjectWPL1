@@ -403,7 +403,6 @@ namespace TestingPlanner.Data
                 List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
 
                 var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
-                var divisionPVGResp = typeof(EUT).GetProperty(detail.Testdivisie + "pvg");
 
                 foreach (var eut in eutsForDetail)
                 {
@@ -423,9 +422,6 @@ namespace TestingPlanner.Data
 
                     // Set division to true
                     divisionBool.SetValue(selectedEUTObject, true);
-
-                    // Copy PVGResponsible
-                    divisionPVGResp.SetValue(selectedEUTObject, detail.Pvgresp);
                 }
             }
 
