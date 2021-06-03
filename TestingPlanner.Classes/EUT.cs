@@ -9,50 +9,33 @@ namespace TestingPlanner
     public class EUT
     {
         // Variables
-        private int _idRqDetail;
-        private DateTime _availabilityDate;
-        private string _omschrijvingEut;
-        private string _partNr;
-        private string _netWeight;
-        private string _grossWeight;
+        public int IdRqDetail { get; set; }
+        public DateTime AvailabilityDate { get; set; }
+        public string OmschrijvingEut { get; set; }
+        public string PartNr { get; set; }
+        public string NetWeight { get; set; }
+        public string GrossWeight { get; set; }
 
         // Tests to execute
-        // TODO: function to check if necessart RQDetail already exists
-        private bool _emc;
-        private bool _env;
-        private bool _rel;
-        private bool _sav;
-        private bool _pck;
-        private bool _eco;
+        public bool EMC { get; set; }
+        public bool ENV { get; set; }
+        public bool REL { get; set; }
+        public bool SAV { get; set; }
+        public bool PCK { get; set; }
+        public bool ECO { get; set; }
 
         // Constructor
         public EUT()
         {
-            _partNr = null;
-            _availabilityDate = DateTime.Now;
-            _netWeight = "0";
-            _grossWeight = "0";
+            AvailabilityDate = DateTime.Now;
 
             // Tests are not active on start
-            _emc = false;
-            _env = false;
-            _rel = false;
-            _sav = false;
-            _pck = false;
-            _eco = false;
+            EMC = false;
+            ENV = false;
+            REL = false;
+            SAV = false;
+            PCK = false;
+            ECO = false;
         }
-
-        // Getters/Setters
-        public string PartNr { get => _partNr; set => _partNr = value; }
-        public int IdRqDetail { get => _idRqDetail; set => _idRqDetail = value; }
-        public DateTime AvailabilityDate { get => _availabilityDate; set => _availabilityDate = value; }
-        public string OmschrijvingEut { get => _omschrijvingEut; set => _omschrijvingEut = value; }
-
-        public bool EMC { get => _emc; set => _emc = value; }
-        public bool ENV { get => _env; set => _env = value; }
-        public bool REL { get => _rel; set => _rel = value; }
-        public bool SAV { get => _sav; set => _sav = value; }
-        public bool PCK { get => _pck; set => _pck = value; }
-        public bool ECO { get => _eco; set => _eco = value; }
     }
 }
