@@ -197,8 +197,24 @@ namespace TestingPlanner.Data
             // We link each testdivision to the corresponding id_request
             foreach (string testeut in testDivision)
             {
-                var detail = new RqRequestDetail();
-                detail.Testdivisie = testeut;
+                // Find an existing detail - Kaat
+                // THIS WILL GIVE ERRORS IF YOU HAVE MULTIPLE DETAILS FOR A GIVEN COMBO IN YOUR DB
+                var detail = context.RqRequestDetails.
+                    Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
+                    SingleOrDefault();
+
+                // If no detail exists for this JR/TestDiv combination
+                // Create a new one - Kaat
+                if (detail is null)
+                {
+                    detail = new RqRequestDetail();
+
+                    detail.Testdivisie = testeut;
+                    detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
+
+                    request.RqRequestDetails.Add(detail);
+                }
+
                 detail.Euts.Add(new Eut
                 {
                     // Static added for now
@@ -208,9 +224,7 @@ namespace TestingPlanner.Data
 
                 });
 
-                detail.Pvgresp = GetPVGResp(testeut, request.BarcoDivision);
 
-                request.RqRequestDetails.Add(detail);
             };
             context.RqRequest.Add(request);
         }
