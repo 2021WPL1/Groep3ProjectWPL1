@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlanner.Classes;
+using TestingPlanner.Services;
 
 namespace TestingPlanner.Viewmodels
 {
@@ -16,6 +17,8 @@ namespace TestingPlanner.Viewmodels
     {
         private ViewModelBase _viewModel;
         public BarcoUser User { get; set; }
+
+        MailService mail = new MailService();
 
         // TODO: check if ICommand also works
         public DelegateCommand DisplayNewJRCommand { get; set; }
@@ -56,6 +59,7 @@ namespace TestingPlanner.Viewmodels
             TesterReturnCommand = new DelegateCommand(TesterReturn);
 
             SetWindowProperties();
+            mail.Schedule_Timer();
 
         }
 

@@ -22,15 +22,11 @@ namespace TestingPlanner.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static Timer timer;
-        private static DAO _dao;
-        MailService mail = new MailService();
         public MainWindow()
         // Global variables
         {
             DataContext = new ViewModelMain();
             InitializeComponent();
-            mail.Schedule_Timer();
         }
     }
 }
