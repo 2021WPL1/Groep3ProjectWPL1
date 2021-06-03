@@ -319,7 +319,7 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
-        //Create and send Mail to all gmail account from list
+        //Create and send Mail to all gmail account from list // Mohamed //Arne
         public void Sendmail()
         {
             using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
@@ -655,7 +655,7 @@ namespace TestingPlanner.Data
 
             return responsiblesString;
         }
-
+        //Mohamed
         public void FindAllJrLast24h()
         {
             List<RqRequest> rq = context.RqRequest.Where(r => 
