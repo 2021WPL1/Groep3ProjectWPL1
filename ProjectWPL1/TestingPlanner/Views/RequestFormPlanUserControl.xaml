@@ -86,10 +86,16 @@
         </GroupBox>
         <GroupBox Header="Parts and tests">
             <StackPanel>
+                <!-- Matti: naam dynamicResource aanpassen om andere datatemplate in te laden-->
+                <!--<ListBox x:Name="ListPVGRes"-->
+                <!--<ScrollViewer Height="50">-->
+                <ContentControl ContentTemplate="{DynamicResource PVGRes}"
+                                Content="{Binding JR}"/>
+                <!--</ScrollViewer>-->
                 <ListBox x:Name="ListEUT" Height="150" Background="#363636"
-                             ItemTemplate="{DynamicResource EUT}" 
-                             ItemsSource="{Binding EUTs}" 
-                             SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
+                         ItemTemplate="{DynamicResource EUT}" 
+                         ItemsSource="{Binding EUTs}" 
+                         SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Add Part" 
                                 Command="{Binding Path=addEUTCommand}" 

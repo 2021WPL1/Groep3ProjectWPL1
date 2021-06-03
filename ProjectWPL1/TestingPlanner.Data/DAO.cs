@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace TestingPlanner.Data
     {
         // Variables
         private Barco2021Context context;
-        private static readonly DAO instance = new DAO();
+        private static readonly DAO instance = new DAO(); 
 
         public BarcoUser BarcoUser { get; }
 
@@ -661,6 +662,25 @@ namespace TestingPlanner.Data
                 r.RequestDate <= DateTime.Now&& 
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
+        }
+         
+        //Mati//Kaat//Mohamed
+        public void printPvg(int idrequest,JR jr)
+        { 
+            // Get the PVGResponsibles for this division combination
+            // possibly more than one
+            List<RqRequestDetail> listDetail =
+                context.RqRequestDetails.Where(rqdetail => rqdetail.IdRequest == idrequest).ToList();
+            foreach (var item in listDetail)
+            {
+                var property = typeof(JR).GetProperty(item.Testdivisie + "pvg");
+
+                if (property != null)
+                {
+                    property.SetValue(jr ,item.Pvgresp);
+                }
+                
+            }
         }
     }
 }

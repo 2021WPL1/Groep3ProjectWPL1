@@ -48,6 +48,8 @@ namespace TestingPlanner.Viewmodels
             }
 
             FillEUT(request);
+
+            _dao.printPvg(idRequest,_jr);
         }
 
         // Code reused in both constructors

@@ -34,4 +34,34 @@
             </Grid>
         </ListBoxItem>
     </DataTemplate>
+
+    <!--Data template for pvg responsible in the Gui-->
+    <DataTemplate x:Key="PVGRes">
+        <!--<ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch"  Foreground="White">-->
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.RowSpan="1" Text="PVGResponsible:" Margin="5" Foreground="white"/>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Center" TextElement.Foreground="White">
+                <TextBox Text="{Binding EMCpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding ENVpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding RELpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding SAVpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding PCKpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding ECOpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+
+            </StackPanel>
+        </Grid>
+        <!--</ListBoxItem>-->
+    </DataTemplate>
 </ResourceDictionary>

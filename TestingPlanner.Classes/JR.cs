@@ -29,6 +29,8 @@ namespace TestingPlanner
         private DateTime? expEnddate;
         private DateTime? requestDate;
 
+
+
         // JR Constructor
         public JR()
         {
@@ -37,6 +39,13 @@ namespace TestingPlanner
             grossWeight = "0";
             netWeight = "0";
         }
+        // PVGResponsobles for this test
+        public string EMCpvg { get; set; }
+        public string ENVpvg { get; set; }
+        public string RELpvg { get; set; }
+        public string SAVpvg { get; set; }
+        public string PCKpvg { get; set; }
+        public string ECOpvg { get; set; }
 
         // Getters/setters
         public int IdRequest { get => idRequest; set => idRequest = value; }
