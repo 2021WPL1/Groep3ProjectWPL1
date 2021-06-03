@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- DataTemplate to display EUT's in listboxes/listviews - Kaat-->
+    <DataTemplate x:Key="EUT">
+
+
+        <ListBoxItem BorderBrush="red" Width="1410"  BorderThickness="2" HorizontalContentAlignment="Stretch" Background="#5c5c5c" Foreground="White">
+
+            <Grid HorizontalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!-- Find a way to display the number of the EUT, or delete alltogether?-->
+                <TextBlock Grid.RowSpan="2" Text="EUT" Margin="5"/>
+                <TextBlock Grid.Column="6" Text="Foreseen availability date:" Margin="5"/>
+                <DatePicker Grid.Row="2" Grid.Column="6" SelectedDate="{Binding AvailabilityDate}" IsTodayHighlighted="True" Margin="5"/>
+                <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Center" TextElement.Foreground="White">
+                    <CheckBox IsChecked="{Binding EMC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="EMC" FontWeight="Bold" FontSize="15" Width="80" VerticalContentAlignment="Center" Margin="10"/>
+                    <CheckBox IsChecked="{Binding ENV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="ENVIRONMENTAL" FontWeight="Bold" FontSize="15" Width="150" VerticalContentAlignment="Center" Margin="10"/>
+                    <CheckBox IsChecked="{Binding REL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="RELIABILITY" FontWeight="Bold" FontSize="15" Width="110" VerticalContentAlignment="Center"  Margin="10"/>
+                    <CheckBox IsChecked="{Binding SAV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PRODUCT &#x0a;SAFETY" FontWeight="Bold" Width="100" FontSize="15" VerticalContentAlignment="Center" Margin="10"/>
+                    <CheckBox IsChecked="{Binding PCK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="PACKAGING" FontWeight="Bold" FontSize="15" Width="110" VerticalContentAlignment="Center" Margin="10"/>
+                    <CheckBox IsChecked="{Binding ECO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="GREEN &#x0a;COMPLIANCE" FontWeight="Bold" FontSize="15" Width="130" VerticalContentAlignment="Center" Margin="10"/>
+
+                </StackPanel>
+            </Grid>
+        </ListBoxItem>
+    </DataTemplate>
+    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
+
+    <!--Data template for pvg responsible in the Gui-->
+    <DataTemplate x:Key="PVGRes">
+        <!--<ListBoxItem BorderBrush="white" BorderThickness="1" HorizontalContentAlignment="Stretch"  Foreground="White">-->
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.RowSpan="1" Text="PVGResponsible:" Margin="5" Foreground="white"/>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Center" TextElement.Foreground="White">
+                <TextBox Text="{Binding EMCpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding ENVpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding RELpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding SAVpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding PCKpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+                <TextBox Text="{Binding ECOpvg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="85" Margin="5"/>
+
+            </StackPanel>
+        </Grid>
+        <!--</ListBoxItem>-->
+    </DataTemplate>
+</ResourceDictionary>

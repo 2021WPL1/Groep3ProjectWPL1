@@ -1,25 +1,20 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
-using Newtonsoft.Json.Serialization;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using TestingPlanner.Data;
-using TestingPlanner.Domain.Models;
-using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
-    // TEMPORARY SCREEN
-    // Proof of concept: loading list of JR's from database
-    // TODO: datatemplate for JR's
-    public class ViewmodelTemporarilyStartUp : ViewModelCollectionRQ
+    public class ViewModelStartupRD : ViewModelCollectionRQ
     {
         //Constructor
-        public ViewmodelTemporarilyStartUp():base()
+        public ViewModelStartupRD() : base()
         {
             Load();
         }
@@ -28,7 +23,7 @@ namespace TestingPlanner.Viewmodels
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
             idRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)

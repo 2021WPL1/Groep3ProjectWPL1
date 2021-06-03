@@ -12,7 +12,7 @@
     <!--IMAGE BARCO-->
     <Style x:Key="BarcoLogo" TargetType="{x:Type Image}">
         <Setter Property="Width" Value="215"/>
-        <Setter Property="Source" Value="/barco-logo.jpg.png"/>
+        <Setter Property="Source" Value="barco-logo.png"/>
         <Setter Property="Margin" Value="0 0 650 0"/>
     </Style>
 
