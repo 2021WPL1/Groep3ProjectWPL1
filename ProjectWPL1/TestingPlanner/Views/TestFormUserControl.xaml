@@ -20,12 +20,23 @@
             <StackPanel Orientation="Horizontal">
                 <ComboBox ItemsSource="{Binding Resources}" 
                           DisplayMemberPath="Naam"
-                          Text="{Binding EditingTest.Resource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                          Grid.Column="1" Grid.Row="2" Margin="10"/>
+                          Text="{Binding EditingTest.Resource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          Margin="10"
+                          >
+                    <!--
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}">
+                            <Setter Property="Background" Value="{StaticResource ResourceColor}"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle> 
+                    -->
+                </ComboBox>
+                
                 <TextBox Text="{Binding EditingTest.Description ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
                 <!--Currently two datepickers for start/end, looking into using one to get an array? -->
                 <DatePicker SelectedDate="{Binding EditingTest.StartDate}" IsTodayHighlighted="True" Margin="5"/>
                 <DatePicker SelectedDate="{Binding EditingTest.EndDate}" IsTodayHighlighted="True" Margin="5"/>
+                <TextBlock Text="ITEM ALREADY IN USE ON SELECTED DATES" Background="Red" Visibility="{Binding DoubleBooked}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Add Test" Command="{Binding Path=AddNewTestCommand}" Margin="5"/>

@@ -697,10 +697,13 @@ namespace TestingPlanner.Data
             return uiTests;
         }
 
-        // Only called once startdate set
         // Kaat
         public bool IsResourceDoubleBooked(Test test)
         {
+            if (test.Resource is null || test.StartDate is null)
+            {
+                return false;
+            }
             var startDate = test.StartDate;
 
             // If there is no endDate, set startDate as EndDate

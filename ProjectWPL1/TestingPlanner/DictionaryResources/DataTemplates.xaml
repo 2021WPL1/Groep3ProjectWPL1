@@ -34,4 +34,5 @@
             </Grid>
         </ListBoxItem>
     </DataTemplate>
+    <!--<SolidColorBrush x:Key="ResourceColor" Color="{Binding Kleur}"  /> -->
 </ResourceDictionary>

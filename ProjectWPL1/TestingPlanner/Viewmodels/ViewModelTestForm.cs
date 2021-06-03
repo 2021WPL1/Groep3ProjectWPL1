@@ -20,6 +20,7 @@ namespace TestingPlanner.Viewmodels
         public PlPlanning SelectedPlan { get; set; }
 
         public ObservableCollection<Test> Tests { get; set; }
+        public Visibility DoubleBooked { get; set; }
         private Test selectedTest;
         private Test editingTest;
 
@@ -49,6 +50,7 @@ namespace TestingPlanner.Viewmodels
             DeleteTestCommand = new DelegateCommand(DeleteTest);
 
             EditingTest = new Test();
+            SetVisibility(false);
         }
 
 
@@ -69,6 +71,7 @@ namespace TestingPlanner.Viewmodels
             set
             {
                 editingTest = value;
+                SetVisibility(_dao.IsResourceDoubleBooked(EditingTest));
                 OnpropertyChanged();
             }
         }
@@ -166,6 +169,20 @@ namespace TestingPlanner.Viewmodels
             _dao.SetRqStatusIfComplete(SelectedPlan.IdRequest);
 
             return true;
+        }
+
+        private void SetVisibility(bool isDoubleBooked)
+        {
+            if (isDoubleBooked)
+            {
+                // Show
+                DoubleBooked = (Visibility)0;
+                return;
+            }
+
+            // Hide
+            DoubleBooked = (Visibility)1;
+
         }
           
     }
