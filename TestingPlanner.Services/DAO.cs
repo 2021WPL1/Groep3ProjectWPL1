@@ -26,12 +26,6 @@ namespace TestingPlanner.Data
 
         public BarcoUser BarcoUser { get; }
 
-        //List with all addresses 
-        List<string> addresses = new List<string>();
-        //Email login info
-        private static string mailFrom = "groep3testprog@gmail.com";
-        private static string mailFromPassword = "Testtest123";
-
         // Calls an DAO instance
         public static DAO Instance()
         {
