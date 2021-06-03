@@ -361,31 +361,6 @@ namespace TestingPlanner.Data
             return selectedJR;
         }
 
-        //Create and send Mail to all gmail account from list // Mohamed //Arne
-        public void Sendmail()
-        {
-            using (SmtpClient client = new SmtpClient(/*"smtp.office365.com"*/"smtp.gmail.com", 587))
-            {
-                //addresses.Add("mohamed.elouzatie@student.vives.be");
-                //addresses.Add("Kaat.ceusters@student.vives.be");
-                addresses.Add("matti.snauwaert@student.vives.be");
-                addresses.Add("dewintere.arne@gmail.com");
-                addresses.Add("arne.dewintere@student.vives.be");
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(mailFrom, mailFromPassword);
-                client.EnableSsl = true;
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(mailFrom);
-                mail.Body = "Am i on time?";
-                mail.Subject = "I'm a scheduled mail";
-                foreach (var address in addresses)
-                {
-                    mail.To.Add(address);
-                }
-                client.Send(mail);
-            }
-        }
         // Mohamed, Kaat
         public List <EUT> GetEut(RqRequest rq)
         {
