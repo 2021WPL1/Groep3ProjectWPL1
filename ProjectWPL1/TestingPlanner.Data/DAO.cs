@@ -107,7 +107,7 @@ namespace TestingPlanner.Data
             return context.PlResource.SingleOrDefault(r => r.Id == id);
         }
 
-        // Gets a resource by id
+        // Gets a resource by name
         public PlResources GetResource(string name)
         {
             return context.PlResource.SingleOrDefault(r => r.Naam == name);
@@ -696,6 +696,33 @@ namespace TestingPlanner.Data
 
             return uiTests;
         }
+
+        // Only called once startdate set
+        // Kaat
+        public bool IsResourceDoubleBooked(Test test)
+        {
+            var startDate = test.StartDate;
+
+            // If there is no endDate, set startDate as EndDate
+            var endDate = test.EndDate == null? startDate: test.EndDate;
+
+            // get resource number
+            int resourceID = GetResource(test.Resource).Id;
+
+            // Get all uses of this resource
+            var resourceUses = context.PlPlanningsKalenders.Where(plk => plk.Resources == resourceID).ToList();
+
+            // If new pk enddate is before existing pk startdate
+            // but new pk startdate is not before existing pk enddate
+
+            if (resourceUses.Exists(u => u.Einddatum >= startDate && u.Startdatum <= endDate))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         // SAVING
         // Stores all data from GUI in DB

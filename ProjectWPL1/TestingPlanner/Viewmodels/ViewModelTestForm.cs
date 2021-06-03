@@ -150,6 +150,11 @@ namespace TestingPlanner.Viewmodels
             foreach (var test in Tests)
             {
                 test.Status = "Planned";
+
+                if (test.EndDate == null)
+                {
+                    test.EndDate = test.StartDate;
+                }
             }
 
             SelectedPlan.TestDivStatus = "Finished";
