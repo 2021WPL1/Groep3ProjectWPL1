@@ -110,6 +110,23 @@ namespace TestingPlanner.Viewmodels
             EditingTest = new Test();
         }
 
+        public void SaveTests()
+        {
+            foreach (var test in Tests)
+            {
+                if (test.DbTestId == null)
+                {
+                    _dao.CreateNewTest(test);
+                }
+                else
+                {
+                    _dao.UpdateTest((int)test.DbTestId, test);
+                }
+            }
+
+            _dao.SaveChanges();
+        }
+
 
     }
 }

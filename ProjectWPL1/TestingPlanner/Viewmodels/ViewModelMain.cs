@@ -27,6 +27,7 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand SaveJrCommand { get; set; }
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
+        public DelegateCommand SaveTestsAndReturnCommand { get; set; }
        
         public ViewModelMain()
         {
@@ -41,6 +42,7 @@ namespace TestingPlanner.Viewmodels
             DisplayDevStartupCommand = new DelegateCommand(DisplayDevStartup);
             ApproveJRCommand = new DelegateCommand(ApproveJR);
             DisplayTestPlanningCommand = new DelegateCommand(DisplayTestPlanning);
+            SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
         }
 
         // Getters/Setters
@@ -148,6 +150,12 @@ namespace TestingPlanner.Viewmodels
             var plan = ((ViewModelTesterPlan)this.ViewModel).SelectedPlan;
 
             this.ViewModel = new ViewModelTestForm(plan);
+        }
+
+        public void SaveTestsAndReturn()
+        {
+            ((ViewModelTestForm)this.ViewModel).SaveTests();
+            this.ViewModel = new ViewModelTesterPlan();
         }
     }
 }
