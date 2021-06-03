@@ -17,7 +17,8 @@ namespace TestingPlanner.Viewmodels
         private ViewModelBase _viewModel;
         public BarcoUser User { get; set; }
 
-        // TODO: check if ICommand also works
+        // TODO: check if ICommand also works EDIT: icommand doesnt work, cannot create an instance of
+        // the abstract type or interface icommand
         public DelegateCommand DisplayNewJRCommand { get; set; }
         public DelegateCommand DisplayExistingJRCommand { get; set; }
         public DelegateCommand DisplayEmployeeStartupCommand { get; set; }
@@ -28,11 +29,13 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand ApproveJRCommand { get; set; }
         public DelegateCommand DisplayTestPlanningCommand { get; set; }
        
+        //constructor
         public ViewModelMain()
         {
             this.ViewModel = new ViewmodelTemporarilyStartUp();
             this.User = _dao.BarcoUser;
 
+            // initialize delegatecommands
             DisplayNewJRCommand = new DelegateCommand(DisplayNewJR);
             DisplayExistingJRCommand = new DelegateCommand(DisplayExistingJR);
             DisplayEmployeeStartupCommand = new DelegateCommand(DisplayEmployeeStartup);

@@ -21,6 +21,7 @@ namespace TestingPlanner.Viewmodels
 
         public ICommand AddNewTestCommand { get; set; }
 
+        // toon alle planning in lv
         public ViewModelTestForm(PlPlanning planning)
         {
             SelectedPlan = planning;
@@ -48,7 +49,7 @@ namespace TestingPlanner.Viewmodels
                 OnpropertyChanged();
             }
         }
-
+        // add test to planning
         public void AddTest()
         {
             Tests.Add(new PlPlanningsKalender());

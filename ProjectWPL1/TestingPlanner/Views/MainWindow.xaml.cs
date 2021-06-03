@@ -29,6 +29,8 @@ namespace TestingPlanner.Views
         {
             DataContext = new ViewModelMain();
             InitializeComponent();
+
+            //oproepen scheduler die automatische mail stuurt.
             mail.Schedule_Timer();
         }
     }
