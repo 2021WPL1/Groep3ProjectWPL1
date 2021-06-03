@@ -31,4 +31,7 @@
     <DataTemplate DataType="{x:Type viewModels:ViewModelTesterPlan}">
         <views:TesterPlanUserControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelTesterTest}">
+        <views:TesterTestUserControl/>
+    </DataTemplate>
 </ResourceDictionary>

@@ -149,6 +149,7 @@ namespace TestingPlanner.Viewmodels
             }
 
             SelectedPlan.TestDivStatus = "Finished";
+            SelectedPlan.TestDivPlanDate = DateTime.Now;
 
             // includes savechanges
             SaveTests();

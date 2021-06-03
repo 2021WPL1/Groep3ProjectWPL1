@@ -96,3 +96,5 @@ C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\T
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.pdb
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.genruntimeconfig.cache
 C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\TestingPlanner.csprojAssemblyReference.cache
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\TesterTestUserControl.g.cs
+C:\Users\Kaat\Documents\Vives\Kwartaal 3\Werkplekleren\ProjectWPL1\ProjectWPL1\TestingPlanner\obj\Debug\netcoreapp3.1\Views\TesterTestUserControl.baml

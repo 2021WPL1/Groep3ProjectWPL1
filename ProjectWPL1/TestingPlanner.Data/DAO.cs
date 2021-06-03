@@ -642,6 +642,37 @@ namespace TestingPlanner.Data
             return tests;
         }
 
+        public List<Test> GetAllTests()
+        {
+            // Find selected PlPlanningsKalender
+            var dbTests = context.PlPlanningsKalenders.ToList();
+
+            var uiTests = new List<Test>();
+
+            foreach (var item in dbTests)
+            {
+                uiTests.Add(GetTest(item));
+            }
+
+            return uiTests;
+        }
+
+
+        public List<Test> GetAllTestsForDivision(string testDivision)
+        {
+            // Find selected PlPlanningsKalender
+            var dbTests = context.PlPlanningsKalenders.Where(plk => plk.Testdiv == testDivision).ToList();
+
+            var uiTests = new List<Test>();
+
+            foreach (var item in dbTests)
+            {
+                uiTests.Add(GetTest(item));
+            }
+
+            return uiTests;
+        }
+
         // SAVING
         // Stores all data from GUI in DB
         public void SaveChanges()
