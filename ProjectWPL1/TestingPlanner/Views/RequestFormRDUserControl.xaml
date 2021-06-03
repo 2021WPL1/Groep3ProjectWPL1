@@ -99,10 +99,6 @@
                     <Button Content="Remove Part" 
                                 Command="{Binding Path=removeEUTCommand}" 
                                 Margin="10"/>
-                    <!--Temporary element!-->
-                    <Button Content="Add Mock EUT" 
-                                Command="{Binding Path=addMockEUTCommand}" 
-                                Margin="10"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>

@@ -32,7 +32,6 @@ namespace TestingPlanner.Viewmodels
         public ICommand addEUTCommand { get; set; }
         public ICommand removeEUTCommand { get; set; }
         public ICommand refreshJRCommand { get; set; }
-        public ICommand addMockEUTCommand { get; set; }
 
         // Constructor for new JR
         public ViewModelRequestformRD() : base()
@@ -79,7 +78,6 @@ namespace TestingPlanner.Viewmodels
             refreshJRCommand = new DelegateCommand(refreshJR);
             addEUTCommand = new DelegateCommand(addEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
-            addMockEUTCommand = new DelegateCommand(addMockEUT);
         }
 
         // Loads jobNatures, divisions in cbb
@@ -139,19 +137,6 @@ namespace TestingPlanner.Viewmodels
         public void removeSelectedEUT()
         {
             EUTs.Remove(SelectedEUT);
-        }
-
-        /// <summary>
-        /// Temporary function to demo loading EUT datatemplate
-        /// </summary>
-        public void addMockEUT()
-        {
-            EUTs.Add(new EUT
-            {
-                AvailabilityDate = new DateTime(2021, 03, 12),
-                EMC = true,
-                REL = true
-            });
         }
     }
 }
