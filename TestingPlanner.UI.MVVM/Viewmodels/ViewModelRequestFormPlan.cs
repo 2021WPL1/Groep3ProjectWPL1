@@ -35,6 +35,7 @@ namespace TestingPlanner.Viewmodels
             Load();
             addEUTCommand = new DelegateCommand(AddEUT);
             removeEUTCommand = new DelegateCommand(removeSelectedEUT);
+
             // Look for JR with correct ID
             this._jr = _dao.GetJR(idRequest);
 

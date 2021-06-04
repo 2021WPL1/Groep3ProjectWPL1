@@ -16,9 +16,9 @@ namespace TestingPlanner.Views
     /// <summary>
     /// Interaction logic for RequestFormPlanUserControl.xaml
     /// </summary>
-    public partial class ApproveJRQueueUserControl : UserControl
+    public partial class ApproveJRFormUserControl : UserControl
     {
-        public ApproveJRQueueUserControl()
+        public ApproveJRFormUserControl()
         {
             InitializeComponent();
         }
