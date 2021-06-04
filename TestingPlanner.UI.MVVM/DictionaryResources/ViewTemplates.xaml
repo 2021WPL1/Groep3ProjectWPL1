@@ -23,7 +23,7 @@
         <views:DevelopmentUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelTestForm}">
-        <views:TestFormUserControl/>
+        <views:PlanTestFormUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
         <views:ApproveJRFormUserControl/>
