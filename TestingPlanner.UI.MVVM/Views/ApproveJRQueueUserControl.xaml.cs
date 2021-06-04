@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace TestingPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for StartupPlannerUserControl.xaml
+    /// Interaction logic for ApproveJRQueueUserControl.xaml
     /// </summary>
-    public partial class StartupPlannerUserControl : UserControl
+    public partial class ApproveJRQueueUserControl : UserControl
     {
-        public StartupPlannerUserControl()
+        public ApproveJRQueueUserControl()
         {
             InitializeComponent();
         }
