@@ -11,10 +11,10 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewModelStartupRD : AbstractViewModelCollectionRQ
+    public class ViewModelCreateJRQueue : AbstractViewModelCollectionRQ
     {
         //Constructor
-        public ViewModelStartupRD() : base()
+        public ViewModelCreateJRQueue() : base()
         {
             Load();
         }

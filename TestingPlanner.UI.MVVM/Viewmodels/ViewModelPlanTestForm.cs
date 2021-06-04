@@ -11,7 +11,7 @@ using TestingPlanner.Domain.Models;
 namespace TestingPlanner.Viewmodels
 {
     // Kaat
-    class ViewModelTestForm : AbstractViewModelBase
+    class ViewModelPlanTestForm : AbstractViewModelBase
     {
         // Listbox with equipment
         public ObservableCollection<PlResources> Resources { get; set; }
@@ -32,7 +32,7 @@ namespace TestingPlanner.Viewmodels
         public ICommand ClearTestCommand { get; set; }
         public ICommand DeleteTestCommand { get; set; }
 
-        public ViewModelTestForm(PlPlanning planning)
+        public ViewModelPlanTestForm(PlPlanning planning)
         {
             SelectedPlan = planning;
 

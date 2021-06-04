@@ -10,7 +10,7 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelTesterTest : AbstractViewModelBase
+    class ViewModelUpdateTestQueue : AbstractViewModelBase
     {
         public ObservableCollection<Test> Tests { get; set; }
         public ObservableCollection<string> StatusList { get; set; }
@@ -19,7 +19,7 @@ namespace TestingPlanner.Viewmodels
 
         public ICommand SaveStatusChangesCommand { get; set; }
 
-        public ViewModelTesterTest()
+        public ViewModelUpdateTestQueue()
         {
             StatusList = new ObservableCollection<string> 
             { 

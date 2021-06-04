@@ -7,13 +7,13 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelTesterPlan : AbstractViewModelBase
+    class ViewModelPlanTestQueue : AbstractViewModelBase
     {
         public ObservableCollection<PlPlanning> PlansToApprove { get; set; }
         protected PlPlanning _selectedPlan;
 
         //Constructor
-        public ViewModelTesterPlan() : base()
+        public ViewModelPlanTestQueue() : base()
         {
             // Collection initialization
             PlansToApprove = new ObservableCollection<PlPlanning>();

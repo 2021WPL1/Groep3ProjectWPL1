@@ -17,7 +17,7 @@ using TestingPlanner.Views;
 
 namespace TestingPlanner.Viewmodels
 {
-    public class ViewModelRequestformRD : AbstractViewModelContainer
+    public class ViewModelCreateJRForm : AbstractViewModelContainer
     {
         private Barco2021Context context = new Barco2021Context();
         // Combobox contents
@@ -35,7 +35,7 @@ namespace TestingPlanner.Viewmodels
         public ICommand refreshJRCommand { get; set; }
 
         // Constructor for new JR
-        public ViewModelRequestformRD(bool isInternalRequest = false) : base()
+        public ViewModelCreateJRForm(bool isInternalRequest = false) : base()
         {
             init();
             Load();
@@ -47,7 +47,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Constructor for existing JR
-        public ViewModelRequestformRD(int idRequest) : base()
+        public ViewModelCreateJRForm(int idRequest) : base()
         {
             init();
             Load();

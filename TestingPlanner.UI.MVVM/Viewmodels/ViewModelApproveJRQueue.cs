@@ -5,9 +5,10 @@ using System.Text;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelStartupTester : AbstractViewModelCollectionRQ
+    class ViewModelApproveJRQueue: AbstractViewModelCollectionRQ
     {
-        public ViewModelStartupTester() : base()
+        //Constructor
+        public ViewModelApproveJRQueue() : base()
         {
             Load();
         }
@@ -16,12 +17,12 @@ namespace TestingPlanner.Viewmodels
         // Loads all JR IDs in LB
         public void Load()
         {
-            var requestIds = _dao.GetAllJobRequests();
+            // Get unapproved JR's
+            var requestIds = _dao.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve");
             idRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
             {
-
                 idRequestsOnly.Add(requestId);
             }
         }

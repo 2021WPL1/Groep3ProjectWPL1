@@ -11,7 +11,7 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelRequestFormPlan : AbstractViewModelContainer
+    class ViewModelApproveJRForm : AbstractViewModelContainer
     {
         private readonly Barco2021Context context = new Barco2021Context();
         // Combobox contents
@@ -26,7 +26,7 @@ namespace TestingPlanner.Viewmodels
 
         // Constructor for existing JR
         // Planner only works with existing JRs
-        public ViewModelRequestFormPlan(int idRequest) : base()
+        public ViewModelApproveJRForm(int idRequest) : base()
         {
             // Fill in dropdown menu's
             JobNatures = new ObservableCollection<string>();

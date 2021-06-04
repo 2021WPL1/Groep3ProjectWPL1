@@ -79,13 +79,13 @@ namespace TestingPlanner.Viewmodels
         public void DisplayNewJR()
         {
             SaveJrCommand = new DelegateCommand(InsertJr);
-            this.ViewModel = new ViewModelRequestformRD();
+            this.ViewModel = new ViewModelCreateJRForm();
         }
 
         public void DisplayNewInternalJR()
         {
             SaveJrCommand = new DelegateCommand(InsertInternalJr);
-            this.ViewModel = new ViewModelRequestformRD(true);
+            this.ViewModel = new ViewModelCreateJRForm(true);
         }
 
         public void DisplayExistingJR()
@@ -94,38 +94,38 @@ namespace TestingPlanner.Viewmodels
 
             var ExistingJrId = ((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
 
-            if (this.ViewModel is ViewModelStartupPlanner)
+            if (this.ViewModel is ViewModelApproveJRQueue)
             {
-                 this.ViewModel = new ViewModelRequestFormPlan(ExistingJrId);
+                 this.ViewModel = new ViewModelApproveJRForm(ExistingJrId);
             }
             else
             {
-                this.ViewModel = new ViewModelRequestformRD(ExistingJrId);
+                this.ViewModel = new ViewModelCreateJRForm(ExistingJrId);
             }
         }
 
         public void DisplayEmployeeStartup()
         {
-            this.ViewModel = new ViewModelStartupRD();
+            this.ViewModel = new ViewModelCreateJRQueue();
         }
 
         public void DisplayPlannerStartup()
         {
-            this.ViewModel = new ViewModelStartupPlanner();
+            this.ViewModel = new ViewModelApproveJRQueue();
         }
         public void DisplayTesterPlan()
         {
-            this.ViewModel = new ViewModelTesterPlan();
+            this.ViewModel = new ViewModelPlanTestQueue();
         }
 
         public void DisplayTesterTest()
         {
-            this.ViewModel = new ViewModelTesterTest();
+            this.ViewModel = new ViewModelUpdateTestQueue();
         }
 
         public void DisplayDevStartup()
         {
-            this.ViewModel = new ViewmodelDevelopment();
+            this.ViewModel = new ViewModelDevelopment();
         }
 
         // JR CRUD
@@ -192,38 +192,38 @@ namespace TestingPlanner.Viewmodels
 
             _dao.ApproveRequest(jrId);
 
-            this.ViewModel = new ViewModelStartupPlanner();
+            this.ViewModel = new ViewModelApproveJRQueue();
         }
 
         // Switch to test planning for tester
         public void DisplayTestPlanning()
         {
             // get id from JR
-            var plan = ((ViewModelTesterPlan)this.ViewModel).SelectedPlan;
+            var plan = ((ViewModelPlanTestQueue)this.ViewModel).SelectedPlan;
 
-            this.ViewModel = new ViewModelTestForm(plan);
+            this.ViewModel = new ViewModelPlanTestForm(plan);
         }
 
         public void SaveTestsAndReturn()
         {
-            ((ViewModelTestForm)this.ViewModel).SaveTests();
-            this.ViewModel = new ViewModelTesterPlan();
+            ((ViewModelPlanTestForm)this.ViewModel).SaveTests();
+            this.ViewModel = new ViewModelPlanTestQueue();
         }
 
         public void ApprovePlanAndReturn()
         {
-            var isSaved = ((ViewModelTestForm)this.ViewModel).ApprovePlan();
+            var isSaved = ((ViewModelPlanTestForm)this.ViewModel).ApprovePlan();
 
             if (isSaved)
             {
-                this.ViewModel = new ViewModelTesterPlan();
+                this.ViewModel = new ViewModelPlanTestQueue();
             }
         }
 
         public void TesterReturn()
         {
             _dao.RemoveChanges();
-            this.ViewModel = new ViewModelTesterPlan();
+            this.ViewModel = new ViewModelPlanTestQueue();
         }
 
         private void SetWindowProperties()
@@ -236,7 +236,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
 
-                    this.ViewModel = new ViewmodelDevelopment();
+                    this.ViewModel = new ViewModelDevelopment();
 
                     break;
                 case "TEST":
@@ -247,7 +247,7 @@ namespace TestingPlanner.Viewmodels
 
                     DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
-                    this.ViewModel = new ViewModelTesterPlan();
+                    this.ViewModel = new ViewModelPlanTestQueue();
 
                     break;
                 case "PLAN":
@@ -256,7 +256,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
 
-                    this.ViewModel = new ViewModelStartupPlanner();
+                    this.ViewModel = new ViewModelApproveJRQueue();
 
                     break;
                 default:
@@ -265,7 +265,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
 
-                    this.ViewModel = new ViewModelStartupRD();
+                    this.ViewModel = new ViewModelCreateJRQueue();
 
                     break;
             }
