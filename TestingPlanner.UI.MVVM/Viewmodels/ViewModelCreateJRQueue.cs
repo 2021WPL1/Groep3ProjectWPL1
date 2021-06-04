@@ -24,11 +24,11 @@ namespace TestingPlanner.Viewmodels
         public void Load()
         {
             var requestIds = _dao.GetAllJobRequests().Where(rq => rq.Requester == _dao.BarcoUser.Name);
-            idRequestsOnly.Clear();
+            IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
             {
-                idRequestsOnly.Add(requestId);
+                IdRequestsOnly.Add(requestId);
             }
         }
     }

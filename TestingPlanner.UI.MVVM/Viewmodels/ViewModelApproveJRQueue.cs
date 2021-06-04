@@ -19,11 +19,11 @@ namespace TestingPlanner.Viewmodels
         {
             // Get unapproved JR's
             var requestIds = _dao.GetAllJobRequests().Where(rq => rq.JrStatus == "To approve");
-            idRequestsOnly.Clear();
+            IdRequestsOnly.Clear();
 
             foreach (var requestId in requestIds)
             {
-                idRequestsOnly.Add(requestId);
+                IdRequestsOnly.Add(requestId);
             }
         }
     }

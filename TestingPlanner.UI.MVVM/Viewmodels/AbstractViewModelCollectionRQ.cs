@@ -8,14 +8,14 @@ namespace TestingPlanner.Viewmodels
 {
     public abstract class AbstractViewModelCollectionRQ : AbstractViewModelBase
     {
-        public ObservableCollection<RqRequest> idRequestsOnly { get; set; }
+        public ObservableCollection<RqRequest> IdRequestsOnly { get; set; }
         protected RqRequest _selectedJR;
 
         //Constructor
         public AbstractViewModelCollectionRQ() : base()
         {
             // Collection initialization
-            idRequestsOnly = new ObservableCollection<RqRequest>();
+            IdRequestsOnly = new ObservableCollection<RqRequest>();
 
             // empty jr selected by default
             _selectedJR = new RqRequest();

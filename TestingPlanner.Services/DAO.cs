@@ -21,22 +21,22 @@ namespace TestingPlanner.Data
     public class DAO
     {
         // Variables
-        private Barco2021Context context;
-        private static readonly DAO instance = new DAO(); 
+        private Barco2021Context _context;
+        private static readonly DAO _instance = new DAO(); 
 
         public BarcoUser BarcoUser { get; }
 
         // Calls an DAO instance
         public static DAO Instance()
         {
-            return instance;
+            return _instance;
         }
 
         // DAO Constructor - PRIVATE
         // Calls an instance from the Barco2021Context and stores this context in the current context
         private DAO()
         {
-            this.context = new Barco2021Context();
+            this._context = new Barco2021Context();
             this.BarcoUser = RegistryConnection.GetValueObject<BarcoUser>(@"SOFTWARE\VivesBarco\Test");
         }
 
@@ -47,7 +47,7 @@ namespace TestingPlanner.Data
         /// Kaat
         public void RemoveChanges()
         {
-            context = new Barco2021Context();
+            _context = new Barco2021Context();
         }
 
 
@@ -56,33 +56,33 @@ namespace TestingPlanner.Data
         // Returns list of all JRs
         public List<RqRequest> GetAllJobRequests()
         {
-            return context.RqRequest.Include(r => r.IdRequest).ToList();
+            return _context.RqRequest.Include(r => r.IdRequest).ToList();
         }
 
         // Returns list of all jobNatures
         public List<RqJobNature> GetAllJobNatures()
         {
-            return context.RqJobNature.ToList();
+            return _context.RqJobNature.ToList();
         }
 
         // Returns list of all BarcoDivisions
         public List<RqBarcoDivision> GetAllDivisions()
         {
-            return context.RqBarcoDivision.ToList();
+            return _context.RqBarcoDivision.ToList();
         }
 
         // Returns list of all Equipment
         // Kaat
         public List<PlResources> GetResources()
         {
-            return context.PlResource.ToList();
+            return _context.PlResource.ToList();
         }
 
         // Returns list of Equipment for a given TestDivision
         // Kaat
         public List<PlResources> GetResources(string TestDivision)
         {
-            var idList = context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
+            var idList = _context.PlResourcesDivisions.Where(rd => rd.DivisionAfkorting == TestDivision).Select(rd => rd.ResourcesId).ToList();
 
             // try with mapping?
             var resourceList = new List<PlResources>();
@@ -99,13 +99,13 @@ namespace TestingPlanner.Data
         // Kaat
         public PlResources GetResource(int id)
         {
-            return context.PlResource.SingleOrDefault(r => r.Id == id);
+            return _context.PlResource.SingleOrDefault(r => r.Id == id);
         }
 
         // Gets a resource by name
         public PlResources GetResource(string name)
         {
-            return context.PlResource.SingleOrDefault(r => r.Naam == name);
+            return _context.PlResource.SingleOrDefault(r => r.Naam == name);
         }
 
         // JR CHANGES
@@ -195,7 +195,7 @@ namespace TestingPlanner.Data
             {
                 // Find an existing detail - Kaat
                 // THIS WILL GIVE ERRORS IF YOU HAVE MULTIPLE DETAILS FOR A GIVEN COMBO IN YOUR DB
-                var detail = context.RqRequestDetails.
+                var detail = _context.RqRequestDetails.
                     Where(d => d.IdRequest == request.IdRequest && d.Testdivisie == testeut).
                     SingleOrDefault();
 
@@ -232,7 +232,7 @@ namespace TestingPlanner.Data
 
 
             };
-            context.RqRequest.Add(request);
+            _context.RqRequest.Add(request);
         }
 
         // INCOMPLETE
@@ -246,7 +246,7 @@ namespace TestingPlanner.Data
             // JR Number not empty?
             if (Jr.BarcoDivision != null)
             {
-                RqRequest rqrequest = context.RqRequest.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
+                RqRequest rqrequest = _context.RqRequest.FirstOrDefault(r => r.IdRequest == Jr.IdRequest);
 
                 rqrequest.JrNumber = Jr.JrNumber;
                 rqrequest.JrStatus = Jr.JrStatus;
@@ -265,7 +265,7 @@ namespace TestingPlanner.Data
 
                 // Matti voorlopig
                 // We create the rqo RqOptionel object to link the user data to the db data and saves the changes in the Barco database
-                RqOptionel rqo = context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
+                RqOptionel rqo = _context.RqOptionels.FirstOrDefault(o => o.IdRequest == Jr.IdRequest);
                 rqo.Link = Jr.Link;
                 rqo.Remarks = Jr.Remarks;
                 // We combine the rqo and rqrequest objects
@@ -273,7 +273,7 @@ namespace TestingPlanner.Data
 
 
 
-                context.RqRequest.Update(rqrequest);
+                _context.RqRequest.Update(rqrequest);
                 SaveChanges();
             }
             else
@@ -294,8 +294,8 @@ namespace TestingPlanner.Data
            
 
                 // Find selected RqRequest
-                RqRequest selectedRQ = context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
-                RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
+                RqRequest selectedRQ = _context.RqRequest.FirstOrDefault(rq => rq.IdRequest == idrequest);
+                RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == idrequest);
                 // Create new JR with necessary data
                 JR selectedJR = new JR
                 {
@@ -330,7 +330,7 @@ namespace TestingPlanner.Data
         public JR GetJR(RqRequest selectedRQ)
         {
             // Find related RqOptionel
-            RqOptionel selectedRQO = context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
+            RqOptionel selectedRQO = _context.RqOptionels.FirstOrDefault(rqo => rqo.IdRequest == selectedRQ.IdRequest);
 
             // Create new JR with necessary data
             JR selectedJR = new JR
@@ -364,12 +364,12 @@ namespace TestingPlanner.Data
         // Mohamed, Kaat
         public List <EUT> GetEut(RqRequest rq)
         {
-            List<RqRequestDetail> rqDetailsForJR = context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
+            List<RqRequestDetail> rqDetailsForJR = _context.RqRequestDetails.Where(r => r.IdRequest == rq.IdRequest).ToList();
             List<EUT> EUTObjects = new List<EUT>();
             
             foreach (var detail in rqDetailsForJR)
             {
-                List<Eut> eutsForDetail = context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
+                List<Eut> eutsForDetail = _context.Euts.Where(e => e.IdRqDetail == detail.IdRqDetail).ToList(); ;
 
                 var divisionBool = typeof(EUT).GetProperty(detail.Testdivisie);
 
@@ -406,7 +406,7 @@ namespace TestingPlanner.Data
         public void ApproveRequest(int jrId)
         {
             var DetailList = rqDetail(jrId);
-            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
+            var request = _context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
@@ -421,15 +421,15 @@ namespace TestingPlanner.Data
             {
                 var planning = CreatePlPlanning(request, division);
 
-                context.Add(planning);
-                context.SaveChanges();
+                _context.Add(planning);
+                _context.SaveChanges();
             }
         }
 
         public void ApproveInternalRequest(int jrId)
         {
             var DetailList = rqDetail(jrId);
-            var request = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
+            var request = _context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
@@ -452,8 +452,8 @@ namespace TestingPlanner.Data
                     TestDivStatus = "In plan",
                 };
 
-                context.Add(planning);
-                context.SaveChanges();
+                _context.Add(planning);
+                _context.SaveChanges();
             }
         }
 
@@ -466,7 +466,7 @@ namespace TestingPlanner.Data
         /// Kaat
         public List<PlPlanning> GetPlPlannings()
         {
-            return context.PlPlannings.ToList();
+            return _context.PlPlannings.ToList();
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace TestingPlanner.Data
         /// Kaat
         public List<PlPlanning> GetPlPlannings(string division)
         {
-            return context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
+            return _context.PlPlannings.Where(pl => pl.TestDiv == division).ToList();
         }
 
 
@@ -498,14 +498,14 @@ namespace TestingPlanner.Data
                 TestStatus = test.Status
             };
 
-            context.Add(planningsKalender);
-            context.SaveChanges();
+            _context.Add(planningsKalender);
+            _context.SaveChanges();
         }
 
         public Test GetTest(int testId)
         {
             // Find selected PlPlanningsKalender
-            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
+            var dbTest = _context.PlPlanningsKalenders.SingleOrDefault(pl => pl.Id == testId);
 
             return GetTest(dbTest);
         }
@@ -533,7 +533,7 @@ namespace TestingPlanner.Data
         public void UpdateTest(int id, Test test)
         {
             // Get existing PlPK
-            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+            var dbTest = _context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
 
             // Leave if test not found
             if (dbTest is null)
@@ -555,7 +555,7 @@ namespace TestingPlanner.Data
         public void UpdateTestStatus(Test test)
         {
             // Get existing PlPK
-            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == test.DbTestId);
+            var dbTest = _context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == test.DbTestId);
 
             // Leave if test not found
             if (dbTest is null)
@@ -571,7 +571,7 @@ namespace TestingPlanner.Data
         public void DeleteTest(int id)
         {
             // Get existing PlPK
-            var dbTest = context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
+            var dbTest = _context.PlPlanningsKalenders.SingleOrDefault(pk => pk.Id == id);
 
             // Leave if test not found
             if (dbTest is null)
@@ -579,7 +579,7 @@ namespace TestingPlanner.Data
                 return;
             }
 
-            context.Remove(dbTest);
+            _context.Remove(dbTest);
 
             // Savechanges on saving of Tests
             // User can still cancel -> New DBContext, removing saved changes
@@ -592,7 +592,7 @@ namespace TestingPlanner.Data
         {
             var tests = new List<Test>();
 
-            var planningsKalenders = context.PlPlanningsKalenders.
+            var planningsKalenders = _context.PlPlanningsKalenders.
                 Where(pk => pk.IdRequest == jrId).
                 ToList();
 
@@ -613,7 +613,7 @@ namespace TestingPlanner.Data
         {
             var tests = new List<Test>();
 
-            var planningsKalenders = context.PlPlanningsKalenders.
+            var planningsKalenders = _context.PlPlanningsKalenders.
                 Where(pk => pk.IdRequest == jrId && pk.Testdiv == testDivision).
                 ToList();
 
@@ -633,7 +633,7 @@ namespace TestingPlanner.Data
         {
             var tests = new List<Test>();
 
-            var planningsKalenders = context.PlPlanningsKalenders.
+            var planningsKalenders = _context.PlPlanningsKalenders.
                 Where(pk => pk.IdRequest == jrId && pk.Testdiv == division).
                 ToList();
 
@@ -649,7 +649,7 @@ namespace TestingPlanner.Data
         public List<Test> GetAllTests()
         {
             // Find selected PlPlanningsKalender
-            var dbTests = context.PlPlanningsKalenders.ToList();
+            var dbTests = _context.PlPlanningsKalenders.ToList();
 
             var uiTests = new List<Test>();
 
@@ -668,7 +668,7 @@ namespace TestingPlanner.Data
         public void SetRqStatusIfComplete(int rqId)
         {
             // Get all planning
-            var planningList = context.PlPlannings.Where(pl => pl.IdRequest == rqId).ToList();
+            var planningList = _context.PlPlannings.Where(pl => pl.IdRequest == rqId).ToList();
 
             // Leave function if there is an unfinished planning
             if (planningList.Exists(pl => pl.TestDivStatus != "Finished"))
@@ -677,7 +677,7 @@ namespace TestingPlanner.Data
             }
 
             // Get request
-            var dbRq = context.RqRequest.SingleOrDefault(rq => rq.IdRequest == rqId);
+            var dbRq = _context.RqRequest.SingleOrDefault(rq => rq.IdRequest == rqId);
 
             dbRq.JrStatus = "Finished";
 
@@ -689,7 +689,7 @@ namespace TestingPlanner.Data
         public List<Test> GetAllTestsForDivision(string testDivision)
         {
             // Find selected PlPlanningsKalender
-            var dbTests = context.PlPlanningsKalenders.Where(plk => plk.Testdiv == testDivision).ToList();
+            var dbTests = _context.PlPlanningsKalenders.Where(plk => plk.Testdiv == testDivision).ToList();
 
             var uiTests = new List<Test>();
 
@@ -717,10 +717,10 @@ namespace TestingPlanner.Data
             int resourceID = GetResource(test.Resource).Id;
 
             // Get all uses of this resource
-            var resourceUses = context.PlPlanningsKalenders.Where(plk => plk.Resources == resourceID).ToList();
+            var resourceUses = _context.PlPlanningsKalenders.Where(plk => plk.Resources == resourceID).ToList();
 
             // Get and remove plPlanningskalender related to test
-            var thisDbTest = context.PlPlanningsKalenders.SingleOrDefault(plk => plk.Id == test.DbTestId);
+            var thisDbTest = _context.PlPlanningsKalenders.SingleOrDefault(plk => plk.Id == test.DbTestId);
             resourceUses.Remove(thisDbTest);
 
             // If new pk enddate is before existing pk startdate
@@ -750,7 +750,7 @@ namespace TestingPlanner.Data
         // Stores all data from GUI in DB
         public void SaveChanges()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         /// <summary>
@@ -760,7 +760,7 @@ namespace TestingPlanner.Data
         /// <returns></returns>
         public List<RqRequestDetail> rqDetail(int idrequest)
         {
-            List<RqRequestDetail> DetailRQ = context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
+            List<RqRequestDetail> DetailRQ = _context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
             return DetailRQ;
         }
 
@@ -819,7 +819,7 @@ namespace TestingPlanner.Data
         {
             // Get the PVGResponsibles for this division combination
             // possibly more than one
-            var responsiblesList = context.RqBarcoDivisionPerson.
+            var responsiblesList = _context.RqBarcoDivisionPerson.
                 Where(bpd => bpd.AfkDevision == barcoDivision && bpd.Pvggroup == testDivision).
                 Select(bdp => bdp.AfkPerson);
 
@@ -831,7 +831,7 @@ namespace TestingPlanner.Data
         //Mohamed
         public void FindAllJrLast24h()
         {
-            List<RqRequest> rq = context.RqRequest.Where(r => 
+            List<RqRequest> rq = _context.RqRequest.Where(r => 
                 r.RequestDate <= DateTime.Now&& 
                 (r.RequestDate >= DateTime.Now.AddHours(-24))
             ).ToList();
@@ -843,7 +843,7 @@ namespace TestingPlanner.Data
             // Get the PVGResponsibles for this division combination
             // possibly more than one
             List<RqRequestDetail> listDetail =
-                context.RqRequestDetails.Where(rqdetail => rqdetail.IdRequest == idrequest).ToList();
+                _context.RqRequestDetails.Where(rqdetail => rqdetail.IdRequest == idrequest).ToList();
             foreach (var item in listDetail)
             {
                 var property = typeof(JR).GetProperty(item.Testdivisie + "pvg");

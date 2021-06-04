@@ -13,7 +13,8 @@ namespace TestingPlanner.Viewmodels
 {
     class ViewModelApproveJRForm : AbstractViewModelContainer
     {
-        private readonly Barco2021Context context = new Barco2021Context();
+        private readonly Barco2021Context _context = new Barco2021Context();
+
         // Combobox contents
         public ObservableCollection<string> JobNatures { get; set; }
         public ObservableCollection<string> Divisions { get; set; }
@@ -47,7 +48,7 @@ namespace TestingPlanner.Viewmodels
             foreach (var id in eutList)
             {
                 // Use DAO? --> base class
-                request = context.RqRequest.FirstOrDefault(e => e.IdRequest == id.IdRequest);
+                request = _context.RqRequest.FirstOrDefault(e => e.IdRequest == id.IdRequest);
 
             }
 
