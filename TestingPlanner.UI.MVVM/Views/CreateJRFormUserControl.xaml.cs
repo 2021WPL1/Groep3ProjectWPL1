@@ -16,9 +16,9 @@ namespace TestingPlanner.Views
     /// <summary>
     /// Interaction logic for RequestFormRDUserControl.xaml
     /// </summary>
-    public partial class RequestFormRDUserControl : UserControl
+    public partial class CreateJRFormUserControl : UserControl
     {
-        public RequestFormRDUserControl()
+        public CreateJRFormUserControl()
         {
             InitializeComponent();
         }

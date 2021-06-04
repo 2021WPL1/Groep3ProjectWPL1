@@ -8,7 +8,7 @@
         <views:MainWindow/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelRequestformRD}">
-        <views:RequestFormRDUserControl/>
+        <views:CreateJRFormUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelStartupPlanner}">
         <views:StartupPlannerUserControl/>
