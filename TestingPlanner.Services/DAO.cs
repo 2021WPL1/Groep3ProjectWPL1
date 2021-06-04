@@ -405,14 +405,14 @@ namespace TestingPlanner.Data
         /// </summary>
         public void ApproveRequest(int jrId)
         {
-            var DetailList = rqDetail(jrId);
+            var DetailList = RqDetail(jrId);
             var request = _context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
-            request.JrNumber = $"JRDEV{request.IdRequest.ToString("D5")}";
+            request.JrNumber = $"JRDEV{request.IdRequest:D5}";
             request.RequestDate = DateTime.Now;
             request.JrStatus = "In Plan";
 
@@ -428,14 +428,14 @@ namespace TestingPlanner.Data
 
         public void ApproveInternalRequest(int jrId)
         {
-            var DetailList = rqDetail(jrId);
+            var DetailList = RqDetail(jrId);
             var request = _context.RqRequest.SingleOrDefault(rq => rq.IdRequest == jrId);
 
             // List of unique test divisions checked in this JR
             var divisions = DetailList.Select(d => d.Testdivisie).Distinct().ToList(); // OVERBODIG
 
             // On approval, set JR number and request date
-            request.JrNumber = $"INTRN{request.IdRequest.ToString("D5")}";
+            request.JrNumber = $"INTRN{request.IdRequest:D5}";
             request.RequestDate = DateTime.Now;
             request.JrStatus = "In Plan";
 
@@ -758,7 +758,7 @@ namespace TestingPlanner.Data
         /// </summary>
         /// <param name="idrequest"></param>
         /// <returns></returns>
-        public List<RqRequestDetail> rqDetail(int idrequest)
+        public List<RqRequestDetail> RqDetail(int idrequest)
         {
             List<RqRequestDetail> DetailRQ = _context.RqRequestDetails.Where(rq => rq.IdRequest == idrequest).ToList();
             return DetailRQ;
@@ -838,7 +838,7 @@ namespace TestingPlanner.Data
         }
          
         //Mati//Kaat//Mohamed
-        public void printPvg(int idrequest,JR jr)
+        public void PrintPvg(int idrequest,JR jr)
         { 
             // Get the PVGResponsibles for this division combination
             // possibly more than one

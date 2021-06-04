@@ -26,22 +26,22 @@ namespace TestingPlanner.Viewmodels
 
         // Command declaration
         // RelayCommand<Class> takes object of type class as input
-        public RelayCommand<Window> addJobRequestCommand { get; set; }
-        public RelayCommand<Window> cancelCommand { get; set; }
+        public RelayCommand<Window> AddJobRequestCommand { get; set; }
+        public RelayCommand<Window> CancelCommand { get; set; }
 
         // ICommand does not take pinput
-        public ICommand addEUTCommand { get; set; }
-        public ICommand removeEUTCommand { get; set; }
-        public ICommand refreshJRCommand { get; set; }
+        public ICommand AddEUTCommand { get; set; }
+        public ICommand RemoveEUTCommand { get; set; }
+        public ICommand RefreshJRCommand { get; set; }
 
         // Constructor for new JR
         public ViewModelCreateJRForm(bool isInternalRequest = false) : base()
         {
-            init();
+            Init();
             Load();
 
             // JR = new JR
-            refreshJR();
+            RefreshJR();
 
             _jr.InternRequest = isInternalRequest;
         }
@@ -49,14 +49,14 @@ namespace TestingPlanner.Viewmodels
         // Constructor for existing JR
         public ViewModelCreateJRForm(int idRequest) : base()
         {
-            init();
+            Init();
             Load();
 
             // Look for JR with correct ID
             this._jr = _dao.GetJR(idRequest);
 
 
-            List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);
+            List<RqRequestDetail> eutList = _dao.RqDetail(idRequest);
             // We use a foreach to loop over every item in the eutList
             // And link the user inputed data to the correct variables
             var request = new RqRequest();
@@ -71,16 +71,16 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Code reused in both constructors
-        private void init()
+        private void Init()
         {
             // Collection initialization
             JobNatures = new ObservableCollection<string>();
             Divisions = new ObservableCollection<string>();
 
             // Command initialization
-            refreshJRCommand = new DelegateCommand(refreshJR);
-            addEUTCommand = new DelegateCommand(addEUT);
-            removeEUTCommand = new DelegateCommand(removeSelectedEUT);
+            RefreshJRCommand = new DelegateCommand(RefreshJR);
+            AddEUTCommand = new DelegateCommand(AddEUT);
+            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
         }
 
         // Loads jobNatures, divisions in cbb
@@ -106,7 +106,7 @@ namespace TestingPlanner.Viewmodels
         /// This function adds an new EUT instance into the GUI RequestForm
         /// EUT in Database
         /// </summary>
-        public void addEUT()
+        public void AddEUT()
         {
             EUTs.Add(new EUT());
         }
@@ -128,7 +128,7 @@ namespace TestingPlanner.Viewmodels
         /// <summary>
         /// Clear all data in JR
         /// </summary>
-        private void refreshJR()
+        private void RefreshJR()
         {
             this.JR = _dao.GetNewJR();
             EUTs.Clear();
@@ -137,7 +137,7 @@ namespace TestingPlanner.Viewmodels
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void removeSelectedEUT()
+        public void RemoveSelectedEUT()
         {
             EUTs.Remove(SelectedEUT);
         }

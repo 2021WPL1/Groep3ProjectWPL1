@@ -20,10 +20,10 @@ namespace TestingPlanner.Viewmodels
         public ObservableCollection<string> Divisions { get; set; }
 
         // ICommand does not take pinput
-        public ICommand addEUTCommand { get; set; }
-        public ICommand removeEUTCommand { get; set; }
-        public ICommand refreshJRCommand { get; set; }
-        public ICommand addMockEUTCommand { get; set; }
+        public ICommand AddEUTCommand { get; set; }
+        public ICommand RemoveEUTCommand { get; set; }
+        public ICommand RefreshJRCommand { get; set; }
+        public ICommand AddMockEUTCommand { get; set; }
 
         // Constructor for existing JR
         // Planner only works with existing JRs
@@ -34,14 +34,14 @@ namespace TestingPlanner.Viewmodels
             Divisions = new ObservableCollection<string>();
 
             Load();
-            addEUTCommand = new DelegateCommand(AddEUT);
-            removeEUTCommand = new DelegateCommand(removeSelectedEUT);
+            AddEUTCommand = new DelegateCommand(AddEUT);
+            RemoveEUTCommand = new DelegateCommand(RemoveSelectedEUT);
 
             // Look for JR with correct ID
             this._jr = _dao.GetJR(idRequest);
 
 
-            List<RqRequestDetail> eutList = _dao.rqDetail(idRequest);
+            List<RqRequestDetail> eutList = _dao.RqDetail(idRequest);
             // We use a foreach to loop over every item in the eutList
             // And link the user inputed data to the correct variables
             var request = new RqRequest();
@@ -54,13 +54,7 @@ namespace TestingPlanner.Viewmodels
 
             FillEUT(request);
 
-            _dao.printPvg(idRequest,_jr);
-        }
-
-        // Code reused in both constructors
-        private void init()
-        {
-            // Collection initialization
+            _dao.PrintPvg(idRequest,_jr);
         }
 
         // Loads jobNatures, divisions in cbb
@@ -107,7 +101,7 @@ namespace TestingPlanner.Viewmodels
         /// <summary>
         /// deletes selected EUT via _selectedEut variable
         /// </summary>
-        public void removeSelectedEUT()
+        public void RemoveSelectedEUT()
         {
             EUTs.Remove(SelectedEUT);
         }

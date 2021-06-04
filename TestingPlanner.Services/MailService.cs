@@ -59,13 +59,13 @@ namespace TestingPlanner.Services
                 //timer = new Timer(tickTime);
                 //door de using threading en timer weet VS niet welke timer ik bedoel, dus moeten we het voluit schrijven
                 _timer = new System.Timers.Timer(tickTime);
-                _timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
+                _timer.Elapsed += new ElapsedEventHandler(Timer_Elapsed);
                 _timer.Start();
         }
 
         // Wanneer de timer stopt voert hij de sendmail functie uit en roept opnieuw de schedule_timer aan en die gaat dan een 
         // dag bij tellen.
-        public void timer_Elapsed(object sender, ElapsedEventArgs e)
+        public void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
                 Console.WriteLine("Timer has stopped");
                 _timer.Stop();
