@@ -53,8 +53,8 @@ namespace TestingPlanner.Viewmodels
             ClearTestCommand = new DelegateCommand(ClearTest);
             DeleteTestCommand = new DelegateCommand(DeleteTest);
 
-            EditingTest = new Test();
             doubleBooked = Visibility.Hidden;
+            ClearTest();
         }
 
 
