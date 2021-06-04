@@ -7,31 +7,28 @@
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestformRD}">
-        <views:RequestFormRDUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelDevelopment}">
+        <views:DevelopmentUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelStartupPlanner}">
-        <views:StartupPlannerUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelApproveJRForm}">
+        <views:ApproveJRFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelStartupRD}">
-        <views:StartupRDUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelApproveJRQueue}">
+        <views:ApproveJRQueueUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelStartupTester}">
-        <views:StartupTesterUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelCreateJRForm}">
+        <views:CreateJRFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
-        <views:TempUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelCreateJRQueue}">
+        <views:CreateJRQueueUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelTestForm}">
-        <views:TestFormUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelPlanTestForm}">
+        <views:PlanTestFormUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
-        <views:RequestFormPlanUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelPlanTestQueue}">
+        <views:PlanTestQueueUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelTesterPlan}">
-        <views:TesterPlanUserControl/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelTesterTest}">
-        <views:TesterTestUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelUpdateTestQueue}">
+        <views:UpdateTestQueueUserControl/>
     </DataTemplate>
 </ResourceDictionary>
