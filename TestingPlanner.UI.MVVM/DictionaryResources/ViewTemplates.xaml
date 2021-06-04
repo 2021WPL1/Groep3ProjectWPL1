@@ -20,7 +20,7 @@
         <views:StartupTesterUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
-        <views:TempUserControl/>
+        <views:DevelopmentUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelTestForm}">
         <views:TestFormUserControl/>
