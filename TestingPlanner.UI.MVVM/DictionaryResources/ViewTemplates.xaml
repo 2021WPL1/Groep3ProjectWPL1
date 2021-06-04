@@ -26,7 +26,7 @@
         <views:TestFormUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
-        <views:RequestFormPlanUserControl/>
+        <views:ApproveJRQueueUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelTesterPlan}">
         <views:TesterPlanUserControl/>
