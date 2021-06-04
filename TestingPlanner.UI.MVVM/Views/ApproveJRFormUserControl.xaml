@@ -98,10 +98,10 @@
                          SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Add Part" 
-                                Command="{Binding Path=addEUTCommand}" 
+                                Command="{Binding Path=AddEUTCommand}" 
                                 Margin="10"/>
                     <Button Content="Remove Part" 
-                                Command="{Binding Path=removeEUTCommand}" 
+                                Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>
                 </StackPanel>
             </StackPanel>
