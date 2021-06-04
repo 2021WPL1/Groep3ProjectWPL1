@@ -7,26 +7,23 @@
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestformRD}">
-        <views:CreateJRFormUserControl/>
+    <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
+        <views:DevelopmentUserControl/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
+        <views:ApproveJRFormUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelStartupPlanner}">
         <views:ApproveJRQueueUserControl/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestformRD}">
+        <views:CreateJRFormUserControl/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelStartupRD}">
         <views:CreateJRQueueUserControl/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelStartupTester}">
-        <views:StartupTesterUserControl/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
-        <views:DevelopmentUserControl/>
-    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelTestForm}">
         <views:PlanTestFormUserControl/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">
-        <views:ApproveJRFormUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelTesterPlan}">
         <views:PlanTestQueueUserControl/>
