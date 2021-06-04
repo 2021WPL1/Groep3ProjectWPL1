@@ -8,13 +8,12 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    // TODO: move window change to parent class
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class AbstractViewModelBase : INotifyPropertyChanged
     {
         protected DAO _dao = DAO.Instance();
 
         // Constructor
-        public ViewModelBase()
+        public AbstractViewModelBase()
         {
             
         }

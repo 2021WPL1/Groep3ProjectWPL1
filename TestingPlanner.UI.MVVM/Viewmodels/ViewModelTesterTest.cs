@@ -10,7 +10,7 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelTesterTest : ViewModelBase
+    class ViewModelTesterTest : AbstractViewModelBase
     {
         public ObservableCollection<Test> Tests { get; set; }
         public ObservableCollection<string> StatusList { get; set; }

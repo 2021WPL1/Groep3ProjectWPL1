@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestingPlanner.Viewmodels
 {
-    public abstract class ViewModelContainer : ViewModelBase
+    public abstract class AbstractViewModelContainer : AbstractViewModelBase
     {
         // Jobrequest data container
         // Only one getter/setter needs to be made for all changes in GUI
@@ -17,7 +17,7 @@ namespace TestingPlanner.Viewmodels
         public ObservableCollection<EUT> EUTs { get; set; }
         protected EUT _selectedEUT;
 
-        public ViewModelContainer()
+        public AbstractViewModelContainer()
         {
             EUTs = new ObservableCollection<EUT>();
         }

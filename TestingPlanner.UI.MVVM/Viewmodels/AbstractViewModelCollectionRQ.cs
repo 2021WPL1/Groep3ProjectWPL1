@@ -6,13 +6,13 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
-    public abstract class ViewModelCollectionRQ : ViewModelBase
+    public abstract class AbstractViewModelCollectionRQ : AbstractViewModelBase
     {
         public ObservableCollection<RqRequest> idRequestsOnly { get; set; }
         protected RqRequest _selectedJR;
 
         //Constructor
-        public ViewModelCollectionRQ() : base()
+        public AbstractViewModelCollectionRQ() : base()
         {
             // Collection initialization
             idRequestsOnly = new ObservableCollection<RqRequest>();

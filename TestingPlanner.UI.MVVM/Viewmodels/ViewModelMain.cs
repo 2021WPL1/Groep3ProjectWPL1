@@ -13,9 +13,9 @@ using TestingPlanner.Services;
 namespace TestingPlanner.Viewmodels
 {
     // Kaat
-    class ViewModelMain : ViewModelBase
+    class ViewModelMain : AbstractViewModelBase
     {
-        private ViewModelBase _viewModel;
+        private AbstractViewModelBase _viewModel;
         public BarcoUser User { get; set; }
 
         MailService mail = new MailService();
@@ -64,7 +64,7 @@ namespace TestingPlanner.Viewmodels
         }
 
         // Getters/Setters
-        public ViewModelBase ViewModel 
+        public AbstractViewModelBase ViewModel 
         { 
             get => _viewModel;
             set
@@ -92,7 +92,7 @@ namespace TestingPlanner.Viewmodels
         {
             SaveJrCommand = new DelegateCommand(UpdateJr);
 
-            var ExistingJrId = ((ViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
+            var ExistingJrId = ((AbstractViewModelCollectionRQ)this.ViewModel).SelectedJR.IdRequest;
 
             if (this.ViewModel is ViewModelStartupPlanner)
             {
@@ -133,10 +133,10 @@ namespace TestingPlanner.Viewmodels
         // Adds and stores a job request and switches windows
         public void InsertJr()
         {
-            var jr = _dao.AddJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
             int count = 0;
 
-            foreach (var thisEUT in ((ViewModelContainer)this.ViewModel).EUTs)
+            foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
@@ -150,12 +150,12 @@ namespace TestingPlanner.Viewmodels
         // Change so no JR and no 
         public void InsertInternalJr()
         {
-            var jr = _dao.AddJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+            var jr = _dao.AddJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
 
             jr.JrStatus = "In Plan";
             
             int count = 0;
-            foreach (var thisEUT in ((ViewModelContainer)this.ViewModel).EUTs)
+            foreach (var thisEUT in ((AbstractViewModelContainer)this.ViewModel).EUTs)
             {
                 count++;
                 _dao.AddEutToRqRequest(jr, thisEUT, count.ToString());
@@ -172,7 +172,7 @@ namespace TestingPlanner.Viewmodels
         // Updates existing job request and switches windows
         public void UpdateJr()
         {
-            string error = _dao.UpdateJobRequest(((ViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
+            string error = _dao.UpdateJobRequest(((AbstractViewModelContainer)this.ViewModel).JR); // SaveChanges included in function
 
             if (error == null)
             {
@@ -188,7 +188,7 @@ namespace TestingPlanner.Viewmodels
         // Kaat
         public void ApproveJR()
         {
-            int jrId = ((ViewModelContainer)this.ViewModel).JR.IdRequest;
+            int jrId = ((AbstractViewModelContainer)this.ViewModel).JR.IdRequest;
 
             _dao.ApproveRequest(jrId);
 

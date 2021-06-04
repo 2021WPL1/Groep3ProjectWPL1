@@ -11,7 +11,7 @@ using TestingPlanner.Data;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelRequestFormPlan : ViewModelContainer
+    class ViewModelRequestFormPlan : AbstractViewModelContainer
     {
         private readonly Barco2021Context context = new Barco2021Context();
         // Combobox contents

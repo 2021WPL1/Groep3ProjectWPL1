@@ -7,7 +7,7 @@ using TestingPlanner.Domain.Models;
 
 namespace TestingPlanner.Viewmodels
 {
-    class ViewModelTesterPlan : ViewModelBase
+    class ViewModelTesterPlan : AbstractViewModelBase
     {
         public ObservableCollection<PlPlanning> PlansToApprove { get; set; }
         protected PlPlanning _selectedPlan;

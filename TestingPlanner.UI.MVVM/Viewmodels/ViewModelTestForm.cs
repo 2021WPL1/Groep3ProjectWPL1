@@ -11,7 +11,7 @@ using TestingPlanner.Domain.Models;
 namespace TestingPlanner.Viewmodels
 {
     // Kaat
-    class ViewModelTestForm : ViewModelBase
+    class ViewModelTestForm : AbstractViewModelBase
     {
         // Listbox with equipment
         public ObservableCollection<PlResources> Resources { get; set; }
