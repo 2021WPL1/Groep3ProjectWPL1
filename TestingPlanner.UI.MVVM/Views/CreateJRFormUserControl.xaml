@@ -93,10 +93,10 @@
                              SelectedItem="{Binding SelectedEUT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Add Part" 
-                                Command="{Binding Path=addEUTCommand}" 
+                                Command="{Binding Path=AddEUTCommand}" 
                                 Margin="10"/>
                     <Button Content="Remove Part" 
-                                Command="{Binding Path=removeEUTCommand}" 
+                                Command="{Binding Path=RemoveEUTCommand}" 
                                 Margin="10"/>
                 </StackPanel>
             </StackPanel>
@@ -108,7 +108,7 @@
                             Mode=OneWay}"
                     Height="40" Margin="5"/>
             <Button Content="Empty All Fields"
-                        Command="{Binding Path=refreshJRCommand}"
+                        Command="{Binding Path=RefreshJRCommand}"
                         Height="40" Margin="5"/>
             <Button Content="Cancel"
                         Command="{Binding DataContext.DisplayDevStartupCommand, 
