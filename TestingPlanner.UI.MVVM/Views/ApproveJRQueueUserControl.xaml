@@ -31,7 +31,7 @@
             </Grid>
             -->
             <StackPanel>
-                <ListView Height="250" ItemsSource="{Binding idRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" >
+                <ListView Height="250" ItemsSource="{Binding IdRequestsOnly}" SelectedItem="{Binding SelectedJR, Mode=TwoWay}" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id" DisplayMemberBinding="{Binding IdRequest}" />
