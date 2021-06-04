@@ -32,6 +32,6 @@
         <views:PlanTestQueueUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelTesterTest}">
-        <views:TesterTestUserControl/>
+        <views:UpdateTestQueueUserControl/>
     </DataTemplate>
 </ResourceDictionary>
