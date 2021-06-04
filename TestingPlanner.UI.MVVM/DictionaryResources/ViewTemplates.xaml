@@ -14,7 +14,7 @@
         <views:ApproveJRQueueUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelStartupRD}">
-        <views:StartupRDUserControl/>
+        <views:CreateJRQueueUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelStartupTester}">
         <views:StartupTesterUserControl/>
