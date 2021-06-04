@@ -16,10 +16,10 @@ namespace TestingPlanner.Viewmodels
     // TEMPORARY SCREEN
     // Proof of concept: loading list of JR's from database
     // TODO: datatemplate for JR's
-    public class ViewmodelTemporarilyStartUp : AbstractViewModelCollectionRQ
+    public class ViewmodelDevelopment : AbstractViewModelCollectionRQ
     {
         //Constructor
-        public ViewmodelTemporarilyStartUp():base()
+        public ViewmodelDevelopment():base()
         {
             Load();
         }

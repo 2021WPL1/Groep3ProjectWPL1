@@ -7,7 +7,7 @@
     <DataTemplate DataType="{x:Type viewModels:ViewModelMain}">
         <views:MainWindow/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:ViewmodelTemporarilyStartUp}">
+    <DataTemplate DataType="{x:Type viewModels:ViewmodelDevelopment}">
         <views:DevelopmentUserControl/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ViewModelRequestFormPlan}">

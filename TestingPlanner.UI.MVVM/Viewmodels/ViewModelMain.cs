@@ -125,7 +125,7 @@ namespace TestingPlanner.Viewmodels
 
         public void DisplayDevStartup()
         {
-            this.ViewModel = new ViewmodelTemporarilyStartUp();
+            this.ViewModel = new ViewmodelDevelopment();
         }
 
         // JR CRUD
@@ -236,7 +236,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
 
-                    this.ViewModel = new ViewmodelTemporarilyStartUp();
+                    this.ViewModel = new ViewmodelDevelopment();
 
                     break;
                 case "TEST":
