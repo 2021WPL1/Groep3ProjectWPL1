@@ -16,6 +16,7 @@ namespace TestingPlanner.Viewmodels
     class ViewModelMain : AbstractViewModelBase
     {
         private AbstractViewModelBase _viewModel;
+        private AbstractViewModelBase _home;
         public BarcoUser User { get; set; }
 
         MailService mail = new MailService();
@@ -34,6 +35,7 @@ namespace TestingPlanner.Viewmodels
         public DelegateCommand SaveTestsAndReturnCommand { get; set; }
         public DelegateCommand ApprovePlanAndReturnCommand { get; set; }
         public DelegateCommand TesterReturnCommand { get; set; }
+        public DelegateCommand ReturnHomeCommand { get; set; }
 
         // Visibility of buttons
         public Visibility NewRequests { get; set; }
@@ -57,9 +59,11 @@ namespace TestingPlanner.Viewmodels
             SaveTestsAndReturnCommand = new DelegateCommand(SaveTestsAndReturn);
             ApprovePlanAndReturnCommand = new DelegateCommand(ApprovePlanAndReturn);
             TesterReturnCommand = new DelegateCommand(TesterReturn);
+            ReturnHomeCommand = new DelegateCommand(ReturnHome);
 
             SetWindowProperties();
             mail.Schedule_Timer();
+            ReturnHome();
 
         }
 
@@ -104,6 +108,11 @@ namespace TestingPlanner.Viewmodels
             }
         }
 
+        public void ReturnHome()
+        {
+            this.ViewModel = _home;
+        }
+
         public void DisplayEmployeeStartup()
         {
             this.ViewModel = new ViewModelCreateJRQueue();
@@ -144,7 +153,7 @@ namespace TestingPlanner.Viewmodels
 
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
-            DisplayDevStartup();
+            ReturnHome();
         }
 
         // Change so no JR and no 
@@ -166,7 +175,7 @@ namespace TestingPlanner.Viewmodels
 
             _dao.ApproveInternalRequest(jr.IdRequest);
 
-            DisplayDevStartup();
+            ReturnHome();
         }
 
         // Updates existing job request and switches windows
@@ -176,7 +185,7 @@ namespace TestingPlanner.Viewmodels
 
             if (error == null)
             {
-                DisplayDevStartup();
+                ReturnHome();
             }
             else
             {
@@ -236,7 +245,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Visible;
                     SeeAll = Visibility.Visible;
 
-                    this.ViewModel = new ViewModelDevelopment();
+                    _home = new ViewModelDevelopment();
 
                     break;
                 case "TEST":
@@ -247,7 +256,7 @@ namespace TestingPlanner.Viewmodels
 
                     DisplayNewJRCommand = new DelegateCommand(DisplayNewInternalJR);
 
-                    this.ViewModel = new ViewModelPlanTestQueue();
+                    _home = new ViewModelPlanTestQueue();
 
                     break;
                 case "PLAN":
@@ -256,7 +265,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
 
-                    this.ViewModel = new ViewModelApproveJRQueue();
+                    _home = new ViewModelApproveJRQueue();
 
                     break;
                 default:
@@ -265,7 +274,7 @@ namespace TestingPlanner.Viewmodels
                     Test = Visibility.Hidden;
                     SeeAll = Visibility.Hidden;
 
-                    this.ViewModel = new ViewModelCreateJRQueue();
+                    _home = new ViewModelCreateJRQueue();
 
                     break;
             }
