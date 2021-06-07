@@ -144,7 +144,7 @@ namespace TestingPlanner.Viewmodels
 
             // Here we call the SaveChanges method, so that we can link several EUTs to one JR
             _dao.SaveChanges();
-            DisplayDevStartup();
+            DisplayEmployeeStartup();
         }
 
         // Change so no JR and no 
@@ -166,7 +166,7 @@ namespace TestingPlanner.Viewmodels
 
             _dao.ApproveInternalRequest(jr.IdRequest);
 
-            DisplayDevStartup();
+            DisplayEmployeeStartup();
         }
 
         // Updates existing job request and switches windows
@@ -176,7 +176,13 @@ namespace TestingPlanner.Viewmodels
 
             if (error == null)
             {
-                DisplayDevStartup();
+                if (_dao.BarcoUser.Function == "PLAN" || _dao.BarcoUser.Function == "DEV")
+                {
+                    DisplayPlannerStartup();
+                    return;
+                }
+
+                DisplayEmployeeStartup();
             }
             else
             {
@@ -191,8 +197,7 @@ namespace TestingPlanner.Viewmodels
             int jrId = ((AbstractViewModelContainer)this.ViewModel).JR.IdRequest;
 
             _dao.ApproveRequest(jrId);
-
-            this.ViewModel = new ViewModelApproveJRQueue();
+            DisplayPlannerStartup();
         }
 
         // Switch to test planning for tester
